@@ -3,7 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 import { withProviders } from './providers';
 import { appRouter } from './routing';
 
-import './index.css';
+import './index.less';
 
 function App() {
     return <RouterProvider router={appRouter()} />;

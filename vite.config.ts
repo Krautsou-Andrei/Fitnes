@@ -9,6 +9,13 @@ export default defineConfig({
         host: true,
         port: 3000,
     },
+    css: {
+        preprocessorOptions: {
+            less: {
+                javascriptEnabled: true,
+            },
+        },
+    },
     resolve: {
         alias: {
             '@public': path.resolve(__dirname, 'public'),
