@@ -1,25 +1,12 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-
-import { store } from '@redux/configure-store';
-import { MainPage } from './pages';
+import ReactDOM from 'react-dom/client';
 
 import 'normalize.css';
-import './index.css';
+import App from '@app/app';
 
-const domNode = document.getElementById('root') as HTMLDivElement;
-const root = createRoot(domNode);
-
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <HashRouter>
-                <Routes>
-                    <Route path='/' element={<MainPage />} />
-                </Routes>
-            </HashRouter>
-        </Provider>
+        <App />
     </React.StrictMode>,
 );
