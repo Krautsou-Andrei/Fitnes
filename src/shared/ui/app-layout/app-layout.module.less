@@ -1,8 +1,19 @@
 @import '../../styles/constants.less';
 
+.main-page {
+    :global(.ant-layout) {
+        background: none;
+    }
+}
 :global(.ant-layout).main-page {
     min-height: 100vh;
     flex-direction: row;
+    background: none;
+
+    background-image: url('../../../public/assets/background_page_light.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main-content {
