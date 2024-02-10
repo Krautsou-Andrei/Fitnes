@@ -1,0 +1,63 @@
+@import '../../../shared/styles/constants.less';
+
+.logo {
+    margin-top: (@rem * 38);
+    margin-bottom: (@rem * 58);
+    padding-left: (@rem * 29);
+    transition: transform 0.3s;
+
+    &--collapsed {
+        position: relative;
+        padding-left: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+:global(.ant-layout-sider).app-sider {
+    :global(.ant-layout-sider-children) {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+:global(.trigger).custom-trigger {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+
+    width: (@rem * 20);
+    height: (@rem * 66);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    clip-path: polygon(0 0, 100% 10%, 100% 89%, 0 100%);
+
+    background-color: @app-background-primary;
+    color: @app-sider-trigger;
+}
+
+:global(.ant-divider-horizontal).app-divider {
+    flex: 1;
+    margin: 0;
+    border-top: none;
+    border-bottom: (@rem * 1) solid @app-devider;
+}
+
+:global(.ant-btn).profile-button {
+    height: (@rem * 40);
+
+    display: flex;
+    align-items: center;
+    gap: (@rem * 25);
+
+    border: none;
+}
+
+:global(.ant-btn).profile-button--collapsed {
+    justify-content: center;
+}

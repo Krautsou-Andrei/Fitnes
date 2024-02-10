@@ -1,3 +1,4 @@
+import { LayoutConfig } from './layout-config';
 import { MenuConfig } from './menu-config';
 
-export { MenuConfig };
+export { LayoutConfig, MenuConfig };
