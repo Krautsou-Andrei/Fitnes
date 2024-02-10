@@ -1,0 +1,28 @@
+@import '../../styles/constants';
+
+.app-menu {
+    :global(.ant-menu-item) {
+        margin-bottom: (@rem * 2);
+    }
+}
+
+.app-menu:global(.ant-menu-vertical).app-menu,
+.app-menu:global(.ant-menu-inline).app-menu {
+    > :global(.ant-menu-item:not(:last-child)) {
+        margin-bottom: (@rem * 18);
+    }
+
+    > :global(.ant-menu-item) {
+        :global(.ant-menu-item-icon) {
+            color: @app-icon-color;
+        }
+    }
+
+    @media (any-hover: hover) {
+        > :global(.ant-menu-item):hover {
+            :global(.ant-menu-item-icon) {
+                color: currentColor;
+            }
+        }
+    }
+}
