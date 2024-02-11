@@ -2,8 +2,7 @@
 
 :global(.ant-layout-header).app-header {
     padding: (@rem * 16) (@rem * 24);
-    height: auto;
-    text-wrap: balance;
+    height: auto;  
 
     background: @app-header-background-color;
 }
@@ -13,6 +12,11 @@
         margin-bottom: 0;
         padding: (@rem * 6) 0;
         line-height: 130%;
+
+        @media screen and (max-width: @tableWidth) {
+            font-size: (@rem * 24);
+            font-weight: 500;
+        }
     }
 
     :global(.ant-breadcrumb) {

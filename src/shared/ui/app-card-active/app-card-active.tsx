@@ -11,7 +11,7 @@ interface Props extends CardProps {
 
 export function AppCardActive({ children, className, ...rest }: Props) {
     return (
-        <Card className={clsn(styles['app-card'], className)} {...rest}>
+        <Card className={clsn(styles['app-card'], className)} {...rest} bordered={false}>
             {children}
         </Card>
     );

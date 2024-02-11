@@ -7,5 +7,6 @@ export const enum LayoutConfig {
     CARD_FOOTER_TITLE = 'Доступно в PRO-тарифе',
     EXIT = 'Выход',
     HOME = 'Главная',
-    TITLE = 'Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей мечты!',
+    TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',
+    TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
 }

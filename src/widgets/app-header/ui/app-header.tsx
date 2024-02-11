@@ -14,7 +14,10 @@ export function AppHeader() {
         <Header className={styles['app-header']}>
             <AppBreadcrumb />
             <div className={styles.content}>
-                <Title level={1}>{LayoutConfig.TITLE}</Title>
+                <Title level={1}>
+                    <div>{LayoutConfig.TITLE_ONE}</div>
+                    <div>{LayoutConfig.TITLE_TWO}</div>
+                </Title>
                 <AppSettingsButton />
             </div>
         </Header>
