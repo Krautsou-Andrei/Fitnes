@@ -1,6 +1,6 @@
 import React from 'react';
 import { Content } from 'antd/lib/layout/layout';
-import { Col, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 
 import { cardsActionsConfig, cardsInfoConfig } from '@shared/config';
 import { AppCardActive, AppCardText } from '@shared/ui';
@@ -27,7 +27,15 @@ export const HomePage: React.FC = () => {
                         {cardsActionsConfig.map((card) => {
                             return (
                                 <Col key={card.id} span={8}>
-                                    <AppCardActive button={card.button} title={card.title} />
+                                    <AppCardActive title={card.title}>
+                                        <Button
+                                            type='link'
+                                            href={card.button.href}
+                                            icon={card.button.icon}
+                                        >
+                                            {card.button.title}
+                                        </Button>
+                                    </AppCardActive>
                                 </Col>
                             );
                         })}
