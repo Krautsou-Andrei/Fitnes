@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import clsn from 'classnames';
 import { Button, Divider } from 'antd';
 import Sider from 'antd/lib/layout/Sider';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 import { AppMenu } from '@shared/ui';
 import { AppIcon } from '@shared/ui/';
 import { LayoutConfig } from '@shared/config';
 
 import { useSiderQuery } from '../lib/use-sider-query';
+import { AppButtonSwitch } from './button-switch';
 
 import styles from './app-sider.module.less';
 
@@ -37,12 +37,7 @@ export function AppSider() {
                 height={isTablet ? 18 : 43}
             />
             <AppMenu collapsed={collapsed} isTablet={isTablet} />
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                key: collapsed ? 'menu-unfold' : 'menu-fold',
-
-                className: clsn('trigger', styles['custom-trigger']),
-                onClick: () => setCollapsed(!collapsed),
-            })}
+            <AppButtonSwitch collapsed={collapsed} setCollapsed={setCollapsed} />
             <Divider className={styles['app-divider']} />
             <Button
                 block
