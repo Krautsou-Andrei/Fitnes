@@ -28,11 +28,8 @@ export const HomePage: React.FC = () => {
                             return (
                                 <Col key={card.id} span={8}>
                                     <AppCardActive title={card.title}>
-                                        <Button
-                                            type='link'
-                                            href={card.button.href}
-                                            icon={card.button.icon}
-                                        >
+                                        <Button type='link' href={card.button.href}>
+                                            {card.button.icon}
                                             {card.button.title}
                                         </Button>
                                     </AppCardActive>

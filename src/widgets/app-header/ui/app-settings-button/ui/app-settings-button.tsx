@@ -5,7 +5,8 @@ import { LayoutConfig } from '@shared/config';
 
 export function AppSettingsButton() {
     return (
-        <Button icon={<SettingOutlined />} size='middle' type='text'>
+        <Button size='middle' type='text'>
+            <SettingOutlined />
             {LayoutConfig.BUTTON_SETTINGS}
         </Button>
     );

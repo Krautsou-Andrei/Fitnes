@@ -48,8 +48,8 @@ export function AppSider() {
                 className={clsn(styles['profile-button'], {
                     [styles['profile-button--collapsed']]: collapsed,
                 })}
-                icon={<AppIcon name='app/exit' width={16} height={16} />}
             >
+                <AppIcon name='app/exit' width={16} height={16} />
                 {!collapsed && LayoutConfig.EXIT}
             </Button>
         </Sider>
