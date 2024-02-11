@@ -1,8 +1,9 @@
 @import '../../../shared/styles/constants';
+@import '../../../shared/styles/mixin';
 
 :global(.ant-layout-header).app-header {
     padding: (@rem * 16) (@rem * 24);
-    height: auto;  
+    height: auto;
 
     background: @app-header-background-color;
 }
@@ -17,10 +18,18 @@
             font-size: (@rem * 24);
             font-weight: 500;
         }
+
+        .media-md({
+            font-size: (@rem * 20);
+        });
     }
 
     :global(.ant-breadcrumb) {
         margin-bottom: (@rem * 8);
+
+        .media-md({
+            margin-bottom: 0;
+        });
     }
 
     .content {

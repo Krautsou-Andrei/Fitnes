@@ -8,34 +8,35 @@ import { AppMenu } from '@shared/ui';
 import { AppIcon } from '@shared/ui/';
 import { LayoutConfig } from '@shared/config';
 
+import { useSiderQuery } from '../lib/use-sider-query';
+
 import styles from './app-sider.module.less';
 
 export function AppSider() {
     const [collapsed, setCollapsed] = useState(false);
+    const { isTablet, width, widthCollapsed } = useSiderQuery();
+
     return (
         <Sider
             className={styles['app-sider']}
-            breakpoint='lg'
-            collapsedWidth='64'
-            width='208'
+            breakpoint='md'
+            collapsedWidth={widthCollapsed}
+            width={width}
             theme='light'
             trigger={null}
             collapsible
             collapsed={collapsed}
-            onBreakpoint={(broken) => {
-                console.log(broken);
-            }}
-            onCollapse={(collapsed, type) => {
-                console.log(collapsed, type);
+            onCollapse={(collapsed) => {
+                setCollapsed(collapsed);
             }}
         >
             <AppIcon
                 name={`${collapsed ? 'layout/logo-smal' : 'layout/logo-big'}`}
                 className={clsn(styles.logo, { [styles['logo--collapsed']]: collapsed })}
-                width={collapsed ? 28 : 160}
-                height={43}
+                width={collapsed ? 28 : isTablet ? 72 : 133}
+                height={isTablet ? 18 : 43}
             />
-            <AppMenu collapsed={collapsed} />
+            <AppMenu collapsed={collapsed} isTablet={isTablet} />
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                 key: collapsed ? 'menu-unfold' : 'menu-fold',
 
@@ -49,7 +50,7 @@ export function AppSider() {
                     [styles['profile-button--collapsed']]: collapsed,
                 })}
             >
-                <AppIcon name='app/exit' width={16} height={16} />
+                {!isTablet && <AppIcon name='app/exit' width={16} height={16} />}
                 {!collapsed && LayoutConfig.EXIT}
             </Button>
         </Sider>

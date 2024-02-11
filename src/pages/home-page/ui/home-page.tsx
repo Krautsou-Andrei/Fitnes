@@ -23,10 +23,10 @@ export const HomePage: React.FC = () => {
                     </Row>
                 </Col>
                 <Col span={24}>
-                    <Row gutter={[16, 16]}>
+                    <Row gutter={[16, 8]}>
                         {cardsActionsConfig.map((card) => {
                             return (
-                                <Col key={card.id} span={8}>
+                                <Col key={card.id} span={24} md={8}>
                                     <AppCardActive title={card.title}>
                                         <Button type='link' href={card.button.href}>
                                             {card.button.icon}

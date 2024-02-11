@@ -1,15 +1,27 @@
 @import '../../../shared/styles/constants';
+@import '../../../shared/styles/mixin';
 
 :global(.ant-layout-footer).app-footer {
     padding: (@rem * 156) (@rem * 24) (@rem * 42);
 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: (@rem *24);
 
     background: transparent;
 
+    .media-xs({
+        padding: 0 (@rem * 16) (@rem * 42);
+        justify-content: center;
+    });
+
     :global(.ant-btn-link) {
         color: @app-link-color;
+
+        .media-xs({
+            order: 2;
+        });
     }
 
     .button-reviews {
@@ -21,6 +33,10 @@
 
 :global(.ant-card).footer-card {
     width: (@rem * 240);
+
+    .media-xs({
+        width: 100%;
+    });
 }
 
 .footer-card {
@@ -31,6 +47,11 @@
         p {
             margin: 0;
         }
+
+        .media-xs({
+            width: 100%;
+            text-align: center
+        });
     }
 
     :global(.ant-btn-link) {

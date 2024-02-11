@@ -1,10 +1,15 @@
 @import '../../styles/constants';
+@import '../../styles/mixin';
 
 .app-card {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    .media-md({
+        height: unset;
+    });
 
     :global(.ant-card-head) {
         flex: 1;
@@ -20,6 +25,14 @@
         text-align: center;
         line-height: 130%;
         white-space: unset;
+
+        @media (max-width: @tableWidth) {
+            text-align: unset;
+        }
+
+        .media-md({
+            text-align: center;
+        });
     }
 
     :global(.ant-card-body) {
@@ -30,11 +43,5 @@
 
     :global(.ant-btn-link) {
         color: @app-card-ctive-color-text-button;
-    }
-
-    @media  (max-width: @tableWidth) {
-        :global(.ant-card-head-title) {
-            text-align: unset;
-        }
     }
 }

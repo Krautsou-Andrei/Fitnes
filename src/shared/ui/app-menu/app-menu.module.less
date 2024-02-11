@@ -1,8 +1,10 @@
 @import '../../styles/constants';
+@import 'antd/es/style/themes/default.less';
 
 .app-menu {
     :global(.ant-menu-item) {
         margin-bottom: (@rem * 2);
+        padding-left: (@rem * 16);
     }
 }
 
@@ -10,6 +12,10 @@
 .app-menu:global(.ant-menu-inline).app-menu {
     > :global(.ant-menu-item:not(:last-child)) {
         margin-bottom: (@rem * 18);
+
+        @media screen and (max-width: @screen-md) {
+            margin-bottom: (@rem * 10);
+        }
     }
 
     > :global(.ant-menu-item) {

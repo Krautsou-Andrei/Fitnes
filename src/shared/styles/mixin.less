@@ -1,0 +1,13 @@
+@import 'antd/es/style/themes/default.less';
+
+.media-md(@rules) {
+    @media screen and (max-width: @screen-md) {
+        @rules();
+    }
+}
+
+.media-xs(@rules) {
+    @media screen and (max-width:  @screen-xs) {
+        @rules();
+    }
+}

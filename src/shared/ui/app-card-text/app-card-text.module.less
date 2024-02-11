@@ -1,6 +1,14 @@
 @import '../../styles/constants';
+@import '../../styles/mixin';
 
 .app-card {
+    :global(.ant-card-body) {
+        .media-md({
+            padding: (@rem * 16); 
+            letter-spacing: 0.05px;
+        });
+    }
+
     :global(.ant-list) {
         font-size: (@rem * 16);
         line-height: 130%;
@@ -10,6 +18,8 @@
         margin-bottom: 0;
         line-height: 125%;
         font-weight: 500;
+
+        .media-md({ line-height: 130%;});
     }
 
     :global(.ant-list-split) {

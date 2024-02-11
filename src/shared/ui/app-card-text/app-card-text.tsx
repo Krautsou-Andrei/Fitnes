@@ -14,7 +14,7 @@ type Props = {
 
 export function AppCardText({ card, className, ...rest }: Props) {
     return (
-        <Card className={clsn(styles['app-card'], className)} {...rest}>
+        <Card className={clsn(styles['app-card'], className)} bordered={false} {...rest}>
             {card.description ? (
                 <List
                     className={styles.hightlight}
@@ -28,9 +28,7 @@ export function AppCardText({ card, className, ...rest }: Props) {
                     )}
                 ></List>
             ) : (
-                <Title level={4} className={styles['card-title-text']}>
-                    {card.title}
-                </Title>
+                <Title level={4}>{card.title}</Title>
             )}
         </Card>
     );
