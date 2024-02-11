@@ -1,0 +1,38 @@
+@import '../../../shared/styles/constants';
+@import '../../../shared/styles/mixin';
+
+:global(.ant-layout-header).app-header {
+    padding: (@rem * 16) (@rem * 24);
+    height: auto;
+
+    background: @app-header-background-color;
+}
+
+.app-header {
+    :global(h1.ant-typography) {
+        margin-bottom: 0;
+        padding: (@rem * 6) 0;
+        line-height: 130%;
+
+        @media screen and (max-width: @tableWidth) {
+            font-size: (@rem * 24);
+            font-weight: 500;
+        }
+
+        .media-md({
+            font-size: (@rem * 20);
+        });
+    }
+
+    :global(.ant-breadcrumb) {
+        margin-bottom: (@rem * 8);
+
+        .media-md({
+            margin-bottom: 0;
+        });
+    }
+
+    .content {
+        display: flex;
+    }
+}

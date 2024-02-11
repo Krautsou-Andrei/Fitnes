@@ -1,0 +1,61 @@
+@import '../../../shared/styles/constants.less';
+@import 'antd/es/style/themes/default.less';
+
+.logo {
+    margin-top: (@rem * 38);
+    margin-bottom: (@rem * 58);
+    margin-left: (@rem * 29);
+    transition: transform 0.3s;
+
+    &--collapsed {
+        position: relative;
+        margin-left: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media screen and (max-width: @screen-md) {
+        margin-top: (@rem * 16);
+        margin-bottom: (@rem * 29);
+        margin-left: (@rem * 17);
+    }
+}
+
+:global(.ant-layout-sider).app-sider {
+    :global(.ant-layout-sider-children) {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: @screen-md) {
+        position: fixed;
+        z-index: 10;
+        height: 100%;
+    }
+}
+
+:global(.ant-divider-horizontal).app-divider {
+    flex: 1;
+    margin: 0;
+    border-top: none;
+    border-bottom: (@rem * 1) solid @app-devider;
+}
+
+:global(.ant-btn).profile-button {
+    height: (@rem * 40);
+
+    display: flex;
+    align-items: center;
+    gap: (@rem * 25);
+
+    border: none;
+
+    @media screen and( max-width: @screen-md) {
+        justify-content: center;
+    }
+}
+
+:global(.ant-btn).profile-button--collapsed {
+    justify-content: center;
+}
