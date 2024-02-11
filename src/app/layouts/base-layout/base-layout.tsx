@@ -1,20 +1,17 @@
 import React from 'react';
-import { Layout } from 'antd';
 
 import { AppSider } from '@widgets/app-sider';
-import { AppLayout } from '@shared/ui';
 import { AppHeader } from '@widgets/app-header';
+import { AppFooter } from '@widgets/app-footer';
 
-const { Footer } = Layout;
+import { AppLayout } from '@shared/ui';
 
 const BaseLayout: React.FC = () => {
     return (
-        <AppLayout
-            siderSlot={<AppSider />}
-            headerSlot={<AppHeader />}
-            footerSlot={
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-            }
+        <AppLayout 
+            siderSlot={<AppSider />} 
+            headerSlot={<AppHeader />} 
+            footerSlot={<AppFooter />} 
         />
     );
 };

@@ -1,0 +1,48 @@
+@import '../../../shared/styles/constants';
+
+:global(.ant-layout-footer).app-footer {
+    padding: (@rem * 156) (@rem * 24) (@rem * 42);
+
+    display: flex;
+    justify-content: space-between;
+
+    background: transparent;
+
+    :global(.ant-btn-link) {
+        color: @app-link-color;
+    }
+
+    .button-reviews {
+        height: (@rem * 40);
+        align-self: self-end;
+        font-size: (@rem * 16);
+    }
+}
+
+:global(.ant-card).footer-card {
+    width: (@rem * 240);
+}
+
+.footer-card {
+    :global(.ant-card-extra) {
+        margin: 0;
+        padding: (@rem * 10) 0;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    :global(.ant-btn-link) {
+        padding: 0;
+        height: auto;
+
+        font-size: (@rem * 16);
+    }
+
+    :global(.ant-card-body) {
+        :global(.ant-btn) {
+            width: 50%;
+        }
+    }
+}
