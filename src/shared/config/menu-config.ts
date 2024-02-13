@@ -1,24 +1,27 @@
+import React from 'react';
 import { CalendarOutlined, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
 
-export const MenuConfig = [
+import { MenuItem } from '@shared/ui/app-menu/@ex/config';
+
+export const MenuConfig: MenuItem[] = [
     {
         id: 1,
-        icon: CalendarOutlined,
+        icon: React.createElement(CalendarOutlined),
         title: 'Календарь',
     },
     {
         id: 2,
-        icon: HeartFilled,
+        icon: React.createElement(HeartFilled),
         title: 'Тренировки',
     },
     {
         id: 3,
-        icon: TrophyFilled,
+        icon: React.createElement(TrophyFilled),
         title: 'Достижения',
     },
     {
         id: 4,
-        icon: IdcardOutlined,
+        icon: React.createElement(IdcardOutlined),
         title: 'Профиль',
     },
 ];

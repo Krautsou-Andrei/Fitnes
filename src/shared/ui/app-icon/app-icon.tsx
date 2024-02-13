@@ -7,7 +7,7 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name' | 'type'
     name: IconName;
 }
 
-export const AppIcon = ({ name, className, viewBox, ...props }: IconProps) => {
+export function AppIcon({ name, className, viewBox, ...props }: IconProps) {
     const [spriteName, iconName] = name.split('/');
 
     return (
@@ -21,4 +21,4 @@ export const AppIcon = ({ name, className, viewBox, ...props }: IconProps) => {
             <use xlinkHref={`/sprite/${spriteName}.svg#${iconName}`} />
         </svg>
     );
-};
+}

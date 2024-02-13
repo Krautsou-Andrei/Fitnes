@@ -2,24 +2,25 @@ import clsn from 'classnames';
 import { Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
-import { useSiderQuery } from '@widgets/app-sider/lib/use-sider-query';
+import { useSiderMediaQuery } from '@widgets/app-sider/lib/use-sider-media-query';
 
 import styles from './app-button-switch.module.less';
 
 type Props = {
-    collapsed: boolean;
-    setCollapsed: (collapsed: boolean) => void;
+    isCollapsed: boolean;
+    isSetCollapsed: (collapsed: boolean) => void;
 };
 
-export function AppButtonSwitch({ collapsed, setCollapsed }: Props) {
-    const { isTablet } = useSiderQuery();
+export function AppButtonSwitch({ isCollapsed, isSetCollapsed }: Props) {
+    const { isTablet } = useSiderMediaQuery();
+    
     return (
         <Button
             className={clsn('trigger', styles['custom-trigger'])}
-            onClick={() => setCollapsed(!collapsed)}
+            onClick={() => isSetCollapsed(!isCollapsed)}
             data-test-id={isTablet ? 'sider-switch-mobile' : 'sider-switch'}
         >
-            {collapsed ? (
+            {isCollapsed ? (
                 <MenuUnfoldOutlined key='menu-unfold' />
             ) : (
                 <MenuFoldOutlined key='menu-unfold' />
