@@ -1,4 +1,3 @@
-import React from 'react';
 import { Content } from 'antd/lib/layout/layout';
 import { Button, Col, Row } from 'antd';
 
@@ -7,7 +6,7 @@ import { AppCardActive, AppCardText } from '@shared/ui';
 
 import styles from './home-page.module.less';
 
-export const HomePage: React.FC = () => {
+export function HomePage() {
     return (
         <Content className={styles['content']}>
             <Row className={styles['content-cards']} gutter={[0, 16]}>
@@ -41,4 +40,4 @@ export const HomePage: React.FC = () => {
             </Row>
         </Content>
     );
-};
+}

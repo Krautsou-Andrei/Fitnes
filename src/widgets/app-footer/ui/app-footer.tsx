@@ -1,10 +1,11 @@
-import { AppCardActive } from '@shared/ui';
 import { Button } from 'antd';
 import { Footer } from 'antd/lib/layout/layout';
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import { Extra } from './extra';
+
 import { LayoutConfig } from '@shared/config';
+import { AppCardActive } from '@shared/ui';
 
 import styles from './app-footer.module.less';
 

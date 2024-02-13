@@ -1,15 +1,16 @@
 import { Route, createHashRouter, createRoutesFromElements } from 'react-router-dom';
 
-import { HomePage } from '@pages/home-page';
 import { BaseLayout } from '@app/layouts';
+import { HomePage } from '@pages/home-page';
 
 import { PathConfig } from '@shared/config';
 
-export const appRouter = () =>
-    createHashRouter(
+export function appRouter() {
+    return createHashRouter(
         createRoutesFromElements(
             <Route path={PathConfig.HOME} element={<BaseLayout />}>
-                <Route path={PathConfig.HOME} element={<HomePage />} />{' '}
+                <Route path={PathConfig.HOME} element={<HomePage />} />
             </Route>,
         ),
     );
+}
