@@ -1,10 +1,13 @@
 export const enum LayoutConfig {
     BUTTON_ANDROID = 'Android OS',
     BUTTON_APPLE = 'Aplle iOS',
+    BUTTON_RESET_ERROR_BIUNDARY = 'Вернуться на главную',
     BUTTON_REVIEWS = 'Смотреть отзывы',
     BUTTON_SETTINGS = 'Настройки',
     CARD_FOOTER_LINK = 'Скачать на телефон',
     CARD_FOOTER_TITLE = 'Доступно в PRO-тарифе',
+    ERROR_BOUNDARY_TITLE = 'Мы знаем о проблеме и работаем над ее устранением.',
+    ERROR_BOUNDARY_SUBTITLE = 'Спасибо за терпение.',
     EXIT = 'Выход',
     HOME = 'Главная',
     TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',

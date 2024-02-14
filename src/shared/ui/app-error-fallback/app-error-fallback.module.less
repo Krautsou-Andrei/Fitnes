@@ -1,0 +1,36 @@
+@import '@shared/styles/constants.less';
+
+.alert {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: (@rem * 24);
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 100;
+
+    background-color: @app-error-boundary-background;
+
+    &__title {
+        font-size: (@rem * 36);
+        font-weight: 700;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    &__subtitle {
+        font-size: (@rem * 26);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &__error {
+        color: @app-error-boundary-text;
+    }
+}
