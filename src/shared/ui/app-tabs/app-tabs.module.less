@@ -1,0 +1,26 @@
+@import '@shared/styles/constants';
+
+:global(.ant-tabs-top).tabs {
+    :global(.ant-tabs-nav) {
+        margin-bottom: (@rem * 34);
+    }
+}
+
+:global(.ant-tabs-nav-list) {
+    width: 100%;
+}
+
+.tabs {
+    :global(.ant-tabs-tab + .ant-tabs-tab) {
+        margin: 0;
+    }
+
+    :global(.ant-tabs-tab) {
+        padding: (@rem * 12.5) 0;
+        flex: 50%;
+        justify-content: center;
+
+        font-size: (@rem * 16);
+        line-height: 130%;
+    }
+}
