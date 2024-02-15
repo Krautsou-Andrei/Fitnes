@@ -7,7 +7,19 @@
 }
 
 .media-xs(@rules) {
-    @media screen and (max-width:  @screen-xs) {
+    @media screen and (max-width: @screen-xs) {
         @rules();
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    flex: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
 }

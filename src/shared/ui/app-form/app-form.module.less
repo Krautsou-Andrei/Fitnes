@@ -1,0 +1,36 @@
+@import '../../styles/constants';
+@import '../../styles/mixin';
+
+:global(.ant-form).form {
+    :global(.ant-col.ant-form-item-label) {
+        .visually-hidden;
+    }
+
+    .inputs-wrapper {
+        margin-bottom: (@rem * 60);
+    }
+
+    .buttons-wrapper {
+        :global(.ant-form-item).button {
+            margin-bottom: 0;
+        }
+    }
+
+    .buttons-wrapper {
+        :global(.ant-form-item).button + :global(.ant-form-item).button {
+            margin-top: (@rem * 16);
+        }
+    }
+
+    .input {
+        margin-bottom: (@rem * 32);
+    }
+
+    .input-password + .input-password {
+        margin-top: (@rem * 44);
+    }
+
+    .login-form-forgot {
+        float: right;
+    }
+}
