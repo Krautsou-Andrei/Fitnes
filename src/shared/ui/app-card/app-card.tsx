@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
-import { Card, type CardProps } from 'antd';
 import clsn from 'classnames';
+import { Card, type CardProps } from 'antd';
 
-import styles from './app-card-active.module.less';
+import styles from './app-card.module.less';
 
-interface Props extends CardProps {
+interface AppCard extends CardProps {
     children: ReactNode;
     className?: string;
 }
 
-export function AppCardActive({ children, className, ...rest }: Props) {
+export function AppCard({ children, className, ...rest }: AppCard) {
     return (
         <Card className={clsn(styles['app-card'], className)} {...rest} bordered={false}>
             {children}

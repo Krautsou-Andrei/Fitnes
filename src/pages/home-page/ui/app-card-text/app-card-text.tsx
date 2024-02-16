@@ -1,20 +1,20 @@
-import { Card, type CardProps, List, Typography } from 'antd';
-import clsn from 'classnames';
+import { type CardProps, List, Typography } from 'antd';
 
 import type { CardText } from './model/types';
+import { AppCard } from '@shared/ui';
 
 import styles from './app-card-text.module.less';
+
 
 const { Text, Title } = Typography;
 
 interface Props extends CardProps {
     card: CardText;
-    className?: string;
 }
 
-export function AppCardText({ card, className, ...rest }: Props) {
+export function AppCardText({ card }: Props) {
     return (
-        <Card className={clsn(styles['app-card'], className)} {...rest}>
+        <AppCard className={styles['app-card']}>
             {card.description ? (
                 <List
                     className={styles.hightlight}
@@ -30,6 +30,6 @@ export function AppCardText({ card, className, ...rest }: Props) {
             ) : (
                 <Title level={4}>{card.title}</Title>
             )}
-        </Card>
+        </AppCard>
     );
 }

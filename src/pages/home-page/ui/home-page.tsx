@@ -1,8 +1,9 @@
 import { Content } from 'antd/lib/layout/layout';
-import { Button, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 
 import { cardsActionsConfig, cardsInfoConfig } from '@shared/config';
-import { AppCardActive, AppCardText } from '@shared/ui';
+import { AppCardActive } from './app-card-active';
+import { AppCardText } from './app-card-text';
 
 import styles from './home-page.module.less';
 
@@ -26,12 +27,7 @@ export function HomePage() {
                         {cardsActionsConfig.map((card) => {
                             return (
                                 <Col key={card.id} span={24} md={8}>
-                                    <AppCardActive title={card.title}>
-                                        <Button type='link' href={card.button.href}>
-                                            {card.button.icon}
-                                            {card.button.title}
-                                        </Button>
-                                    </AppCardActive>
+                                    <AppCardActive card={card} />
                                 </Col>
                             );
                         })}

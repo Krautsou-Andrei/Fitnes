@@ -1,6 +1,5 @@
 import { AppBackgroundBlur } from './app-background-blur/app-backgound-blur';
-import { AppCardActive } from './app-card-active/app-card-active';
-import { AppCardText } from './app-card-text/app-card-text';
+import { AppCard } from './app-card/app-card';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
 import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
@@ -14,8 +13,7 @@ export type * from './app-tabs/model/types';
 
 export {
     AppBackgroundBlur,
-    AppCardActive,
-    AppCardText,
+    AppCard,
     AppErrorFallback,
     AppIcon,
     AppForm,
