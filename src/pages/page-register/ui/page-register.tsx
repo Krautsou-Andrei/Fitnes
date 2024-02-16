@@ -11,10 +11,9 @@ export function PageRegister() {
     return (
         <AppBackgroundBlur>
             <AppAuthContent>
-                <AppForm type='register'>
+                <AppForm type='register' className={styles['form-register']}>
                     <>
                         <Form.Item
-                            className={styles.input}
                             label={LayoutConfig.INPUT_TYPE_EMAIL}
                             name={LayoutConfig.INPUT_TYPE_EMAIL}
                             rules={[{ required: true, message: 'Please input your e-mail!' }]}

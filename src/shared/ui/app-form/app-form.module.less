@@ -10,6 +10,10 @@
         margin-bottom: (@rem * 60);
     }
 
+    :global(.ant-form-item) {
+        margin-bottom: (@rem * 32);
+    }
+
     .buttons-wrapper {
         :global(.ant-form-item).button {
             margin-bottom: 0;
@@ -20,9 +24,5 @@
         :global(.ant-form-item).button + :global(.ant-form-item).button {
             margin-top: (@rem * 16);
         }
-    }
-
-    .login-form-forgot {
-        float: right;
     }
 }
