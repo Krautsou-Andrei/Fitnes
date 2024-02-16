@@ -1,12 +1,13 @@
 import { ItemsTabs } from '@shared/ui/app-tabs/@ex/config';
+import { PathConfig } from './path-config';
 
 export const tabsAuthConfig: ItemsTabs[] = [
     {
-        key: '1',
+        key: `${PathConfig.AUTH}`,
         tab: 'Вход',
     },
     {
-        key: '2',
+        key: `${PathConfig.REGISTRATION}`,
         tab: 'Регистрация',
     },
 ];
