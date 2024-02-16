@@ -1,5 +1,5 @@
 @import '@shared/styles/constants.less';
-@import 'antd/es/style/themes/default.less';
+@import '@shared/styles/mixin';
 
 .logo {
     margin-top: (@rem * 38);
@@ -14,11 +14,11 @@
         transform: translateX(-50%);
     }
 
-    @media screen and (max-width: @screen-md) {
+    .media-md({
         margin-top: (@rem * 16);
         margin-bottom: (@rem * 29);
         margin-left: (@rem * 17);
-    }
+    });
 }
 
 :global(.ant-layout-sider).app-sider {
@@ -28,11 +28,11 @@
         flex-direction: column;
     }
 
-    @media screen and (max-width: @screen-md) {
+    .media-md({
         position: fixed;
         z-index: 10;
         height: 100%;
-    }
+    });
 }
 
 :global(.ant-divider-horizontal).app-divider {
@@ -51,9 +51,9 @@
 
     border: none;
 
-    @media screen and( max-width: @screen-md) {
+    .media-md({
         justify-content: center;
-    }
+    });
 }
 
 :global(.ant-btn).profile-button--collapsed {
