@@ -4,6 +4,7 @@ import { AuthLayout, BaseLayout } from '@app/layouts';
 
 import { HomePage } from '@pages/home-page';
 import { PageRegister } from '@pages/page-register';
+import { PageAuthentification } from '@pages/page-authentification';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
@@ -20,6 +21,16 @@ export function appRouter() {
                 }
             >
                 <Route path={PathConfig.HOME} element={<HomePage />} />
+            </Route>,
+            <Route
+                path={PathConfig.AUTH}
+                element={
+                    <WithErrorBoundary>
+                        <AuthLayout />
+                    </WithErrorBoundary>
+                }
+            >
+                <Route path={PathConfig.AUTH} element={<PageAuthentification />} />
             </Route>,
             <Route
                 path={PathConfig.REGISTRATION}
