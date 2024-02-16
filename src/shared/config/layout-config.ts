@@ -9,6 +9,7 @@ export const enum LayoutConfig {
     BUTTON_SETTINGS = 'Настройки',
     CARD_FOOTER_LINK = 'Скачать на телефон',
     CARD_FOOTER_TITLE = 'Доступно в PRO-тарифе',
+    CHECKBOX_REMEMBER_ME = 'Запомнить меня',
     ERROR_BOUNDARY_TITLE = 'Мы знаем о проблеме и работаем над ее устранением.',
     ERROR_BOUNDARY_SUBTITLE = 'Спасибо за терпение.',
     EXIT = 'Выход',
@@ -19,6 +20,7 @@ export const enum LayoutConfig {
     INPUT_TYPE_EMAIL = 'E-mail',
     INPUT_TYPE_PASSWORD = 'Password',
     INPUT_TYPE_PASSWORD_CONFIRM = 'Password confirm',
+    LINK_FORGOT_PASSWORD = 'Забыли пароль?',
     TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
 }

@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import clsn from 'classnames';
 import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 
@@ -7,19 +8,22 @@ import { LayoutConfig } from '@shared/config';
 import styles from './app-form.module.less';
 
 type AppFormProps = {
-    type: 'authentification' | 'register';
     children: ReactElement;
+    className?: string;
+    slotRemember?: ReactElement;
+    type: 'authentification' | 'register';
 };
 
-export function AppForm({ type, children }: AppFormProps) {
+export function AppForm({ children, className, slotRemember, type }: AppFormProps) {
     return (
         <Form
             name='basic'
-            className={styles.form}
+            className={clsn(styles.form, className)}
             initialValues={{ remember: true }}
             autoComplete='off'
         >
-            <div className={styles['inputs-wrapper']}>{children}</div>
+            {children}
+            {slotRemember}
             <div className={styles['buttons-wrapper']}>
                 <Form.Item className={styles.button}>
                     <Button block type='primary' htmlType='submit' size='large'>
