@@ -5,6 +5,7 @@ import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
 import { AppLayout } from './app-layout/app-layout';
+import { AppLoader } from './app-loader/app-loader';
 import { AppRemember } from './app-remember/app-remember';
 import { AppTabs } from './app-tabs/app-tabs';
 
@@ -19,6 +20,7 @@ export {
     AppForm,
     AppMenu,
     AppLayout,
+    AppLoader,
     AppRemember,
     AppTabs,
 };
