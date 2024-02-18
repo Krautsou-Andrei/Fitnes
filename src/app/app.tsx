@@ -1,12 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
-import { RouterProvider } from 'react-router-dom';
+
 import { withProviders } from './providers';
-import { appRouter } from './routing';
+import { AppRouter } from './routing/appRouter';
 
 import './index.less';
 
 function App() {
-    return <RouterProvider router={appRouter()} />;
+    return <AppRouter />;
 }
-
 export default withProviders(App);

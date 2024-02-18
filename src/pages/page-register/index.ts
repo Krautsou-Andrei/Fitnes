@@ -1,3 +1,3 @@
 import { PageRegister } from './ui/page-register';
 
-export { PageRegister };
+export { PageRegister as default };

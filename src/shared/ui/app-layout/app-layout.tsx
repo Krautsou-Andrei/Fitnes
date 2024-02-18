@@ -23,7 +23,6 @@ export function AppLayout({ className, siderSlot, headerSlot, footerSlot }: Prop
                 </div>
                 {footerSlot}
             </Layout>
-            <ScrollRestoration />
         </Layout>
     );
 }

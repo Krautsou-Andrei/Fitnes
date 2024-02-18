@@ -1,47 +1,45 @@
-import { Route, createHashRouter, createRoutesFromElements } from 'react-router-dom';
+import { lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthLayout, BaseLayout } from '@app/layouts';
-
-import { HomePage } from '@pages/home-page';
-import { PageRegister } from '@pages/page-register';
-import { PageAuthentification } from '@pages/page-authentification';
+import { WithLoader } from '@app/providers';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
 
-export function appRouter() {
-    return createHashRouter(
-        createRoutesFromElements([
+const HomePage = lazy(() => import('@pages/home-page'));
+const PageRegister = lazy(() => import('@pages/page-register'));
+const PageAuthentification = lazy(() => import('@pages/page-authentification'));
+
+export function AppRouter() {
+    return (
+        <Routes>
             <Route
-                path={PathConfig.HOME}
+                path={PathConfig.BASE}
                 element={
                     <WithErrorBoundary>
-                        <BaseLayout />
+                        <WithLoader>
+                            <BaseLayout />
+                        </WithLoader>
                     </WithErrorBoundary>
                 }
             >
+                <Route path={PathConfig.BASE} element={<Navigate to={PathConfig.HOME} />} />
                 <Route path={PathConfig.HOME} element={<HomePage />} />
-            </Route>,
+            </Route>
             <Route
-                path={PathConfig.AUTH}
                 element={
                     <WithErrorBoundary>
-                        <AuthLayout />
+                        <WithLoader>
+                            <AuthLayout />
+                        </WithLoader>
                     </WithErrorBoundary>
                 }
             >
                 <Route path={PathConfig.AUTH} element={<PageAuthentification />} />
-            </Route>,
-            <Route
-                path={PathConfig.REGISTRATION}
-                element={
-                    <WithErrorBoundary>
-                        <AuthLayout />
-                    </WithErrorBoundary>
-                }
-            >
                 <Route path={PathConfig.REGISTRATION} element={<PageRegister />} />
-            </Route>,
-        ]),
+                <Route path={PathConfig.RESULT_ERROR} element={<AuthLayout />} />
+            </Route>
+        </Routes>
     );
 }

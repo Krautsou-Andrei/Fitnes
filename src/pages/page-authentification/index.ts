@@ -1,3 +1,3 @@
 import { PageAuthentification } from './ui/page-authentification';
 
-export { PageAuthentification };
+export { PageAuthentification as default };
