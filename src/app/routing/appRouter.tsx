@@ -8,8 +8,8 @@ import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
 
 const HomePage = lazy(() => import('@pages/home-page'));
-const PageRegister = lazy(() => import('@pages/page-register'));
-const PageAuthentification = lazy(() => import('@pages/page-authentification'));
+const RegisterPage = lazy(() => import('@pages/register-page'));
+const AuthentificationPage = lazy(() => import('@pages/authentification-page'));
 
 export function AppRouter() {
     return (
@@ -36,8 +36,8 @@ export function AppRouter() {
                     </WithErrorBoundary>
                 }
             >
-                <Route path={PathConfig.AUTH} element={<PageAuthentification />} />
-                <Route path={PathConfig.REGISTRATION} element={<PageRegister />} />
+                <Route path={PathConfig.AUTH} element={<AuthentificationPage />} />
+                <Route path={PathConfig.REGISTRATION} element={<RegisterPage />} />
                 <Route path={PathConfig.RESULT_ERROR} element={<AuthLayout />} />
             </Route>
         </Routes>
