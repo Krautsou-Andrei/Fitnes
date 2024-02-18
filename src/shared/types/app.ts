@@ -16,3 +16,15 @@ export type ButtonLink = {
     icon: ReactNode;
     title: string;
 };
+
+export type ResultPageType = {
+    type:
+        | 'error'
+        | 'errorChangePassword'
+        | 'errorCheckEmail'
+        | 'errorCheckEmailNoExist'
+        | 'errorLogin'
+        | 'errorUserExist'
+        | 'success'
+        | 'successChangePassword';
+};

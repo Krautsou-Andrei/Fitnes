@@ -1,25 +1,16 @@
-import { AppBackgroundBlur } from '@shared/ui';
-import { AppResultCard } from './app-result-card';
+import { AppResultCard, useResultButtonClick } from '@features/result';
 
+import { AppBackgroundBlur } from '@shared/ui';
 import { ResultConfig } from '@shared/config';
+import { ResultPageType } from '@shared/types/app';
 
 import styles from './result-page.module.less';
 
-type Props = {
-    type:
-        | 'error'
-        | 'errorChangePassword'
-        | 'errorCheckEmail'
-        | 'errorCheckEmailNoExist'
-        | 'errorLogin'
-        | 'errorUserExist'
-        | 'success'
-        | 'successChangePassword';
-};
+export function ResultPage({ type }: ResultPageType) {
+    const typeOnClick = useResultButtonClick({ type });
 
-export function ResultPage({ type }: Props) {
     const onClick = () => {
-        console.log('type');
+        typeOnClick && typeOnClick();
     };
 
     return (
