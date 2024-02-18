@@ -29,10 +29,10 @@ export function AppTabs({ className, items }: AppTabsProps) {
             centered
             className={clsn(styles.tabs, className)}
             onTabClick={onTabClick}
-        >
-            {items.map((tab) => (
-                <Tabs.TabPane tab={tab.tab} key={tab.key} />
-            ))}
-        </Tabs>
+            items={items.map((tab) => ({
+                label: tab.tab,
+                key: tab.key,
+            }))}
+        />
     );
 }
