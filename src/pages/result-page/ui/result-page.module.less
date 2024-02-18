@@ -1,0 +1,30 @@
+@import '@shared/styles/constants';
+
+.error,
+.errorChangePassword,
+.errorCheckEmail,
+.errorCheckEmailNoExist,
+.errorUserExist,
+.success,
+.successChangePassword,
+.errorLogin {
+    font-size: (@rem * 80);
+    line-height: 1;
+}
+
+.error,
+.errorChangePassword,
+.errorCheckEmail,
+.errorCheckEmailNoExist,
+.errorUserExist {
+    color: @app-result-error-danger;
+}
+
+.success,
+.successChangePassword {
+    color: @app-result-success;
+}
+
+.errorLogin {
+    color: @app-result-error-warning;
+}

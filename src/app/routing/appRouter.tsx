@@ -10,6 +10,7 @@ import { PathConfig } from '@shared/config';
 const HomePage = lazy(() => import('@pages/home-page'));
 const RegisterPage = lazy(() => import('@pages/register-page'));
 const AuthentificationPage = lazy(() => import('@pages/authentification-page'));
+const ResultPage = lazy(() => import('@pages/result-page'));
 
 export function AppRouter() {
     return (
@@ -38,7 +39,32 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.AUTH} element={<AuthentificationPage />} />
                 <Route path={PathConfig.REGISTRATION} element={<RegisterPage />} />
-                <Route path={PathConfig.RESULT_ERROR} element={<AuthLayout />} />
+                <Route path={PathConfig.RESULT_ERROR} element={<ResultPage type='error' />} />
+                <Route
+                    path={PathConfig.RESULT_ERROR_CHANGE_PASSWOED}
+                    element={<ResultPage type='errorChangePassword' />}
+                />
+                <Route
+                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL}
+                    element={<ResultPage type='errorCheckEmail' />}
+                />
+                <Route
+                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST}
+                    element={<ResultPage type='errorCheckEmailNoExist' />}
+                />
+                <Route
+                    path={PathConfig.RESULT_ERROR_LOGIN}
+                    element={<ResultPage type='errorLogin' />}
+                />
+                <Route
+                    path={PathConfig.RESULT_ERROR_USER_EXIST}
+                    element={<ResultPage type='errorUserExist' />}
+                />
+                <Route path={PathConfig.RESULT_SUCCESS} element={<ResultPage type='success' />} />
+                <Route
+                    path={PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD}
+                    element={<ResultPage type='successChangePassword' />}
+                />
             </Route>
         </Routes>
     );

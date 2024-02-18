@@ -4,6 +4,7 @@ import { ConstantsMediaQuery } from './constants';
 import { LayoutConfig } from './layout-config';
 import { MenuConfig } from './menu-config';
 import { PathConfig } from './path-config';
+import { ResultConfig } from './result-config';
 
 export {
     cardsActionsConfig,
@@ -12,4 +13,5 @@ export {
     LayoutConfig,
     MenuConfig,
     PathConfig,
+    ResultConfig,
 };

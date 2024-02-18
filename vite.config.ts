@@ -14,7 +14,7 @@ export default defineConfig({
             output: 'public/sprite',
             metadata: 'src/shared/ui/app-icon/sprite.h.ts',
             resetColors: {
-                exclude: [/^layout/],
+                exclude: [/^layout/, /^result/],
                 replaceUnknown: 'var(--icon-color)',
             },
         }),
