@@ -1,26 +1,27 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import clsn from 'classnames';
-import { Button, Form } from 'antd';
+import { Button, Form, type FormProps } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 
 import { LayoutConfig } from '@shared/config';
 
 import styles from './app-form.module.less';
 
-type AppFormProps = {
-    children: ReactElement;
+interface AppFormProps extends FormProps {
+    children: ReactNode;
     className?: string;
-    slotRemember?: ReactElement;
+    slotRemember?: ReactNode;
     type: 'authentification' | 'register';
-};
+}
 
-export function AppForm({ children, className, slotRemember, type }: AppFormProps) {
+export function AppForm({ children, className, slotRemember, type, ...rest }: AppFormProps) {
     return (
         <Form
             name='basic'
             className={clsn(styles.form, className)}
             initialValues={{ remember: true }}
-            autoComplete='off'
+            autoComplete='on'
+            {...rest}
         >
             {children}
             {slotRemember}
