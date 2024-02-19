@@ -4,6 +4,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthLayout, BaseLayout } from '@app/layouts';
 import { WithLoader } from '@app/providers';
 
+import { AuthGuard } from '@features/auth-guard';
+import { GuestGuard } from '@features/guest-guard';
+
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
 
@@ -20,7 +23,9 @@ export function AppRouter() {
                 element={
                     <WithErrorBoundary>
                         <WithLoader>
-                            <BaseLayout />
+                            <AuthGuard>
+                                <BaseLayout />
+                            </AuthGuard>
                         </WithLoader>
                     </WithErrorBoundary>
                 }
@@ -32,7 +37,9 @@ export function AppRouter() {
                 element={
                     <WithErrorBoundary>
                         <WithLoader>
-                            <AuthLayout />
+                            <GuestGuard>
+                                <AuthLayout />
+                            </GuestGuard>
                         </WithLoader>
                     </WithErrorBoundary>
                 }
