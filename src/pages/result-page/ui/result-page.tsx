@@ -1,3 +1,5 @@
+import { Button } from 'antd';
+
 import { AppResultCard, useResultButtonClick } from '@features/result';
 
 import { AppBackgroundBlur } from '@shared/ui';
@@ -17,13 +19,18 @@ export function ResultPage({ type }: ResultPageType) {
         <AppBackgroundBlur>
             <AppResultCard
                 title={ResultConfig[type].title}
-                buttonBlock={ResultConfig[type].buttonBlock}
-                buttonTitle={ResultConfig[type].buttonTitle}
+                icon={ResultConfig[type].icon}
                 description={ResultConfig[type].description}
                 classNameIcon={styles[type]}
-                onClick={onClick}
             >
-                {ResultConfig[type].icon}
+                <Button
+                    type='primary'
+                    onClick={onClick}
+                    block={ResultConfig[type].buttonBlock}
+                    size='large'
+                >
+                    {ResultConfig[type].buttonTitle}
+                </Button>
             </AppResultCard>
         </AppBackgroundBlur>
     );

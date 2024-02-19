@@ -18,6 +18,7 @@ export type ButtonLink = {
 };
 
 export const enum TypePage {
+    CONFIRM_EMAIL = 'confirmEmail',
     ERROR = 'error',
     ERROR_CHANGE_PASSWORD = 'errorChangePassword',
     ERROR_CHECK_EMAIL = 'errorCheckEmail',
