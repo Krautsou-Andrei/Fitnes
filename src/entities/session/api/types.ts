@@ -3,6 +3,7 @@ import { Email, Password } from '@shared/types/app';
 export type RequestLoginBody = {
     email: Email;
     password: Password;
+    isRemember?: boolean;
 };
 
 export type RequestRegisterBody = RequestLoginBody & {

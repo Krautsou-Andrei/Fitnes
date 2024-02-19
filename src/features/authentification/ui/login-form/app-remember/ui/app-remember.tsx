@@ -1,5 +1,4 @@
-import { Checkbox, Form } from 'antd';
-import Link from 'antd/lib/typography/Link';
+import { Button, Checkbox, Form } from 'antd';
 
 import { LayoutConfig } from '@shared/config';
 
@@ -8,13 +7,13 @@ import styles from './app-remember.module.less';
 export function AppRemember() {
     return (
         <Form.Item className={styles.remember}>
-            <Form.Item name='remember' valuePropName='checked' noStyle>
+            <Form.Item name='isRemember' valuePropName='checked' noStyle>
                 <Checkbox>{LayoutConfig.CHECKBOX_REMEMBER_ME}</Checkbox>
             </Form.Item>
 
-            <Link className={styles['login-form-forgot']} href=''>
+            <Button type='text' className={styles['login-form-forgot']} size='large'>
                 {LayoutConfig.LINK_FORGOT_PASSWORD}
-            </Link>
+            </Button>
         </Form.Item>
     );
 }

@@ -12,13 +12,17 @@ import { LocalStorageConfig, PathConfig } from '@shared/config';
 export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState }>(
     'authentication/login',
 
-    async (body: LoginParams, { dispatch }) => {
+    async ({ email, password, isRemember }: LoginParams, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));
+        
         try {
-            await dispatch(sessionApi.endpoints.login.initiate(body))
+            await dispatch(sessionApi.endpoints.login.initiate({ email, password }))
                 .unwrap()
                 .then((response) => {
-                    localStorage.setItem(LocalStorageConfig.ACCESS_TOKEN, response.accessToken);
+                    if (isRemember) {
+                        localStorage.setItem(LocalStorageConfig.ACCESS_TOKEN, response.accessToken);
+                    }
+
                     dispatch(push(PathConfig.HOME));
                 });
         } catch (error: unknown | undefined) {
