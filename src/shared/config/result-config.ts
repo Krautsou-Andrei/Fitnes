@@ -1,7 +1,8 @@
 import React from 'react';
 import { CheckCircleFilled, CloseCircleFilled, WarningFilled } from '@ant-design/icons';
 
-import { ResultCard } from '@pages/result-page';
+import { ResultCard } from '@features/result';
+
 import { AppIcon } from '@shared/ui';
 
 interface ResultConfig {
