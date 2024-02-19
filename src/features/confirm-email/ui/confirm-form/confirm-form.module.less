@@ -1,0 +1,26 @@
+@import '@shared/styles/constants';
+
+.confirm-form {
+    .container {
+        margin-bottom: (@rem * 24);
+        height: (@rem * 40);
+        gap: (@rem * 12);
+    }
+
+    .character {
+        border-color: @app-verification-border-color;
+        border-radius: (@rem * 2);
+
+        font-size: (@rem * 14);
+        line-height: (@rem * 40);
+
+        color: @app-text-color-primary;
+    }
+    .character--inactive {
+        background-color: transparent;
+    }
+
+    :global(.ant-typography) {
+        color: @app-text-color-secondary;
+    }
+}
