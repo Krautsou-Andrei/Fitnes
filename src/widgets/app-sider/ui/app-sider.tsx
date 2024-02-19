@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import clsn from 'classnames';
-import { Button, Divider } from 'antd';
+import { Divider } from 'antd';
 import Sider from 'antd/lib/layout/Sider';
 
 import { useSiderMediaQuery } from '../lib/use-sider-media-query';
 import { AppButtonSwitch } from './button-switch';
 
+import { AppButtonLogout } from '@features/logout';
+
 import { AppMenu } from '@shared/ui';
 import { AppIcon } from '@shared/ui/';
-import { LayoutConfig } from '@shared/config';
 
 import styles from './app-sider.module.less';
 
@@ -36,15 +37,7 @@ export function AppSider() {
             <AppMenu isCollapsed={isCollapsed} isQueryMD={isQueryMD} />
             <AppButtonSwitch isCollapsed={isCollapsed} isSetCollapsed={isSetCollapsed} />
             <Divider className={styles['app-divider']} />
-            <Button
-                block
-                className={clsn(styles['profile-button'], {
-                    [styles['profile-button--collapsed']]: isCollapsed,
-                })}
-            >
-                {!isQueryMD && <AppIcon name='app/exit' width={16} height={16} />}
-                {!isCollapsed && LayoutConfig.EXIT}
-            </Button>
+            <AppButtonLogout isCollapsed={isCollapsed} isQueryMD={isQueryMD} />
         </Sider>
     );
 }
