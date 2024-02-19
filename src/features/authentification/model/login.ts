@@ -7,7 +7,7 @@ import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
-import { PathConfig } from '@shared/config';
+import { LocalStorageConfig, PathConfig } from '@shared/config';
 
 export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState }>(
     'authentication/login',
@@ -18,7 +18,7 @@ export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState
             await dispatch(sessionApi.endpoints.login.initiate(body))
                 .unwrap()
                 .then((response) => {
-                    localStorage.setItem('accessToken', response.accessToken);
+                    localStorage.setItem(LocalStorageConfig.ACCESS_TOKEN, response.accessToken);
                     dispatch(push(PathConfig.HOME));
                 });
         } catch (error: unknown | undefined) {
