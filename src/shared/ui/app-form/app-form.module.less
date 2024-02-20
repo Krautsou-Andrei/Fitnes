@@ -25,4 +25,12 @@
             margin-top: (@rem * 16);
         }
     }
+
+    :global(.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input) {
+        border-left-color: @app-border-color-primary;
+    }
+
+    :global(.ant-input-group-wrapper-status-error .ant-input-group-addon) {
+        color: @app-text-color-primary;
+    }
 }
