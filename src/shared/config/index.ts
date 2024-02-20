@@ -2,6 +2,7 @@ import { cardsActionsConfig } from './cards-config';
 import { cardsInfoConfig } from './cards-config';
 import { confirmEmailConfig } from './confirm-email-config';
 import { ConstantsMediaQuery } from './constants';
+import { EventApiConfig } from './event-api-config';
 import { HistoryStateConfig } from './history-state-config';
 import { LayoutConfig } from './layout-config';
 import { LocalStorageConfig } from './local-storage-config';
@@ -14,6 +15,7 @@ export {
     cardsInfoConfig,
     confirmEmailConfig,
     ConstantsMediaQuery,
+    EventApiConfig,
     HistoryStateConfig,
     LayoutConfig,
     LocalStorageConfig,

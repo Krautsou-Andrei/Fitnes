@@ -7,10 +7,10 @@ import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
-import { PathConfig } from '@shared/config';
+import { EventApiConfig, PathConfig } from '@shared/config';
 
 export const registerThunk = createAsyncThunk<void, RegisterParams, { state: RootState }>(
-    'authentication/register',
+    EventApiConfig.REGISTER,
 
     async (body: RegisterParams, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));

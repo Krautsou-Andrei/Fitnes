@@ -7,14 +7,14 @@ import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
-import { LocalStorageConfig, PathConfig } from '@shared/config';
+import { EventApiConfig, LocalStorageConfig, PathConfig } from '@shared/config';
 
 export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState }>(
-    'authentication/login',
+    EventApiConfig.LOGIN,
 
     async ({ email, password, isRemember }: LoginParams, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));
-        
+
         try {
             await dispatch(sessionApi.endpoints.login.initiate({ email, password }))
                 .unwrap()
