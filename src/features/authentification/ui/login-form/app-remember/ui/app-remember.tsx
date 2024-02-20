@@ -1,14 +1,15 @@
 import { Button, Checkbox, Form } from 'antd';
 
-import { useGoToForgot } from '../lib/useGoToForgot';
-
 import { LayoutConfig } from '@shared/config';
 
 import styles from './app-remember.module.less';
 
-export function AppRemember() {
-    const goToForgot = useGoToForgot();
+export type Props = {
+    isDisabledForgot: boolean;
+    onClick: () => void;
+};
 
+export function AppRemember({ isDisabledForgot, onClick }: Props) {
     return (
         <Form.Item className={styles.remember}>
             <Form.Item name='isRemember' valuePropName='checked' noStyle>
@@ -18,7 +19,8 @@ export function AppRemember() {
                 type='text'
                 className={styles['login-form-forgot']}
                 size='large'
-                onClick={goToForgot}
+                disabled={isDisabledForgot}
+                onClick={onClick}
             >
                 {LayoutConfig.LINK_FORGOT_PASSWORD}
             </Button>
