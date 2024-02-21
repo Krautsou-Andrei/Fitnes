@@ -1,22 +1,22 @@
 import { Typography } from 'antd';
 
-import { ConfirmForm } from '@features/confirm-password';
+import { ChangePasswordForm } from '@features/change-password';
 
 import { LayoutConfig } from '@shared/config';
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
 
-import styles from './confirm-password-page.module.less';
+import styles from './change-password-page.module.less';
 
 const { Title } = Typography;
 
-export function ConfirmPasswordPage() {
+export function ChangePasswordPage() {
     return (
         <AppBackgroundBlur>
             <AppGuestContent className={styles.content}>
                 <Title className={styles.title} level={3}>
                     {LayoutConfig.TITLE_FORM_CHANGE_PASSWORD}
                 </Title>
-                <ConfirmForm />
+                <ChangePasswordForm />
             </AppGuestContent>
         </AppBackgroundBlur>
     );

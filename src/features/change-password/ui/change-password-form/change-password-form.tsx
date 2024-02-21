@@ -4,7 +4,7 @@ import { Form } from 'antd';
 
 
 
-export function ConfirmForm() {
+export function ChangePasswordForm() {
     const [form] = Form.useForm();
 
     return (
