@@ -24,11 +24,11 @@ export function AppRouter() {
                 path={PathConfig.BASE}
                 element={
                     <WithErrorBoundary>
-                        <WithLoader>
-                            <AuthGuard>
+                        <AuthGuard>
+                            <WithLoader>
                                 <BaseLayout />
-                            </AuthGuard>
-                        </WithLoader>
+                            </WithLoader>
+                        </AuthGuard>
                     </WithErrorBoundary>
                 }
             >
@@ -38,11 +38,11 @@ export function AppRouter() {
             <Route
                 element={
                     <WithErrorBoundary>
-                        <WithLoader>
-                            <GuestGuard>
+                        <GuestGuard>
+                            <WithLoader>
                                 <AuthLayout />
-                            </GuestGuard>
-                        </WithLoader>
+                            </WithLoader>
+                        </GuestGuard>
                     </WithErrorBoundary>
                 }
             >
