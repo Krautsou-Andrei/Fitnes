@@ -8,12 +8,11 @@ import styles from './app-auth-content.module.less';
 
 type AppAuthContentProps = {
     children: ReactNode;
-    claccName?: string;
 };
 
-export function AppAuthContent({ children, claccName }: AppAuthContentProps) {
+export function AppAuthContent({ children }: AppAuthContentProps) {
     return (
-        <div className={clsn(styles['content'], claccName)}>
+        <div className={clsn(styles['content'])}>
             <AppIcon
                 className={styles['content-logo']}
                 name='layout/logo-big'
