@@ -11,6 +11,7 @@ import { MenuConfig } from './menu-config';
 import { PathConfig } from './path-config';
 import { regExpConfig } from './reg-exp-config';
 import { ResultConfig } from './result-config';
+import { SessionStorageConfig } from './session-storage-config';
 
 export {
     cardsActionsConfig,
@@ -26,4 +27,5 @@ export {
     PathConfig,
     regExpConfig,
     ResultConfig,
+    SessionStorageConfig,
 };
