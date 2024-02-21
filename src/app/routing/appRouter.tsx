@@ -13,6 +13,7 @@ import { TypePage } from '@shared/types/app';
 
 const AuthentificationPage = lazy(() => import('@pages/authentification-page'));
 const ConfirmEmailPage = lazy(() => import('@pages/confirm-email-page'));
+const ConfirmPasswordPage = lazy(() => import('@pages/confirm-password-page'));
 const HomePage = lazy(() => import('@pages/home-page'));
 const RegisterPage = lazy(() => import('@pages/register-page'));
 const ResultPage = lazy(() => import('@pages/result-page'));
@@ -49,6 +50,7 @@ export function AppRouter() {
                 <Route path={PathConfig.AUTH} element={<AuthentificationPage />} />
                 <Route path={PathConfig.REGISTRATION} element={<RegisterPage />} />
                 <Route path={PathConfig.AUTH_CONFIRM_EMAIL} element={<ConfirmEmailPage />} />
+                <Route path={PathConfig.AUTH_CHANGE_PASSWORD} element={<ConfirmPasswordPage />} />
                 <Route
                     path={PathConfig.RESULT_ERROR}
                     element={<ResultPage type={TypePage.ERROR} />}

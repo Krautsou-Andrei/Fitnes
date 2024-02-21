@@ -4,7 +4,7 @@ import clsn from 'classnames';
 
 import { useConfirmEmailForm } from './lib/useConfirmEmailForm';
 
-import { confirmEmailConfig } from '@shared/config';
+import { confirmConfig } from '@shared/config';
 import { TypePage } from '@shared/types/app';
 
 import styles from './confirm-form.module.less';
@@ -28,7 +28,7 @@ export function ConfirmForm() {
                 onComplete={onComplete}
                 onChange={onChange}
             />
-            <Text>{confirmEmailConfig[TypePage.CONFIRM_EMAIL].placeholder}</Text>
+            <Text>{confirmConfig[TypePage.CONFIRM_EMAIL].placeholder}</Text>
         </div>
     );
 }

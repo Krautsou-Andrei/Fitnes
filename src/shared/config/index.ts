@@ -1,6 +1,6 @@
 import { cardsActionsConfig } from './cards-config';
 import { cardsInfoConfig } from './cards-config';
-import { confirmEmailConfig } from './confirm-email-config';
+import { confirmConfig } from './confirm-config';
 import { ConstantsMediaQuery } from './constants';
 import { ErrorValidateConfig } from './error-validate-config';
 import { EventApiConfig } from './event-api-config';
@@ -16,7 +16,7 @@ import { SessionStorageConfig } from './session-storage-config';
 export {
     cardsActionsConfig,
     cardsInfoConfig,
-    confirmEmailConfig,
+    confirmConfig,
     ConstantsMediaQuery,
     ErrorValidateConfig,
     EventApiConfig,

@@ -6,6 +6,7 @@ export const enum LayoutConfig {
     BUTTON_REGISTER = 'Войти',
     BUTTON_REGISTER_GOOGLE = 'Регистрация через Google',
     BUTTON_REVIEWS = 'Смотреть отзывы',
+    BUTTON_SAVE_NEW_PASSWORD = 'Сохранить',
     BUTTON_SETTINGS = 'Настройки',
     CARD_FOOTER_LINK = 'Скачать на телефон',
     CARD_FOOTER_TITLE = 'Доступно в PRO-тарифе',
@@ -21,6 +22,7 @@ export const enum LayoutConfig {
     INPUT_TYPE_PASSWORD = 'password',
     INPUT_TYPE_PASSWORD_CONFIRM = 'confirmPassword',
     LINK_FORGOT_PASSWORD = 'Забыли пароль?',
+    TITLE_FORM_CHANGE_PASSWORD = 'Восстановление аккауанта',
     TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
 }
