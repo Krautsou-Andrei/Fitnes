@@ -10,6 +10,10 @@ export type RequestRegisterBody = RequestLoginBody & {
     passwordConfirm?: Password;
 };
 
+export type RequestCheckEmailBody = {
+    email: Email;
+};
+
 export type SessionLoginDto = {
     accessToken: string;
 };

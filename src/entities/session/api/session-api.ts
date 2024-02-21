@@ -1,3 +1,7 @@
+import { mapSessionCheckEmail } from '../lib/map-session-check-email';
+import { mapSessionConfirmEmail } from '../lib/map-session-confirm-email';
+import { mapSessionChangePassword } from '../lib/map-session-change-password';
+import { mapSessionLogin } from '../lib/map-session-login';
 import type {
     SessionChangePasswordType,
     SessionCheckEmaiType,
@@ -5,21 +9,19 @@ import type {
     SessionLoginType,
     SessionRegisterType,
 } from '../model/types';
-import { mapSessionLogin } from '../lib/map-session-login';
-import {
-    type SessionLoginDto,
-    type RequestRegisterBody,
+
+import type {
+    SessionLoginDto,
+    RequestRegisterBody,
     RequestLoginBody,
     SessionCheckEmailDto,
     SessionConfirmEmailDto,
     SessionChangePasswordDto,
+    RequestCheckEmailBody,
 } from './types';
 
 import { baseApi } from '@shared/api';
 import { SESSION_TAG } from '@shared/api/tags';
-import { mapSessionCheckEmail } from '../lib/map-session-check-email';
-import { mapSessionConfirmEmail } from '../lib/map-session-confirm-email';
-import { mapSessionChangePassword } from '../lib/map-session-change-password';
 
 export const sessionApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -40,11 +42,12 @@ export const sessionApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [SESSION_TAG],
         }),
-        checkEmail: build.mutation<SessionCheckEmaiType, RequestLoginBody>({
+        checkEmail: build.mutation<SessionCheckEmaiType, RequestCheckEmailBody>({
             query: (body) => ({
                 url: '/auth/check-email',
                 method: 'POST',
                 body,
+                credentials: 'include'
             }),
             invalidatesTags: [SESSION_TAG],
             transformResponse: (response: SessionCheckEmailDto) => mapSessionCheckEmail(response),

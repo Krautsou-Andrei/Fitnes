@@ -7,3 +7,7 @@ export type ConfirmEmailCard = {
     title: string;
     placeholder: string;
 };
+
+export type CheckEmailParams = {
+    email: Email;
+};
