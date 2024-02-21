@@ -19,7 +19,7 @@ export function AppInputPassword({ autoComplete, classNames, type }: Props) {
 
     return (
         <Form.Item
-            className={clsn(styles['input-password'], classNames)}
+            className={clsn('app-input-password', styles['input-password'], classNames)}
             label={LayoutConfig.INPUT_TYPE_PASSWORD}
             name={LayoutConfig.INPUT_TYPE_PASSWORD}
             rules={rules}

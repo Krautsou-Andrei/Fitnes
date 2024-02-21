@@ -1,5 +1,4 @@
 import { Form, Input } from 'antd';
-
 import { validateConfirmPasswordRules } from '../lib/validate-confirm-password-rules';
 
 import { LayoutConfig } from '@shared/config';
