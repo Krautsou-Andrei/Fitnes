@@ -10,6 +10,7 @@ import { Email, Password } from '@shared/types/app';
 type SessionSliceStateType = {
     accessToken?: string;
     isAuthorized: boolean;
+    isError: boolean;
     isLoading: boolean;
     sessionRepeatRegister?: RegisterParams;
 };
@@ -17,6 +18,7 @@ type SessionSliceStateType = {
 const initialState: SessionSliceStateType = {
     accessToken: undefined,
     isAuthorized: false,
+    isError: false,
     isLoading: false,
     sessionRepeatRegister: {
         email: '',
@@ -31,6 +33,9 @@ export const sessionSlice = createSlice({
         clearSessionData: (state) => {
             state.accessToken = undefined;
             state.isAuthorized = false;
+        },
+        setIsError: (state: SessionSliceStateType, { payload }: PayloadAction<boolean>) => {
+            state.isError = payload;
         },
         setIsLoading: (state: SessionSliceStateType, { payload }: PayloadAction<boolean>) => {
             state.isLoading = payload;
@@ -59,8 +64,9 @@ export const sessionSlice = createSlice({
     },
 });
 
-export const selectIsAuthorized = (state: RootState) => state.session.isAuthorized;
 export const selectAccessToken = (state: RootState) => state.session.accessToken;
+export const selectIsAuthorized = (state: RootState) => state.session.isAuthorized;
+export const selectIsError = (state: RootState) => state.session.isError;
 export const selectIsLoadingn = (state: RootState) => state.session.isLoading;
 export const selectSessionRepeatRegister = (state: RootState) =>
     state.session.sessionRepeatRegister;

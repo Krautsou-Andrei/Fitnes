@@ -18,6 +18,7 @@ import type {
     SessionConfirmEmailDto,
     SessionChangePasswordDto,
     RequestCheckEmailBody,
+    RequestConfirmEmailBody,
 } from './types';
 
 import { baseApi } from '@shared/api';
@@ -47,16 +48,17 @@ export const sessionApi = baseApi.injectEndpoints({
                 url: '/auth/check-email',
                 method: 'POST',
                 body,
-                credentials: 'include'
+                credentials: 'include',
             }),
             invalidatesTags: [SESSION_TAG],
             transformResponse: (response: SessionCheckEmailDto) => mapSessionCheckEmail(response),
         }),
-        confirmEmail: build.mutation<SessionConfirmEmailType, RequestLoginBody>({
+        confirmEmail: build.mutation<SessionConfirmEmailType, RequestConfirmEmailBody>({
             query: (body) => ({
                 url: '/auth/confirm-email',
                 method: 'POST',
                 body,
+                credentials: 'include',
             }),
             invalidatesTags: [SESSION_TAG],
             transformResponse: (response: SessionConfirmEmailDto) =>
