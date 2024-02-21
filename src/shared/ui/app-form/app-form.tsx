@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import clsn from 'classnames';
-import { Button, Form, type FormProps } from 'antd';
-import { GooglePlusOutlined } from '@ant-design/icons';
+import { Form, type FormProps } from 'antd';
 
-import { LayoutConfig } from '@shared/config';
+import { TypeAppForm } from './model/types';
+import { AppButtonSubmit } from './ui/app-button-submit/app-button-submit';
+import { AppButtonGoogle } from './ui/app-button-google/app-button-google';
 
 import styles from './app-form.module.less';
 
@@ -11,7 +12,7 @@ interface AppFormProps extends FormProps {
     children: ReactNode;
     className?: string;
     slotRemember?: ReactNode;
-    type: 'authentification' | 'register';
+    type: TypeAppForm;
 }
 
 export function AppForm({ children, className, slotRemember, type, ...rest }: AppFormProps) {
@@ -27,17 +28,13 @@ export function AppForm({ children, className, slotRemember, type, ...rest }: Ap
             {slotRemember}
             <div className={styles['buttons-wrapper']}>
                 <Form.Item className={styles.button}>
-                    <Button block type='primary' htmlType='submit' size='large'>
-                        {LayoutConfig.BUTTON_REGISTER}
-                    </Button>
+                    <AppButtonSubmit typeButton={type} />
                 </Form.Item>
-                <Form.Item className={styles.button}>
-                    <Button block htmlType='submit' size='large'>
-                        <GooglePlusOutlined />
-                        {type === 'register' && LayoutConfig.BUTTON_REGISTER_GOOGLE}
-                        {type === 'authentification' && LayoutConfig.BUTTON_AUTHENTIFICATION_COOGLE}
-                    </Button>
-                </Form.Item>
+                {type !== 'confirm' && (
+                    <Form.Item className={styles.button}>
+                        <AppButtonGoogle typeButton={type} />
+                    </Form.Item>
+                )}
             </div>
         </Form>
     );
