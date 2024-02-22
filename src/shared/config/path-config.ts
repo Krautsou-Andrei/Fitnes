@@ -7,7 +7,7 @@ export const enum PathConfig {
     REGISTRATION = '/auth/registration',
     RESULT = '/result',
     RESULT_ERROR = '/result/error',
-    RESULT_ERROR_CHANGE_PASSWOED = '/result/error-change-password',
+    RESULT_ERROR_CHANGE_PASSWORD = '/result/error-change-password',
     RESULT_ERROR_CHECK_EMAIL = '/result/error-check-email',
     RESULT_ERROR_CHECK_EMAIL_NO_EXIST = '/result/error-check-email-no-exist',
     RESULT_ERROR_LOGIN = '/result/error-login',

@@ -19,6 +19,7 @@ import type {
     SessionChangePasswordDto,
     RequestCheckEmailBody,
     RequestConfirmEmailBody,
+    RequestChangePasswordBody,
 } from './types';
 
 import { baseApi } from '@shared/api';
@@ -64,11 +65,12 @@ export const sessionApi = baseApi.injectEndpoints({
             transformResponse: (response: SessionConfirmEmailDto) =>
                 mapSessionConfirmEmail(response),
         }),
-        changePassword: build.mutation<SessionChangePasswordType, RequestLoginBody>({
+        changePassword: build.mutation<SessionChangePasswordType, RequestChangePasswordBody>({
             query: (body) => ({
                 url: '/auth/change-password',
                 method: 'POST',
                 body,
+                credentials: 'include',
             }),
             invalidatesTags: [SESSION_TAG],
             transformResponse: (response: SessionChangePasswordDto) =>

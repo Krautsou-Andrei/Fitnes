@@ -56,7 +56,7 @@ export function AppRouter() {
                     element={<ResultPage type={TypePage.ERROR} />}
                 />
                 <Route
-                    path={PathConfig.RESULT_ERROR_CHANGE_PASSWOED}
+                    path={PathConfig.RESULT_ERROR_CHANGE_PASSWORD}
                     element={<ResultPage type={TypePage.ERROR_CHANGE_PASSWORD} />}
                 />
                 <Route

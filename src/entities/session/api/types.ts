@@ -15,6 +15,11 @@ export type RequestConfirmEmailBody = {
     code: string;
 };
 
+export type RequestChangePasswordBody = {
+    password: Password;
+    confirmPassword: Password;
+};
+
 export type RequestCheckEmailBody = {
     email: Email;
 };
