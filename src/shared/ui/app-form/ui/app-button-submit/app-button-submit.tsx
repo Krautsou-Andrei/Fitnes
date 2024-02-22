@@ -1,9 +1,15 @@
 import { Button } from 'antd';
+import { ButtonProps } from 'antd/lib/button';
+
 import { TypeAppForm } from '../../model/types';
 
 import { LayoutConfig } from '@shared/config';
 
-export function AppButtonSubmit({ typeButton }: { typeButton: TypeAppForm }) {
+interface AppButtonSubmitInterface extends ButtonProps {
+    typeButton: TypeAppForm;
+}
+
+export function AppButtonSubmit({ typeButton, ...rest }: AppButtonSubmitInterface) {
     let buttonText = '';
 
     if (typeButton === 'register' || typeButton === 'authentification') {
@@ -13,7 +19,7 @@ export function AppButtonSubmit({ typeButton }: { typeButton: TypeAppForm }) {
     }
 
     return (
-        <Button block type='primary' htmlType='submit' size='large'>
+        <Button block type='primary' htmlType='submit' size='large' {...rest}>
             {buttonText}
         </Button>
     );

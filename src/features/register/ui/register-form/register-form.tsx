@@ -8,10 +8,17 @@ import {
 import { AppForm } from '@shared/ui';
 
 export function RegisterForm() {
-    const { form, onFinish } = useRegisterForm();
+    const { isDisabledSubmit, form, onFinish, validateForm } = useRegisterForm();
 
     return (
-        <AppForm form={form} type='register' onFinish={onFinish} name='register'>
+        <AppForm
+            form={form}
+            type='register'
+            onFinish={onFinish}
+            onChange={validateForm}
+            name='register'
+            isDisabledSubmit={isDisabledSubmit}
+        >
             <AppInputLogin />
             <AppInputPassword
                 type='register'
