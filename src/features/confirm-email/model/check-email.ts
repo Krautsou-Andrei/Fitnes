@@ -1,10 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { push } from 'redux-first-history';
 
+import { resultErrorFetch } from '../lib/result-error-fetch';
+
 import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
-import { EventApiConfig, HistoryStateConfig, PathConfig } from '@shared/config';
+import {
+    EventApiConfig,
+    HistoryStateConfig,
+    PathConfig,
+    SessionStorageConfig,
+} from '@shared/config';
 
 import type { CheckEmailParams } from './types';
 import type { RootState } from '@shared/types/store';
@@ -26,7 +33,9 @@ export const checkEmailThunk = createAsyncThunk<void, CheckEmailParams, { state:
                 });
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(push(PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST));
+                sessionStorage.setItem(SessionStorageConfig.EMAIL, body.email);
+                dispatch(resultErrorFetch(error));
+                return;
             }
 
             throw new Error('Unknown error');

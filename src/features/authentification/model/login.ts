@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { push } from 'redux-first-history';
 
-import { LoginParams } from './types';
+import { resultErrorFetch } from '../lib/result-error-fetch';
+import type { LoginParams } from './types';
 
 import { sessionActions, sessionApi } from '@entities/session';
 
@@ -27,7 +28,7 @@ export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState
                 });
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(push(PathConfig.RESULT_ERROR_LOGIN));
+                dispatch(resultErrorFetch(error));
                 return;
             }
 
