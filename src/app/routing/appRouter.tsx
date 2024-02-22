@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthLayout, BaseLayout } from '@app/layouts';
 import { WithLoader } from '@app/providers';
 
-import { AuthGuard, GuestGuard } from '@features/guard-router';
+import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
@@ -48,16 +48,32 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.AUTH} element={<AuthentificationPage />} />
                 <Route path={PathConfig.REGISTRATION} element={<RegisterPage />} />
-                <Route path={PathConfig.AUTH_CONFIRM_EMAIL} element={<ConfirmEmailPage />} />
-                <Route path={PathConfig.AUTH_CHANGE_PASSWORD} element={<ChangePasswordPage />} />
+                <Route
+                    path={PathConfig.AUTH_CONFIRM_EMAIL}
+                    element={
+                        <ResponseGuard>
+                            <ConfirmEmailPage />
+                        </ResponseGuard>
+                    }
+                />
+                <Route
+                    path={PathConfig.AUTH_CHANGE_PASSWORD}
+                    element={
+                        <ResponseGuard>
+                            <ChangePasswordPage />
+                        </ResponseGuard>
+                    }
+                />
             </Route>
             <Route
                 element={
                     <WithErrorBoundary>
                         <GuestGuard>
-                            <WithLoader>
-                                <AuthLayout />
-                            </WithLoader>
+                            <ResponseGuard>
+                                <WithLoader>
+                                    <AuthLayout />
+                                </WithLoader>
+                            </ResponseGuard>
                         </GuestGuard>
                     </WithErrorBoundary>
                 }
