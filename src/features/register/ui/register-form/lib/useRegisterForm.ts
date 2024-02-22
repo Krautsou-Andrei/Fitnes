@@ -1,6 +1,6 @@
 import { Form } from 'antd';
 
-import { registerThunk } from '../model/register';
+import { registerThunk } from '@features/register/model/register';
 
 import { RequestRegisterBody } from '@entities/session';
 

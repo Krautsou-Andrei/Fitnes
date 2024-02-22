@@ -10,7 +10,6 @@ export function ChangePasswordForm() {
     const dispatch = useAppDispatch();
 
     const onFinish = ({ password, confirmPassword }: RequestChangePasswordBody) => {
-        console.log({ password, confirmPassword });
         dispatch(changePasswordThunk({ password, confirmPassword }))
             .unwrap()
             .catch((error: Error) => {

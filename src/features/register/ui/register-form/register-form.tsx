@@ -1,4 +1,4 @@
-import { useRegisterForm } from '@features/register/lib/useRegisterForm';
+import { useRegisterForm } from './lib/useRegisterForm';
 import {
     AppInputConfirmPassword,
     AppInputLogin,
