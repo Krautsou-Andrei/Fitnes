@@ -1,5 +1,7 @@
 import { config } from './config';
+import { cryptPassword } from './crypt-password';
+import { decryptPassword } from './decrypt-password';
 import { wait } from './wait';
 import { splitString } from './slpit-string';
 
-export { config, wait, splitString };
+export { config, cryptPassword, decryptPassword, wait, splitString };
