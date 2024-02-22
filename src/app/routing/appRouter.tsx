@@ -4,8 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthLayout, BaseLayout } from '@app/layouts';
 import { WithLoader } from '@app/providers';
 
-import { AuthGuard } from '@features/auth-guard';
-import { GuestGuard } from '@features/guest-guard';
+import { AuthGuard, GuestGuard } from '@features/guard-router';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
@@ -51,6 +50,18 @@ export function AppRouter() {
                 <Route path={PathConfig.REGISTRATION} element={<RegisterPage />} />
                 <Route path={PathConfig.AUTH_CONFIRM_EMAIL} element={<ConfirmEmailPage />} />
                 <Route path={PathConfig.AUTH_CHANGE_PASSWORD} element={<ChangePasswordPage />} />
+            </Route>
+            <Route
+                element={
+                    <WithErrorBoundary>
+                        <GuestGuard>
+                            <WithLoader>
+                                <AuthLayout />
+                            </WithLoader>
+                        </GuestGuard>
+                    </WithErrorBoundary>
+                }
+            >
                 <Route
                     path={PathConfig.RESULT_ERROR}
                     element={<ResultPage type={TypePage.ERROR} />}
