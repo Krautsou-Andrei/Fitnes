@@ -12,9 +12,10 @@ type Props = {
     autoComplete: string;
     classNames?: string;
     type: InputPasswordType;
+    dataTestId: string;
 };
 
-export function AppInputPassword({ autoComplete, classNames, type }: Props) {
+export function AppInputPassword({ autoComplete, classNames, type, dataTestId }: Props) {
     const rules = validatePasswordRules(type);
 
     return (
@@ -28,6 +29,7 @@ export function AppInputPassword({ autoComplete, classNames, type }: Props) {
                 placeholder={LayoutConfig.INPUT_TEXT_PASSWODR}
                 size='large'
                 autoComplete={autoComplete}
+                data-test-id={dataTestId}
             />
         </Form.Item>
     );

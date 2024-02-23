@@ -5,9 +5,10 @@ import { LayoutConfig } from '@shared/config';
 
 type Props = {
     className?: string;
+    dataTestId: string;
 };
 
-export function AppInputConfirmPassword({ className }: Props) {
+export function AppInputConfirmPassword({ className, dataTestId }: Props) {
     return (
         <Form.Item
             className={className}
@@ -21,6 +22,7 @@ export function AppInputConfirmPassword({ className }: Props) {
                 placeholder={LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM}
                 size='large'
                 autoComplete='new-password'
+                data-test-id={dataTestId}
             />
         </Form.Item>
     );

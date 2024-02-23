@@ -6,4 +6,5 @@ export type ResultCard = {
     description: string;
     icon: ReactElement;
     title: string;
+    testId: string;
 };

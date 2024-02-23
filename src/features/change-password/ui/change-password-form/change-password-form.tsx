@@ -19,8 +19,16 @@ export function ChangePasswordForm() {
 
     return (
         <AppForm type='confirm' form={form} onFinish={onFinish}>
-            <AppInputPassword classNames='input-password' autoComplete={''} type={'register'} />
-            <AppInputConfirmPassword className='input-password' />
+            <AppInputPassword
+                classNames='input-password'
+                autoComplete={''}
+                type={'register'}
+                dataTestId='change-password'
+            />
+            <AppInputConfirmPassword
+                className='input-password'
+                dataTestId='change-confirm-password'
+            />
         </AppForm>
     );
 }

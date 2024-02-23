@@ -13,7 +13,7 @@ export function AppRemember({ isDisabledForgot, onClick }: Props) {
     return (
         <Form.Item className={styles.remember}>
             <Form.Item name='isRemember' valuePropName='checked' noStyle>
-                <Checkbox>{LayoutConfig.CHECKBOX_REMEMBER_ME}</Checkbox>
+                <Checkbox data-test-id='login-remember'>{LayoutConfig.CHECKBOX_REMEMBER_ME}</Checkbox>
             </Form.Item>
             <Button
                 type='text'
@@ -21,6 +21,7 @@ export function AppRemember({ isDisabledForgot, onClick }: Props) {
                 size='large'
                 disabled={isDisabledForgot}
                 onClick={onClick}
+                data-test-id='login-forgot-button'
             >
                 {LayoutConfig.LINK_FORGOT_PASSWORD}
             </Button>

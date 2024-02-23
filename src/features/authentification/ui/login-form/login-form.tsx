@@ -21,11 +21,12 @@ export function LoginForm() {
             name='authentification'
             onChange={checkEmail}
         >
-            <AppInputLogin />
-            <AppInputPassword
+            <AppInputLogin  dataTestId='login-email'/>
+            <AppInputPassword 
                 type='login'
                 classNames={styles['input-password']}
                 autoComplete='current-password'
+                dataTestId='login-password'
             />
             <AppRemember isDisabledForgot={isValidateEmail} onClick={onClickForgot} />
         </AppForm>

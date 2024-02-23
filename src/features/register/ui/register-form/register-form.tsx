@@ -19,14 +19,18 @@ export function RegisterForm() {
             name='register'
             isDisabledSubmit={isDisabledSubmit}
         >
-            <AppInputLogin />
+            <AppInputLogin dataTestId='registration-email' />
             <AppInputPassword
                 type='register'
                 classNames={'input-password'}
                 autoComplete='new-password'
+                dataTestId='registration-password'
             />
 
-            <AppInputConfirmPassword className={'input-password'} />
+            <AppInputConfirmPassword
+                className={'input-password'}
+                dataTestId='registration-confirm-password'
+            />
         </AppForm>
     );
 }

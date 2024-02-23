@@ -8,7 +8,7 @@ export function AppLoader() {
     return (
         <div className={styles.loader}>
             <AppBackgroundBlur>
-                <Lottie animationData={loader} loop={true} className={styles['loader__spinner']} />
+                <Lottie animationData={loader} loop={true} className={styles['loader__spinner']}  data-test-id='loader' />
             </AppBackgroundBlur>
         </div>
     );

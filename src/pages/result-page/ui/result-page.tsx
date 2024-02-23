@@ -5,7 +5,7 @@ import { ResultConfig } from '../config/result-config';
 import { AppResultCard, useResultButtonClick } from '@features/result';
 
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
-import type { ResultPageType } from '@shared/types/app';
+import type{ ResultPageType } from '@shared/types/app';
 
 import styles from './result-page.module.less';
 
@@ -29,7 +29,8 @@ export function ResultPage({ type }: ResultPageType) {
                         type='primary'
                         onClick={onClick}
                         block={ResultConfig[type].buttonBlock}
-                        size='large'                       
+                        size='large'
+                        data-test-id={ResultConfig[type].testId}
                     >
                         {ResultConfig[type].buttonTitle}
                     </Button>
