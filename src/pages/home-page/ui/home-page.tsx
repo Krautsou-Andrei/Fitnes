@@ -1,7 +1,8 @@
 import { Content } from 'antd/lib/layout/layout';
 import { Col, Row } from 'antd';
 
-import { cardsActionsConfig, cardsInfoConfig } from '@shared/config';
+import { cardsActionsConfig, cardsInfoConfig } from '../config/cards-config';
+
 import { AppCardActive } from './app-card-active';
 import { AppCardText } from './app-card-text';
 

@@ -27,17 +27,3 @@ export type RequestCheckEmailBody = {
 export type SessionLoginDto = {
     accessToken: string;
 };
-
-export type SessionCheckEmailDto = {
-    email: Email;
-    message: string;
-};
-
-export type SessionConfirmEmailDto = {
-    email: Email;
-    message: string;
-};
-
-export type SessionChangePasswordDto = {
-    message: string;
-};

@@ -1,6 +1,4 @@
-import { mapSessionCheckEmail } from '../lib/map-session-check-email';
-import { mapSessionConfirmEmail } from '../lib/map-session-confirm-email';
-import { mapSessionChangePassword } from '../lib/map-session-change-password';
+
 import { mapSessionLogin } from '../lib/map-session-login';
 import type {
     SessionChangePasswordType,
@@ -13,10 +11,7 @@ import type {
 import type {
     SessionLoginDto,
     RequestRegisterBody,
-    RequestLoginBody,
-    SessionCheckEmailDto,
-    SessionConfirmEmailDto,
-    SessionChangePasswordDto,
+    RequestLoginBody,   
     RequestCheckEmailBody,
     RequestConfirmEmailBody,
     RequestChangePasswordBody,
@@ -51,8 +46,7 @@ export const sessionApi = baseApi.injectEndpoints({
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],
-            transformResponse: (response: SessionCheckEmailDto) => mapSessionCheckEmail(response),
+            invalidatesTags: [SESSION_TAG],           
         }),
         confirmEmail: build.mutation<SessionConfirmEmailType, RequestConfirmEmailBody>({
             query: (body) => ({
@@ -61,9 +55,7 @@ export const sessionApi = baseApi.injectEndpoints({
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],
-            transformResponse: (response: SessionConfirmEmailDto) =>
-                mapSessionConfirmEmail(response),
+            invalidatesTags: [SESSION_TAG],            
         }),
         changePassword: build.mutation<SessionChangePasswordType, RequestChangePasswordBody>({
             query: (body) => ({
@@ -72,9 +64,7 @@ export const sessionApi = baseApi.injectEndpoints({
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],
-            transformResponse: (response: SessionChangePasswordDto) =>
-                mapSessionChangePassword(response),
+            invalidatesTags: [SESSION_TAG],           
         }),
     }),
 });
