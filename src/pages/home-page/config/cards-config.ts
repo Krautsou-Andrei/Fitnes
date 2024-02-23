@@ -1,7 +1,8 @@
 import React from 'react';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 
-import type { CardText, CardActive } from '@pages/home-page';
+import type { CardActive } from '../ui/app-card-active/model/types';
+import type { CardText } from '../ui/app-card-text/model/types';
 
 export const cardsInfoConfig: CardText[] = [
     {

@@ -1,5 +1,5 @@
+import { PathConfig } from '@shared/config';
 import { ItemsTabs } from '@shared/ui/app-tabs/@ex/config';
-import { PathConfig } from './path-config';
 
 export const tabsAuthConfig: ItemsTabs[] = [
     {

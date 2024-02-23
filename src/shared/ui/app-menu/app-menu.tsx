@@ -1,7 +1,7 @@
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
-import { MenuConfig } from '@shared/config';
+import { MenuConfig } from './config/menu-config';
 
 import styles from './app-menu.module.less';
 
@@ -11,9 +11,8 @@ type Props = {
 };
 
 export function AppMenu({ isCollapsed, isQueryMD }: Props) {
-
     return (
-        <Menu           
+        <Menu
             className={clsn(styles['app-menu'])}
             theme='light'
             mode='inline'

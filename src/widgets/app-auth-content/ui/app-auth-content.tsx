@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import clsn from 'classnames';
 
+import { tabsAuthConfig } from '../config/tabs-auth-config';
+
 import { AppIcon, AppTabs } from '@shared/ui';
-import { tabsAuthConfig } from '@shared/config/tabs-auth-config';
 
 import styles from './app-auth-content.module.less';
 

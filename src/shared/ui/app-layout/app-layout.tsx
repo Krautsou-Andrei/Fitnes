@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import clsn from 'classnames';
 import { Layout } from 'antd';
 
