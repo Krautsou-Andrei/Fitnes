@@ -1,8 +1,8 @@
 import { ConfirmForm } from '@features/confirm-email';
 import { AppResultCard } from '@features/result';
+import { confirmConfig } from '@features/confirm-email/config/confirm-config';
 
-import { SessionStorageConfig, confirmConfig } from '@shared/config';
-
+import { SessionStorageConfig } from '@shared/config';
 import { TypePage } from '@shared/types/app';
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
 

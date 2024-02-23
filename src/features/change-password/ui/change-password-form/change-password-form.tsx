@@ -1,9 +1,12 @@
+import { Form } from 'antd';
+
 import { RequestChangePasswordBody } from '@entities/session';
+
 import { changePasswordThunk } from '@features/change-password/model/change-password';
 import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs';
+
 import { useAppDispatch } from '@shared/hooks';
 import { AppForm } from '@shared/ui';
-import { Form } from 'antd';
 
 export function ChangePasswordForm() {
     const [form] = Form.useForm();

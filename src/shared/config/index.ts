@@ -1,4 +1,3 @@
-import { confirmConfig } from './confirm-config';
 import { ConstantsMediaQuery } from './constants';
 import { ErrorValidateConfig } from './error-validate-config';
 import { EventApiConfig } from './event-api-config';
@@ -10,7 +9,6 @@ import { regExpConfig } from './reg-exp-config';
 import { SessionStorageConfig } from './session-storage-config';
 
 export {
-    confirmConfig,
     ConstantsMediaQuery,
     ErrorValidateConfig,
     EventApiConfig,

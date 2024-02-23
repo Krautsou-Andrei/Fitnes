@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 
-import { ResultConfig } from '../config/result-config';
+import { resultConfig } from '../config/result-config';
 
 import { AppResultCard, useResultButtonClick } from '@features/result';
 
@@ -20,20 +20,20 @@ export function ResultPage({ type }: ResultPageType) {
         <AppBackgroundBlur>
             <AppGuestContent>
                 <AppResultCard
-                    title={ResultConfig[type].title}
-                    icon={ResultConfig[type].icon}
-                    description={ResultConfig[type].description}
+                    title={resultConfig[type].title}
+                    icon={resultConfig[type].icon}
+                    description={resultConfig[type].description}
                     className={styles[`${type}-content`]}
                     classNameIcon={styles[type]}
                 >
                     <Button
                         type='primary'
                         onClick={onClick}
-                        block={ResultConfig[type].buttonBlock}
+                        block={resultConfig[type].buttonBlock}
                         size='large'
-                        data-test-id={ResultConfig[type].testId}
+                        data-test-id={resultConfig[type].testId}
                     >
-                        {ResultConfig[type].buttonTitle}
+                        {resultConfig[type].buttonTitle}
                     </Button>
                 </AppResultCard>
             </AppGuestContent>

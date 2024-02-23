@@ -3,8 +3,8 @@ import { Typography } from 'antd';
 import clsn from 'classnames';
 
 import { useConfirmEmailForm } from './lib/useConfirmEmailForm';
+import { confirmConfig } from '../../config/confirm-config';
 
-import { confirmConfig } from '@shared/config';
 import { TypePage } from '@shared/types/app';
 
 import styles from './confirm-form.module.less';

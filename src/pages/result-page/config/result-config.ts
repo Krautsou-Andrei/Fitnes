@@ -9,7 +9,7 @@ interface ResultConfig {
     [key: string]: ResultCard;
 }
 
-export const ResultConfig: ResultConfig = {
+export const resultConfig: ResultConfig = {
     error: {
         buttonBlock: true,
         buttonTitle: 'Повторить',
