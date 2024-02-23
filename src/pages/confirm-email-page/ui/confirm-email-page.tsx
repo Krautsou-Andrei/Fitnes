@@ -19,6 +19,7 @@ export function ConfirmEmailPage() {
                     title={confirmConfig[TypePage.CONFIRM_EMAIL].title}
                     description={confirmConfig[TypePage.CONFIRM_EMAIL].description(email)}
                     icon={confirmConfig[TypePage.CONFIRM_EMAIL].icon}
+                    className={styles['confirm-content']}
                     classNameIcon={styles[TypePage.CONFIRM_EMAIL]}
                 >
                     <ConfirmForm />

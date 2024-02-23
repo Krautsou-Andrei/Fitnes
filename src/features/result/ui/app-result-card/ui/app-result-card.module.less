@@ -1,32 +1,30 @@
 @import '@shared/styles/constants';
 
 .result-card {
-    .icon {
-        margin-bottom: (@rem * 24);
-    }
-
-    .description {
-        margin-bottom: (@rem * 24);
-        text-align: center;
-        line-height: 130%;
-
-        span:global(.ant-typography) {
-            color: @app-text-color-secondary;
-        }
-    }
-
-    :global(.ant-card-body) {
-        padding: (@rem * 64) (@rem * 85.5) (@rem * 56);
-
+    .result-card-content {
         display: flex;
         flex-direction: column;
 
         align-items: center;
         justify-content: center;
-    }
 
-    :global(.ant-typography) {
-        margin-bottom: 0;
-        line-height: 130%;
+        .icon {
+            margin-bottom: (@rem * 24);
+        }
+
+        .description {
+            margin-bottom: (@rem * 24);
+            text-align: center;
+            line-height: 130%;
+
+            span:global(.ant-typography) {
+                color: @app-text-color-secondary;
+            }
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: 0;
+            line-height: 130%;
+        }
     }
 }

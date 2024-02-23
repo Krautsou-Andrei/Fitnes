@@ -2,26 +2,30 @@ import { ReactNode } from 'react';
 import clsn from 'classnames';
 
 import { tabsAuthConfig } from '../config/tabs-auth-config';
+import { useAuthContentMediaQuery } from '../lib/use-auth-content-media-query';
 
-import { AppIcon, AppTabs } from '@shared/ui';
+import { AppGuestContentPadding, AppIcon, AppTabs } from '@shared/ui';
 
 import styles from './app-auth-content.module.less';
 
 type AppAuthContentProps = {
     children: ReactNode;
+    className?: string;
 };
 
-export function AppAuthContent({ children }: AppAuthContentProps) {
+export function AppAuthContent({ children, className }: AppAuthContentProps) {
+    const { heightLogo, withLogo } = useAuthContentMediaQuery();
+
     return (
-        <div className={clsn(styles['content'])}>
+        <AppGuestContentPadding className={clsn(styles['content'], className)}>
             <AppIcon
                 className={styles['content-logo']}
                 name='layout/logo-big'
-                width={309}
-                height={78}
+                width={withLogo}
+                height={heightLogo}
             />
             <AppTabs items={tabsAuthConfig} />
             {children}
-        </div>
+        </AppGuestContentPadding>
     );
 }

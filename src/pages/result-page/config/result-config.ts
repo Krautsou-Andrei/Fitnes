@@ -35,7 +35,7 @@ export const ResultConfig: ResultConfig = {
         testId: 'check-back-button',
     },
     errorCheckEmailNoExist: {
-        buttonBlock: true,
+        buttonBlock: false,
         buttonTitle: 'Попробовать снова',
         description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail',
         icon: React.createElement(CloseCircleFilled),

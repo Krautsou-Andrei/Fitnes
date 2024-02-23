@@ -4,12 +4,10 @@ import { RegisterForm } from '@features/register';
 
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
 
-import styles from './register-page.module.less';
-
 export function RegisterPage() {
     return (
         <AppBackgroundBlur>
-            <AppGuestContent className={styles['content-register']}>
+            <AppGuestContent>
                 <AppAuthContent>
                     <RegisterForm />
                 </AppAuthContent>

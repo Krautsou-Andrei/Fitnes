@@ -9,8 +9,8 @@ import styles from './authentification-page.module.less';
 export function AuthentificationPage() {
     return (
         <AppBackgroundBlur>
-            <AppGuestContent className={styles['content-authentification']}>
-                <AppAuthContent>
+            <AppGuestContent className={styles.authentification}>
+                <AppAuthContent className={styles['authentification-content']}>
                     <LoginForm />
                 </AppAuthContent>
             </AppGuestContent>
