@@ -1,4 +1,5 @@
 export const enum ConstantsMediaQuery {
-    MD = 768,   
+    XS = 480,
+    MD = 768,
     APP_TABLET = 834,
 }

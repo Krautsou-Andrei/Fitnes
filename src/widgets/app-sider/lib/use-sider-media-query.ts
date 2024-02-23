@@ -1,12 +1,10 @@
-import { useMediaQuery } from 'react-responsive';
-import { ConstantsMediaQuery } from '@shared/config';
+import { useAppMediaQuery } from '@shared/hooks';
 
 export function useSiderMediaQuery() {
-    const isQueryMD = useMediaQuery({ maxWidth: ConstantsMediaQuery.MD });
-    const isTablet = useMediaQuery({ maxWidth: ConstantsMediaQuery.APP_TABLET});
+    const { isQueryMD, isTablet } = useAppMediaQuery();
 
     const width = isQueryMD ? '106' : '208';
-    const widthCollapsed = isQueryMD ? '0' : '64';    
+    const widthCollapsed = isQueryMD ? '0' : '64';
 
     return { isQueryMD, isTablet, width, widthCollapsed };
 }

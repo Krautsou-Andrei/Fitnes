@@ -1,10 +1,7 @@
-import { useMediaQuery } from 'react-responsive';
-
-import { ConstantsMediaQuery } from '@shared/config';
+import { useAppMediaQuery } from '@shared/hooks';
 
 export function useButtonMediaQuery() {
-    const isTablet = useMediaQuery({ maxWidth: ConstantsMediaQuery.APP_TABLET });
-    const isQueryMD = useMediaQuery({ maxWidth: ConstantsMediaQuery.MD });
+    const { isQueryMD, isTablet } = useAppMediaQuery();
 
     const buttonType = isQueryMD ? 'default' : 'text';
 
