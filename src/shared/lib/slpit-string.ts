@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function splitString(str: string) {
+export function splitString(str: string): React.ReactNode {
     const newStr = str
         .split('\n')
         .map((line, index) =>
