@@ -1,10 +1,9 @@
-import { useLocation } from 'react-router-dom';
 import clsn from 'classnames';
 import { Tabs } from 'antd';
-import { push } from 'redux-first-history';
+
+import { useAppTabs } from './lib/useAppTabs';
 
 import { ItemsTabs } from './model/types';
-import { useAppDispatch } from '@shared/hooks';
 
 import styles from './app-tabs.module.less';
 
@@ -14,14 +13,7 @@ type AppTabsProps = {
 };
 
 export function AppTabs({ className, items }: AppTabsProps) {
-    const { pathname } = useLocation();
-    const dispatch = useAppDispatch();
-
-    const onTabClick = (activeKey: string) => {
-        if (pathname !== activeKey) {
-            dispatch(push(activeKey));
-        }
-    };
+    const { pathname, onTabClick } = useAppTabs();
 
     return (
         <Tabs
