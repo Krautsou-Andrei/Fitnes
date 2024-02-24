@@ -1,30 +1,20 @@
-import { Form } from 'antd';
+import { useChangePasswordForm } from './lib/use-change-password-form';
 
-import { RequestChangePasswordBody } from '@entities/session';
-
-import { changePasswordThunk } from '@features/change-password/model/change-password';
 import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs';
 
-import { useAppDispatch } from '@shared/hooks';
 import { AppForm } from '@shared/ui';
+import { LayoutConfig } from '@shared/config';
 
 export function ChangePasswordForm() {
-    const [form] = Form.useForm();
-    const dispatch = useAppDispatch();
-
-    const onFinish = ({ password, confirmPassword }: RequestChangePasswordBody) => {
-        dispatch(changePasswordThunk({ password, confirmPassword }))
-            .unwrap()
-            .catch((error: Error) => {
-                console.log('Change-password', error);
-            });
-    };
+    const { email, onFinish, form } = useChangePasswordForm();
 
     return (
         <AppForm type='confirm' form={form} onFinish={onFinish}>
+            <input readOnly className='visually-hidden' autoComplete='username' value={email} />
             <AppInputPassword
                 classNames='input-password'
-                autoComplete={''}
+                autoComplete='new password'
+                title={LayoutConfig.INPUT_TEXT_PASSWORD_CHANGE}
                 type={'register'}
                 dataTestId='change-password'
             />
