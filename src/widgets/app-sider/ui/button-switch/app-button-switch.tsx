@@ -6,12 +6,12 @@ import { useSiderMediaQuery } from '@widgets/app-sider/lib/use-sider-media-query
 
 import styles from './app-button-switch.module.less';
 
-type Props = {
+type AppButtonSwitchProps = {
     isCollapsed: boolean;
     isSetCollapsed: (collapsed: boolean) => void;
 };
 
-export function AppButtonSwitch({ isCollapsed, isSetCollapsed }: Props) {
+export function AppButtonSwitch({ isCollapsed, isSetCollapsed }: AppButtonSwitchProps) {
     const { isTablet } = useSiderMediaQuery();
     
     return (

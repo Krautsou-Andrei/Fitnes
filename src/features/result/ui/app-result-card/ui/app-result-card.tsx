@@ -8,7 +8,7 @@ import styles from './app-result-card.module.less';
 
 const { Title, Text } = Typography;
 
-type Props = {
+type AppResultCardProps = {
     icon: ReactElement;
     children: ReactNode;
     className?: string;
@@ -24,7 +24,7 @@ export function AppResultCard({
     classNameIcon,
     description,
     title,
-}: Props) {
+}: AppResultCardProps) {
     return (
         <AppGuestContent className={styles['result-card']}>
             <AppGuestContentPadding className={clsn(styles['result-card-content'], className)}>

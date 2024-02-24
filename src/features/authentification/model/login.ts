@@ -17,18 +17,18 @@ export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            await dispatch(sessionApi.endpoints.login.initiate({ email, password }))
-                .unwrap()
-                .then((response) => {
-                    if (isRemember) {
-                        localStorage.setItem(LocalStorageConfig.ACCESS_TOKEN, response.accessToken);
-                    }
+            const result = await dispatch(
+                sessionApi.endpoints.login.initiate({ email, password }),
+            ).unwrap();
 
-                    dispatch(push(PathConfig.HOME));
-                });
+            if (isRemember) {
+                localStorage.setItem(LocalStorageConfig.ACCESS_TOKEN, result.accessToken);
+            }
+
+            dispatch(push(PathConfig.HOME));
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(resultErrorFetch(error));
+                dispatch(resultErrorFetch());
                 return;
             }
 

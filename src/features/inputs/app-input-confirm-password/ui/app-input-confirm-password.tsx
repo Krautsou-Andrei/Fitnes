@@ -3,12 +3,12 @@ import { validateConfirmPasswordRules } from '../lib/validate-confirm-password-r
 
 import { LayoutConfig } from '@shared/config';
 
-type Props = {
+type AppInputConfirmPasswordProps = {
     className?: string;
     dataTestId: string;
 };
 
-export function AppInputConfirmPassword({ className, dataTestId }: Props) {
+export function AppInputConfirmPassword({ className, dataTestId }: AppInputConfirmPasswordProps) {
     return (
         <Form.Item
             className={className}

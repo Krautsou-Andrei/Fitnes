@@ -8,7 +8,7 @@ import { LayoutConfig } from '@shared/config';
 
 import styles from './app-input-password.module.less';
 
-type Props = {
+type AppInputPasswordProps = {
     autoComplete: string;
     classNames?: string;
     dataTestId: string;
@@ -16,7 +16,7 @@ type Props = {
     type: InputPasswordType;
 };
 
-export function AppInputPassword({ autoComplete, classNames, title, type, dataTestId }: Props) {
+export function AppInputPassword({ autoComplete, classNames, title, type, dataTestId }: AppInputPasswordProps) {
     const rules = validatePasswordRules(type);
 
     return (

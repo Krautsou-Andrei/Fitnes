@@ -8,11 +8,11 @@ import styles from './app-card-text.module.less';
 
 const { Text, Title } = Typography;
 
-interface Props extends CardProps {
+interface AppCardTextProps extends CardProps {
     card: CardText;
 }
 
-export function AppCardText({ card }: Props) {
+export function AppCardText({ card }: AppCardTextProps) {
     return (
         <AppCard className={styles['app-card']}>
             {card.description ? (

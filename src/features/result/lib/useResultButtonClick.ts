@@ -14,14 +14,24 @@ export function useResultButtonClick({ type }: ResultPageType) {
 
     switch (type) {
         case 'error':
-            return () => {
+            return async () => {
                 const email = sessionStorage.getItem(SessionStorageConfig.EMAIL);
                 const hashPassword = sessionStorage.getItem(SessionStorageConfig.PASSWORD);
+
                 dispatch(push(PathConfig.REGISTRATION));
 
                 if (email && email !== '' && hashPassword && hashPassword !== '') {
                     const password = decryptPassword(hashPassword);
-                    dispatch(registerThunk({ email: email, password: password }));
+
+                    try {
+                        await dispatch(
+                            registerThunk({ email: email, password: password }),
+                        ).unwrap();
+                    } catch {
+                        (error: Error) => {
+                            console.log('Register', error);
+                        };
+                    }
                 }
             };
         case 'errorUserExist':
@@ -29,7 +39,7 @@ export function useResultButtonClick({ type }: ResultPageType) {
                 dispatch(push(PathConfig.REGISTRATION));
             };
         case 'errorChangePassword':
-            return () => {
+            return async () => {
                 const hashPassword = sessionStorage.getItem(SessionStorageConfig.PASSWORD);
                 const hashPasswordConfirmf = sessionStorage.getItem(
                     SessionStorageConfig.CONFIRM_PASSWORD,
@@ -47,22 +57,34 @@ export function useResultButtonClick({ type }: ResultPageType) {
                 ) {
                     const password = decryptPassword(hashPassword);
                     const passwordConfirm = decryptPassword(hashPasswordConfirmf);
-                    dispatch(
-                        changePasswordThunk({
-                            password: password,
-                            confirmPassword: passwordConfirm,
-                        }),
-                    );
+                    try {
+                        await dispatch(
+                            changePasswordThunk({
+                                password: password,
+                                confirmPassword: passwordConfirm,
+                            }),
+                        ).unwrap();
+                    } catch {
+                        (error: Error) => {
+                            console.log('Confirm password', error);
+                        };
+                    }
                 }
             };
         case 'errorCheckEmail':
-            return () => {
+            return async () => {
                 const email = sessionStorage.getItem(SessionStorageConfig.EMAIL);
 
                 dispatch(push(PathConfig.AUTH));
 
                 if (email && email !== '') {
-                    dispatch(checkEmailThunk({ email: email }));
+                    try {
+                        await dispatch(checkEmailThunk({ email: email })).unwrap();
+                    } catch {
+                        (error: Error) => {
+                            console.log('CheckEmail', error);
+                        };
+                    }
                 }
             };
         case 'errorCheckEmailNoExist':

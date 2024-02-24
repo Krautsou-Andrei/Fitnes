@@ -4,12 +4,12 @@ import { LayoutConfig } from '@shared/config';
 
 import styles from './app-remember.module.less';
 
-export type Props = {
+export type AppRememberProps = {
     isDisabledForgot: boolean;
     onClick: () => void;
 };
 
-export function AppRemember({ isDisabledForgot, onClick }: Props) {
+export function AppRemember({ isDisabledForgot, onClick }: AppRememberProps) {
     return (
         <Form.Item className={styles.remember}>
             <Form.Item name='isRemember' valuePropName='checked' noStyle>

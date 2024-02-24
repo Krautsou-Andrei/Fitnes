@@ -12,12 +12,14 @@ export function useChangePasswordForm() {
 
     const email = sessionStorage.getItem(SessionStorageConfig.EMAIL) || '';
 
-    const onFinish = ({ password, confirmPassword }: RequestChangePasswordBody) => {
-        dispatch(changePasswordThunk({ password, confirmPassword }))
-            .unwrap()
-            .catch((error: Error) => {
+    const onFinish = async ({ password, confirmPassword }: RequestChangePasswordBody) => {
+        try {
+            await dispatch(changePasswordThunk({ password, confirmPassword })).unwrap();
+        } catch {
+            (error: Error) => {
                 console.log('Change-password', error);
-            });
+            };
+        }
     };
 
     return { email, form, onFinish };

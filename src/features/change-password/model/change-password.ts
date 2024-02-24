@@ -24,25 +24,25 @@ export const changePasswordThunk = createAsyncThunk<
     async (body: RequestChangePasswordBody, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));
         try {
-            await dispatch(sessionApi.endpoints.changePassword.initiate(body))
-                .unwrap()
-                .then(() => {
-                    sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
-                    sessionStorage.setItem(SessionStorageConfig.CONFIRM_PASSWORD, '');
-                    dispatch(
-                        push(PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD, {
-                            result: HistoryStateConfig.RESULT,
-                        }),
-                    );
-                });
+            await dispatch(sessionApi.endpoints.changePassword.initiate(body)).unwrap();
+
+            sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
+            sessionStorage.setItem(SessionStorageConfig.CONFIRM_PASSWORD, '');
+
+            dispatch(
+                push(PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD, {
+                    result: HistoryStateConfig.RESULT,
+                }),
+            );
         } catch (error: unknown | undefined) {
             sessionStorage.setItem(SessionStorageConfig.PASSWORD, cryptPassword(body.password));
             sessionStorage.setItem(
                 SessionStorageConfig.CONFIRM_PASSWORD,
                 cryptPassword(body.confirmPassword),
             );
+
             if (isFetchBaseQueryError(error)) {
-                dispatch(resultErrorFetch(error));
+                dispatch(resultErrorFetch());
                 return;
             }
 

@@ -4,11 +4,11 @@ import type { ButtonProps } from 'antd/lib/button';
 import { buttonText, dataTestId } from './lib';
 import type { TypeAppForm } from '../../model/types';
 
-interface AppButtonSubmitInterface extends ButtonProps {
+interface AppButtonSubmitProps extends ButtonProps {
     typeButton: TypeAppForm;
 }
 
-export function AppButtonSubmit({ typeButton, ...rest }: AppButtonSubmitInterface) {
+export function AppButtonSubmit({ typeButton, ...rest }: AppButtonSubmitProps) {
     return (
         <Button
             block

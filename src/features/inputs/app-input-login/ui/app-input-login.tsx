@@ -5,11 +5,11 @@ import { LayoutConfig } from '@shared/config';
 
 import styles from './app-input-login.module.less';
 
-type Props = {
+type AppInputLoginProps = {
     dataTestId: string;
 };
 
-export function AppInputLogin({ dataTestId }: Props) {
+export function AppInputLogin({ dataTestId }: AppInputLoginProps) {
     return (
         <Form.Item
             className={styles['input-login']}

@@ -16,13 +16,13 @@ export function LoginForm() {
             form={form}
             type='authentification'
             className={styles['form-authentification']}
-            onFinish={onFinish}
             initialValues={{ remember: true }}
             name='authentification'
+            onFinish={onFinish}
             onChange={checkEmail}
         >
-            <AppInputLogin  dataTestId='login-email'/>
-            <AppInputPassword 
+            <AppInputLogin dataTestId='login-email' />
+            <AppInputPassword
                 type='login'
                 classNames={styles['input-password']}
                 autoComplete='current-password'

@@ -23,15 +23,12 @@ export const registerThunk = createAsyncThunk<void, RegisterParams, { state: Roo
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            await dispatch(sessionApi.endpoints.register.initiate(body))
-                .unwrap()
-                .then(() => {
-                    sessionStorage.setItem(SessionStorageConfig.EMAIL, '');
-                    sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
-                    dispatch(
-                        push(PathConfig.RESULT_SUCCESS, { result: HistoryStateConfig.RESULT }),
-                    );
-                });
+            await dispatch(sessionApi.endpoints.register.initiate(body)).unwrap();
+
+            sessionStorage.setItem(SessionStorageConfig.EMAIL, '');
+            sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
+            
+            dispatch(push(PathConfig.RESULT_SUCCESS, { result: HistoryStateConfig.RESULT }));
         } catch (error: unknown | undefined) {
             sessionStorage.setItem(SessionStorageConfig.EMAIL, body.email);
             sessionStorage.setItem(SessionStorageConfig.PASSWORD, cryptPassword(body.password));

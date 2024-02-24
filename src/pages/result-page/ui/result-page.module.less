@@ -39,11 +39,21 @@
     color: @app-result-error-warning;
 }
 
-.errorCheckEmail-content,
-.errorCheckEmailNoExist-content {
+.errorCheckEmail-content {
     padding-left: (@rem * 32);
     padding-right: (@rem * 32);
     padding-bottom: (@rem * 56);
+}
+
+.errorCheckEmailNoExist-content {
+    padding-bottom: (@rem * 56);
+    padding-left: (@rem * 54);
+    padding-right: (@rem * 54);
+    .media-xs({
+        padding-left: (@rem * 32);
+        padding-right: (@rem * 32);
+        
+    });
 }
 
 .errorChangePassword-content,

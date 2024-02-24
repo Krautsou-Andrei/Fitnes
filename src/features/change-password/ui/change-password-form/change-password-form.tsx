@@ -1,6 +1,6 @@
 import { useChangePasswordForm } from './lib/use-change-password-form';
 
-import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs';
+import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs/@ex/change-password';
 
 import { AppForm } from '@shared/ui';
 import { LayoutConfig } from '@shared/config';

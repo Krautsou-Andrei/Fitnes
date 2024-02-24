@@ -1,25 +1,20 @@
 import clsn from 'classnames';
 import { Button } from 'antd';
 
+import { useAppButtonLogout } from './lib/use-app-button-logout';
+
 import { AppIcon } from '@shared/ui';
 import { LayoutConfig } from '@shared/config';
 
 import styles from './app-button-logout.module.less';
-import { useAppDispatch } from '@shared/hooks';
-import { logoutThunk } from '@features/logout/model/logout';
 
-type Props = {
+type AppButtonLogoutProps = {
     isCollapsed: boolean;
     isQueryMD: boolean;
 };
 
-export function AppButtonLogout({ isCollapsed, isQueryMD }: Props) {
-    const dispatch = useAppDispatch();
-    const onClick = () => {
-        dispatch(logoutThunk())
-            .unwrap()
-            .catch((error: Error) => console.log('logout', error));
-    };
+export function AppButtonLogout({ isCollapsed, isQueryMD }: AppButtonLogoutProps) {
+    const { onClick } = useAppButtonLogout();
 
     return (
         <Button

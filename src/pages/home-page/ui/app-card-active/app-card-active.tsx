@@ -5,11 +5,11 @@ import { AppCard } from '@shared/ui';
 
 import styles from './app-card-active.module.less';
 
-interface Props extends CardProps {
+interface AppCardActiveProps extends CardProps {
     card: CardActive;
 }
 
-export function AppCardActive({ card }: Props) {
+export function AppCardActive({ card }: AppCardActiveProps) {
     return (
         <AppCard className={styles['app-card']} title={card.title}>
             <Button type='link' href={card.button.href}>

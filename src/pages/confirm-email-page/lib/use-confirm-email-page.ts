@@ -5,11 +5,11 @@ import { useAppMediaQuery } from '@shared/hooks';
 import { splitString, wrapSelectedText } from '@shared/lib';
 import { TypePage } from '@shared/types/app';
 
-type Props = {
+type UseConfirmEmailPageProps = {
     classNames?: string[];
 };
 
-export function useConfirmEmailPage({ classNames }: Props) {
+export function useConfirmEmailPage({ classNames }: UseConfirmEmailPageProps) {
     const { isQueryXS } = useAppMediaQuery();
 
     const sessionStorageEmail = sessionStorage.getItem(SessionStorageConfig.EMAIL);

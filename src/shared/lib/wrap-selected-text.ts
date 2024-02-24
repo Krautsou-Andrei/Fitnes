@@ -1,12 +1,12 @@
 import React from 'react';
 
-type Props = {
+type WrapSelectedTextProps = {
     text: string;
     searchString: string;
     className?: string;
 };
 
-export function wrapSelectedText({ text, searchString, className }: Props): React.ReactNode {
+export function wrapSelectedText({ text, searchString, className }: WrapSelectedTextProps): React.ReactNode {
     const regex = new RegExp(searchString, 'gi');
     const parts: React.ReactNode[] = [];
     let lastIndex = 0;

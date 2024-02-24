@@ -30,12 +30,14 @@ export function useRegisterForm() {
 
     const dispatch = useAppDispatch();
 
-    const onFinish = ({ email, password }: RequestRegisterBody) => {
-        dispatch(registerThunk({ email, password }))
-            .unwrap()
-            .catch((error: Error) => {
+    const onFinish = async ({ email, password }: RequestRegisterBody) => {
+        try {
+            await dispatch(registerThunk({ email, password })).unwrap();
+        } catch {
+            (error: Error) => {
                 console.log('register', { type: 'server', message: error.message });
-            });
+            };
+        }
     };
 
     return { isDisabledSubmit, form, onFinish, validateForm };

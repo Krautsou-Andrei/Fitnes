@@ -2,10 +2,11 @@ import { HistoryRouter } from 'redux-first-history/rr6';
 import { QueryLoader } from './ui/query-loader';
 import { history } from '../store/appStore';
 
-export const withHistory = (component: () => React.ReactNode) => () =>
-    (
+export function withHistory(component: () => React.ReactNode) {
+    return () => (
         <HistoryRouter history={history}>
             {component()}
             <QueryLoader />
         </HistoryRouter>
     );
+}

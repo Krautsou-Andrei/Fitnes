@@ -37,7 +37,7 @@ export const resultConfig: ResultConfig = {
     errorCheckEmailNoExist: {
         buttonBlock: false,
         buttonTitle: 'Попробовать снова',
-        description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail',
+        description: 'Мы не нашли в базе вашего e\u2011mail. Попробуйте войти с другим e\u2011mail.',
         icon: React.createElement(CloseCircleFilled),
         title: 'Такой e-mail не зарегистрирован',
         testId: 'check-retry-button',
@@ -54,7 +54,7 @@ export const resultConfig: ResultConfig = {
         buttonBlock: true,
         buttonTitle: 'Назад к регистрации',
         description:
-            'Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail',
+            'Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e\u2011mail',
         icon: React.createElement(CloseCircleFilled),
         title: 'Данные не сохранились',
         testId: 'registration-back-button',
@@ -63,7 +63,7 @@ export const resultConfig: ResultConfig = {
         buttonBlock: true,
         buttonTitle: 'Войти',
         description:
-            'Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль',
+            'Регистрация прошла успешно. Зайдите в приложение, используя свои e\u2011mail и пароль',
         icon: React.createElement(CheckCircleFilled),
         title: 'Регистрация успешна',
         testId: 'registration-enter-button',

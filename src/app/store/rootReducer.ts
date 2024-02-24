@@ -1,5 +1,4 @@
 import { combineReducers } from '@reduxjs/toolkit';
-
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 

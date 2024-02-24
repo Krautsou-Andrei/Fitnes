@@ -5,12 +5,12 @@ import { MenuConfig } from './config/menu-config';
 
 import styles from './app-menu.module.less';
 
-type Props = {
+type AppMenuProps = {
     isCollapsed: boolean;
     isQueryMD?: boolean;
 };
 
-export function AppMenu({ isCollapsed, isQueryMD }: Props) {
+export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
     return (
         <Menu
             className={clsn(styles['app-menu'])}

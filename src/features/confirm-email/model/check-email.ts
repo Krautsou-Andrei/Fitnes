@@ -22,18 +22,17 @@ export const checkEmailThunk = createAsyncThunk<void, CheckEmailParams, { state:
     async (body: CheckEmailParams, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));
         try {
-            await dispatch(sessionApi.endpoints.checkEmail.initiate(body))
-                .unwrap()
-                .then(() => {
-                    dispatch(
-                        push(PathConfig.AUTH_CONFIRM_EMAIL, {
-                            forgot: HistoryStateConfig.CONFIRM_PAGE_STEP_ONE,
-                        }),
-                    );
-                });
+            await dispatch(sessionApi.endpoints.checkEmail.initiate(body)).unwrap();
+
+            dispatch(
+                push(PathConfig.AUTH_CONFIRM_EMAIL, {
+                    forgot: HistoryStateConfig.CONFIRM_PAGE_STEP_ONE,
+                }),
+            );
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 sessionStorage.setItem(SessionStorageConfig.EMAIL, body.email);
+                
                 dispatch(resultErrorFetch(error));
                 return;
             }

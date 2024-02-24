@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Form } from 'antd';
 
 import { loginThunk } from '@features/authentification/model/login';
-import { checkEmailThunk } from '@features/confirm-email/model/check-email';
+import { checkEmailThunk } from '@features/confirm-email/@ex/authetification';
 
 import type { RequestLoginBody } from '@entities/session';
 
@@ -41,12 +41,14 @@ export function useLoginForm() {
         }
     };
 
-    const onFinish = ({ email, password, isRemember }: RequestLoginBody) => {
-        dispatch(loginThunk({ email, password, isRemember }))
-            .unwrap()
-            .catch((error: Error) => {
+    const onFinish = async ({ email, password, isRemember }: RequestLoginBody) => {
+        try {
+            await dispatch(loginThunk({ email, password, isRemember })).unwrap();
+        } catch {
+            (error: Error) => {
                 console.log('Login', { type: 'server', message: error.message });
-            });
+            };
+        }
     };
 
     return { checkEmail, form, isValidateEmail, onClickForgot, onFinish };
