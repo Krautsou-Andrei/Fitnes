@@ -1,0 +1,34 @@
+@import '@shared/styles/constants';
+
+.result-card {
+    .result-card-content {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            margin-bottom: (@rem * 28);
+        }
+
+        .description {
+            margin-bottom: (@rem * 24);
+            text-align: center;
+            line-height: 130%;
+
+            h3:global(.ant-typography) {
+                font-weight: 500;
+            }
+
+            span:global(.ant-typography) {
+                color: @app-text-color-secondary;
+            }
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: 0;
+            line-height: 130%;
+        }
+    }
+}

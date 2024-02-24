@@ -2,17 +2,17 @@ import { Button } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 import { type ButtonType } from 'antd/lib/button';
 
-import { useButtonQuery } from '../lib/use-button-query';
+import { useButtonMediaQuery } from '../lib/use-button-media-query';
 
 import { LayoutConfig } from '@shared/config';
 
 export function AppSettingsButton() {
-    const { isTablet, isMobile, buttonType } = useButtonQuery();
+    const { isTablet, isQueryMD, buttonType } = useButtonMediaQuery();
 
     return (
-        <Button type={buttonType as ButtonType} shape={isMobile ? 'circle' : 'default'}>
-            {((isTablet && isMobile) || !isTablet) && <SettingOutlined />}
-            {!isMobile && LayoutConfig.BUTTON_SETTINGS}
+        <Button type={buttonType as ButtonType} shape={isQueryMD ? 'circle' : 'default'}>
+            {((isTablet && isQueryMD) || !isTablet) && <SettingOutlined />}
+            {!isQueryMD && LayoutConfig.BUTTON_SETTINGS}
         </Button>
     );
 }

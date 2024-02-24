@@ -1,5 +1,5 @@
-import { LayoutConfig } from "@shared/config";
-import { Button } from "antd";
+import { Button } from 'antd';
+import { LayoutConfig } from '@shared/config';
 
 export function Extra() {
     return (

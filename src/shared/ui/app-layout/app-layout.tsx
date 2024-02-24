@@ -1,18 +1,20 @@
 import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
+import clsn from 'classnames';
 import { Layout } from 'antd';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import styles from './app-layout.module.less';
 
-type Props = {
+type AppLayoutProps = {
+    className?: string;
     siderSlot?: ReactNode;
-    headerSlot: ReactNode;
+    headerSlot?: ReactNode;
     footerSlot?: ReactNode;
 };
 
-export function AppLayout({ siderSlot, headerSlot, footerSlot }: Props) {
+export function AppLayout({ className, siderSlot, headerSlot, footerSlot }: AppLayoutProps) {
     return (
-        <Layout className={styles['main-page']}>
+        <Layout className={clsn(styles['main-page'], className)}>
             {siderSlot}
             <Layout>
                 {headerSlot}
@@ -21,7 +23,6 @@ export function AppLayout({ siderSlot, headerSlot, footerSlot }: Props) {
                 </div>
                 {footerSlot}
             </Layout>
-            <ScrollRestoration />
         </Layout>
     );
 }

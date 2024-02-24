@@ -1,0 +1,36 @@
+import { useRegisterForm } from './lib/useRegisterForm';
+import {
+    AppInputConfirmPassword,
+    AppInputLogin,
+    AppInputPassword,
+} from '@features/inputs/@ex/register';
+
+import { AppForm } from '@shared/ui';
+
+export function RegisterForm() {
+    const { isDisabledSubmit, form, onFinish, validateForm } = useRegisterForm();
+
+    return (
+        <AppForm
+            form={form}
+            type='register'
+            onFinish={onFinish}
+            onChange={validateForm}
+            name='register'
+            isDisabledSubmit={isDisabledSubmit}
+        >
+            <AppInputLogin dataTestId='registration-email' />
+            <AppInputPassword
+                type='register'
+                classNames={'input-password'}
+                autoComplete='new-password'
+                dataTestId='registration-password'
+            />
+
+            <AppInputConfirmPassword
+                className={'input-password'}
+                dataTestId='registration-confirm-password'
+            />
+        </AppForm>
+    );
+}

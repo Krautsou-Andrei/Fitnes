@@ -1,12 +1,10 @@
-import React from 'react';
-
 import { AppSider } from '@widgets/app-sider';
 import { AppHeader } from '@widgets/app-header';
 import { AppFooter } from '@widgets/app-footer';
 
 import { AppLayout } from '@shared/ui';
 
-const BaseLayout: React.FC = () => {
+export function BaseLayout() {
     return (
         <AppLayout 
             siderSlot={<AppSider />} 
@@ -14,6 +12,4 @@ const BaseLayout: React.FC = () => {
             footerSlot={<AppFooter />} 
         />
     );
-};
-
-export default BaseLayout;
+}

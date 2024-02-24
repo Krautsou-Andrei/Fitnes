@@ -1,5 +1,5 @@
-@import '../../../shared/styles/constants';
-@import '../../../shared/styles/mixin';
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-layout-header).app-header {
     padding: (@rem * 16) (@rem * 24);
@@ -14,11 +14,11 @@
         padding: (@rem * 6) 0;
         line-height: 130%;
 
-        @media screen and (max-width: @tableWidth) {
+        .media-tabtet({
             font-size: (@rem * 24);
             font-weight: 500;
-        }
-
+        });
+        
         .media-md({
             font-size: (@rem * 20);
         });
@@ -34,5 +34,6 @@
 
     .content {
         display: flex;
+        justify-content: space-between;
     }
 }

@@ -1,13 +1,14 @@
-import React from 'react';
 import { Content } from 'antd/lib/layout/layout';
-import { Button, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 
-import { cardsActionsConfig, cardsInfoConfig } from '@shared/config';
-import { AppCardActive, AppCardText } from '@shared/ui';
+import { cardsActionsConfig, cardsInfoConfig } from '../config/cards-config';
+
+import { AppCardActive } from './app-card-active';
+import { AppCardText } from './app-card-text';
 
 import styles from './home-page.module.less';
 
-export const HomePage: React.FC = () => {
+export function HomePage() {
     return (
         <Content className={styles['content']}>
             <Row className={styles['content-cards']} gutter={[0, 16]}>
@@ -27,12 +28,7 @@ export const HomePage: React.FC = () => {
                         {cardsActionsConfig.map((card) => {
                             return (
                                 <Col key={card.id} span={24} md={8}>
-                                    <AppCardActive title={card.title}>
-                                        <Button type='link' href={card.button.href}>
-                                            {card.button.icon}
-                                            {card.button.title}
-                                        </Button>
-                                    </AppCardActive>
+                                    <AppCardActive card={card} />
                                 </Col>
                             );
                         })}
@@ -41,4 +37,4 @@ export const HomePage: React.FC = () => {
             </Row>
         </Content>
     );
-};
+}

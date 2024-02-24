@@ -1,0 +1,48 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.confirm-form {
+    .container {
+        margin-bottom: (@rem * 22);
+        height: (@rem * 40);
+        gap: (@rem * 12);
+
+        .media-xs({
+            gap: (@rem * 8); 
+            width: (@rem *280);
+            margin-left: auto;
+            margin-right: auto
+            
+        });
+    }
+
+    .character {
+        border-color: @app-border-color-primary;
+        border-radius: (@rem * 2);
+
+        font-size: (@rem * 14);
+        line-height: (@rem * 40);
+
+        color: @app-text-color-primary;
+    }
+
+    .character--error {
+        border-color: @app-error-color;
+    }
+
+    .character--inactive {
+        background-color: transparent;
+    }
+
+    :global(.ant-typography) {
+        color: @app-text-color-secondary;
+
+        .media-xs({
+            position: relative;
+            display: block;          
+            margin: 0 auto;
+
+            text-align: center;              
+        });
+    }
+}
