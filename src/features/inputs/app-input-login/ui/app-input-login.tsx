@@ -19,8 +19,7 @@ export function AppInputLogin({ dataTestId }: Props) {
         >
             <Input
                 type='email'
-                addonBefore={LayoutConfig.INPUT_TEXT_EMAIL}
-                size='large'
+                addonBefore={LayoutConfig.INPUT_TEXT_EMAIL}              
                 autoComplete='username'
                 style={{
                     boxShadow: 'none',

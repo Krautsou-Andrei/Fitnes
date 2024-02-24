@@ -2,6 +2,7 @@ import { AppBackgroundBlur } from './app-background-blur/app-backgound-blur';
 import { AppCard } from './app-card/app-card';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
 import { AppGuestContent } from './app-guest-content/app-guest-content';
+import { AppGuestContentPadding } from './app-guest-content-padding/app-guest-content-padding';
 import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
@@ -17,6 +18,7 @@ export {
     AppCard,
     AppErrorFallback,
     AppGuestContent,
+    AppGuestContentPadding,
     AppIcon,
     AppForm,
     AppMenu,

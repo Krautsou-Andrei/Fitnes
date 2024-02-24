@@ -1,5 +1,11 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
+.result-page {
+    .button {
+        font-size: (@rem * 14);
+    }
+}
 .error,
 .errorChangePassword,
 .errorCheckEmail,
@@ -8,7 +14,7 @@
 .success,
 .successChangePassword,
 .errorLogin {
-    font-size: (@rem * 80);
+    font-size: (@rem * 70);
     line-height: 1;
 }
 
@@ -20,6 +26,10 @@
     color: @app-result-error-danger;
 }
 
+.errorCheckEmail {
+    margin-bottom: (@rem * 14) !important;
+}
+
 .success,
 .successChangePassword {
     color: @app-result-success;
@@ -29,7 +39,6 @@
     color: @app-result-error-warning;
 }
 
-
 .errorCheckEmail-content,
 .errorCheckEmailNoExist-content {
     padding-left: (@rem * 32);
@@ -38,6 +47,40 @@
 }
 
 .errorChangePassword-content,
+.errorUserExist-content,
+.success-content,
+.successChangePassword-content,
+.errorLogin-content {
+    padding-top: (@rem * 70);
+}
+
+.errorCheckEmail-content {
+    .media-xs({       
+        padding-top: (@rem * 64);
+    });
+}
+
+.error-content,
+.errorCheckEmailNoExist-content {
+    padding-top: (@rem * 68);
+}
+
+.error-content,
+.errorUserExist-content,
+.errorLogin-content,
+.success-content,
+.successChangePassword-content,
+.errorChangePassword-content {
+    .media-xs({       
+        padding-top: (@rem * 36);
+    });
+}
+
+.errorChangePassword-content,
 .successChangePassword-content {
     padding-bottom: (@rem * 56);
+
+    .media-xs({       
+        padding-bottom: (@rem * 32);
+    });
 }

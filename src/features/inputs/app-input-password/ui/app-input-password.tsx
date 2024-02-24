@@ -11,11 +11,12 @@ import styles from './app-input-password.module.less';
 type Props = {
     autoComplete: string;
     classNames?: string;
-    type: InputPasswordType;
     dataTestId: string;
+    title?: string;
+    type: InputPasswordType;
 };
 
-export function AppInputPassword({ autoComplete, classNames, type, dataTestId }: Props) {
+export function AppInputPassword({ autoComplete, classNames, title, type, dataTestId }: Props) {
     const rules = validatePasswordRules(type);
 
     return (
@@ -26,8 +27,7 @@ export function AppInputPassword({ autoComplete, classNames, type, dataTestId }:
             rules={rules}
         >
             <Input.Password
-                placeholder={LayoutConfig.INPUT_TEXT_PASSWODR}
-                size='large'
+                placeholder={title ? title : LayoutConfig.INPUT_TEXT_PASSWORD}
                 autoComplete={autoComplete}
                 data-test-id={dataTestId}
             />

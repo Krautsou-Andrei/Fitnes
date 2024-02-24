@@ -9,13 +9,17 @@
         justify-content: center;
 
         .icon {
-            margin-bottom: (@rem * 24);
+            margin-bottom: (@rem * 28);
         }
 
         .description {
             margin-bottom: (@rem * 24);
             text-align: center;
             line-height: 130%;
+
+            h3:global(.ant-typography) {
+                font-weight: 500;
+            }
 
             span:global(.ant-typography) {
                 color: @app-text-color-secondary;

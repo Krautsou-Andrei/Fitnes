@@ -27,7 +27,7 @@ export function ConfirmForm() {
                 placeholder=''
                 onComplete={onComplete}
                 onChange={onChange}
-                data-test-id='verification-input'
+                inputProps={{ 'data-test-id': 'verification-input' }}
             />
             <Text>{confirmConfig[TypePage.CONFIRM_EMAIL].placeholder}</Text>
         </div>

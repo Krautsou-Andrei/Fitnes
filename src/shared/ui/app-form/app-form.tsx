@@ -36,11 +36,11 @@ export function AppForm({
             {slotRemember}
             <div className={styles['buttons-wrapper']}>
                 <Form.Item className={styles.button}>
-                    <AppButtonSubmit typeButton={type} disabled={isDisabledSubmit} />
+                    <AppButtonSubmit typeButton={type} disabled={isDisabledSubmit} className={styles['button-submit']} />
                 </Form.Item>
                 {type !== 'confirm' && (
                     <Form.Item className={styles.button}>
-                        <AppButtonGoogle typeButton={type} />
+                        <AppButtonGoogle typeButton={type} className={styles['button-google']} />
                     </Form.Item>
                 )}
             </div>

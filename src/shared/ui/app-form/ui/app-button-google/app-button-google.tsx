@@ -1,22 +1,21 @@
-import { Button } from 'antd';
+import { Button, ButtonProps } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
-import { TypeAppForm } from '../../model/types';
 
-import { LayoutConfig } from '@shared/config';
+import { buttonText } from './lib/button-text';
+import type { TypeAppForm } from '../../model/types';
 
-export function AppButtonGoogle({ typeButton }: { typeButton: TypeAppForm }) {
-    let buttonText = '';
+import { useAppMediaQuery } from '@shared/hooks';
 
-    if (typeButton === 'register') {
-        buttonText = LayoutConfig.BUTTON_REGISTER_GOOGLE;
-    } else if (typeButton === 'authentification') {
-        buttonText = LayoutConfig.BUTTON_AUTHENTIFICATION_COOGLE;
-    }
+interface AppButtonGoogleInterface extends ButtonProps {
+    typeButton: TypeAppForm;
+}
 
+export function AppButtonGoogle({ typeButton, ...res }: AppButtonGoogleInterface) {
+    const { isQueryXS } = useAppMediaQuery();
     return (
-        <Button block htmlType='submit' size='large'>
-            <GooglePlusOutlined />
-            {buttonText}
+        <Button block htmlType='submit' size='large' {...res}>
+            {!isQueryXS && <GooglePlusOutlined />}
+            {buttonText(typeButton)}
         </Button>
     );
 }

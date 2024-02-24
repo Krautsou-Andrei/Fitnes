@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .content {
     &-logo {
@@ -6,5 +7,9 @@
         margin-bottom: (@rem * 40);
         left: 50%;
         transform: translateX(-50%);
+
+        .media-xs ({
+            margin-bottom: (@rem * 28);
+        });
     }
 }

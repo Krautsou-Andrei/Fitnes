@@ -3,7 +3,6 @@ import clsn from 'classnames';
 import { Typography } from 'antd';
 
 import { AppGuestContent, AppGuestContentPadding } from '@shared/ui';
-import { splitString } from '@shared/lib';
 
 import styles from './app-result-card.module.less';
 
@@ -14,8 +13,8 @@ type Props = {
     children: ReactNode;
     className?: string;
     classNameIcon?: string;
-    description: string;
-    title: string;
+    description: string | ReactNode;
+    title: string | ReactNode;
 };
 
 export function AppResultCard({
@@ -26,13 +25,12 @@ export function AppResultCard({
     description,
     title,
 }: Props) {
-    const cardTitle = splitString(title);
     return (
         <AppGuestContent className={styles['result-card']}>
             <AppGuestContentPadding className={clsn(styles['result-card-content'], className)}>
                 <div className={clsn(styles.icon, classNameIcon)}>{icon}</div>
                 <div className={styles.description}>
-                    <Title level={3}>{cardTitle}</Title>
+                    <Title level={3}>{title}</Title>
                     <Text> {description}</Text>
                 </div>
                 {children}

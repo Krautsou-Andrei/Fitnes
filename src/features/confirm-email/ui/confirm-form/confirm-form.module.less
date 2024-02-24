@@ -1,10 +1,19 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .confirm-form {
     .container {
-        margin-bottom: (@rem * 24);
+        margin-bottom: (@rem * 22);
         height: (@rem * 40);
         gap: (@rem * 12);
+
+        .media-xs({
+            gap: (@rem * 8); 
+            width: (@rem *280);
+            margin-left: auto;
+            margin-right: auto
+            
+        });
     }
 
     .character {
@@ -27,5 +36,13 @@
 
     :global(.ant-typography) {
         color: @app-text-color-secondary;
+
+        .media-xs({
+            position: relative;
+            display: block;          
+            margin: 0 auto;
+
+            text-align: center;              
+        });
     }
 }

@@ -1,8 +1,13 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-form) {
     :global(.ant-form-item).remember {
-        margin-bottom: (@rem * 18);
+        margin-bottom: (@rem * 20);
+
+        .media-xs ({
+            margin-bottom: (@rem * 14);
+        });
     }
 }
 
@@ -12,4 +17,14 @@
     height: unset;
     line-height: 130%;
     color: @app-primary-color;
+
+    .media-xs ({
+        padding-right:  (@rem * 7);
+    });;
+}
+
+:global(.ant-btn-lg).login-form-forgot {
+    .media-xs ({
+        font-size: (@rem * 14);
+    });;
 }

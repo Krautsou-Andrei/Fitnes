@@ -19,8 +19,7 @@ export function AppInputConfirmPassword({ className, dataTestId }: Props) {
         >
             <Input.Password
                 type='password'
-                placeholder={LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM}
-                size='large'
+                placeholder={LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM}                
                 autoComplete='new-password'
                 data-test-id={dataTestId}
             />

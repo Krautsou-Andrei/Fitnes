@@ -18,7 +18,7 @@ export function ResultPage({ type }: ResultPageType) {
 
     return (
         <AppBackgroundBlur>
-            <AppGuestContent>
+            <AppGuestContent className={styles['result-page']}>
                 <AppResultCard
                     title={resultConfig[type].title}
                     icon={resultConfig[type].icon}
@@ -28,6 +28,7 @@ export function ResultPage({ type }: ResultPageType) {
                 >
                     <Button
                         type='primary'
+                        className={styles.button}
                         onClick={onClick}
                         block={resultConfig[type].buttonBlock}
                         size='large'

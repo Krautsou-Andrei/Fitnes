@@ -1,8 +1,9 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-tabs-top).tabs {
     :global(.ant-tabs-nav) {
-        margin-bottom: (@rem * 24);
+        margin-bottom: (@rem * 14);
     }
 }
 
@@ -22,5 +23,9 @@
 
         font-size: (@rem * 16);
         line-height: 130%;
+
+        .media-xs({
+            font-size: (@rem * 14);           
+        });
     }
 }

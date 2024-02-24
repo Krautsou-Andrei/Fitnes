@@ -71,9 +71,9 @@ export const resultConfig: ResultConfig = {
     successChangePassword: {
         buttonBlock: true,
         buttonTitle: 'Войти',
-        description: 'ТТеперь можно войти в аккаунт, используя свой логин и новый пароль',
+        description: 'Теперь можно войти в аккаунт, используя свой логин и новый пароль',
         icon: React.createElement(CheckCircleFilled),
-        title: 'Пароль успешно изменен',
+        title: 'Пароль успешно изменен', 
         testId: 'change-entry-button',
     },
 };

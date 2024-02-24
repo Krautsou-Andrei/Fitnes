@@ -1,0 +1,14 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.register {
+    :global(.ant-tabs-top) {
+        :global(.ant-tabs-nav) {
+            margin-bottom: (@rem * 22);
+
+            .media-xs({
+                margin-bottom: (@rem * 12);
+            })
+        }
+    }
+}

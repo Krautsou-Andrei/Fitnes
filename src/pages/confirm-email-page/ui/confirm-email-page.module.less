@@ -1,12 +1,29 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .confirm-content {
-    padding-bottom: (@rem * 56);
+    padding: (@rem * 68) (@rem * 40) (@rem * 54);
+
+    :global(h3.ant-typography) {
+        font-weight: 500;
+    }
+
+    .media-xs({
+        padding: (@rem *32) (@rem *16)
+    });
+
+    .select-text {
+        font-weight: 700;
+    }
+
+    .select-text-block {
+        display: block;
+    }
 }
 
 .confirmEmail {
     font-size: (@rem * 70);
     line-height: 1;
-    margin-bottom: 24px;
+    margin-bottom: (@rem * 28) !important;
     color: @app-primary-color;
 }
