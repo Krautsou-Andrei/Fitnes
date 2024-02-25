@@ -26,8 +26,8 @@ export const changePasswordThunk = createAsyncThunk<
         try {
             await dispatch(sessionApi.endpoints.changePassword.initiate(body)).unwrap();
 
-            sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
-            sessionStorage.setItem(SessionStorageConfig.CONFIRM_PASSWORD, '');
+            sessionStorage.removeItem(SessionStorageConfig.PASSWORD);
+            sessionStorage.removeItem(SessionStorageConfig.CONFIRM_PASSWORD);
 
             dispatch(
                 push(PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD, {

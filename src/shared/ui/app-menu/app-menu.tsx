@@ -1,7 +1,7 @@
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
-import { MenuConfig } from './config/menu-config';
+import { menuConfig } from './config/menu-config';
 
 import styles from './app-menu.module.less';
 
@@ -16,7 +16,7 @@ export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
             className={clsn(styles['app-menu'])}
             theme='light'
             mode='inline'
-            items={MenuConfig.map((item) => ({
+            items={menuConfig.map((item) => ({
                 key: String(item.id),
                 icon: isQueryMD ? null : item.icon,
                 label: `${item.title}`,
