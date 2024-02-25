@@ -1,9 +1,9 @@
 import React from 'react';
 import { CalendarOutlined, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
 
-import { MenuItem } from '@shared/ui/app-menu/@ex/config';
+import { MenuItem } from '../model/types';
 
-export const MenuConfig: MenuItem[] = [
+export const menuConfig: MenuItem[] = [
     {
         id: 1,
         icon: React.createElement(CalendarOutlined),

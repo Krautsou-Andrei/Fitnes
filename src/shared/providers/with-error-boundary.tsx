@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { AppErrorFallback } from '@shared/ui';
+import { AppErrorFallback } from '@shared/ui/app-error-fallback/@ex/with-error-boundary';
 
 type WithErrorBoundaryProps = {
     children: React.ReactNode;
