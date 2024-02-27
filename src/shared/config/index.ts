@@ -1,4 +1,5 @@
 import { ConstantsMediaQuery } from './constants';
+import { DataTestIdConfig } from './data-test-id-config';
 import { ErrorValidateConfig } from './error-validate-config';
 import { EventApiConfig } from './event-api-config';
 import { HistoryStateConfig } from './history-state-config';
@@ -10,6 +11,7 @@ import { SessionStorageConfig } from './session-storage-config';
 
 export {
     ConstantsMediaQuery,
+    DataTestIdConfig,
     ErrorValidateConfig,
     EventApiConfig,
     HistoryStateConfig,
