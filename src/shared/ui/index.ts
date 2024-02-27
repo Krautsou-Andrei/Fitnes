@@ -8,6 +8,7 @@ import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
 import { AppLayout } from './app-layout/app-layout';
 import { AppLoader } from './app-loader/app-loader';
+import { AppPortal } from './app-portal/app-portal';
 import { AppTabs } from './app-tabs/app-tabs';
 
 export type * from './app-icon/types';
@@ -24,5 +25,6 @@ export {
     AppMenu,
     AppLayout,
     AppLoader,
+    AppPortal,
     AppTabs,
 };
