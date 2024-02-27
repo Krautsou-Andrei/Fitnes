@@ -3,7 +3,7 @@ import { useChangePasswordForm } from './lib/use-change-password-form';
 import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs/@ex/change-password';
 
 import { AppForm } from '@shared/ui';
-import { LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 
 export function ChangePasswordForm() {
     const { email, onFinish, form } = useChangePasswordForm();
@@ -16,11 +16,11 @@ export function ChangePasswordForm() {
                 autoComplete='new password'
                 title={LayoutConfig.INPUT_TEXT_PASSWORD_CHANGE}
                 type={'register'}
-                dataTestId='change-password'
+                dataTestId={DataTestIdConfig.CHANGE_PASSWORD}
             />
             <AppInputConfirmPassword
                 className='input-password'
-                dataTestId='change-confirm-password'
+                dataTestId={DataTestIdConfig.CHANGE_CONFIRM_PASSWORD}
             />
         </AppForm>
     );
