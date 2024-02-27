@@ -15,6 +15,7 @@ import {
 
 import type { CheckEmailParams } from './types';
 import type { RootState } from '@shared/types/store';
+import { setSessionStorage } from '@shared/lib';
 
 export const checkEmailThunk = createAsyncThunk<void, CheckEmailParams, { state: RootState }>(
     EventApiConfig.CHECK_EMAIL,
@@ -31,8 +32,8 @@ export const checkEmailThunk = createAsyncThunk<void, CheckEmailParams, { state:
             );
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                sessionStorage.setItem(SessionStorageConfig.EMAIL, body.email);
-                
+                setSessionStorage(SessionStorageConfig.EMAIL, body.email);
+
                 dispatch(resultErrorFetch(error));
                 return;
             }

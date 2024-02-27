@@ -7,7 +7,7 @@ import { registerThunk } from '@features/register/@ex/result';
 import { useAppDispatch } from '@shared/hooks';
 import { HistoryStateConfig, PathConfig, SessionStorageConfig } from '@shared/config';
 import { ResultPageType } from '@shared/types/app';
-import { decryptPassword } from '@shared/lib';
+import { decryptPassword, getSessionStorage } from '@shared/lib';
 
 export function useResultButtonClick({ type }: ResultPageType) {
     const dispatch = useAppDispatch();
@@ -15,8 +15,8 @@ export function useResultButtonClick({ type }: ResultPageType) {
     switch (type) {
         case 'error':
             return async () => {
-                const email = sessionStorage.getItem(SessionStorageConfig.EMAIL);
-                const hashPassword = sessionStorage.getItem(SessionStorageConfig.PASSWORD);
+                const email = getSessionStorage(SessionStorageConfig.EMAIL);
+                const hashPassword = getSessionStorage(SessionStorageConfig.PASSWORD);
 
                 dispatch(push(PathConfig.REGISTRATION));
 
@@ -40,8 +40,8 @@ export function useResultButtonClick({ type }: ResultPageType) {
             };
         case 'errorChangePassword':
             return async () => {
-                const hashPassword = sessionStorage.getItem(SessionStorageConfig.PASSWORD);
-                const hashPasswordConfirmf = sessionStorage.getItem(
+                const hashPassword = getSessionStorage(SessionStorageConfig.PASSWORD);
+                const hashPasswordConfirmf = getSessionStorage(
                     SessionStorageConfig.CONFIRM_PASSWORD,
                 );
                 dispatch(
@@ -73,7 +73,7 @@ export function useResultButtonClick({ type }: ResultPageType) {
             };
         case 'errorCheckEmail':
             return async () => {
-                const email = sessionStorage.getItem(SessionStorageConfig.EMAIL);
+                const email = getSessionStorage(SessionStorageConfig.EMAIL);
 
                 dispatch(push(PathConfig.AUTH));
 
