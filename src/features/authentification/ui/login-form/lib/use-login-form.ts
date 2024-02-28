@@ -9,6 +9,7 @@ import type { RequestLoginBody } from '@entities/session';
 
 import { useAppDispatch } from '@shared/hooks';
 import { LayoutConfig, SessionStorageConfig } from '@shared/config';
+import { showErrorForDevelop } from '@shared/lib';
 import type { AppDispatch } from '@shared/types/store';
 
 export function useLoginForm() {
@@ -22,9 +23,9 @@ export function useLoginForm() {
             const result = await form.validateFields([LayoutConfig.INPUT_TYPE_EMAIL]);
             setIsValidateEmail(false);
             return result;
-        } catch (error) {
+        } catch (error: unknown) {
             setIsValidateEmail(true);
-            console.log('Valitade e-mail', error);
+            showErrorForDevelop('Valitade e-mail', error);
         }
     };
 
@@ -36,8 +37,8 @@ export function useLoginForm() {
                 sessionStorage.setItem(SessionStorageConfig.EMAIL, result.email);
                 dispatch(checkEmailThunk(result));
             }
-        } catch (error) {
-            console.log('Check e-mail', error);
+        } catch (error: unknown) {
+            showErrorForDevelop('Check e-mail', error);
         }
     };
 
@@ -45,8 +46,8 @@ export function useLoginForm() {
         try {
             await dispatch(loginThunk({ email, password, isRemember })).unwrap();
         } catch {
-            (error: Error) => {
-                console.log('Login', { type: 'server', message: error.message });
+            (error: unknown) => {
+                showErrorForDevelop('Login', error);
             };
         }
     };

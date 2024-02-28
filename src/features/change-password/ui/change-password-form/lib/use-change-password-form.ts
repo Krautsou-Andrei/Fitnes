@@ -5,6 +5,7 @@ import { changePasswordThunk } from '@features/change-password/@ex/result';
 
 import { SessionStorageConfig } from '@shared/config';
 import { useAppDispatch } from '@shared/hooks';
+import { showErrorForDevelop } from '@shared/lib';
 
 export function useChangePasswordForm() {
     const [form] = Form.useForm();
@@ -16,8 +17,8 @@ export function useChangePasswordForm() {
         try {
             await dispatch(changePasswordThunk({ password, confirmPassword })).unwrap();
         } catch {
-            (error: Error) => {
-                console.log('Change-password', error);
+            (error: unknown) => {
+                showErrorForDevelop('Change-password', error);
             };
         }
     };

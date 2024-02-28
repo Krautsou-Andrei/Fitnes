@@ -1,5 +1,6 @@
 import { logoutThunk } from '@features/logout/model/logout';
 import { useAppDispatch } from '@shared/hooks';
+import { showErrorForDevelop } from '@shared/lib';
 
 export function useAppButtonLogout() {
     const dispatch = useAppDispatch();
@@ -8,7 +9,7 @@ export function useAppButtonLogout() {
         try {
             await dispatch(logoutThunk()).unwrap();
         } catch {
-            (error: Error) => console.log('logout', error);
+            (error: unknown) => showErrorForDevelop('logout', error);
         }
     };
 

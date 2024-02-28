@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 import { selectIsError, sessionActions } from '@entities/session/model/slise';
+
 import { confirmEmailThunk } from '@features/confirm-email/model/confirm-email';
+
 import { SessionStorageConfig } from '@shared/config';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
-import { useState } from 'react';
+import { showErrorForDevelop } from '@shared/lib';
 
 export function useConfirmEmailForm() {
     const dispatch = useAppDispatch();
@@ -20,9 +24,9 @@ export function useConfirmEmailForm() {
 
             dispatch(confirmEmailThunk(requestBody))
                 .unwrap()
-                .catch((error: Error) => {
+                .catch((error: unknown) => {
                     setValueVarification('');
-                    console.log('Confirm-email', error);
+                    showErrorForDevelop('Confirm-email', error);
                 });
         }
     };
