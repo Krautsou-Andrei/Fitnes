@@ -1,16 +1,17 @@
 import React from 'react';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 
-import { ConfirmEmailCard } from '@features/confirm-email';
+import { ConfirmPageConfig } from './confirm-page-config';
+import type { ConfirmEmailCard } from '../model/types';
 
 import type { Email } from '@shared/types/app';
 
-interface ConfirmConfig {
-    [key: string]: ConfirmEmailCard;
-}
+type ConfirmConfig = {
+    [key in ConfirmPageConfig]: ConfirmEmailCard;
+};
 
 export const confirmConfig: ConfirmConfig = {
-    confirmEmail: {
+    [ConfirmPageConfig.CONFIRM_EMAIL]: {
         description: (email: Email) =>
             `Мы отправили вам на e-mail ${email} шестизначный код. Введите его в поле ниже.`,
         icon: React.createElement(ExclamationCircleFilled),

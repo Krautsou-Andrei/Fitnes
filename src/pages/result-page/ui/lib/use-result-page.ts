@@ -1,9 +1,8 @@
-import { useResultButtonClick } from '@features/result';
+import { ResultPageConfig, useResultButtonClick } from '@features/result';
 import { splitString } from '@shared/lib';
-import { ResultPageType } from '@shared/types/app';
 
 type UseResultPageProps = {
-    type: ResultPageType;
+    type: ResultPageConfig;
     description: string;
 };
 

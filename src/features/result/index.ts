@@ -1,5 +1,6 @@
 import { AppResultCard } from './ui/app-result-card/ui/app-result-card';
 import { useResultButtonClick } from './lib/useResultButtonClick';
+import { ResultPageConfig } from './config/result-page-config';
 
 export type * from './ui/app-result-card/model/types';
-export { AppResultCard, useResultButtonClick };
+export { AppResultCard, ResultPageConfig, useResultButtonClick };

@@ -13,7 +13,6 @@ import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
-import { TypePage } from '@shared/types/app';
 
 export function AppRouter() {
     return (
@@ -60,6 +59,7 @@ export function AppRouter() {
                 />
             </Route>
             <Route
+                path={PathConfig.RESULT}
                 element={
                     <WithErrorBoundary>
                         <GuestGuard>
@@ -70,38 +70,7 @@ export function AppRouter() {
                     </WithErrorBoundary>
                 }
             >
-                <Route
-                    path={PathConfig.RESULT_ERROR}
-                    element={<ResultPage type={TypePage.ERROR} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHANGE_PASSWORD}
-                    element={<ResultPage type={TypePage.ERROR_CHANGE_PASSWORD} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL}
-                    element={<ResultPage type={TypePage.ERROR_CHECK_EMAIL} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST}
-                    element={<ResultPage type={TypePage.ERROR_CHECK_EMAIL_NO_EXIST} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_LOGIN}
-                    element={<ResultPage type={TypePage.ERROR_LOGIN} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_USER_EXIST}
-                    element={<ResultPage type={TypePage.ERROR_USER_EXIST} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_SUCCESS}
-                    element={<ResultPage type={TypePage.SUCCESS} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD}
-                    element={<ResultPage type={TypePage.SUCCESS_CHANGE_PASSWORD} />}
-                />
+                <Route index={true} path=':resultType' element={<ResultPage />} />
             </Route>
         </Routes>
     );
