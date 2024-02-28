@@ -6,8 +6,8 @@ import { registerThunk } from '@features/register/@ex/result';
 
 import { useAppDispatch } from '@shared/hooks';
 import { HistoryStateConfig, PathConfig, SessionStorageConfig } from '@shared/config';
-import { ResultPageType } from '@shared/types/app';
-import { decryptPassword, getSessionStorage } from '@shared/lib';
+import { decryptPassword, getSessionStorage, showErrorForDevelop } from '@shared/lib';
+import type { ResultPageType } from '@shared/types/app';
 
 export function useResultButtonClick({ type }: ResultPageType) {
     const dispatch = useAppDispatch();
@@ -28,8 +28,8 @@ export function useResultButtonClick({ type }: ResultPageType) {
                             registerThunk({ email: email, password: password }),
                         ).unwrap();
                     } catch {
-                        (error: Error) => {
-                            console.log('Register', error);
+                        (error: unknown) => {
+                            showErrorForDevelop('Register', error);
                         };
                     }
                 }
@@ -65,8 +65,8 @@ export function useResultButtonClick({ type }: ResultPageType) {
                             }),
                         ).unwrap();
                     } catch {
-                        (error: Error) => {
-                            console.log('Confirm password', error);
+                        (error: unknown) => {
+                            showErrorForDevelop('Confirm password', error);
                         };
                     }
                 }
@@ -81,8 +81,8 @@ export function useResultButtonClick({ type }: ResultPageType) {
                     try {
                         await dispatch(checkEmailThunk({ email: email })).unwrap();
                     } catch {
-                        (error: Error) => {
-                            console.log('CheckEmail', error);
+                        (error: unknown) => {
+                            showErrorForDevelop('CheckEmail', error);
                         };
                     }
                 }

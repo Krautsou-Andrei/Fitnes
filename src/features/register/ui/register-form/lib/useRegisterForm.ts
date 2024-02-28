@@ -7,6 +7,7 @@ import { RequestRegisterBody } from '@entities/session';
 
 import { useAppDispatch } from '@shared/hooks';
 import { LayoutConfig, regExpConfig } from '@shared/config';
+import { showErrorForDevelop } from '@shared/lib';
 
 export function useRegisterForm() {
     const [isDisabledSubmit, setIsDisabledSubmit] = useState<boolean>(false);
@@ -34,8 +35,8 @@ export function useRegisterForm() {
         try {
             await dispatch(registerThunk({ email, password })).unwrap();
         } catch {
-            (error: Error) => {
-                console.log('register', { type: 'server', message: error.message });
+            (error: unknown) => {
+                showErrorForDevelop('register', error);
             };
         }
     };

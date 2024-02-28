@@ -7,9 +7,10 @@ import { removeLocalStorage } from './local-storage/remove-local-storage';
 import { removeSessionStorage } from './session-storage/remove-session-storage';
 import { setLocalStorage } from './local-storage/set-local-storage';
 import { setSessionStorage } from './session-storage/set-session-storage';
+import { showErrorForDevelop } from './show-error-for-develop';
+import { splitString } from './slpit-string';
 import { wait } from './wait';
 import { wrapSelectedText } from './wrap-selected-text';
-import { splitString } from './slpit-string';
 
 export {
     config,
@@ -21,7 +22,8 @@ export {
     removeSessionStorage,
     setLocalStorage,
     setSessionStorage,
+    showErrorForDevelop,
+    splitString,
     wait,
     wrapSelectedText,
-    splitString,
 };
