@@ -10,7 +10,8 @@ import { DataTestIdConfig } from '@shared/config';
 import styles from './login-form.module.less';
 
 export function LoginForm() {
-    const { checkEmail, form, isValidateEmail, onClickForgot, onFinish } = useLoginForm();
+    const { checkEmail, form, isValidateEmail, onClickGoogle, onClickForgot, onFinish } =
+        useLoginForm();
 
     return (
         <AppForm
@@ -21,6 +22,7 @@ export function LoginForm() {
             name='authentification'
             onFinish={onFinish}
             onChange={checkEmail}
+            onClickGoogle={onClickGoogle}
         >
             <AppInputLogin dataTestId='login-email' />
             <AppInputPassword

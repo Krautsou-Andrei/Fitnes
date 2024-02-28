@@ -8,8 +8,8 @@ import { checkEmailThunk } from '@features/confirm-email/@ex/authetification';
 import type { RequestLoginBody } from '@entities/session';
 
 import { useAppDispatch } from '@shared/hooks';
-import { LayoutConfig, SessionStorageConfig } from '@shared/config';
-import { showErrorForDevelop } from '@shared/lib';
+import { LayoutConfig, PathConfig, SessionStorageConfig } from '@shared/config';
+import { config, showErrorForDevelop } from '@shared/lib';
 import type { AppDispatch } from '@shared/types/store';
 
 export function useLoginForm() {
@@ -52,5 +52,9 @@ export function useLoginForm() {
         }
     };
 
-    return { checkEmail, form, isValidateEmail, onClickForgot, onFinish };
+    const onClickGoogle = () => {
+        window.location.href = `${config.API_ENDPOINT}${PathConfig.AUTH_GOOGLE}`;
+    };
+
+    return { checkEmail, form, isValidateEmail, onClickGoogle, onClickForgot, onFinish };
 }

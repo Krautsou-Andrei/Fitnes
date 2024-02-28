@@ -14,6 +14,7 @@ interface AppFormProps extends FormProps {
     isDisabledSubmit?: boolean;
     slotRemember?: ReactNode;
     type: TypeAppForm;
+    onClickGoogle?: () => void;
 }
 
 export function AppForm({
@@ -22,6 +23,7 @@ export function AppForm({
     isDisabledSubmit,
     slotRemember,
     type,
+    onClickGoogle,
     ...rest
 }: AppFormProps) {
     return (
@@ -36,11 +38,19 @@ export function AppForm({
             {slotRemember}
             <div className={styles['buttons-wrapper']}>
                 <Form.Item className={styles.button}>
-                    <AppButtonSubmit typeButton={type} disabled={isDisabledSubmit} className={styles['button-submit']} />
+                    <AppButtonSubmit
+                        typeButton={type}
+                        disabled={isDisabledSubmit}
+                        className={styles['button-submit']}
+                    />
                 </Form.Item>
                 {type !== 'confirm' && (
                     <Form.Item className={styles.button}>
-                        <AppButtonGoogle typeButton={type} className={styles['button-google']} />
+                        <AppButtonGoogle
+                            typeButton={type}
+                            className={styles['button-google']}
+                            onClick={onClickGoogle}
+                        />
                     </Form.Item>
                 )}
             </div>
