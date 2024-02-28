@@ -2,9 +2,8 @@ import { useConfirmEmailPage } from '../lib/use-confirm-email-page';
 
 import { ConfirmForm } from '@features/confirm-email';
 import { AppResultCard } from '@features/result';
-import { confirmConfig } from '@features/confirm-email/config/confirm-config';
+import { confirmConfig, ConfirmPageConfig } from '@features/confirm-email';
 
-import { TypePage } from '@shared/types/app';
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
 
 import styles from './confirm-email-page.module.less';
@@ -20,9 +19,9 @@ export function ConfirmEmailPage() {
                 <AppResultCard
                     title={cardTitle}
                     description={cardDescription}
-                    icon={confirmConfig[TypePage.CONFIRM_EMAIL].icon}
+                    icon={confirmConfig[ConfirmPageConfig.CONFIRM_EMAIL].icon}
                     className={styles['confirm-content']}
-                    classNameIcon={styles[TypePage.CONFIRM_EMAIL]}
+                    classNameIcon={styles[ConfirmPageConfig.CONFIRM_EMAIL]}
                 >
                     <ConfirmForm />
                 </AppResultCard>

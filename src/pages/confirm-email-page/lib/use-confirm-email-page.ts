@@ -1,9 +1,8 @@
-import { confirmConfig } from '@features/confirm-email/config/confirm-config';
+import { confirmConfig, ConfirmPageConfig } from '@features/confirm-email';
 
 import { SessionStorageConfig } from '@shared/config';
 import { useAppMediaQuery } from '@shared/hooks';
 import { getSessionStorage, splitString, wrapSelectedText } from '@shared/lib';
-import { TypePage } from '@shared/types/app';
 
 type UseConfirmEmailPageProps = {
     classNames?: string[];
@@ -14,8 +13,8 @@ export function useConfirmEmailPage({ classNames }: UseConfirmEmailPageProps) {
 
     const email = getSessionStorage(SessionStorageConfig.EMAIL);
 
-    const title = confirmConfig[TypePage.CONFIRM_EMAIL].title;
-    const description = confirmConfig[TypePage.CONFIRM_EMAIL].description(email);
+    const title = confirmConfig[ConfirmPageConfig.CONFIRM_EMAIL].title;
+    const description = confirmConfig[ConfirmPageConfig.CONFIRM_EMAIL].description(email);
 
     let className;
 

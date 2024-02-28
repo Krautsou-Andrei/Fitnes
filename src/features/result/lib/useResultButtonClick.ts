@@ -1,5 +1,7 @@
 import { push } from 'redux-first-history';
 
+import { ResultPageConfig } from '../config/result-page-config';
+
 import { changePasswordThunk } from '@features/change-password/@ex/result';
 import { checkEmailThunk } from '@features/confirm-email/@ex/result';
 import { registerThunk } from '@features/register/@ex/result';
@@ -7,13 +9,12 @@ import { registerThunk } from '@features/register/@ex/result';
 import { useAppDispatch } from '@shared/hooks';
 import { HistoryStateConfig, PathConfig, SessionStorageConfig } from '@shared/config';
 import { decryptPassword, getSessionStorage, showErrorForDevelop } from '@shared/lib';
-import type { ResultPageType } from '@shared/types/app';
 
-export function useResultButtonClick({ type }: ResultPageType) {
+export function useResultButtonClick(type: ResultPageConfig) {
     const dispatch = useAppDispatch();
 
     switch (type) {
-        case 'error':
+        case ResultPageConfig.ERROR:
             return async () => {
                 const email = getSessionStorage(SessionStorageConfig.EMAIL);
                 const hashPassword = getSessionStorage(SessionStorageConfig.PASSWORD);
@@ -34,11 +35,11 @@ export function useResultButtonClick({ type }: ResultPageType) {
                     }
                 }
             };
-        case 'errorUserExist':
+        case ResultPageConfig.ERROR_USER_EXIST:
             return () => {
                 dispatch(push(PathConfig.REGISTRATION));
             };
-        case 'errorChangePassword':
+        case ResultPageConfig.ERROR_CHANGE_PASSWORD:
             return async () => {
                 const hashPassword = getSessionStorage(SessionStorageConfig.PASSWORD);
                 const hashPasswordConfirmf = getSessionStorage(
@@ -71,7 +72,7 @@ export function useResultButtonClick({ type }: ResultPageType) {
                     }
                 }
             };
-        case 'errorCheckEmail':
+        case ResultPageConfig.ERROR_CHECK_EMAIL:
             return async () => {
                 const email = getSessionStorage(SessionStorageConfig.EMAIL);
 
@@ -87,10 +88,10 @@ export function useResultButtonClick({ type }: ResultPageType) {
                     }
                 }
             };
-        case 'errorCheckEmailNoExist':
-        case 'errorLogin':
-        case 'success':
-        case 'successChangePassword':
+        case ResultPageConfig.ERROR_CHECK_EMAIL_NO_EXIST:
+        case ResultPageConfig.ERROR_LOGIN:
+        case ResultPageConfig.SUCCESS:
+        case ResultPageConfig.SUCCESS_CHANGE_PASSWORD:
             return () => {
                 dispatch(push(PathConfig.AUTH));
             };

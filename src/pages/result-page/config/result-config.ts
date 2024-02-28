@@ -1,17 +1,17 @@
 import React from 'react';
 import { CheckCircleFilled, CloseCircleFilled, WarningFilled } from '@ant-design/icons';
 
-import type { ResultCard } from '@features/result';
+import { type ResultCard, ResultPageConfig } from '@features/result';
 
 import { AppIcon } from '@shared/ui';
 import { DataTestIdConfig } from '@shared/config';
 
-interface ResultConfig {
-    [key: string]: ResultCard;
-}
+type ResultConfig = {
+    [type in ResultPageConfig]: ResultCard;
+};
 
 export const resultConfig: ResultConfig = {
-    error: {
+    [ResultPageConfig.ERROR]: {
         buttonBlock: true,
         buttonTitle: 'Повторить',
         description: 'Что-то пошло не так и ваша регистрация не завершилась. Попробуйте еще раз',
@@ -19,7 +19,7 @@ export const resultConfig: ResultConfig = {
         title: 'Данные не сохранились',
         testId: DataTestIdConfig.REGISTRATION_RETRY_BUTTON,
     },
-    errorChangePassword: {
+    [ResultPageConfig.ERROR_CHANGE_PASSWORD]: {
         buttonBlock: true,
         buttonTitle: 'Повторить',
         description: 'Что-то пошло не так. Попробуйте еще раз',
@@ -27,7 +27,7 @@ export const resultConfig: ResultConfig = {
         title: 'Данные не сохранились',
         testId: DataTestIdConfig.CHANGE_RETRY_BUTTON,
     },
-    errorCheckEmail: {
+    [ResultPageConfig.ERROR_CHECK_EMAIL]: {
         buttonBlock: false,
         buttonTitle: 'Назад',
         description: 'Произошла ошибка, попробуйте отправить форму еще раз',
@@ -35,7 +35,7 @@ export const resultConfig: ResultConfig = {
         title: 'Что-то пошло не так',
         testId: DataTestIdConfig.CHECK_BACK_BUTTON,
     },
-    errorCheckEmailNoExist: {
+    [ResultPageConfig.ERROR_CHECK_EMAIL_NO_EXIST]: {
         buttonBlock: false,
         buttonTitle: 'Попробовать снова',
         description:
@@ -44,7 +44,7 @@ export const resultConfig: ResultConfig = {
         title: 'Такой e-mail не зарегистрирован',
         testId: DataTestIdConfig.CHECK_RETRY_BUTTON,
     },
-    errorLogin: {
+    [ResultPageConfig.ERROR_LOGIN]: {
         buttonBlock: true,
         buttonTitle: 'Повторить',
         description: 'Что-то пошло не так. Попробуйте еще раз',
@@ -52,7 +52,7 @@ export const resultConfig: ResultConfig = {
         title: 'Вход не выполнен',
         testId: DataTestIdConfig.LOGIN_RETRY_BUTTON,
     },
-    errorUserExist: {
+    [ResultPageConfig.ERROR_USER_EXIST]: {
         buttonBlock: true,
         buttonTitle: 'Назад к регистрации',
         description:
@@ -61,7 +61,7 @@ export const resultConfig: ResultConfig = {
         title: 'Данные не сохранились',
         testId: DataTestIdConfig.REGISTRATION_BACK_BUTTON,
     },
-    success: {
+    [ResultPageConfig.SUCCESS]: {
         buttonBlock: true,
         buttonTitle: 'Войти',
         description:
@@ -70,7 +70,7 @@ export const resultConfig: ResultConfig = {
         title: 'Регистрация успешна',
         testId: DataTestIdConfig.REGISTRATION_ENTER_BUTTON,
     },
-    successChangePassword: {
+    [ResultPageConfig.SUCCESS_CHANGE_PASSWORD]: {
         buttonBlock: true,
         buttonTitle: 'Войти',
         description: 'Теперь можно войти в аккаунт, используя свой логин и новый пароль',
