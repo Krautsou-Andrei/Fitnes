@@ -9,17 +9,23 @@ import styles from './app-header.module.less';
 
 const { Title } = Typography;
 
-export function AppHeader() {
+type AppHeaderProps = {
+    isSimple?: boolean;
+};
+
+export function AppHeader({ isSimple }: AppHeaderProps) {
     return (
         <Header className={styles['app-header']}>
             <AppBreadcrumb />
-            <div className={styles.content}>
-                <Title level={1}>
-                    <div>{LayoutConfig.TITLE_ONE}</div>
-                    <div>{LayoutConfig.TITLE_TWO}</div>
-                </Title>
-                <AppSettingsButton />
-            </div>
+            {!isSimple && (
+                <div className={styles.content}>
+                    <Title level={1}>
+                        <div>{LayoutConfig.TITLE_ONE}</div>
+                        <div>{LayoutConfig.TITLE_TWO}</div>
+                    </Title>
+                    <AppSettingsButton />
+                </div>
+            )}
         </Header>
     );
 }

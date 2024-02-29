@@ -4,12 +4,16 @@ import { AppFooter } from '@widgets/app-footer';
 
 import { AppLayout } from '@shared/ui';
 
-export function BaseLayout() {
+type BaseLayoutProps = {
+    isSimple?: boolean;
+};
+
+export function BaseLayout({ isSimple }: BaseLayoutProps) {
     return (
-        <AppLayout 
-            siderSlot={<AppSider />} 
-            headerSlot={<AppHeader />} 
-            footerSlot={<AppFooter />} 
+        <AppLayout
+            siderSlot={<AppSider />}
+            headerSlot={<AppHeader isSimple={isSimple} />}
+            footerSlot={!isSimple ? <AppFooter /> : null}
         />
     );
 }
