@@ -2,12 +2,13 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthLayout, BaseLayout } from '@app/layouts';
 
-import HomePage from '@pages/home-page';
-import AuthentificationPage from '@pages/authentification-page';
-import RegisterPage from '@pages/register-page';
-import ConfirmEmailPage from '@pages/confirm-email-page';
-import ChangePasswordPage from '@pages/change-password-page';
-import ResultPage from '@pages/result-page';
+import { AuthentificationPage } from '@pages/authentification-page';
+import { ChangePasswordPage } from '@pages/change-password-page';
+import { ConfirmEmailPage } from '@pages/confirm-email-page';
+import { FeedbacksPage } from '@pages/feedbacks-page';
+import { HomePage } from '@pages/home-page';
+import { RegisterPage } from '@pages/register-page';
+import { ResultPage } from '@pages/result-page';
 
 import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
@@ -29,6 +30,16 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.BASE} element={<Navigate to={PathConfig.HOME} />} />
                 <Route path={PathConfig.HOME} element={<HomePage />} />
+            </Route>
+            <Route
+                path={PathConfig.FEEDBACKS}
+                element={
+                    <WithErrorBoundary>
+                        <BaseLayout isSimple={true} />
+                    </WithErrorBoundary>
+                }
+            >
+                <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
             </Route>
             <Route
                 element={
