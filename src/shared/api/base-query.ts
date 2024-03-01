@@ -22,9 +22,10 @@ export const baseQuery: BaseQueryFn<
     prepareHeaders: (headers, { getState }) => {
         const { accessToken } = (getState() as RootState).session;
         const accessTockenLocalStorage = getLocalStorage(LocalStorageConfig.ACCESS_TOKEN);
+        const accessTokenApp = accessToken || accessTockenLocalStorage;
 
-        if (accessToken || accessTockenLocalStorage) {
-            headers.set('Authorization', `Bearer ${accessToken}`);
+        if (accessTokenApp) {
+            headers.set('Authorization', `Bearer ${accessTokenApp}`);
         }
 
         return headers;
