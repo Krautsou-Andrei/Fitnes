@@ -14,6 +14,7 @@ export const enum LayoutConfig {
     ERROR_BOUNDARY_TITLE = 'Мы знаем о проблеме и работаем над ее устранением.',
     ERROR_BOUNDARY_SUBTITLE = 'Спасибо за терпение.',
     EXIT = 'Выход',
+    FEEDBACKS = 'Отзывы пользователей',
     HOME = 'Главная',
     INPUT_TEXT_EMAIL = 'e-mail:',
     INPUT_TEXT_PASSWORD = 'Пароль',
