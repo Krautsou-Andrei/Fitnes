@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsn from 'classnames';
 import { Divider } from 'antd';
 import Sider from 'antd/lib/layout/Sider';
 
 import { useSiderMediaQuery } from '../lib/use-sider-media-query';
+import { siderActions } from '../model/slice';
 import { AppButtonSwitch } from './button-switch';
 
 import { AppButtonLogout } from '@features/logout';
 
 import { AppMenu } from '@shared/ui';
 import { AppIcon } from '@shared/ui/';
+import { useAppDispatch } from '@shared/hooks';
 
 import styles from './app-sider.module.less';
 
 export function AppSider() {
     const { isQueryMD, width, widthCollapsed } = useSiderMediaQuery();
     const [isCollapsed, isSetCollapsed] = useState(isQueryMD ? true : false);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(siderActions.setIsCollapsed(isCollapsed));
+    }, [dispatch, isCollapsed]);
 
     return (
         <Sider
