@@ -16,7 +16,11 @@ const initialState: FeedbackSliceType = {
 export const feedbackSlice = createSlice({
     name: 'feedback',
     initialState,
-    reducers: {},
+    reducers: {
+        setFeedbacks: (state: FeedbackSliceType, { payload }: PayloadAction<FeedbackType[]>) => {
+            state.feedbacks = payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addMatcher(
             feedbackApi.endpoints.getFeedback.matchFulfilled,

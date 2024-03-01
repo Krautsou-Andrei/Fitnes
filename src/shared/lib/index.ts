@@ -8,6 +8,7 @@ import { removeSessionStorage } from './session-storage/remove-session-storage';
 import { setLocalStorage } from './local-storage/set-local-storage';
 import { setSessionStorage } from './session-storage/set-session-storage';
 import { showErrorForDevelop } from './show-error-for-develop';
+import { sortFeedbackDate } from './sort-feedback-date';
 import { splitString } from './slpit-string';
 import { wait } from './wait';
 import { wrapSelectedText } from './wrap-selected-text';
@@ -22,6 +23,7 @@ export {
     removeSessionStorage,
     setLocalStorage,
     setSessionStorage,
+    sortFeedbackDate,
     showErrorForDevelop,
     splitString,
     wait,
