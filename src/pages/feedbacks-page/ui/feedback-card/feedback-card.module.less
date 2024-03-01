@@ -1,0 +1,73 @@
+@import '@shared/styles/constants';
+
+.feedback-card {
+    :global(.ant-card-body) {
+        padding: @gap-m;
+        display: flex;
+    }
+
+    .feedback-user {
+        min-width: (@rem * 174px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        gap: @gap-s;
+
+        &__name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        :global(.ant-typography) {
+            font-size: @font-size-m;
+            line-height: @font-line-m;
+        }
+    }
+
+    .feedback-content {
+        margin-left: @gap-s;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: @gap-s;
+
+        .rating-wrapper {
+            font-size: @font-size-2m;
+            line-height: @font-line-origin;
+
+            .feedback-rating {
+                padding-left: @gap-4xs;
+                height: @height-s;
+
+                font-size: @font-size-2m;
+                line-height: @font-line-origin;
+
+                color: @app-rating-stars-color;
+
+                :global(.ant-rate-star:not(:last-child)) {
+                    margin-right: @gap-2xs;
+                }
+            }
+
+            .feedback-date {
+                margin-left: @gap-m;
+
+                font-size: @font-size-s;
+                line-height: @font-line-m;
+
+                color: @app-rating-text-color;
+            }
+        }
+
+        .feedback-description {
+            color: @app-text-color-secondary;
+            line-height: @font-line-m;
+        }
+    }
+}

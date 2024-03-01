@@ -12,6 +12,7 @@ export const enum ConstantsMediaQuery {
 export const enum Gap {
     GAP_M = 16,
     GAP_L = 20,
+    GAP_XL = 24,
 }
 
 export const enum COL {

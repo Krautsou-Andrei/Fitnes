@@ -2,9 +2,9 @@ import { Id } from '@shared/types/app';
 
 export type FeedbackType = {
     id: Id;
-    fullName: string;
-    imageSrc: string;
-    message: string;
+    fullName: string | null;
+    imageSrc: string | null;
+    message: string | null;
     rating: number;
     createdAt: Date;
 };

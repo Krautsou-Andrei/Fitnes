@@ -26,4 +26,5 @@ export const enum LayoutConfig {
     TITLE_FORM_CHANGE_PASSWORD = 'Восстановление аккауанта',
     TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
+    USER = 'Пользователь',
 }
