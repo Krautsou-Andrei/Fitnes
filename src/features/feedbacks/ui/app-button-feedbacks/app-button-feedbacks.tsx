@@ -1,8 +1,9 @@
-import { LayoutConfig } from '@shared/config';
 import { Button } from 'antd';
 import clsn from 'classnames';
+import { push } from 'redux-first-history';
 
-import { useButtonFeedback } from './lib/use-button-feedbacks';
+import { useAppDispatch } from '@shared/hooks';
+import { HistoryStateConfig, LayoutConfig, PathConfig } from '@shared/config';
 
 import styles from './app-button-feedbacks.module.less';
 
@@ -11,7 +12,11 @@ type AppButtonFeedbacksProps = {
 };
 
 export function AppButtonFeedbacks({ className }: AppButtonFeedbacksProps) {
-    const { onclick } = useButtonFeedback();
+    const dispatch = useAppDispatch();
+
+    const onclick = async () => {
+        dispatch(push(PathConfig.FEEDBACKS, { feedbacks: HistoryStateConfig.FEEDBACK_PAGE }));
+    };
 
     return (
         <Button

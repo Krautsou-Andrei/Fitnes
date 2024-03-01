@@ -1,21 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { sessionActions } from '@entities/session';
-import { FeedbackType, feedbackApi } from '@entities/feedbacks';
+import { RequesFeedbackBody, feedbackApi } from '@entities/feedbacks';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
 import { EventApiConfig } from '@shared/config';
 
-export const getFeedbacksThunk = createAsyncThunk<FeedbackType[], void, { state: RootState }>(
-    EventApiConfig.FEEDBACKS_GET,
+export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { state: RootState }>(
+    EventApiConfig.FEEDBACK_ADD,
 
-    async (_, { dispatch }) => {
+    async (body: RequesFeedbackBody, { dispatch }) => {
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            const result = await dispatch(feedbackApi.endpoints.getFeedback.initiate()).unwrap();
-            return result;
+            const result = await dispatch(
+                feedbackApi.endpoints.addFeedback.initiate(body),
+            ).unwrap();
+            console.log('result', result);
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 console.log(error);
