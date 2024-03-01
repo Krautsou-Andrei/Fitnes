@@ -14,10 +14,8 @@ export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { sta
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            const result = await dispatch(
-                feedbackApi.endpoints.addFeedback.initiate(body),
-            ).unwrap();
-            console.log('result', result);
+            dispatch(feedbackApi.endpoints.addFeedback.initiate(body)).unwrap();
+            
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 console.log(error);

@@ -21,11 +21,12 @@ export function useFeedbackModal(closeModal: () => void) {
     };
 
     const onFinish = async (value: RequesFeedbackBody) => {
-        closeModal();
         try {
             await dispatch(AddFeedbackThunk(value)).unwrap();
             form.resetFields();
             setIsValid(false);
+            closeModal();
+            setSelectedRating(0);            
         } catch (error: unknown) {
             showErrorForDevelop('Validate form add feedback', error);
         }
