@@ -1,22 +1,13 @@
-import { getFeedbacksThunk } from '@features/feedbacks/model/getFeedbacks';
-import { sessionActions } from '@entities/session';
+import { push } from 'redux-first-history';
 
 import { useAppDispatch } from '@shared/hooks';
-import { showErrorForDevelop } from '@shared/lib';
+import { HistoryStateConfig, PathConfig } from '@shared/config';
 
 export function useButtonFeedback() {
     const dispatch = useAppDispatch();
 
     const onclick = async () => {
-        dispatch(sessionActions.setIsLoading(true));
-
-        try {
-            await dispatch(getFeedbacksThunk()).unwrap();
-        } catch (error: unknown) {
-            showErrorForDevelop('Get Feedbacks', error);
-        } finally {
-            dispatch(sessionActions.setIsLoading(false));
-        }
+        dispatch(push(PathConfig.FEEDBACKS, { feedbacks: HistoryStateConfig.FEEDBACK_PAGE }));
     };
 
     return { onclick };
