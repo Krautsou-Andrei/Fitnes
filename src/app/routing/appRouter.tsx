@@ -35,7 +35,9 @@ export function AppRouter() {
                 path={PathConfig.FEEDBACKS}
                 element={
                     <WithErrorBoundary>
-                        <BaseLayout isSimple={true} />
+                        <AuthGuard>
+                            <BaseLayout isSimple={true} />
+                        </AuthGuard>
                     </WithErrorBoundary>
                 }
             >
