@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { modalResultConfig, ModalTypeConfig } from '@features/result-modal/@ex/feedbacks';
+
 import { sessionActions } from '@entities/session';
-import { RequesFeedbackBody, feedbackApi } from '@entities/feedbacks';
+import { RequesFeedbackBody, feedbackActions, feedbackApi } from '@entities/feedbacks';
 
 import { isFetchBaseQueryError } from '@shared/api';
-import { RootState } from '@shared/types/store';
 import { EventApiConfig } from '@shared/config';
+import type { RootState } from '@shared/types/store';
 
 export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { state: RootState }>(
     EventApiConfig.FEEDBACK_ADD,
@@ -14,11 +16,27 @@ export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { sta
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            dispatch(feedbackApi.endpoints.addFeedback.initiate(body)).unwrap();
-            
+            await dispatch(feedbackApi.endpoints.addFeedback.initiate(body)).unwrap();
+            dispatch(
+                feedbackActions.setResultModal({
+                    isOpen: true,
+                    typeModal: {
+                        type: modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK].type,
+                        status: modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK].status,
+                    },
+                }),
+            );
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                console.log(error);
+                dispatch(
+                    feedbackActions.setResultModal({
+                        isOpen: true,
+                        typeModal: {
+                            type: modalResultConfig[ModalTypeConfig.ERROR_ADD_FEEDBACK].type,
+                            status: modalResultConfig[ModalTypeConfig.ERROR_ADD_FEEDBACK].status,
+                        },
+                    }),
+                );
             }
 
             throw new Error('Unknown error');
