@@ -1,13 +1,12 @@
 import clsn from 'classnames';
 import { Typography } from 'antd';
 
+import { useNoFeedback } from './hooks/use-no-feedback';
 import { FeedbackConfig } from '@pages/feedbacks-page/config/feedback-config';
-import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks';
 
 import { NewFeedbackButton } from '@features/feedbacks';
 
 import { AppCard } from '@shared/ui';
-import { splitString } from '@shared/lib';
 
 import styles from './no-feedback.module.less';
 
@@ -18,9 +17,8 @@ type NoFeddbackProps = {
 };
 
 export function NoFeddback({ className }: NoFeddbackProps) {
-    const { isOpenModal, onClick } = useOpenNewFeedbackModal();
+    const { isOpenModal, description, onClick } = useNoFeedback();
 
-    const description = splitString(FeedbackConfig.DESCRIPTION);
     return (
         <div className={clsn(styles['no-feedback-card-wrapper'], className)}>
             {!isOpenModal && (
