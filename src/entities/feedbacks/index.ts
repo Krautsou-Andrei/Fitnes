@@ -5,7 +5,13 @@ import {
     useLazyGetFeedbackQuery,
 } from './api/feedback-api';
 
-import { feedbackActions, feedbackSlice, selectFeedbacks } from './model/slice';
+import {
+    feedbackActions,
+    feedbackSlice,
+    selectFeedbacks,
+    selectIsOpenModalNewFeedback,
+    selectResultModal,
+} from './model/slice';
 
 export type * from './model/types';
 export type * from './api/types';
@@ -18,4 +24,6 @@ export {
     useGetFeedbackQuery,
     useLazyGetFeedbackQuery,
     selectFeedbacks,
+    selectIsOpenModalNewFeedback,
+    selectResultModal,
 };
