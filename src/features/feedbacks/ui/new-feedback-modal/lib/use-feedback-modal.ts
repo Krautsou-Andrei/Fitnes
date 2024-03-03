@@ -4,13 +4,20 @@ import { Form } from 'antd';
 import { AddFeedbackThunk } from '@features/feedbacks/model/addFeedback';
 import { customIcons, customIconsActive } from '@features/feedbacks/config/custom-icon-config';
 
-import { RequesFeedbackBody } from '@entities/feedbacks';
+import { selectIsLoadingn } from '@entities/session';
+import {
+    RequesFeedbackBody,
+    feedbackActions,
+    selectIsOpenModalNewFeedback,
+} from '@entities/feedbacks';
 
-import { useAppDispatch } from '@shared/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
 
-export function useFeedbackModal(closeModal: () => void) {
+export function useFeedbackModal() {
     const dispatch = useAppDispatch();
+    const isOpenModal = useAppSelector(selectIsOpenModalNewFeedback);
+    const isLoading = useAppSelector(selectIsLoadingn);
     const [form] = Form.useForm();
     const [selectedRating, setSelectedRating] = useState<number>(0);
     const [isValid, setIsValid] = useState(false);
@@ -20,15 +27,18 @@ export function useFeedbackModal(closeModal: () => void) {
         setIsValid(() => rating > 0);
     };
 
+    const closeModal = () => {
+        dispatch(feedbackActions.setIsOpenModalNewFeedback(false));
+    };
+
     const onFinish = async (value: RequesFeedbackBody) => {
         try {
             await dispatch(AddFeedbackThunk(value)).unwrap();
-            form.resetFields();
             setIsValid(false);
-            closeModal();
-            setSelectedRating(0);            
         } catch (error: unknown) {
             showErrorForDevelop('Validate form add feedback', error);
+        } finally {
+            closeModal();
         }
     };
 
@@ -44,5 +54,15 @@ export function useFeedbackModal(closeModal: () => void) {
         }
     };
 
-    return { form, onSubmit, onFinish, checkRating, isValid, customCharacter };
+    return {
+        closeModal,
+        form,
+        onSubmit,
+        onFinish,
+        checkRating,
+        isLoading,
+        isOpenModal,
+        isValid,
+        customCharacter,
+    };
 }

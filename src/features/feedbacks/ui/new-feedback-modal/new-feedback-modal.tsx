@@ -5,29 +5,29 @@ import { useFeedbackModal } from './lib/use-feedback-modal';
 import { SubmitNewFeedbackButton } from '../submit-new-feedback-button/submit-new-feedback-button';
 import { FeedbackConfig } from '../../config/feedback-config';
 
-import { selectIsLoadingn } from '@entities/session';
-
 import { ErrorValidateConfig } from '@shared/config';
-import { useAppSelector } from '@shared/hooks';
 
 import styles from './new-feedback-modal.module.less';
 
-type NewFeedbackModalProps = {
-    isOpen: boolean;
-    onClick: () => void;
-};
-
-export function NewFeedbackModal({ isOpen, onClick }: NewFeedbackModalProps) {
-    const isLoading = useAppSelector(selectIsLoadingn);
-    const { checkRating, form, isValid, onFinish, onSubmit, customCharacter } =
-        useFeedbackModal(onClick);
+export function NewFeedbackModal() {
+    const {
+        closeModal,
+        checkRating,
+        form,
+        isLoading,
+        isOpenModal,
+        isValid,
+        onFinish,
+        onSubmit,
+        customCharacter,
+    } = useFeedbackModal();
 
     return (
         <Modal
             className={styles['add-feedback-modal']}
             title={FeedbackConfig.FORM_FEEDBACK_TITLE}
-            open={isOpen}
-            onCancel={onClick}
+            open={isOpenModal}
+            onCancel={closeModal}
             footer={<SubmitNewFeedbackButton isDisabled={isValid} onClick={onSubmit} />}
             centered={true}
         >
