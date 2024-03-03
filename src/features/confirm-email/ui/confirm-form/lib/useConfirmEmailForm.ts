@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { selectIsError, sessionActions } from '@entities/session/model/slise';
+import { selectIsError, sessionActions } from '@entities/session/model/slice';
 
 import { confirmEmailThunk } from '@features/confirm-email/model/confirm-email';
 

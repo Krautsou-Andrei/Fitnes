@@ -1,4 +1,4 @@
-import { selectIsLoadingn } from '@entities/session/model/slise';
+import { selectIsLoadingn } from '@entities/session/model/slice';
 import { useAppSelector } from '@shared/hooks';
 import { AppLoader } from '@shared/ui';
 

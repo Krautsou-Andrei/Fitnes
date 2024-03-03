@@ -13,7 +13,7 @@ import {
     selectIsAuthorized,
     selectIsLoadingn,
     sessionSlice,
-} from './model/slise';
+} from './model/slice';
 
 export type * from './model/types';
 export type * from './api/types';
