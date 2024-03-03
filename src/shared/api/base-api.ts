@@ -1,10 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { FEEDBACK_TAG, SESSION_TAG } from './tags';
-import { baseQuery } from './base-query';
+import { baseQueryWithNoToken } from './base-query-with-no-token';
 
 export const baseApi = createApi({
     reducerPath: 'baseApi',
-    baseQuery: baseQuery,
+    baseQuery: baseQueryWithNoToken,
     tagTypes: [FEEDBACK_TAG, SESSION_TAG],
     endpoints: () => ({}),
 });

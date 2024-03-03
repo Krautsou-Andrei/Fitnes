@@ -3,6 +3,9 @@ import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 import { rootReducer } from './rootReducer';
+
+import { invalidateAccessTokenListener } from '@features/invalidate-access-token';
+
 import { baseApi } from '@shared/api';
 
 const { createReduxHistory, routerMiddleware } = createReduxHistoryContext({
@@ -13,7 +16,11 @@ export function setupStore() {
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware().concat(baseApi.middleware, routerMiddleware),
+            getDefaultMiddleware().concat(
+                baseApi.middleware,
+                routerMiddleware,
+                invalidateAccessTokenListener.middleware,
+            ),
     });
 }
 
