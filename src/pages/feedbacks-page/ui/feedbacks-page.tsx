@@ -1,57 +1,23 @@
-import { useEffect, useState } from 'react';
 import { Col, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 
 import { FeedBackCard } from './feedback-card';
 import { NoFeddback } from './no-feedback';
 import { FeedbackButtons } from './feedback-buttons';
+import { useFeedbackPage } from '../hooks';
 
-import { getFeedbacksThunk } from '@features/feedbacks/model/getFeedbacks';
+import { NewFeedbackModal } from '@features/feedbacks';
 
-import { FeedbackType, feedbackActions, selectFeedbacks } from '@entities/feedbacks';
-
-import { showErrorForDevelop, sortFeedbackDate } from '@shared/lib';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { Gap } from '@shared/config/constants';
 
 import styles from './feedback-page.module.less';
 
 export function FeedbacksPage() {
-    const data = useAppSelector(selectFeedbacks);
-    const dispatch = useAppDispatch();
-
-    const [isAllFeedbacks, setIsAllFeedbacks] = useState(false);
-
-    useEffect(() => {
-        let ignore = false;
-
-        dispatch(getFeedbacksThunk())
-            .unwrap()
-            .then((result: FeedbackType[]) => {
-                if (!ignore) {
-                    dispatch(feedbackActions.setFeedbacks(result));
-                }
-            })
-            .catch((error: unknown) => {
-                showErrorForDevelop('Get feedbacks', error);
-            });
-
-        return () => {
-            ignore = true;
-        };
-    }, [dispatch]);
-    const sortData = sortFeedbackDate({ feedbacks: data });
-
-    const isFeedbacks = sortData && sortData.length !== 0;
-    const feedbacks = isAllFeedbacks ? sortData : sortData.slice(0, 4);
-
-    const viewAllFeedback = () => {
-        setIsAllFeedbacks((prevState) => !prevState);
-    };
+    const { isAllFeedbacks, isFeedbacks, isFetch, feedbacks, viewAllFeedback } = useFeedbackPage();
 
     return (
         <Content className={styles['feedback-page']}>
-            {isFeedbacks ? (
+            {isFeedbacks && (
                 <>
                     <Row gutter={[0, { xs: Gap.GAP_M, md: Gap.GAP_XL }]}>
                         {feedbacks.map((feedback) => (
@@ -72,9 +38,9 @@ export function FeedbacksPage() {
                         viewAllFeedback={viewAllFeedback}
                     />
                 </>
-            ) : (
-                <NoFeddback className={styles['no-feedback']} />
             )}
+            {isFetch && !isFeedbacks && <NoFeddback className={styles['no-feedback']} />}
+            <NewFeedbackModal />
         </Content>
     );
 }

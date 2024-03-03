@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import { Button } from 'antd';
 import clsn from 'classnames';
 
-import { NewFeedbackButton, NewFeedbackModal } from '@features/feedbacks';
+import { FeedbackConfig } from '@pages/feedbacks-page/config/feedback-config';
+import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks';
+
+import { NewFeedbackButton } from '@features/feedbacks';
 
 import styles from './feedback-buttons.module.less';
 
@@ -17,18 +19,20 @@ export function FeedbackButtons({
     isAllFeedbacks,
     viewAllFeedback,
 }: FeedbackButtonsProps) {
-    const [isOpenModal, setIsOpenModal] = useState(false);
-
-    const onClick = () => {
-        setIsOpenModal((prevState) => !prevState);
-    };
+    const { onClick } = useOpenNewFeedbackModal();
 
     return (
         <div className={clsn(styles['feedback-buttons'], className)}>
-            <NewFeedbackModal isOpen={isOpenModal} onClick={onClick} />
             <NewFeedbackButton onClick={onClick} />
-            <Button type='link' className={styles['button-view-all']} onClick={viewAllFeedback}>
-                {isAllFeedbacks ? 'Свернуть все отзывы' : 'Развернуть все отзывы'}
+            <Button
+                type='link'
+                className={styles['button-view-all']}
+                onClick={viewAllFeedback}
+                data-test-id='all-reviews-button'
+            >
+                {isAllFeedbacks
+                    ? FeedbackConfig.SEE_ALL_FEEDBACKS_NO
+                    : FeedbackConfig.SEE_ALL_FEEDBACKS}
             </Button>
         </div>
     );

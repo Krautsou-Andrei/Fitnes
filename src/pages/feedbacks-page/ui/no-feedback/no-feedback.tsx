@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import clsn from 'classnames';
 import { Typography } from 'antd';
 
-import { NoFeedbackConfig } from '@pages/feedbacks-page/config/no-feedback-config';
+import { FeedbackConfig } from '@pages/feedbacks-page/config/feedback-config';
+import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks';
 
-import { NewFeedbackButton, NewFeedbackModal } from '@features/feedbacks';
+import { NewFeedbackButton } from '@features/feedbacks';
 
 import { AppCard } from '@shared/ui';
 import { splitString } from '@shared/lib';
@@ -18,21 +18,16 @@ type NoFeddbackProps = {
 };
 
 export function NoFeddback({ className }: NoFeddbackProps) {
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const { isOpenModal, onClick } = useOpenNewFeedbackModal();
 
-    const onClick = () => {
-        setIsOpenModal((prevState) => !prevState);
-    };
-
-    const description = splitString(NoFeedbackConfig.description);
+    const description = splitString(FeedbackConfig.DESCRIPTION);
     return (
         <div className={clsn(styles['no-feedback-card-wrapper'], className)}>
-            <NewFeedbackModal isOpen={isOpenModal} onClick={onClick} />
             {!isOpenModal && (
                 <>
                     <AppCard className={styles['no-feedback-card']}>
                         <Title level={3} className={styles.title}>
-                            {NoFeedbackConfig.title}
+                            {FeedbackConfig.TITLE}
                         </Title>
                         <Text className={styles.description}>{description}</Text>
                     </AppCard>
