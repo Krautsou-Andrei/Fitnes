@@ -1,0 +1,50 @@
+@import '@shared/styles/constants';
+
+.error-token,
+.success-feedback,
+.error-add-feedback {
+    max-width: @app-width-modal !important;
+    width: 100% !important;
+
+    :global(.ant-result-title),
+    :global(.ant-result-subtitle) {
+        line-height: @font-line-m;
+    }
+
+    :global(.ant-result-title) {
+        font-weight: 500;
+    }
+
+    .button {
+        line-height: @font-line-m;
+        height: @height-xl;
+    }
+}
+
+.error-add-feedback {
+    .button {
+        max-width: @app-width-button-error-add-feedback;
+        width: 100%;
+    }
+}
+
+.error-token {
+    :global(.ant-modal-body) {
+        padding-top: @gap-m;
+        padding-bottom: @gap-xs;
+    }
+}
+
+.success-feedback {
+    :global(.ant-modal-body) {
+        padding: @gap-xl @gap-11xl @gap-m;
+    }
+
+    .button {
+        width: 100%;
+    }
+    svg {
+        width: @app-width-modal-icon;
+        height: @app-width-modal-icon;
+    }
+}

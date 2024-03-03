@@ -19,3 +19,8 @@ export const enum COL {
     COL_XL = 24,
     COL_8_XL = 42,
 }
+
+export const enum STYLES {
+    BACKGROUND_BLURE = 'rgba(121, 156, 212, 0.1)',
+    BLURE = 'blur(5px)',
+}
