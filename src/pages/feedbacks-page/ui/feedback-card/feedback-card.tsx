@@ -2,6 +2,8 @@ import { Avatar, Rate } from 'antd';
 import { Typography } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
+import { customIconStars } from '@features/feedbacks';
+
 import { AppCard } from '@shared/ui';
 import { LayoutConfig } from '@shared/config';
 
@@ -41,7 +43,8 @@ export function FeedBackCard({
                     <Rate
                         className={styles['feedback-rating']}
                         disabled={true}
-                        defaultValue={rating}
+                        value={rating}
+                        character={customIconStars}
                     />
                     <span className={styles['feedback-date']}>{date}</span>
                 </div>

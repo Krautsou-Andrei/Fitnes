@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Form } from 'antd';
 
 import { AddFeedbackThunk } from '@features/feedbacks/model/addFeedback';
-import { customIcons, customIconsActive } from '@features/feedbacks/config/custom-icon-config';
 
 import { selectIsLoadingn } from '@entities/session';
 import {
@@ -19,11 +18,9 @@ export function useFeedbackModal() {
     const isOpenModal = useAppSelector(selectIsOpenModalNewFeedback);
     const isLoading = useAppSelector(selectIsLoadingn);
     const [form] = Form.useForm();
-    const [selectedRating, setSelectedRating] = useState<number>(0);
     const [isValid, setIsValid] = useState(false);
 
     const checkRating = async (rating: number) => {
-        setSelectedRating(rating);
         setIsValid(() => rating > 0);
     };
 
@@ -46,14 +43,6 @@ export function useFeedbackModal() {
         form.submit();
     };
 
-    const customCharacter = ({ index = 0 }) => {
-        if (index + 1 <= selectedRating) {
-            return customIconsActive[selectedRating];
-        } else {
-            return customIcons[index + 1];
-        }
-    };
-
     return {
         closeModal,
         form,
@@ -63,6 +52,5 @@ export function useFeedbackModal() {
         isLoading,
         isOpenModal,
         isValid,
-        customCharacter,
     };
 }

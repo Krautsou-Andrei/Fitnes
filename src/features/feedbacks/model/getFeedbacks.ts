@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { resultErrorFetch } from '../lib/resultErrorFetch';
+import { resultErrorFetch } from '../lib';
 
 import { sessionActions } from '@entities/session';
 import { FeedbackType, feedbackApi } from '@entities/feedbacks';
