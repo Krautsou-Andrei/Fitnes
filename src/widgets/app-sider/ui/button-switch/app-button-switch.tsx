@@ -2,7 +2,7 @@ import clsn from 'classnames';
 import { Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
-import { useSiderMediaQuery } from '@widgets/app-sider/lib/use-sider-media-query';
+import { useSiderMediaQuery } from '@widgets/app-sider/hooks';
 
 import { DataTestIdConfig } from '@shared/config';
 

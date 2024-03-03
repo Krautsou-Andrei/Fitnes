@@ -1,29 +1,20 @@
-import { useEffect, useState } from 'react';
 import clsn from 'classnames';
+import { Link } from 'react-router-dom';
 import { Divider } from 'antd';
 import Sider from 'antd/lib/layout/Sider';
 
-import { useSiderMediaQuery } from '../lib/use-sider-media-query';
-import { siderActions } from '../model/slice';
+import { useAppSider } from '../hooks';
 import { AppButtonSwitch } from './button-switch';
 
 import { AppButtonLogout } from '@features/logout';
 
-import { AppMenu } from '@shared/ui';
-import { AppIcon } from '@shared/ui/';
-import { useAppDispatch } from '@shared/hooks';
+import { AppMenu, AppIcon } from '@shared/ui';
+import { PathConfig } from '@shared/config';
 
 import styles from './app-sider.module.less';
 
 export function AppSider() {
-    const { isQueryMD, width, widthCollapsed } = useSiderMediaQuery();
-    const [isCollapsed, isSetCollapsed] = useState(isQueryMD ? true : false);
-
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(siderActions.setIsCollapsed(isCollapsed));
-    }, [dispatch, isCollapsed]);
+    const { isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed } = useAppSider();
 
     return (
         <Sider
@@ -36,12 +27,15 @@ export function AppSider() {
             collapsible
             collapsed={isCollapsed}
         >
-            <AppIcon
-                name={`${isCollapsed ? 'layout/logo-smal' : 'layout/logo-big'}`}
-                className={clsn(styles.logo, { [styles['logo--collapsed']]: isCollapsed })}
-                width={isCollapsed ? 28 : isQueryMD ? 72 : 133}
-                height={isQueryMD ? 18 : 43}
-            />
+            <Link to={PathConfig.HOME}>
+                <AppIcon
+                    name={`${isCollapsed ? 'layout/logo-smal' : 'layout/logo-big'}`}
+                    className={clsn(styles.logo, { [styles['logo--collapsed']]: isCollapsed })}
+                    width={isCollapsed ? 28 : isQueryMD ? 72 : 133}
+                    height={isQueryMD ? 18 : 43}
+                />
+            </Link>
+
             <AppMenu isCollapsed={isCollapsed} isQueryMD={isQueryMD} />
             <AppButtonSwitch isCollapsed={isCollapsed} isSetCollapsed={isSetCollapsed} />
             <Divider className={styles['app-divider']} />
