@@ -6,6 +6,8 @@ import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks';
 
 import { NewFeedbackButton } from '@features/feedbacks';
 
+import { DataTestIdConfig } from '@shared/config';
+
 import styles from './feedback-buttons.module.less';
 
 type FeedbackButtonsProps = {
@@ -28,7 +30,7 @@ export function FeedbackButtons({
                 type='link'
                 className={styles['button-view-all']}
                 onClick={viewAllFeedback}
-                data-test-id='all-reviews-button'
+                data-test-id={DataTestIdConfig.ALL_REVIEWS_BUTTON}
             >
                 {isAllFeedbacks
                     ? FeedbackConfig.SEE_ALL_FEEDBACKS_NO

@@ -1,5 +1,7 @@
 import { Button } from 'antd';
+
 import { FeedbackConfig } from '@features/feedbacks/config/feedback-config';
+import { DataTestIdConfig } from '@shared/config';
 
 import styles from './submit-new-feedback-button.module.less';
 
@@ -15,6 +17,7 @@ export function SubmitNewFeedbackButton({ isDisabled, onClick }: SubmitNewFeedba
             onClick={onClick}
             disabled={!isDisabled}
             className={styles['submit-button']}
+            data-test-id={DataTestIdConfig.NEW_REVIEW_SUBMIT_BUTTON}
         >
             {FeedbackConfig.BUTTON_SUBMIT}
         </Button>

@@ -1,6 +1,9 @@
 import { Button } from 'antd';
+
 import { ModalTypeConfig } from '../modal-type-config';
 import { isOneButton } from './lib/is-one-button';
+
+import { DataTestIdConfig } from '@shared/config';
 
 type ExtraProps = {
     type: ModalTypeConfig;
@@ -22,7 +25,12 @@ export function Extra({ type, className, title, titleClose, onClick, onClickClos
             )}
             {!isOneButton(type) && (
                 <>
-                    <Button type='primary' className={className} onClick={onClick}>
+                    <Button
+                        type='primary'
+                        className={className}
+                        onClick={onClick}
+                        data-test-id={DataTestIdConfig.WRITE_REVIEW_NOT_SAVE_MODAL}
+                    >
                         {title}
                     </Button>
                     <Button className={className} onClick={onClickClose}>

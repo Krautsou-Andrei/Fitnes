@@ -1,4 +1,5 @@
 export const enum DataTestIdConfig {
+    ALL_REVIEWS_BUTTON = 'all-reviews-button',
     CHANGE_CONFIRM_PASSWORD = 'change-confirm-password',
     CHANGE_ENTRY_BUTTON = 'change-entry-button',
     CHANGE_PASSWORD = 'change-password',
@@ -12,13 +13,17 @@ export const enum DataTestIdConfig {
     LOGIN_REMEMBER = 'login-remember',
     LOGIN_RETRY_BUTTON = 'login-retry-button',
     LOGIN_SUBMIT_BUTTON = 'login-submit-button',
+    NEW_REVIEW_SUBMIT_BUTTON = 'new-review-submit-button',
     REGISTRATION_CONFIRM_PASSWORD = 'registration-confirm-password',
     REGISTRATION_BACK_BUTTON = 'registration-back-button',
     REGISTRATION_ENTER_BUTTON = 'registration-enter-button',
     REGISTRATION_PASSWORD = 'registration-password',
     REGISTRATION_RETRY_BUTTON = 'registration-retry-button',
     REGISTRATION_SUBMIT_BUTTON = 'registration-submit-button',
+    SEE_REVIEWS = 'see-reviews',
     SIDER_SWITCH = 'sider-switch',
     SIDER_SWITCH_MOBILE = 'sider-switch-mobile',
     VERIFICATION_INPUT = 'verification-input',
+    WRITE_REVIEW = 'write-review',
+    WRITE_REVIEW_NOT_SAVE_MODAL = 'write-review-not-saved-modal',
 }
