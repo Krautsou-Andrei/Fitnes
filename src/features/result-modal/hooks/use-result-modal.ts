@@ -1,13 +1,15 @@
 import { push } from 'redux-first-history';
 
-import { ModalTypeConfig, modalResultConfig } from '../config';
+import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
 import { feedbackActions, selectResultModal } from '@entities/feedbacks';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { PathConfig } from '@shared/config';
+import { splitString } from '@shared/lib';
 
 export function useResultModal() {
-    const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
+    const { isQueryMD } = useAppMediaQuery();
+    const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.ERROR_GET_FEEDBACK] } =
         useAppSelector(selectResultModal);
     const dispatch = useAppDispatch();
 
@@ -25,5 +27,11 @@ export function useResultModal() {
         dispatch(feedbackActions.setIsOpenModalNewFeedback(true));
     };
 
-    return { isOpen, onClickAgayn, onClickClose, typeModal };
+    const descriptionModal = splitString(
+        isQueryMD
+            ? modalCofig[typeModal.type].desciption_mobile || ''
+            : modalCofig[typeModal.type].desciption || '',
+    );
+
+    return { descriptionModal, isOpen, onClickAgayn, onClickClose, typeModal };
 }

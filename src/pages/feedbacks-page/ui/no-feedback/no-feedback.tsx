@@ -29,7 +29,7 @@ export function NoFeddback({ className }: NoFeddbackProps) {
                         </Title>
                         <Text className={styles.description}>{description}</Text>
                     </AppCard>
-                    <NewFeedbackButton onClick={onClick} />
+                    <NewFeedbackButton onClick={onClick} className={styles.button} />
                 </>
             )}
         </div>

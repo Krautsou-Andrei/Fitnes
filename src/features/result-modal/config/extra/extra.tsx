@@ -24,19 +24,16 @@ export function Extra({ type, className, title, titleClose, onClick, onClickClos
                 </Button>
             )}
             {!isOneButton(type) && (
-                <>
+                <div className={className}>
                     <Button
                         type='primary'
-                        className={className}
                         onClick={onClick}
                         data-test-id={DataTestIdConfig.WRITE_REVIEW_NOT_SAVE_MODAL}
                     >
                         {title}
                     </Button>
-                    <Button className={className} onClick={onClickClose}>
-                        {titleClose}
-                    </Button>
-                </>
+                    <Button onClick={onClickClose}>{titleClose}</Button>
+                </div>
             )}
         </>
     );

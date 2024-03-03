@@ -1,6 +1,7 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
-.feedback-page{
+.feedback-page {
     height: 100%;
 }
 
@@ -8,6 +9,11 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+
+    .media-md({
+        top: 0;
+        transform: unset;
+    });
 }
 
 .feedback-buttons {
@@ -16,4 +22,19 @@
 
     bottom: @gap-10xl;
     z-index: @z-index-m;
+
+    :global(.ant-btn) {
+        .media-md({
+           margin-left: 0;
+        });
+    }
+
+    .media-md({
+        padding-top: @gap-10xl;
+
+        display: flex;
+        flex-direction: column;  
+        
+        gap: @gap-m;
+    });
 }

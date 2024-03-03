@@ -1,6 +1,7 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
-.error-token,
+.error-get-feedback,
 .success-feedback,
 .error-add-feedback {
     max-width: @app-width-modal !important;
@@ -21,17 +22,67 @@
     }
 }
 
+:global(.ant-modal).error-get-feedback,
+:global(.ant-modal).error-add-feedback,
+:global(.ant-modal).success-feedback {
+    padding: @gap-m;
+}
+
 .error-add-feedback {
     .button {
-        max-width: @app-width-button-error-add-feedback;
-        width: 100%;
+        display: flex;
+        gap: @gap-xs;
+
+        button {
+            flex: 50%;
+            height: @height-xl;
+        }
     }
 }
 
-.error-token {
+.error-get-feedback {
     :global(.ant-modal-body) {
         padding-top: @gap-m;
         padding-bottom: @gap-xs;
+    }
+}
+
+.success-feedback,
+.error-add-feedback,
+.error-get-feedback {
+    :global(.ant-result) {
+        .media-md({
+            padding: @gap-6xl @gap-m @gap-4xl;
+        });
+    }
+}
+
+.success-feedback,
+.error-add-feedback {
+    :global(.ant-modal-body) {
+        .media-md({
+            padding: 0;
+        });
+
+         :global(.ant-result-icon) {
+            .media-md({
+                margin-bottom: @gap-3xl;
+            });
+        }
+    }
+}
+
+.error-get-feedback {
+    :global(.ant-modal-body) {
+        .media-md({
+            padding: @gap-xl 0;
+        });
+
+        :global(.ant-result-icon) {
+            .media-md({
+                margin-bottom: @gap-xl;
+            });
+        }
     }
 }
 

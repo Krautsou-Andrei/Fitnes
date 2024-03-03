@@ -19,6 +19,7 @@ export const modalCofig: ModalConfig = {
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
+        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {

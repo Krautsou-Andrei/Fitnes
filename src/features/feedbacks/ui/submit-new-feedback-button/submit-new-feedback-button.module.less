@@ -1,6 +1,10 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
-.submit-button {
-    height: 40px;
-    min-width: 130px;
+:global(.ant-btn).submit-button {
+    height: @height-xl;
+
+    .media-md({
+        width: 100%;
+    })
 }

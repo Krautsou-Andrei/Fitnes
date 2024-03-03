@@ -5,6 +5,7 @@ export type ResultModalCard = {
     buttonCloseTitle?: string;
     buttonTitle: string;
     desciption?: string;
+    desciption_mobile?: string;
     title: string;
 };
 
