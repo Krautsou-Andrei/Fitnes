@@ -15,19 +15,17 @@ type FeedbackButtonsProps = {
     isAllFeedbacks: boolean;
     viewAllFeedback?: () => void;
     className?: string;
-    style?: CSSProperties;
 };
 
 export function FeedbackButtons({
     isAllFeedbacks,
     viewAllFeedback,
     className,
-    style,
 }: FeedbackButtonsProps) {
     const { onClick } = useOpenNewFeedbackModal();
 
     return (
-        <div className={clsn(styles['feedback-buttons'], className)} style={style}>
+        <div className={clsn(styles['feedback-buttons'], className)}>
             <NewFeedbackButton onClick={onClick} />
             <Button
                 type='link'

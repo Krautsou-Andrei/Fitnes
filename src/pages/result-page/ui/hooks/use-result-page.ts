@@ -1,19 +1,20 @@
+import { useLocation } from 'react-router-dom';
+import { resultConfig } from '@pages/result-page/config/result-config';
 import { ResultPageConfig, useResultButtonClick } from '@features/result';
 import { splitString } from '@shared/lib';
 
-type UseResultPageProps = {
-    type: ResultPageConfig;
-    description: string;
-};
+export function useResultPage() {
+    const location = useLocation();
+    const lastPartUrl = location.pathname.split('/').at(-1);
+    const type = lastPartUrl as ResultPageConfig;
 
-export function useResultPage({ type, description }: UseResultPageProps) {
     const typeOnClick = useResultButtonClick(type);
 
     const onClick = () => {
         typeOnClick && typeOnClick();
     };
 
-    const descriptionText = splitString(description);
+    const description = splitString(resultConfig[type].description);
 
-    return { descriptionText, onClick };
+    return { description, onClick, type };
 }
