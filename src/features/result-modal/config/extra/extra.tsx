@@ -14,8 +14,7 @@ type ExtraProps = {
     onClickClose?: () => void;
 };
 
-export function Extra({ type, className, title, titleClose, onClick, onClickClose }: ExtraProps) {
-    console.log('type', type, type === ModalTypeConfig.SUCCESS_ADD_FEEDBACK);
+export function Extra({ type, className, title, titleClose, onClick, onClickClose }: ExtraProps) {  
     return (
         <>
             {isOneButton(type) && (

@@ -12,16 +12,16 @@ import { DataTestIdConfig } from '@shared/config';
 import styles from './feedback-buttons.module.less';
 
 type FeedbackButtonsProps = {
-    className?: string;
     isAllFeedbacks: boolean;
     viewAllFeedback?: () => void;
+    className?: string;
     style?: CSSProperties;
 };
 
 export function FeedbackButtons({
-    className,
     isAllFeedbacks,
     viewAllFeedback,
+    className,
     style,
 }: FeedbackButtonsProps) {
     const { onClick } = useOpenNewFeedbackModal();

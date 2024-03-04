@@ -7,7 +7,6 @@ type CustomIconStarsParams = {
 };
 
 export function customIconStars({ value, index }: CustomIconStarsParams) {
-    console.log("slkfjslfjlsjflsjf")
     return (value ?? 0) > (index ?? 0)
         ? React.createElement(StarFilled)
         : React.createElement(StarOutlined);

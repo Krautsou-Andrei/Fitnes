@@ -7,11 +7,11 @@ import { DataTestIdConfig } from '@shared/config';
 import styles from './new-feedback-button.module.less';
 
 type NewFeedbackButtonProps = {
-    className?: string;
     onClick: () => void;
+    className?: string;
 };
 
-export function NewFeedbackButton({ className, onClick }: NewFeedbackButtonProps) {
+export function NewFeedbackButton({ onClick, className }: NewFeedbackButtonProps) {
     return (
         <Button
             type='primary'
