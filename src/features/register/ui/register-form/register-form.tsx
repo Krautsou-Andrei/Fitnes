@@ -1,4 +1,4 @@
-import { useRegisterForm } from './lib/useRegisterForm';
+import { useRegisterForm } from './hooks/useRegisterForm';
 import {
     AppInputConfirmPassword,
     AppInputLogin,

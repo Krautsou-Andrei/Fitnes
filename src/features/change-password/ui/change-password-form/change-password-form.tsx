@@ -1,4 +1,4 @@
-import { useChangePasswordForm } from './lib/use-change-password-form';
+import { useChangePasswordForm } from './hooks/use-change-password-form';
 
 import { AppInputConfirmPassword, AppInputPassword } from '@features/inputs/@ex/change-password';
 

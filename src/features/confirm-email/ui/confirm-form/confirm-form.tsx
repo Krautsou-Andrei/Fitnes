@@ -2,7 +2,7 @@ import VerificationInput from 'react-verification-input';
 import { Typography } from 'antd';
 import clsn from 'classnames';
 
-import { useConfirmEmailForm } from './lib/useConfirmEmailForm';
+import { useConfirmEmailForm } from './hooks/useConfirmEmailForm';
 import { ConfirmPageConfig, confirmConfig } from '../../config';
 
 import { DataTestIdConfig } from '@shared/config';

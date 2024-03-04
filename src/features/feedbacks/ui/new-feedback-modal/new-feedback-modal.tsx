@@ -2,7 +2,7 @@ import { Form, Modal, Rate } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 
 import { customIconStars } from '@features/feedbacks/lib';
-import { useFeedbackModal } from './lib/use-feedback-modal';
+import { useFeedbackModal } from './hooks/use-feedback-modal';
 import { SubmitNewFeedbackButton } from '../submit-new-feedback-button/submit-new-feedback-button';
 import { FeedbackConfig } from '../../config/feedback-config';
 

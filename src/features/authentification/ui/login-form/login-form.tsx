@@ -1,6 +1,6 @@
 import { AppRemember } from './app-remember';
 
-import { useLoginForm } from './lib/use-login-form';
+import { useLoginForm } from './hooks/use-login-form';
 
 import { AppInputLogin, AppInputPassword } from '@features/inputs/@ex/authentification';
 

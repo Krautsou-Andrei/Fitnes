@@ -1,4 +1,4 @@
-import { useConfirmEmailPage } from '../lib/use-confirm-email-page';
+import { useConfirmEmailPage } from '../hooks/use-confirm-email-page';
 
 import { ConfirmForm } from '@features/confirm-email';
 import { AppResultCard } from '@features/result';

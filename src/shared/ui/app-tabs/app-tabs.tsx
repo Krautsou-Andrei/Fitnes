@@ -1,7 +1,7 @@
 import clsn from 'classnames';
 import { Tabs } from 'antd';
 
-import { useAppTabs } from './lib/useAppTabs';
+import { useAppTabs } from './hooks/useAppTabs';
 
 import { ItemsTabs } from './model/types';
 

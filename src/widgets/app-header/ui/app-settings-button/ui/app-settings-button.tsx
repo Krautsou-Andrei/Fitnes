@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 import { type ButtonType } from 'antd/lib/button';
 
-import { useButtonMediaQuery } from '../lib/use-button-media-query';
+import { useButtonMediaQuery } from '../hooks/use-button-media-query';
 
 import { LayoutConfig } from '@shared/config';
 
