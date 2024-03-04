@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { Button } from 'antd';
 import clsn from 'classnames';
 
@@ -14,17 +15,19 @@ type FeedbackButtonsProps = {
     className?: string;
     isAllFeedbacks: boolean;
     viewAllFeedback?: () => void;
+    style?: CSSProperties;
 };
 
 export function FeedbackButtons({
     className,
     isAllFeedbacks,
     viewAllFeedback,
+    style,
 }: FeedbackButtonsProps) {
     const { onClick } = useOpenNewFeedbackModal();
 
     return (
-        <div className={clsn(styles['feedback-buttons'], className)}>
+        <div className={clsn(styles['feedback-buttons'], className)} style={style}>
             <NewFeedbackButton onClick={onClick} />
             <Button
                 type='link'

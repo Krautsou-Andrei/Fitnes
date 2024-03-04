@@ -8,7 +8,7 @@ import { STYLES } from '@shared/config/constants';
 import styles from './result-modal.module.less';
 
 export function ResultModal() {
-    const { descriptionModal, isOpen, onClickAgayn, onClickClose, typeModal } = useResultModal();
+    const { description, isOpen, onClickAgayn, onClickClose, typeModal } = useResultModal();
 
     return (
         <Modal
@@ -22,7 +22,7 @@ export function ResultModal() {
             <Result
                 status={typeModal.status}
                 title={modalCofig[typeModal.type].title}
-                subTitle={descriptionModal}
+                subTitle={description}
                 extra={
                     <Extra
                         type={typeModal.type}

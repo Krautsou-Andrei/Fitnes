@@ -3,7 +3,7 @@
 
 .result-page {
     .button {
-        font-size: (@rem * 14);
+        font-size: @font-size-2m;
     }
 }
 .error,
@@ -14,7 +14,7 @@
 .success,
 .success-change-password,
 .error-login {
-    font-size: (@rem * 70);
+    font-size: @font-size-4xxl;
     line-height: 1;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .error-check-email {
-    margin-bottom: (@rem * 14) !important;
+    margin-bottom: @gap-2m !important;
 }
 
 .success,
@@ -40,18 +40,18 @@
 }
 
 .error-check-email-content {
-    padding-left: (@rem * 32);
-    padding-right: (@rem * 32);
-    padding-bottom: (@rem * 56);
+    padding-left: @gap-4xl;
+    padding-right: @gap-4xl;
+    padding-bottom: @gap-13xl;
 }
 
 .error-check-email-no-exist-content {
-    padding-bottom: (@rem * 56);
-    padding-left: (@rem * 54);
-    padding-right: (@rem * 54);
+    padding-bottom: @gap-13xl;
+    padding-left: @gap-12xl;
+    padding-right: @gap-12xl;
     .media-xs({
-        padding-left: (@rem * 32);
-        padding-right: (@rem * 32);
+        padding-left: @gap-4xl;
+        padding-right: @gap-4xl;
         
     });
 }
@@ -60,19 +60,16 @@
 .error-user-exist-content,
 .success-content,
 .success-change-password-content,
-.error-login-content {
-    padding-top: (@rem * 70);
+.error-login-content,
+.error-content,
+.error-check-email-no-exist-content {
+    padding-top: @gap-4xxl;
 }
 
 .error-check-email-content {
     .media-xs({       
-        padding-top: (@rem * 64);
+        padding-top: @gap-3xxl;
     });
-}
-
-.error-content,
-.error-check-email-no-exist-content {
-    padding-top: (@rem * 68);
 }
 
 .error-content,
@@ -82,15 +79,15 @@
 .success-change-password-content,
 .error-change-password-content {
     .media-xs({       
-        padding-top: (@rem * 36);
+        padding-top: @gap-6xl;
     });
 }
 
 .error-change-password-content,
 .successC-cange-password-content {
-    padding-bottom: (@rem * 56);
+    padding-bottom: @gap-13xl;
 
     .media-xs({       
-        padding-bottom: (@rem * 32);
+        padding-bottom: @gap-4xl;
     });
 }

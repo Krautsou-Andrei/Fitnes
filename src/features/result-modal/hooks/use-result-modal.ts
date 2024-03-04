@@ -9,7 +9,7 @@ import { splitString } from '@shared/lib';
 
 export function useResultModal() {
     const { isQueryMD } = useAppMediaQuery();
-    const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.ERROR_GET_FEEDBACK] } =
+    const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
     const dispatch = useAppDispatch();
 
@@ -27,11 +27,15 @@ export function useResultModal() {
         dispatch(feedbackActions.setIsOpenModalNewFeedback(true));
     };
 
-    const descriptionModal = splitString(
-        isQueryMD
-            ? modalCofig[typeModal.type].desciption_mobile || ''
-            : modalCofig[typeModal.type].desciption || '',
-    );
+    let description;
 
-    return { descriptionModal, isOpen, onClickAgayn, onClickClose, typeModal };
+    if (modalCofig[typeModal.type].desciption_mobile || modalCofig[typeModal.type].desciption) {
+        description = splitString(
+            isQueryMD
+                ? modalCofig[typeModal.type].desciption_mobile || ''
+                : modalCofig[typeModal.type].desciption || '',
+        );
+    }
+
+    return { description, isOpen, onClickAgayn, onClickClose, typeModal };
 }

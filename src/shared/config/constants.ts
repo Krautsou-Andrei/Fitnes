@@ -20,7 +20,16 @@ export const enum COL {
     COL_8_XL = 42,
 }
 
-export const enum STYLES {
-    BACKGROUND_BLURE = 'rgba(121, 156, 212, 0.1)',
-    BLURE = 'blur(5px)',
-}
+export const STYLES = {
+    BACKGROUND_BLURE: 'rgba(121, 156, 212, 0.1)',
+    BLURE: 'blur(5px)',
+    COLLAPSED: {
+        marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,
+        transition: 'margin-left 0.2s ease',
+    },
+
+    NO_COLLAPSED: {
+        marginLeft: `${ConstantsMediaQuery.COLLAPSED_NO}px`,
+        transition: 'margin-left 0.2s ease',
+    },
+};

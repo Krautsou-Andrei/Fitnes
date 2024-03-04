@@ -3,10 +3,10 @@
 
 :global(.ant-form) {
     :global(.ant-form-item).remember {
-        margin-bottom: (@rem * 20);
+        margin-bottom: @gap-l;
 
         .media-xs ({
-            margin-bottom: (@rem * 14);
+            margin-bottom: @gap-2m;
         });
     }
 }
@@ -19,12 +19,12 @@
     color: @app-primary-color;
 
     .media-xs ({
-        padding-right:  (@rem * 7);
-    });;
+        padding-right: @gap-xs;
+    });
 }
 
 :global(.ant-btn-lg).login-form-forgot {
     .media-xs ({
-        font-size: (@rem * 14);
-    });;
+        font-size: @gap-2m;
+    });
 }

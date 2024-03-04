@@ -13,8 +13,15 @@ type BaseLayoutProps = {
 export function BaseLayout({ isSimple }: BaseLayoutProps) {
     return (
         <AppLayout
+            className={isSimple ? styles['main-simple'] : ''}
+            isSimple={isSimple}
             siderSlot={<AppSider />}
-            headerSlot={<AppHeader isSimple={isSimple} className={styles.header} />}
+            headerSlot={
+                <AppHeader
+                    isSimple={isSimple}
+                    className={isSimple ? styles['header-sticky'] : ''}
+                />
+            }
             footerSlot={!isSimple ? <AppFooter /> : null}
         />
     );

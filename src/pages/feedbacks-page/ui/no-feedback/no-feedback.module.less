@@ -1,7 +1,6 @@
 @import '@shared/styles/constants';
 @import '@shared/styles/mixin';
 
-
 .no-feedback-card-wrapper {
     width: 100%;
 
@@ -22,7 +21,7 @@
 
         .media-md({
             padding: @gap-xl 0;
-        })
+        });
     }
 
     .title,
@@ -31,7 +30,6 @@
 
         text-align: center;
         line-height: @font-line-m;
-        
     }
 
     .title {
@@ -42,7 +40,7 @@
 
         .media-md({
             letter-spacing: normal;
-        })
+        });
     }
 
     .description {
@@ -51,10 +49,12 @@
 
         .media-md({
             letter-spacing: normal;
-        })
+        });
     }
 
-    .button{
-        width: 100%;
+    .button {
+        .media-md({
+            width: 100%;
+        });
     }
 }

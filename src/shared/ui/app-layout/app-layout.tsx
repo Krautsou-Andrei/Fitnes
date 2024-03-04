@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import clsn from 'classnames';
 import { Layout } from 'antd';
 
-import { useAppLayout } from './hooks/use-app-layout';
+import { useMainWidth } from '@shared/hooks';
 
 import styles from './app-layout.module.less';
 
@@ -14,6 +14,7 @@ type AppLayoutProps = {
     footerSlot?: ReactNode;
     isCollapsed?: boolean;
     isAuthLayout?: boolean;
+    isSimple?: boolean;
 };
 
 export function AppLayout({
@@ -22,15 +23,20 @@ export function AppLayout({
     headerSlot,
     footerSlot,
     isAuthLayout,
+    isSimple,
 }: AppLayoutProps) {
-    const { styleCollapsed } = useAppLayout();
+    const { styleCollapsed } = useMainWidth();
 
     return (
         <Layout className={clsn(styles['main-page'], className)}>
             {siderSlot}
             <Layout style={!isAuthLayout ? styleCollapsed : {}}>
                 {headerSlot}
-                <div className={styles['main-content']}>
+                <div
+                    className={clsn(styles['main-content'], {
+                        [styles['main-content-simple']]: isSimple,
+                    })}
+                >
                     <Outlet />
                 </div>
                 {footerSlot}

@@ -13,7 +13,8 @@ import { Gap } from '@shared/config/constants';
 import styles from './feedback-page.module.less';
 
 export function FeedbacksPage() {
-    const { isAllFeedbacks, isFeedbacks, isFetch, feedbacks, viewAllFeedback } = useFeedbackPage();
+    const { isAllFeedbacks, isFeedbacks, isFetch, feedbacks, viewAllFeedback, styleCollapsed } =
+        useFeedbackPage();
 
     return (
         <Content className={styles['feedback-page']}>
@@ -36,6 +37,7 @@ export function FeedbacksPage() {
                         className={styles['feedback-buttons']}
                         isAllFeedbacks={isAllFeedbacks}
                         viewAllFeedback={viewAllFeedback}
+                        style={styleCollapsed}
                     />
                 </>
             )}

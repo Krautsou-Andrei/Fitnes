@@ -4,7 +4,7 @@
 .footer-card {
     :global(.ant-card-extra) {
         margin: 0;
-        padding: (@rem * 10) 0;
+        padding: @gap-2s 0;
 
         p {
             margin: 0;
@@ -20,11 +20,11 @@
         padding: 0;
         height: auto;
 
-        font-size: (@rem * 16);
+        font-size: @font-size-m;
     }
 
     :global(.ant-card-body) {
-        padding: (@rem * 12) 0;
+        padding: @gap-s 0;
         display: flex;
         justify-content: center;
         :global(.ant-btn) {
@@ -34,7 +34,7 @@
 }
 
 :global(.ant-card).footer-card {
-    width: (@rem * 240);
+    width: @app-width-footer-card;
 
     .media-xs({
         width: 100%;

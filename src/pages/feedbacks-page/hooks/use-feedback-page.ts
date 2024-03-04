@@ -4,11 +4,12 @@ import { getFeedbacksThunk } from '@features/feedbacks/model/getFeedbacks';
 
 import { FeedbackType, feedbackActions, selectFeedbacks } from '@entities/feedbacks';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppSelector, useMainWidth } from '@shared/hooks';
 import { showErrorForDevelop, sortFeedbackDate } from '@shared/lib';
 
 export function useFeedbackPage() {
     const data = useAppSelector(selectFeedbacks);
+    const { styleCollapsed } = useMainWidth();
     const [isFetch, setIsFetch] = useState(false);
     const dispatch = useAppDispatch();
 
@@ -43,5 +44,5 @@ export function useFeedbackPage() {
         setIsAllFeedbacks((prevState) => !prevState);
     };
 
-    return { isAllFeedbacks, isFetch, isFeedbacks, feedbacks, viewAllFeedback };
+    return { isAllFeedbacks, isFetch, isFeedbacks, feedbacks, viewAllFeedback, styleCollapsed };
 }

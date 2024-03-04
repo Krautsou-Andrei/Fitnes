@@ -17,9 +17,11 @@
 }
 
 .feedback-buttons {
-    padding-top: @gap-xxxl;
-    position: sticky;
+    position: fixed;
 
+    padding: 0 @gap-xl;
+
+    left: 0;
     bottom: @gap-10xl;
     z-index: @z-index-m;
 
@@ -30,7 +32,11 @@
     }
 
     .media-md({
-        padding-top: @gap-10xl;
+        padding: 0 @gap-m;
+
+        width: 100%;
+
+        bottom: @gap-8xl;
 
         display: flex;
         flex-direction: column;  
