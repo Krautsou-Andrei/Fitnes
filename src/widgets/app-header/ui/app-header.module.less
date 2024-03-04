@@ -2,7 +2,7 @@
 @import '@shared/styles/mixin';
 
 :global(.ant-layout-header).app-header {
-    padding: (@rem * 16) (@rem * 24);
+    padding: @gap-m @gap-xl;
     height: auto;
 
     background: @app-header-background-color;
@@ -11,21 +11,21 @@
 .app-header {
     :global(h1.ant-typography) {
         margin-bottom: 0;
-        padding: (@rem * 6) 0;
-        line-height: 130%;
+        padding: @gap-2xs 0;
+        line-height: @font-line-m;
 
         .media-tabtet({
-            font-size: (@rem * 24);
+            font-size: @gap-xl;
             font-weight: 500;
         });
-        
+
         .media-md({
-            font-size: (@rem * 20);
+            font-size: @gap-l;
         });
     }
 
-    :global(.ant-breadcrumb) {
-        margin-bottom: (@rem * 8);
+    :global(.ant-breadcrumb:not(:last-child)) {
+        margin-bottom: @gap-xs;
 
         .media-md({
             margin-bottom: 0;

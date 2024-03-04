@@ -4,4 +4,5 @@ export const enum ErrorValidateConfig {
     PASSWORD_NO_CONFIRM = 'Пароли не совпадают',
     PASSWORD_NO_VALIDATE = 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
     PASSWORD_REQUIRE = '',
+    RATING_REQUIRE = '',
 }

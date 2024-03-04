@@ -1,7 +1,7 @@
 import clsn from 'classnames';
 import { Button } from 'antd';
 
-import { useAppButtonLogout } from './lib/use-app-button-logout';
+import { useAppButtonLogout } from './hooks/use-app-button-logout';
 
 import { AppIcon } from '@shared/ui';
 import { LayoutConfig } from '@shared/config';

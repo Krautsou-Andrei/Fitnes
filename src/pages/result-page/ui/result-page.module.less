@@ -3,94 +3,91 @@
 
 .result-page {
     .button {
-        font-size: (@rem * 14);
+        font-size: @font-size-2m;
     }
 }
 .error,
-.errorChangePassword,
-.errorCheckEmail,
-.errorCheckEmailNoExist,
-.errorUserExist,
+.error-change-password,
+.error-check-email,
+.error-check-email-no-exist,
+.error-user-exist,
 .success,
-.successChangePassword,
-.errorLogin {
-    font-size: (@rem * 70);
+.success-change-password,
+.error-login {
+    font-size: @font-size-4xxl;
     line-height: 1;
 }
 
 .error,
-.errorChangePassword,
-.errorCheckEmail,
-.errorCheckEmailNoExist,
-.errorUserExist {
+.error-change-password,
+.error-check-email,
+.error-check-email-no-exist,
+.error-user-exist {
     color: @app-result-error-danger;
 }
 
-.errorCheckEmail {
-    margin-bottom: (@rem * 14) !important;
+.error-check-email {
+    margin-bottom: @gap-2m !important;
 }
 
 .success,
-.successChangePassword {
+.success-change-password {
     color: @app-result-success;
 }
 
-.errorLogin {
+.error-login {
     color: @app-result-error-warning;
 }
 
-.errorCheckEmail-content {
-    padding-left: (@rem * 32);
-    padding-right: (@rem * 32);
-    padding-bottom: (@rem * 56);
+.error-check-email-content {
+    padding-left: @gap-4xl;
+    padding-right: @gap-4xl;
+    padding-bottom: @gap-13xl;
 }
 
-.errorCheckEmailNoExist-content {
-    padding-bottom: (@rem * 56);
-    padding-left: (@rem * 54);
-    padding-right: (@rem * 54);
+.error-check-email-no-exist-content {
+    padding-bottom: @gap-13xl;
+    padding-left: @gap-12xl;
+    padding-right: @gap-12xl;
     .media-xs({
-        padding-left: (@rem * 32);
-        padding-right: (@rem * 32);
+        padding-left: @gap-4xl;
+        padding-right: @gap-4xl;
         
     });
 }
 
-.errorChangePassword-content,
-.errorUserExist-content,
+.error-change-password-content,
+.error-user-exist-content,
 .success-content,
-.successChangePassword-content,
-.errorLogin-content {
-    padding-top: (@rem * 70);
+.success-change-password-content,
+.error-login-content,
+.error-content,
+.error-check-email-no-exist-content {
+    padding-top: @gap-4xxl;
 }
 
-.errorCheckEmail-content {
+.error-check-email-content {
     .media-xs({       
-        padding-top: (@rem * 64);
+        padding-top: @gap-3xxl;
     });
 }
 
 .error-content,
-.errorCheckEmailNoExist-content {
-    padding-top: (@rem * 68);
-}
-
-.error-content,
-.errorUserExist-content,
-.errorLogin-content,
+.error-user-exist-content,
+.error-login-content,
 .success-content,
-.successChangePassword-content,
-.errorChangePassword-content {
+.success-change-password-content,
+.error-change-password-content {
     .media-xs({       
-        padding-top: (@rem * 36);
+        padding-top: @gap-6xl;
     });
 }
 
-.errorChangePassword-content,
-.successChangePassword-content {
-    padding-bottom: (@rem * 56);
+.error-change-password-content,
+.successC-cange-password-content {
+    padding-bottom: @gap-13xl;
 
     .media-xs({       
-        padding-bottom: (@rem * 32);
+        padding-bottom: @gap-4xl;
     });
 }

@@ -8,12 +8,12 @@
     }
 
     :global(.ant-form-item) {
-        margin-bottom: (@rem * 32);
+        margin-bottom: @gap-4xl;
     }
 
     :global(.ant-input) {
-        font-size: (@rem * 14);
-        line-height: 30px;
+        font-size: @font-size-2m;
+        line-height: (@rem * 30);
     }
 
     .buttons-wrapper {
@@ -23,37 +23,37 @@
 
         :global(.ant-btn-lg).button {
             .media-xs({
-                font-size: (@rem *14);
-                line-height: 130%
+                font-size: @font-size-2m;
+                line-height: @font-line-m
             });
         }
 
         :global(.ant-btn-lg).button-submit,
         :global(.ant-btn-lg).button-google {
             .media-xs({
-                font-size: (@rem *14);
-                line-height: 130%
+                font-size: @font-size-2m;
+                line-height: @font-line-m
             });
         }
     }
 
     .buttons-wrapper {
         :global(.ant-form-item).button + :global(.ant-form-item).button {
-            margin-top: (@rem * 16);
+            margin-top: @gap-m;
         }
     }
 
     :global(.ant-form-item) {
-        margin-top: (@rem * 12);
+        margin-top: @gap-s;
     }
 
     :global(.input-password + .input-password) {
-        margin-top: (@rem * 44);
-        margin-bottom: (@rem * 62);
+        margin-top: @gap-9xl;
+        margin-bottom: @gap-2xxl;
 
         .media-xs({
-            margin-top: (@rem * 48);
-            margin-bottom: (@rem * 52);
+            margin-top: @gap-10xl;
+            margin-bottom: @gap-11xl;
 
         });
     }

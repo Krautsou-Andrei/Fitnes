@@ -2,18 +2,18 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthLayout, BaseLayout } from '@app/layouts';
 
-import HomePage from '@pages/home-page';
-import AuthentificationPage from '@pages/authentification-page';
-import RegisterPage from '@pages/register-page';
-import ConfirmEmailPage from '@pages/confirm-email-page';
-import ChangePasswordPage from '@pages/change-password-page';
-import ResultPage from '@pages/result-page';
+import { AuthentificationPage } from '@pages/authentification-page';
+import { ChangePasswordPage } from '@pages/change-password-page';
+import { ConfirmEmailPage } from '@pages/confirm-email-page';
+import { FeedbacksPage } from '@pages/feedbacks-page';
+import { HomePage } from '@pages/home-page';
+import { RegisterPage } from '@pages/register-page';
+import { ResultPage } from '@pages/result-page';
 
 import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
 import { WithErrorBoundary } from '@shared/providers';
 import { PathConfig } from '@shared/config';
-import { TypePage } from '@shared/types/app';
 
 export function AppRouter() {
     return (
@@ -30,6 +30,18 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.BASE} element={<Navigate to={PathConfig.HOME} />} />
                 <Route path={PathConfig.HOME} element={<HomePage />} />
+            </Route>
+            <Route
+                path={PathConfig.FEEDBACKS}
+                element={
+                    <WithErrorBoundary>
+                        <AuthGuard>
+                            <BaseLayout isSimple={true} />
+                        </AuthGuard>
+                    </WithErrorBoundary>
+                }
+            >
+                <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
             </Route>
             <Route
                 element={
@@ -60,6 +72,7 @@ export function AppRouter() {
                 />
             </Route>
             <Route
+                path={PathConfig.RESULT}
                 element={
                     <WithErrorBoundary>
                         <GuestGuard>
@@ -70,38 +83,7 @@ export function AppRouter() {
                     </WithErrorBoundary>
                 }
             >
-                <Route
-                    path={PathConfig.RESULT_ERROR}
-                    element={<ResultPage type={TypePage.ERROR} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHANGE_PASSWORD}
-                    element={<ResultPage type={TypePage.ERROR_CHANGE_PASSWORD} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL}
-                    element={<ResultPage type={TypePage.ERROR_CHECK_EMAIL} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST}
-                    element={<ResultPage type={TypePage.ERROR_CHECK_EMAIL_NO_EXIST} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_LOGIN}
-                    element={<ResultPage type={TypePage.ERROR_LOGIN} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_ERROR_USER_EXIST}
-                    element={<ResultPage type={TypePage.ERROR_USER_EXIST} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_SUCCESS}
-                    element={<ResultPage type={TypePage.SUCCESS} />}
-                />
-                <Route
-                    path={PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD}
-                    element={<ResultPage type={TypePage.SUCCESS_CHANGE_PASSWORD} />}
-                />
+                <Route index={true} path=':resultType' element={<ResultPage />} />
             </Route>
         </Routes>
     );

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import clsn from 'classnames';
 
 import { tabsAuthConfig } from '../config/tabs-auth-config';
-import { useAuthContentMediaQuery } from '../lib/use-auth-content-media-query';
+import { useAuthContentMediaQuery } from '../hooks/use-auth-content-media-query';
 
 import { AppGuestContentPadding, AppIcon, AppTabs } from '@shared/ui';
 

@@ -1,0 +1,60 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.no-feedback-card-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: @gap-l;
+
+    .media-md({
+        gap: @gap-10xl;
+    });
+
+    .no-feedback-card {
+        width: 100%;
+        padding: @gap-11xl @gap-m;
+
+        .media-md({
+            padding: @gap-xl 0;
+        });
+    }
+
+    .title,
+    .description {
+        display: block;
+
+        text-align: center;
+        line-height: @font-line-m;
+    }
+
+    .title {
+        margin-bottom: @gap-10xl;
+        color: @app-card-text-color-primary;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+
+        .media-md({
+            letter-spacing: normal;
+        });
+    }
+
+    .description {
+        color: @app-text-color-secondary;
+        letter-spacing: 0.5px;
+
+        .media-md({
+            letter-spacing: normal;
+        });
+    }
+
+    .button {
+        .media-md({
+            width: 100%;
+        });
+    }
+}

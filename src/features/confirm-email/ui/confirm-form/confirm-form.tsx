@@ -2,10 +2,10 @@ import VerificationInput from 'react-verification-input';
 import { Typography } from 'antd';
 import clsn from 'classnames';
 
-import { useConfirmEmailForm } from './lib/useConfirmEmailForm';
-import { confirmConfig } from '../../config/confirm-config';
+import { useConfirmEmailForm } from './hooks/useConfirmEmailForm';
+import { ConfirmPageConfig, confirmConfig } from '../../config';
 
-import { TypePage } from '@shared/types/app';
+import { DataTestIdConfig } from '@shared/config';
 
 import styles from './confirm-form.module.less';
 
@@ -27,9 +27,9 @@ export function ConfirmForm() {
                 placeholder=''
                 onComplete={onComplete}
                 onChange={onChange}
-                inputProps={{ 'data-test-id': 'verification-input' }}
+                inputProps={{ 'data-test-id': DataTestIdConfig.VERIFICATION_INPUT }}
             />
-            <Text>{confirmConfig[TypePage.CONFIRM_EMAIL].placeholder}</Text>
+            <Text>{confirmConfig[ConfirmPageConfig.CONFIRM_EMAIL].placeholder}</Text>
         </div>
     );
 }

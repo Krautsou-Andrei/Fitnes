@@ -1,0 +1,97 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.feedback-card {
+    :global(.ant-card-body) {
+        padding: @gap-m;
+        display: flex;
+
+        .media-md({
+            flex-direction: column;           
+        });
+    }
+
+    .feedback-user {
+        min-width: @app-width-user-feedback;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        gap: @gap-s;
+
+        .media-md({
+            margin-bottom: @gap-s;
+
+            flex-direction: row;
+            justify-content: start
+        });
+
+        &__name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        :global(.ant-avatar) {
+            background-color: @app-avatar-background-color;
+            color: @app-avatar-color;
+        }
+
+        :global(.ant-typography) {
+            font-size: @font-size-m;
+            line-height: @font-line-m;
+        }
+    }
+
+    .feedback-content {
+        margin-left: @gap-s;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: @gap-s;
+
+        .media-md({
+            margin-left: 0;
+            gap: @gap-m;
+        });
+
+        .rating-wrapper {
+            font-size: @font-size-2m;
+            line-height: @font-line-origin;
+
+            .feedback-rating {
+                padding-left: @gap-4xs;
+                height: @height-s;
+
+                font-size: @font-size-2m;
+                line-height: @font-line-origin;
+
+                :global(.ant-rate-star:not(:last-child)) {
+                    margin-right: @gap-2xs;
+                }
+
+                :global(.anticon){
+                    color: @app-rating-stars-color;
+                }
+            }
+
+            .feedback-date {
+                margin-left: @gap-m;
+
+                font-size: @font-size-s;
+                line-height: @font-line-m;
+
+                color: @app-rating-text-color;
+            }
+        }
+
+        .feedback-description {
+            color: @app-text-color-secondary;
+            line-height: @font-line-m;
+        }
+    }
+}

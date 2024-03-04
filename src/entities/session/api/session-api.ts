@@ -1,4 +1,4 @@
-
+import { ApiEndpoints } from '../config/api-endponts';
 import { mapSessionLogin } from '../lib/map-session-login';
 import type {
     SessionChangePasswordType,
@@ -11,7 +11,7 @@ import type {
 import type {
     SessionLoginDto,
     RequestRegisterBody,
-    RequestLoginBody,   
+    RequestLoginBody,
     RequestCheckEmailBody,
     RequestConfirmEmailBody,
     RequestChangePasswordBody,
@@ -24,7 +24,7 @@ export const sessionApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         login: build.mutation<SessionLoginType, RequestLoginBody>({
             query: (body) => ({
-                url: '/auth/login',
+                url: ApiEndpoints.LOGIN,
                 method: 'POST',
                 body,
             }),
@@ -33,7 +33,7 @@ export const sessionApi = baseApi.injectEndpoints({
         }),
         register: build.mutation<SessionRegisterType, RequestRegisterBody>({
             query: (body) => ({
-                url: '/auth/registration',
+                url: ApiEndpoints.REGISTRATION,
                 method: 'POST',
                 body,
             }),
@@ -41,30 +41,30 @@ export const sessionApi = baseApi.injectEndpoints({
         }),
         checkEmail: build.mutation<SessionCheckEmaiType, RequestCheckEmailBody>({
             query: (body) => ({
-                url: '/auth/check-email',
+                url: ApiEndpoints.CHECK_EMAIL,
                 method: 'POST',
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],           
+            invalidatesTags: [SESSION_TAG],
         }),
         confirmEmail: build.mutation<SessionConfirmEmailType, RequestConfirmEmailBody>({
             query: (body) => ({
-                url: '/auth/confirm-email',
+                url: ApiEndpoints.CONFIRM_EMAIL,
                 method: 'POST',
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],            
+            invalidatesTags: [SESSION_TAG],
         }),
         changePassword: build.mutation<SessionChangePasswordType, RequestChangePasswordBody>({
             query: (body) => ({
-                url: '/auth/change-password',
+                url: ApiEndpoints.CHANGE_PASSWORD,
                 method: 'POST',
                 body,
                 credentials: 'include',
             }),
-            invalidatesTags: [SESSION_TAG],           
+            invalidatesTags: [SESSION_TAG],
         }),
     }),
 });

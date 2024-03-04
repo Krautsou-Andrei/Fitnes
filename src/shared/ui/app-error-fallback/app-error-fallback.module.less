@@ -6,26 +6,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    row-gap: (@rem * 24);
+    row-gap: @gap-xl;
 
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 
-    z-index: 100;
+    z-index: @z-index-xl;
 
     background-color: @app-error-boundary-background;
 
     &__title {
-        font-size: (@rem * 36);
+        font-size: @font-size-6xl;
         font-weight: 700;
         text-align: center;
         text-wrap: balance;
     }
 
     &__subtitle {
-        font-size: (@rem * 26);
+        font-size: @font-size-2xl;
         font-weight: 700;
         text-align: center;
     }

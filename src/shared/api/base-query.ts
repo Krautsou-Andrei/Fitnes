@@ -8,6 +8,8 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { config } from '../lib/config';
 import { RootState } from '@shared/types/@ex/base-query';
+import { LocalStorageConfig } from '@shared/config';
+import { getLocalStorage } from '@shared/lib';
 
 export const baseQuery: BaseQueryFn<
     string | FetchArgs,
@@ -19,9 +21,11 @@ export const baseQuery: BaseQueryFn<
     baseUrl: config.API_ENDPOINT,
     prepareHeaders: (headers, { getState }) => {
         const { accessToken } = (getState() as RootState).session;
+        const accessTockenLocalStorage = getLocalStorage(LocalStorageConfig.ACCESS_TOKEN);
+        const accessTokenApp = accessToken || accessTockenLocalStorage;
 
-        if (accessToken) {
-            headers.set('Authorization', `Bearer ${accessToken}`);
+        if (accessTokenApp) {
+            headers.set('Authorization', `Bearer ${accessTokenApp}`);
         }
 
         return headers;

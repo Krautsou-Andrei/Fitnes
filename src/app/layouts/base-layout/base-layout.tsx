@@ -4,12 +4,25 @@ import { AppFooter } from '@widgets/app-footer';
 
 import { AppLayout } from '@shared/ui';
 
-export function BaseLayout() {
+import styles from './base-layout.module.less';
+
+type BaseLayoutProps = {
+    isSimple?: boolean;
+};
+
+export function BaseLayout({ isSimple }: BaseLayoutProps) {
     return (
-        <AppLayout 
-            siderSlot={<AppSider />} 
-            headerSlot={<AppHeader />} 
-            footerSlot={<AppFooter />} 
+        <AppLayout
+            className={isSimple ? styles['main-simple'] : ''}
+            isSimple={isSimple}
+            siderSlot={<AppSider />}
+            headerSlot={
+                <AppHeader
+                    isSimple={isSimple}
+                    className={isSimple ? styles['header-sticky'] : ''}
+                />
+            }
+            footerSlot={!isSimple ? <AppFooter /> : null}
         />
     );
 }

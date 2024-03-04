@@ -2,17 +2,17 @@
 @import '@shared/styles/mixin';
 
 :global(.ant-layout-footer).app-footer {
-    padding: (@rem * 156) (@rem * 24) (@rem * 42);
+    padding: @gap-12xxl @gap-xl @gap-8xl;
 
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    row-gap: (@rem * 24);
+    row-gap: @gap-xl;
 
     background: transparent;
 
     .media-xs({
-        padding: 0 (@rem * 16) (@rem * 42);
+        padding: 0 @gap-m @gap-8xl;
         justify-content: center;
     });
 
@@ -22,9 +22,7 @@
         });
     }
 
-    .button-reviews {
-        height: (@rem * 40);
+    .button-feedbacks {
         align-self: self-end;
-        font-size: (@rem * 16);
     }
 }

@@ -2,14 +2,14 @@
 @import '@shared/styles/mixin';
 
 .confirm-content {
-    padding: (@rem * 68) (@rem * 40) (@rem * 54);
+    padding: @gap-4xxl @gap-7xl @gap-12xl;
 
     :global(h3.ant-typography) {
         font-weight: 500;
     }
 
     .media-xs({
-        padding: (@rem *32) (@rem *16)
+        padding: @gap-4xl @gap-m;
     });
 
     .select-text {
@@ -21,9 +21,9 @@
     }
 }
 
-.confirmEmail {
-    font-size: (@rem * 70);
+.confirm-email {
+    font-size: @font-size-4xxl;
     line-height: 1;
-    margin-bottom: (@rem * 28) !important;
+    margin-bottom: @gap-2xl !important;
     color: @app-primary-color;
 }

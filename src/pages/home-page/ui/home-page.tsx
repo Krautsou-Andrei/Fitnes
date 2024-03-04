@@ -10,7 +10,7 @@ import styles from './home-page.module.less';
 
 export function HomePage() {
     return (
-        <Content className={styles['content']}>
+        <Content>
             <Row className={styles['content-cards']} gutter={[0, 16]}>
                 <Col span={24}>
                     <Row gutter={[24, 24]}>

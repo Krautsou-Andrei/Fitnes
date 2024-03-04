@@ -11,8 +11,8 @@ import {
     PathConfig,
     SessionStorageConfig,
 } from '@shared/config';
+import { cryptPassword, removeSessionStorage, setSessionStorage } from '@shared/lib';
 import type { RootState } from '@shared/types/store';
-import { cryptPassword } from '@shared/lib';
 
 export const changePasswordThunk = createAsyncThunk<
     void,
@@ -26,8 +26,8 @@ export const changePasswordThunk = createAsyncThunk<
         try {
             await dispatch(sessionApi.endpoints.changePassword.initiate(body)).unwrap();
 
-            sessionStorage.setItem(SessionStorageConfig.PASSWORD, '');
-            sessionStorage.setItem(SessionStorageConfig.CONFIRM_PASSWORD, '');
+            removeSessionStorage(SessionStorageConfig.PASSWORD);
+            removeSessionStorage(SessionStorageConfig.CONFIRM_PASSWORD);
 
             dispatch(
                 push(PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD, {
@@ -35,8 +35,8 @@ export const changePasswordThunk = createAsyncThunk<
                 }),
             );
         } catch (error: unknown | undefined) {
-            sessionStorage.setItem(SessionStorageConfig.PASSWORD, cryptPassword(body.password));
-            sessionStorage.setItem(
+            setSessionStorage(SessionStorageConfig.PASSWORD, cryptPassword(body.password));
+            setSessionStorage(
                 SessionStorageConfig.CONFIRM_PASSWORD,
                 cryptPassword(body.confirmPassword),
             );

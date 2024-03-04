@@ -4,14 +4,14 @@
 .app-card {
     :global(.ant-card-body) {
         .media-md({
-            padding: (@rem * 16); 
+            padding: @gap-m; 
             letter-spacing: 0.5px;
         });
     }
 
     :global(.ant-list) {
-        font-size: (@rem * 16);
-        line-height: 130%;
+        font-size: @gap-m;
+        line-height: @font-line-m;
     }
 
     :global(h4.ant-typography) {
@@ -19,7 +19,7 @@
         line-height: 125%;
         font-weight: 500;
 
-        .media-md({ line-height: 130%;});
+        .media-md({ line-height: @font-line-m;});
     }
 
     :global(.ant-list-split) {

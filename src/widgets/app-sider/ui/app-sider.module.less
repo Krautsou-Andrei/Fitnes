@@ -2,9 +2,9 @@
 @import '@shared/styles/mixin';
 
 .logo {
-    margin-top: (@rem * 38);
-    margin-bottom: (@rem * 58);
-    margin-left: (@rem * 29);
+    margin-top: @gap-6xl;
+    margin-bottom: @gap-xxl;
+    margin-left: @gap-2xl;
     transition: transform 0.3s;
 
     &--collapsed {
@@ -15,24 +15,22 @@
     }
 
     .media-md({
-        margin-top: (@rem * 16);
-        margin-bottom: (@rem * 29);
-        margin-left: (@rem * 17);
+        margin-top: @gap-m;
+        margin-bottom: @gap-2xl;
+        margin-left: @gap-m;
     });
 }
 
 :global(.ant-layout-sider).app-sider {
+    position: fixed;
+    z-index: @z-index-l;
+    height: 100%;
+
     :global(.ant-layout-sider-children) {
         overflow: hidden;
         display: flex;
         flex-direction: column;
     }
-
-    .media-md({
-        position: fixed;
-        z-index: 10;
-        height: 100%;
-    });
 }
 
 :global(.ant-divider-horizontal).app-divider {

@@ -3,7 +3,7 @@
 
 :global(.ant-tabs-top).tabs {
     :global(.ant-tabs-nav) {
-        margin-bottom: (@rem * 14);
+        margin-bottom: @gap-2m;
     }
 }
 
@@ -17,15 +17,15 @@
     }
 
     :global(.ant-tabs-tab) {
-        padding: (@rem * 12.5) 0;
+        padding: @gap-s 0;
         flex: 50%;
         justify-content: center;
 
-        font-size: (@rem * 16);
-        line-height: 130%;
+        font-size: @font-line-m;
+        line-height: @font-line-m;
 
         .media-xs({
-            font-size: (@rem * 14);           
+            font-size: @font-size-2m;           
         });
     }
 }
