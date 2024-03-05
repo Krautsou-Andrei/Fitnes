@@ -1,10 +1,19 @@
-import React from 'react';
+import { createElement, Fragment, ReactNode } from 'react';
 
-export function splitString(str: string): React.ReactNode {
-    const newStr = str
-        .split('\n')
-        .map((line, index) =>
-            React.createElement(React.Fragment, { key: index }, line, React.createElement('br')),
-        );
-    return newStr;
+export function splitString(str: string): ReactNode {
+    if (str.indexOf('\n') === -1) {
+        return str;
+    }
+
+    const lines = str.split('\n');
+
+    const newSrt = lines.map((line, index) => {
+        if (index === lines.length - 1) {
+            return line;
+        }
+
+        return createElement(Fragment, { key: index }, line, createElement('br'));
+    });
+
+    return newSrt;
 }
