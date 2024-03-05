@@ -1,4 +1,4 @@
-import React from 'react';
+import {createElement} from 'react';
 
 type WrapSelectedTextProps = {
     text: string;
@@ -21,7 +21,7 @@ export function wrapSelectedText({ text, searchString, className }: WrapSelected
             parts.push(before);
         }
 
-        parts.push(React.createElement('span', { className, key: index }, matchedText));
+        parts.push(createElement('span', { className, key: index }, matchedText));
 
         lastIndex = index + matchedText.length;
     }
