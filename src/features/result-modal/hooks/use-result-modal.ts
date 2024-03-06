@@ -15,7 +15,10 @@ export function useResultModal() {
     const dispatch = useAppDispatch();
 
     const onClickClose = () => {
-        if (typeModal.type === ModalTypeConfig.ERROR_GET_FEEDBACK) {
+        if (
+            typeModal.type === ModalTypeConfig.ERROR_GET_FEEDBACK ||
+            typeModal.type === ModalTypeConfig.ERROR_GET_TRANING
+        ) {
             dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
             dispatch(push(PathConfig.HOME));
             return;

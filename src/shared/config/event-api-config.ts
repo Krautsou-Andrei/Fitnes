@@ -8,4 +8,5 @@ export const enum EventApiConfig {
     LOGIN = 'authentication/login',
     LOGOUT = 'authentication/logout',
     REGISTER = 'authentication/register',
+    TRANING_GET = 'traning/get',
 }
