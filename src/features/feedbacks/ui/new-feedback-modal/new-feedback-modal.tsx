@@ -38,7 +38,7 @@ export function NewFeedbackModal() {
                         ></Rate>
                     </Form.Item>
                     <Form.Item name={FeedbackConfig.FORM_INPUT_NAME_MESSAGE}>
-                        <TextArea autoSize />
+                        <TextArea autoSize className={styles['text-area']} />
                     </Form.Item>
                 </Form>
             )}
