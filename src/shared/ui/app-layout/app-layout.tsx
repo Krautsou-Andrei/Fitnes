@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import clsn from 'classnames';
 import { Layout } from 'antd';
 
-import { useMainWidth } from '@shared/hooks/@ex/app-layout';
+import { useAppLayout } from './hooks/use-app-layout';
 
 import styles from './app-layout.module.less';
 
@@ -25,7 +25,7 @@ export function AppLayout({
     isAuthLayout,
     isSimple,
 }: AppLayoutProps) {
-    const { styleCollapsed } = useMainWidth();
+    const { isCalendar, styleCollapsed } = useAppLayout();
 
     return (
         <Layout className={clsn(styles['main-page'], className)}>
@@ -34,7 +34,7 @@ export function AppLayout({
                 {headerSlot}
                 <div
                     className={clsn(styles['main-content'], {
-                        [styles['main-content-simple']]: isSimple,
+                        [styles['main-content-simple']]: isSimple && !isCalendar,
                     })}
                 >
                     <Outlet />

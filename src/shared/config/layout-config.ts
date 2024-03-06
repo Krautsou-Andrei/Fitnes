@@ -8,6 +8,7 @@ export const enum LayoutConfig {
     BUTTON_REVIEWS = 'Смотреть отзывы',
     BUTTON_SAVE_NEW_PASSWORD = 'Сохранить',
     BUTTON_SETTINGS = 'Настройки',
+    CALENDAR = 'Календарь',
     CARD_FOOTER_LINK = 'Скачать на телефон',
     CARD_FOOTER_TITLE = 'Доступно в PRO-тарифе',
     CHECKBOX_REMEMBER_ME = 'Запомнить меня',

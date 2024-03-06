@@ -3,6 +3,7 @@ import { AppHeader } from '@widgets/app-header';
 import { AppFooter } from '@widgets/app-footer';
 
 import { AppLayout } from '@shared/ui';
+import { usePageIsEqual } from '@shared/hooks';
 
 import styles from './base-layout.module.less';
 
@@ -11,6 +12,8 @@ type BaseLayoutProps = {
 };
 
 export function BaseLayout({ isSimple }: BaseLayoutProps) {
+    const { isFeedback } = usePageIsEqual();
+
     return (
         <AppLayout
             className={isSimple ? styles['main-simple'] : ''}
@@ -19,7 +22,7 @@ export function BaseLayout({ isSimple }: BaseLayoutProps) {
             headerSlot={
                 <AppHeader
                     isSimple={isSimple}
-                    className={isSimple ? styles['header-sticky'] : ''}
+                    className={isSimple && isFeedback ? styles['header-sticky'] : ''}
                 />
             }
             footerSlot={!isSimple ? <AppFooter /> : null}
