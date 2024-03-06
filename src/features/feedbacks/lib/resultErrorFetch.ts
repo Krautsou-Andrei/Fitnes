@@ -1,14 +1,16 @@
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-import { modalResultConfig, ModalTypeConfig } from '@features/result-modal/@ex/feedbacks';
-
-import { feedbackActions } from '@entities/feedbacks';
+import {
+    modalResultConfig,
+    ModalTypeConfig,
+    resultModalActions,
+} from '@features/result-modal/@ex/feedbacks';
 
 import { StatusError } from '@shared/api';
 
 export function resultErrorFetch(error: FetchBaseQueryError) {
     if (error.status !== StatusError.ERROR_403) {
-        return feedbackActions.setResultModal({
+        return resultModalActions.setResultModal({
             isOpen: true,
             typeModal: {
                 type: modalResultConfig[ModalTypeConfig.ERROR_GET_FEEDBACK].type,
@@ -17,5 +19,5 @@ export function resultErrorFetch(error: FetchBaseQueryError) {
         });
     }
 
-    return feedbackActions.setResultModal({ isOpen: false });
+    return resultModalActions.setResultModal({ isOpen: false });
 }

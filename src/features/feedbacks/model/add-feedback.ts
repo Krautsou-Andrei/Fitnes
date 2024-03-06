@@ -1,9 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { modalResultConfig, ModalTypeConfig } from '@features/result-modal/@ex/feedbacks';
+import {
+    modalResultConfig,
+    ModalTypeConfig,
+    resultModalActions,
+} from '@features/result-modal/@ex/feedbacks';
 
 import { sessionActions } from '@entities/session';
-import { RequesFeedbackBody, feedbackActions, feedbackApi } from '@entities/feedbacks';
+import { RequesFeedbackBody, feedbackApi } from '@entities/feedbacks';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { EventApiConfig } from '@shared/config';
@@ -18,7 +22,7 @@ export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { sta
         try {
             await dispatch(feedbackApi.endpoints.addFeedback.initiate(body)).unwrap();
             dispatch(
-                feedbackActions.setResultModal({
+                resultModalActions.setResultModal({
                     isOpen: true,
                     typeModal: {
                         type: modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK].type,
@@ -29,7 +33,7 @@ export const AddFeedbackThunk = createAsyncThunk<void, RequesFeedbackBody, { sta
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 dispatch(
-                    feedbackActions.setResultModal({
+                    resultModalActions.setResultModal({
                         isOpen: true,
                         typeModal: {
                             type: modalResultConfig[ModalTypeConfig.ERROR_ADD_FEEDBACK].type,

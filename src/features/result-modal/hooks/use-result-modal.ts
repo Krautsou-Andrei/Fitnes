@@ -1,7 +1,8 @@
 import { push } from 'redux-first-history';
 
+import { resultModalActions, selectResultModal } from '../model/slice';
 import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
-import { feedbackActions, selectResultModal } from '@entities/feedbacks';
+import { feedbackActions } from '@entities/feedbacks';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { PathConfig } from '@shared/config';
@@ -15,11 +16,11 @@ export function useResultModal() {
 
     const onClickClose = () => {
         if (typeModal.type === ModalTypeConfig.ERROR_GET_FEEDBACK) {
-            dispatch(feedbackActions.setResultModal({ isOpen: false, typeModal: undefined }));
+            dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
             dispatch(push(PathConfig.HOME));
             return;
         }
-        dispatch(feedbackActions.setResultModal({ isOpen: false, typeModal: undefined }));
+        dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
     };
 
     const onClickAgayn = () => {
