@@ -4,7 +4,7 @@ import { GooglePlusOutlined } from '@ant-design/icons';
 import { buttonText } from './lib/button-text';
 import type { TypeAppForm } from '../../model/types';
 
-import { useAppMediaQuery } from '@shared/hooks';
+import { useAppMediaQuery } from '@shared/hooks/@ex/app-form';
 
 interface AppButtonGoogProps extends ButtonProps {
     typeButton: TypeAppForm;

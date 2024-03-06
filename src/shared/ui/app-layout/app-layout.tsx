@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import clsn from 'classnames';
 import { Layout } from 'antd';
 
-import { useMainWidth } from '@shared/hooks';
+import { useMainWidth } from '@shared/hooks/@ex/app-layout';
 
 import styles from './app-layout.module.less';
 
