@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
+
 import { LayoutConfig, PathConfig } from '@shared/config';
+import { usePageIsEqual } from '@shared/hooks';
 
 import styles from './app-breadcrumb.module.less';
-import { Link, useLocation } from 'react-router-dom';
 
 export function AppBreadcrumb() {
-    const { pathname } = useLocation();
-    const isFeedback = pathname === PathConfig.FEEDBACKS;
+    const { isCalendar, isFeedback } = usePageIsEqual();
 
     return (
         <Breadcrumb className={styles['app-breadcrumb']}>
@@ -16,6 +17,11 @@ export function AppBreadcrumb() {
             {isFeedback && (
                 <Breadcrumb.Item>
                     <Link to={PathConfig.FEEDBACKS}>{LayoutConfig.FEEDBACKS}</Link>
+                </Breadcrumb.Item>
+            )}
+            {isCalendar && (
+                <Breadcrumb.Item>
+                    <Link to={PathConfig.CALENDAR}>{LayoutConfig.CALENDAR}</Link>
                 </Breadcrumb.Item>
             )}
         </Breadcrumb>
