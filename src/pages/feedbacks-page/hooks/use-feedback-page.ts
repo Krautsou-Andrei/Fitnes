@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getFeedbacksThunk } from '@features/feedbacks/model/getFeedbacks';
+import { getFeedbacksThunk } from '@features/feedbacks/model/get-feedbacks';
 
 import { FeedbackType, feedbackActions, selectFeedbacks } from '@entities/feedbacks';
 
