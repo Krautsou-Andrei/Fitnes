@@ -7,6 +7,7 @@ import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { HomePage } from '@pages/home-page';
+import { NotFoundPage } from '@pages/not-fount-page';
 import { RegisterPage } from '@pages/register-page';
 import { ResultPage } from '@pages/result-page';
 
@@ -84,6 +85,9 @@ export function AppRouter() {
                 }
             >
                 <Route index={true} path=':resultType' element={<ResultPage />} />
+            </Route>
+            <Route element={<AuthLayout />}>
+                <Route path={PathConfig.NOT_FOUND_PAGE} element={<NotFoundPage />} />
             </Route>
         </Routes>
     );
