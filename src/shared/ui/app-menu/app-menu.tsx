@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
+import { useLinkMenuClick } from '@shared/hooks';
 import { menuConfig } from './config/menu-config';
 
 import styles from './app-menu.module.less';
@@ -12,6 +12,8 @@ type AppMenuProps = {
 };
 
 export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
+    const { onClick } = useLinkMenuClick();
+
     return (
         <Menu
             className={clsn(styles['app-menu'])}
@@ -20,7 +22,8 @@ export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
             items={menuConfig.map((item) => ({
                 key: String(item.id),
                 icon: isQueryMD ? null : item.icon,
-                label: <Link to={item.link}>{item.title}</Link>,
+                label: `${item.title}`,
+                onClick: () => onClick(item.link),
                 style: isCollapsed
                     ? { paddingLeft: 'calc(50% - 16px / 2)' }
                     : {
