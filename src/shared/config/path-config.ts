@@ -6,6 +6,7 @@ export const enum PathConfig {
     BASE = '/',
     FEEDBACKS = '/feedbacks',
     HOME = '/main',
+    NOT_FOUND_PAGE = '*',
     REGISTRATION = '/auth/registration',
     RESULT = '/result',
     RESULT_ERROR = '/result/error',
