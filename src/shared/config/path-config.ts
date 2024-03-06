@@ -4,6 +4,7 @@ export const enum PathConfig {
     AUTH_CONFIRM_EMAIL = '/auth/confirm-email',
     AUTH_GOOGLE = '/auth/google',
     BASE = '/',
+    CALENDAR = '/calendar',
     FEEDBACKS = '/feedbacks',
     HOME = '/main',
     NOT_FOUND_PAGE = '*',

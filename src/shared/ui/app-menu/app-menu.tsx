@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
@@ -19,7 +20,7 @@ export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
             items={menuConfig.map((item) => ({
                 key: String(item.id),
                 icon: isQueryMD ? null : item.icon,
-                label: `${item.title}`,
+                label: <Link to={item.link}>{item.title}</Link>,
                 style: isCollapsed
                     ? { paddingLeft: 'calc(50% - 16px / 2)' }
                     : {
