@@ -1,4 +1,9 @@
-import { trainingApi, useGetTrainingQuery, useLazyGetTrainingQuery } from './api/training-api';
+import {
+    trainingApi,
+    useAddTrainingMutation,
+    useGetTrainingQuery,
+    useLazyGetTrainingQuery,
+} from './api/training-api';
 
 import { selectTraning, traningActions, traningSlice } from './model/slice';
 
@@ -10,6 +15,7 @@ export {
     traningActions,
     trainingApi,
     traningSlice,
+    useAddTrainingMutation,
     useGetTrainingQuery,
     useLazyGetTrainingQuery,
 };
