@@ -1,8 +1,8 @@
 import { ApiEndpoints } from '../config/api-endpoints';
 
-import { mapTraining } from '../lib/map-training';
-import type { TrainingDto, RequestTrainingBody } from './types';
-import type { TrainingType } from '../model/types';
+import { mapTraining, mapTraningList } from '../lib';
+import type { TrainingDto, RequestTrainingBody, TraningNameDto } from './types';
+import type { TrainingType, TraningName } from '../model/types';
 
 import { baseApi } from '@shared/api';
 import { TRAINING_TAG } from '@shared/api/tags';
@@ -25,6 +25,13 @@ export const trainingApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [TRAINING_TAG],
             transformResponse: (response: TrainingDto) => mapTraining(response),
+        }),
+        getTraningList: build.query<TraningName[], void>({
+            query: () => ({
+                url: ApiEndpoints.CATALOGS_TRAINING_LIST,
+                method: 'GEt',
+            }),
+            transformResponse: (response: TraningNameDto[]) => response.map(mapTraningList),
         }),
     }),
 });

@@ -42,3 +42,7 @@ export type TrainingDto = {
         },
     ];
 };
+export type TraningNameDto = {
+    name: string;
+    key: string;
+};

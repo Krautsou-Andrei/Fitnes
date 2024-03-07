@@ -23,3 +23,8 @@ export type TrainingType = {
         | undefined;
     exercises: Exercises[] | undefined;
 };
+
+export type TraningName= {
+    name: string;
+    key: string;
+};
