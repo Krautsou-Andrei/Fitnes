@@ -1,4 +1,5 @@
 import { AppBackgroundBlur } from './app-background-blur/app-backgound-blur';
+import { AppBadge } from './app-badge/app-badge';
 import { AppButtonReturnToHome } from './app-button-return-to-home';
 import { AppCard } from './app-card/app-card';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
@@ -17,6 +18,7 @@ export type * from './app-tabs/model/types';
 
 export {
     AppBackgroundBlur,
+    AppBadge,
     AppButtonReturnToHome,
     AppCard,
     AppErrorFallback,
