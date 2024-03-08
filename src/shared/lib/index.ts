@@ -1,6 +1,7 @@
 import { config } from './config';
 import { cryptPassword } from './crypt-password';
 import { decryptPassword } from './decrypt-password';
+import { formatDate } from './format-date';
 import { getLocalStorage } from './local-storage/get-local-storage';
 import { getSessionStorage } from './session-storage/get-session-storage';
 import { removeLocalStorage } from './local-storage/remove-local-storage';
@@ -17,6 +18,7 @@ export {
     config,
     cryptPassword,
     decryptPassword,
+    formatDate,
     getLocalStorage,
     getSessionStorage,
     removeLocalStorage,
