@@ -64,7 +64,7 @@
             padding: 0;
         });
 
-         :global(.ant-result-icon) {
+        :global(.ant-result-icon) {
             .media-md({
                 margin-bottom: @gap-3xl;
             });
@@ -97,5 +97,12 @@
     svg {
         width: @app-width-modal-icon;
         height: @app-width-modal-icon;
+    }
+}
+
+.modal-error-training {
+    animation: none;
+    :global(.ant-modal-body) {
+        padding: 0;
     }
 }

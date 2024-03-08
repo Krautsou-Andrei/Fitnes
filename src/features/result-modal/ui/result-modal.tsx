@@ -1,4 +1,5 @@
 import { Modal, Result } from 'antd';
+import clsn from 'classnames';
 
 import { useResultModal } from '../hooks/use-result-modal';
 import { Extra, modalCofig } from '../config';
@@ -8,32 +9,43 @@ import { STYLES } from '@shared/config/constants';
 import styles from './result-modal.module.less';
 
 export function ResultModal() {
-    const { description, isOpen, onClickAgayn, onClickClose, typeModal } = useResultModal();
+    const { description, isOpen, isTraningList, onClickAgayn, onClickClose, typeModal } =
+        useResultModal();
 
     return (
         <Modal
-            className={styles[`${typeModal.type}`]}
+            className={clsn(styles[`${typeModal.type}`], {
+                [styles['modal-error-training']]: isTraningList,
+            })}
             open={isOpen}
-            maskStyle={{ backdropFilter: STYLES.BLURE, background: STYLES.BACKGROUND_BLURE }}
+            maskStyle={{
+                backdropFilter: STYLES.BLURE,
+                background: STYLES.BACKGROUND_BLURE,
+            }}
             centered={true}
             footer={null}
             closable={false}
+            transitionName=''
         >
-            <Result
-                status={typeModal.status}
-                title={modalCofig[typeModal.type].title}
-                subTitle={description}
-                extra={
-                    <Extra
-                        type={typeModal.type}
-                        className={styles.button}
-                        title={modalCofig[typeModal.type].buttonTitle}
-                        titleClose={modalCofig[typeModal.type].buttonCloseTitle}
-                        onClick={onClickAgayn}
-                        onClickClose={onClickClose}
-                    />
-                }
-            />
+            {isTraningList ? (
+                <div />
+            ) : (
+                <Result
+                    status={typeModal.status}
+                    title={modalCofig[typeModal.type].title}
+                    subTitle={description}
+                    extra={
+                        <Extra
+                            type={typeModal.type}
+                            className={styles.button}
+                            title={modalCofig[typeModal.type].buttonTitle}
+                            titleClose={modalCofig[typeModal.type].buttonCloseTitle}
+                            onClick={onClickAgayn}
+                            onClickClose={onClickClose}
+                        />
+                    }
+                />
+            )}
         </Modal>
     );
 }

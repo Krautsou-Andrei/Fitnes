@@ -28,6 +28,11 @@ export const modalCofig: ModalConfig = {
         desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
+    [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных произошла ошибка',
+    },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         buttonTitle: 'Отлично',
         title: 'Отзыв успешно опубликован',
@@ -45,6 +50,10 @@ export const modalResultConfig: ModalResultConfig = {
     },
     [ModalTypeConfig.ERROR_GET_TRANING]: {
         type: ModalTypeConfig.ERROR_GET_TRANING,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
+        type: ModalTypeConfig.ERROR_GET_TRANING_LIST,
         status: '500',
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
