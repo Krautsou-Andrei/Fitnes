@@ -10,6 +10,7 @@ import { HomePage } from '@pages/home-page';
 import { NotFoundPage } from '@pages/not-fount-page';
 import { RegisterPage } from '@pages/register-page';
 import { ResultPage } from '@pages/result-page';
+import { TrainingPage } from '@pages/training-page';
 
 import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
@@ -33,7 +34,6 @@ export function AppRouter() {
                 <Route path={PathConfig.HOME} element={<HomePage />} />
             </Route>
             <Route
-                path={PathConfig.FEEDBACKS}
                 element={
                     <WithErrorBoundary>
                         <AuthGuard>
@@ -43,6 +43,7 @@ export function AppRouter() {
                 }
             >
                 <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
+                <Route path={PathConfig.CALENDAR} element={<TrainingPage />} />
             </Route>
             <Route
                 element={
