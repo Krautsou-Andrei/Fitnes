@@ -1,4 +1,4 @@
 import { mapTraining } from './map-training';
-import { mapTraningList } from './map-traning-list';
+import { mapTrainingList } from './map-training-list';
 
-export { mapTraining, mapTraningList };
+export { mapTraining, mapTrainingList };

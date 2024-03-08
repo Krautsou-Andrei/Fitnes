@@ -3,19 +3,31 @@ import {
     useAddTrainingMutation,
     useGetTrainingQuery,
     useLazyGetTrainingQuery,
+    useGetTrainingListQuery,
+    useLazyGetTrainingListQuery,
 } from './api/training-api';
 
-import { selectTraning, traningActions, traningSlice } from './model/slice';
+import {
+    selectCreateTraining,
+    selectTraining,
+    selectTrainingName,
+    trainingActions,
+    trainingSlice,
+} from './model/slice';
 
 export type * from './model/types';
 export type * from './api/types';
 
 export {
-    selectTraning,
-    traningActions,
+    selectCreateTraining,
+    selectTraining,
+    selectTrainingName,
+    trainingActions,
     trainingApi,
-    traningSlice,
+    trainingSlice,
     useAddTrainingMutation,
     useGetTrainingQuery,
     useLazyGetTrainingQuery,
+    useGetTrainingListQuery,
+    useLazyGetTrainingListQuery,
 };

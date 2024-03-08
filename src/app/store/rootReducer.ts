@@ -8,7 +8,7 @@ import { resultModalSlice } from '@features/result-modal';
 
 import { feedbackSlice } from '@entities/feedbacks';
 import { sessionSlice } from '@entities/session';
-import { traningSlice } from '@entities/training';
+import { trainingSlice } from '@entities/training';
 
 import { baseApi } from '@shared/api';
 
@@ -23,5 +23,5 @@ export const rootReducer = combineReducers({
     [resultModalSlice.name]: resultModalSlice.reducer,
     [sessionSlice.name]: sessionSlice.reducer,
     [siderSlice.name]: siderSlice.reducer,
-    [traningSlice.name]: traningSlice.reducer,
+    [trainingSlice.name]: trainingSlice.reducer,
 });

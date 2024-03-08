@@ -1,40 +1,34 @@
+import { Exercises } from '../model/types';
+
 export type RequestTrainingBody = {
-    name: 'string';
-    date: Date;
-    isImplementation: boolean;
-    parameters: {
+    name: string;
+    date: string;
+    isImplementation?: boolean;
+    parameters?: {
         repeat: boolean;
         period: number;
         jointTraining: boolean;
-        participants?: ['string'];
+        participants?: [string];
     };
-    exercises: [
-        {
-            name: 'string';
-            replays: number;
-            weight: number;
-            approaches: number;
-            isImplementation: boolean;
-        },
-    ];
+    exercises: Exercises[] | [];
 };
 
 export type TrainingDto = {
-    _id: 'string';
-    name: 'string';
-    date: Date;
+    _id: string;
+    name: string;
+    date: string;
     isImplementation: boolean;
-    userId: 'string';
+    userId: string;
     parameters: {
         repeat: boolean;
         period: number;
         jointTraining: boolean;
-        participants?: ['string'];
+        participants?: [string];
     };
     exercises: [
         {
-            _id: 'string';
-            name: 'string';
+            _id: string;
+            name: string;
             replays: number;
             weight: number;
             approaches: number;
@@ -42,7 +36,7 @@ export type TrainingDto = {
         },
     ];
 };
-export type TraningNameDto = {
+export type TrainingNameDto = {
     name: string;
     key: string;
 };

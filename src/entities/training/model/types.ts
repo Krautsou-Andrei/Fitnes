@@ -1,30 +1,41 @@
 export type Exercises = {
-    id: 'string';
-    name: 'string';
+    id?: string;
+    name: string;
     replays: number;
     weight: number;
     approaches: number;
-    isImplementation: boolean;
+    isImplementation?: boolean;
 };
 
 export type TrainingType = {
-    id: 'string' | undefined;
-    name: 'string' | undefined;
-    date: Date | undefined;
-    isImplementation: boolean | undefined;
-    userId: 'string' | undefined;
+    id: string;
+    name: string;
+    date: string;
+    isImplementation: boolean;
+    userId: string;
     parameters:
         | {
               repeat: boolean;
               period: number;
               jointTraining: boolean;
-              participants?: ['string'];
+              participants?: [string];
           }
         | undefined;
-    exercises: Exercises[] | undefined;
+    exercises: Exercises[] | [];
 };
 
-export type TraningName= {
+export type TrainingName = {
     name: string;
     key: string;
+};
+
+export type CreateTraining = {
+    name: string;
+    date: string;
+    exercises: Exercises[] | [];
+};
+
+export type Training = {
+    date: string;
+    traning: TrainingType;
 };
