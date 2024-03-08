@@ -11,7 +11,7 @@ import { EventApiConfig } from '@shared/config';
 
 export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
     if (error.status !== StatusError.ERROR_403) {
-        if (type === EventApiConfig.TRANING_GET_LIST_NAME) {
+        if (type === EventApiConfig.TRAINING_GET_LIST_NAME) {
             return resultModalActions.setResultModal({
                 isOpen: true,
                 typeModal: {

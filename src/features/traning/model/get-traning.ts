@@ -3,14 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { resultErrorFetch } from '../lib/resultErrorFetch';
 
 import { sessionActions } from '@entities/session';
-import { TrainingType, trainingApi } from '@entities/training';
+import { Training, trainingApi } from '@entities/training';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { EventApiConfig } from '@shared/config';
 import type { RootState } from '@shared/types/store';
 
-export const getTraningThunk = createAsyncThunk<TrainingType[], void, { state: RootState }>(
-    EventApiConfig.TRANING_GET,
+export const getTraningThunk = createAsyncThunk<Training[], void, { state: RootState }>(
+    EventApiConfig.TRAINING_GET,
 
     async (_, { dispatch, rejectWithValue }) => {
         dispatch(sessionActions.setIsLoading(true));
