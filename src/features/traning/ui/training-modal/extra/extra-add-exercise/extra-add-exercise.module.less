@@ -1,0 +1,21 @@
+@import '@shared/styles/constants';
+
+:global(.ant-card-extra) {
+    .header-wrapper {
+        margin-bottom: @gap-m;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    :global(.ant-select).select-exercise {
+        flex: 1;
+        line-height: @font-line-m;
+
+        :global(.ant-select-selector) {
+            height: (@rem * 28);
+            border: none;
+        }
+    }
+}
