@@ -16,6 +16,7 @@ import { DateFormatConfig } from '@shared/config';
 import { useAppDispatch } from '@shared/hooks';
 
 import styles from './training-page.module.less';
+import { TrainingDay } from './training-day';
 
 export function TrainingPage() {
     const dispatch = useAppDispatch();
@@ -41,9 +42,11 @@ export function TrainingPage() {
 
     const cellRender = (date: Moment) => {
         const selectDate = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
-        const training = trainings.find((item) => item.date === selectDate);
+        const trainingsDay = trainings.filter((item) => item.date === selectDate);
 
-        return <div>{training?.date} </div>;
+        return trainingsDay?.map((item) => (
+            <TrainingDay key={item.traning.id} name={item.traning.name} />
+        ));
     };
 
     return (

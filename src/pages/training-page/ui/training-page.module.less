@@ -2,6 +2,38 @@
 
 :global(.ant-layout-content).traning-page {
     padding-bottom: @gap-10xxl;
-    
+
     background-color: @app-header-background-color;
+
+    :global(.ant-picker-calendar),
+    :global(.ant-picker-panel) {
+        background-color: transparent;
+    }
+
+    :global(.ant-picker-cell.ant-picker-cell-in-view.ant-picker-cell-selected) {
+        :global(.ant-picker-cell-inner.ant-picker-calendar-date) {
+            border-color: @app-primary-color;
+
+            background-color: @app-calendar-cell-background;
+        }
+    }
+
+    :global(.ant-picker-cell-inner.ant-picker-calendar-date) {
+        margin: 0 @gap-4xs;
+        min-height: (@rem * 143);
+        background-color: @app-calendar-cell-background;
+
+        :global(.ant-picker-calendar-date-content) {
+            overflow: hidden;
+        }
+    }
+
+    :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-value) {
+        line-height: @font-line-m;
+    }
+
+    :global(.ant-picker-calendar-date-content) {
+        display: flex;
+        flex-direction: column;
+    }
 }
