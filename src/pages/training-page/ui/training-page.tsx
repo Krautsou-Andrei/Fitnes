@@ -9,7 +9,7 @@ import { TrainingDay } from './training-day';
 
 import { TrainingModal } from '@features/traning';
 
-import { Training, trainingActions } from '@entities/training';
+import { TrainingType, trainingActions } from '@entities/training';
 
 import { AppPortal } from '@shared/ui';
 import { formatDate, offSet } from '@shared/lib';
@@ -22,7 +22,7 @@ export function TrainingPage() {
     const dispatch = useAppDispatch();
     const { listNameTraining, trainings } = useTraningPage();
     const [selectedDate, setSelectedDate] = useState<string | Moment>('');
-    const [selectedTraininsgDay, setSelectedTrainingsDay] = useState<Training[]>([]);
+    const [selectedTraininsgDay, setSelectedTrainingsDay] = useState<TrainingType[]>([]);
     const [targetCell, setTargetCell] = useState<HTMLElement | null>(null);
     const [isOffSet, setIsOffSet] = useState(false);
 
@@ -30,7 +30,9 @@ export function TrainingPage() {
         const chankSelector = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
         const element = document.querySelector(`[title*="${chankSelector}"]`) as HTMLElement | null;
         const trainingDate = date.toISOString();
-        const trainingsDay = trainings.filter((item) => item.date === chankSelector);
+        const trainingsDay = trainings
+            .filter((item) => item.date === chankSelector)
+            .map((item) => item.training);
 
         if (element) {
             setIsOffSet(offSet(element, Width.TRAINING_MODAL));
@@ -52,7 +54,7 @@ export function TrainingPage() {
         const trainingsDay = trainings.filter((item) => item.date === selectDate);
 
         return trainingsDay?.map((item) => (
-            <TrainingDay key={item.traning.id} name={item.traning.name} />
+            <TrainingDay key={item.training.id} name={item.training.name} />
         ));
     };
 

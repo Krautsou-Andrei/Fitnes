@@ -8,15 +8,15 @@ import { ExtraAddExercise, ExtraViewTraining } from './extra';
 
 import { addTraningThunk } from '@features/traning/model/add-training';
 import {
-    type Training,
     type TrainingName,
+    type TrainingType,
     selectCreateTraining,
     trainingActions,
 } from '@entities/training';
 
 import { DateFormatConfig, LayoutConfig } from '@shared/config';
 import { AppCard } from '@shared/ui';
-import { formatDate, showErrorForDevelop } from '@shared/lib';
+import { formatDate, isOldDate, showErrorForDevelop } from '@shared/lib';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './taining-modal.module.less';
@@ -26,7 +26,7 @@ type AddNewTrainingModalProps = {
     isOffSet: boolean;
     listTraining: TrainingName[] | [];
     onCloseAddTraining: () => void;
-    trainingsDay: Training[];
+    trainingsDay: TrainingType[];
 };
 
 export function TrainingModal({
@@ -41,6 +41,14 @@ export function TrainingModal({
 
     const createTraining = useAppSelector(selectCreateTraining);
     const currentDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
+    const isOldDay = isOldDate(date);
+    const isAllTraining = trainingsDay.length === listTraining.length;
+
+    const remainTraining = listTraining.filter((training) => {
+        if (!trainingsDay.some((item) => item.name === training.name)) {
+            return training;
+        }
+    });
 
     const [step, setStep] = useState(1);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -88,7 +96,7 @@ export function TrainingModal({
                             />
                         )}
                         {step === 2 && (
-                            <ExtraAddExercise listTraining={listTraining} prevStep={prevStep} />
+                            <ExtraAddExercise listTraining={remainTraining} prevStep={prevStep} />
                         )}
                     </>
                 }
@@ -99,6 +107,7 @@ export function TrainingModal({
                         block
                         className={styles['button-create']}
                         onClick={nextStep}
+                        disabled={isOldDay || isAllTraining}
                     >
                         {LayoutConfig.BUTTON_CREATE_TRAINING}
                     </Button>
