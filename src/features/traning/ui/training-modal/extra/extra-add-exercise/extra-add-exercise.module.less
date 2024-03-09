@@ -3,10 +3,28 @@
 :global(.ant-card-extra) {
     .header-wrapper {
         margin-bottom: @gap-m;
+        padding: 0 @gap-s;
 
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .button {
+            height: (@rem * 16);
+            width: (@rem * 16);
+        }
+    }
+
+    .header-body {
+        padding: 0 @gap-s;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    :global(.ant-divider).training-add-title-divider {
+        margin: 0;
     }
 
     :global(.ant-select).select-exercise {
@@ -17,5 +35,12 @@
             height: (@rem * 28);
             border: none;
         }
+    }
+
+    .empty {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: end;
     }
 }

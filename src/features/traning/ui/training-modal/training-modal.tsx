@@ -98,7 +98,8 @@ export function TrainingModal({
                         )}
                         {step === 2 && (
                             <ExtraAddExercise
-                                listTraining={remainTraining}
+                                listTrainingName={remainTraining}
+                                listTraining={trainingsDay}
                                 prevStep={prevStep}
                                 setSelectExercise={setSelectExercise}
                                 selectExercise={selectExercise}

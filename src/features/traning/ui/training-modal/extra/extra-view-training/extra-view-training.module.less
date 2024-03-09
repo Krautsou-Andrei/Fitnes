@@ -3,8 +3,10 @@
 :global(.ant-card-extra) {
     .header-wrapper {
         margin-bottom: @gap-m;
+        padding: 0 @gap-s;
 
         display: flex;
+        justify-content: space-between;
 
         .calendar-cell-title {
             margin-bottom: @gap-3xs;
@@ -18,6 +20,14 @@
         .button svg {
             width: (@rem * 12);
         }
+    }
+
+    .header-body {
+        padding: 0 @gap-s;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
     }
 
     .button-edit {

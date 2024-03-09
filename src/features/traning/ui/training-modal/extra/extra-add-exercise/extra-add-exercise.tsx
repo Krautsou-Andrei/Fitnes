@@ -1,30 +1,39 @@
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import { Button, Select } from 'antd';
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Button, Divider, Empty, Select, Space } from 'antd';
+import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 
-import { trainingActions, type TrainingName } from '@entities/training';
+import {
+    type Exercises,
+    type TrainingType,
+    type TrainingName,
+    trainingActions,
+} from '@entities/training';
 
 import { LayoutConfig } from '@shared/config';
 import { useAppDispatch } from '@shared/hooks';
 
 import styles from './extra-add-exercise.module.less';
+import { STYLES } from '@shared/config/constants';
 
 type ExtraAddExerciseProps = {
     prevStep: () => void;
-    listTraining: TrainingName[] | [];
+    listTrainingName: TrainingName[] | [];
+    listTraining: TrainingType[] | [];
     setSelectExercise: Dispatch<SetStateAction<string>>;
     selectExercise: string;
 };
 
 export function ExtraAddExercise({
     prevStep,
+    listTrainingName,
     listTraining,
     selectExercise,
     setSelectExercise,
 }: ExtraAddExerciseProps) {
     const dispatch = useAppDispatch();
+    const [selectTraining, setSelectTraining] = useState<Exercises[] | []>([]);
 
-    const selectOptions = listTraining.map((item) => ({ value: item.name, label: item.name }));
+    const selectOptions = listTrainingName.map((item) => ({ value: item.name, label: item.name }));
 
     const onSelectExercise = (value: string) => {
         setSelectExercise(value);
@@ -47,6 +56,25 @@ export function ExtraAddExercise({
                     options={selectOptions}
                     onChange={onSelectExercise}
                 />
+            </div>
+            <Divider className={styles['training-add-title-divider']} />
+            <div className={styles['header-body']}>
+                {selectTraining.length ? (
+                    selectTraining.map((item) => (
+                        <div key={item.id} className={styles['trainig-item']}>
+                            {item.name}
+                            <Button type='link' className={styles['button-edit']}>
+                                <EditOutlined />
+                            </Button>
+                        </div>
+                    ))
+                ) : (
+                    <Empty
+                        className={styles.empty}
+                        image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
+                        imageStyle={{ height: STYLES.HEIGHT_EMPTY_TRAINIG_MODAL }}
+                    />
+                )}
             </div>
         </>
     );

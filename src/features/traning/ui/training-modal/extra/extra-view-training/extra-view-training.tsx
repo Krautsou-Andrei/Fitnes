@@ -41,25 +41,27 @@ export function ExtraViewTraining({
                     icon={<CloseOutlined />}
                 />
             </div>
-            {listTraining.length ? (
-                listTraining.map((item) => (
-                    <div key={item.id} className={styles['trainig-item']}>
-                        <Space>
-                            <AppBadge name={item.name} />
-                            {item.name}
-                        </Space>
-                        <Button type='link' className={styles['button-edit']}>
-                            <EditOutlined />
-                        </Button>
-                    </div>
-                ))
-            ) : (
-                <Empty
-                    className={styles.empty}
-                    image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
-                    imageStyle={{ height: STYLES.HEIGHT_EMPTY_TRAINIG_MODAL }}
-                />
-            )}
+            <div className={styles['header-body']}>
+                {listTraining.length ? (
+                    listTraining.map((item) => (
+                        <div key={item.id} className={styles['trainig-item']}>
+                            <Space>
+                                <AppBadge name={item.name} />
+                                {item.name}
+                            </Space>
+                            <Button type='link' className={styles['button-edit']}>
+                                <EditOutlined />
+                            </Button>
+                        </div>
+                    ))
+                ) : (
+                    <Empty
+                        className={styles.empty}
+                        image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
+                        imageStyle={{ height: STYLES.HEIGHT_EMPTY_TRAINIG_MODAL }}
+                    />
+                )}
+            </div>
         </>
     );
 }
