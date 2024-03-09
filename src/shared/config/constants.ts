@@ -32,4 +32,6 @@ export const STYLES = {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED_NO}px`,
         transition: 'margin-left 0.2s ease',
     },
+
+    HEIGHT_EMPTY_TRAINIG_MODAL: 32,
 };

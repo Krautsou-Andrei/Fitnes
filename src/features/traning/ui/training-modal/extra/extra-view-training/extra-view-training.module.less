@@ -31,4 +31,17 @@
     .trainig-item + .trainig-item {
         margin-top: @gap-xs;
     }
+
+    :global(.ant-empty-image) {
+        margin-bottom: 0;
+        
+        img {
+            width: (@rem * 32);
+            height: (@rem * 32);
+        }
+    }
+
+    :global(.ant-empty-description) {
+        display: none;
+    }
 }

@@ -5,7 +5,12 @@ import { AppDrawer } from '../app-drawer';
 import { ExtraAddExercise, ExtraViewTraining } from './extra';
 
 import { addTraningThunk } from '@features/traning/model/add-training';
-import { TrainingName, selectCreateTraining, trainingActions } from '@entities/training';
+import {
+    type Training,
+    type TrainingName,
+    selectCreateTraining,
+    trainingActions,
+} from '@entities/training';
 
 import { LayoutConfig } from '@shared/config';
 import { AppCard } from '@shared/ui';
@@ -18,18 +23,21 @@ type AddNewTrainingModalProps = {
     date: string;
     listTraining: TrainingName[] | [];
     onCloseAddTraining: () => void;
+    trainingsDay: Training[];
 };
 
 export function TrainingModal({
     date,
     listTraining,
     onCloseAddTraining,
+    trainingsDay
 }: AddNewTrainingModalProps) {
     const { exercises } = useAppSelector(selectCreateTraining);
     const dispatch = useAppDispatch();
-    const [step, setStep] = useState(2);
-    const [isOpenDrawer, setIsOpenDrawer] = useState(false);
     const createTraining = useAppSelector(selectCreateTraining);
+
+    const [step, setStep] = useState(1);
+    const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
     const nextStep = () => {
         setStep((prev) => prev + 1);
@@ -67,7 +75,7 @@ export function TrainingModal({
                         {step === 1 && (
                             <ExtraViewTraining
                                 date={date}
-                                listTraining={listTraining}
+                                listTraining={trainingsDay}
                                 onCloseAddTraining={onCloseAddTraining}
                             />
                         )}

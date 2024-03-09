@@ -1,17 +1,18 @@
-import { Button, Space } from 'antd';
+import { Button, Empty, Space } from 'antd';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 
-import type { TrainingName } from '@entities/training';
+import type { Training } from '@entities/training';
 import { LayoutConfig } from '@shared/config';
 
 import { AppBadge } from '@shared/ui';
+import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-view-training.module.less';
 
 type ExtraViewTrainingProps = {
     date: string;
     onCloseAddTraining: () => void;
-    listTraining: TrainingName[] | [];
+    listTraining: Training[];
 };
 
 export function ExtraViewTraining({
@@ -26,9 +27,11 @@ export function ExtraViewTraining({
                     <div className={styles['calendar-cell-title']}>
                         {LayoutConfig.TITLE_MODAL_TRAINING_DATE + date}
                     </div>
-                    <div className={styles['calendar-cell-sub-title']}>
-                        {LayoutConfig.NO_ACTIVE_TRAINING}
-                    </div>
+                    {!listTraining.length && (
+                        <div className={styles['calendar-cell-sub-title']}>
+                            {LayoutConfig.NO_ACTIVE_TRAINING}
+                        </div>
+                    )}
                 </div>
                 <Button
                     className={styles.button}
@@ -38,18 +41,24 @@ export function ExtraViewTraining({
                     icon={<CloseOutlined />}
                 />
             </div>
-            {listTraining.length > 0 &&
+            {listTraining.length > 0 ? (
                 listTraining.map((item) => (
-                    <div key={item.key} className={styles['trainig-item']}>
+                    <div key={item.traning.id} className={styles['trainig-item']}>
                         <Space>
-                            <AppBadge name={item.name} />
-                            {item.name}
+                            <AppBadge name={item.traning.name} />
+                            {item.traning.name}
                         </Space>
                         <Button type='link' className={styles['button-edit']}>
                             <EditOutlined />
                         </Button>
                     </div>
-                ))}
+                ))
+            ) : (
+                <Empty
+                    image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
+                    imageStyle={{ height: STYLES.HEIGHT_EMPTY_TRAINIG_MODAL }}
+                />
+            )}
         </>
     );
 }

@@ -8,7 +8,7 @@ import { locale } from '../config';
 
 import { TrainingModal } from '@features/traning';
 
-import { trainingActions } from '@entities/training';
+import { Training, trainingActions } from '@entities/training';
 
 import { AppPortal } from '@shared/ui';
 import { formatDate } from '@shared/lib';
@@ -22,6 +22,7 @@ export function TrainingPage() {
     const dispatch = useAppDispatch();
     const { listNameTraining, trainings } = useTraningPage();
     const [selectedDate, setSelectedDate] = useState<string>('');
+    const [selectedTraininsgDay, setSelectedTrainingsDay] = useState<Training[]>([]);
     const [targetCell, setTargetCell] = useState<HTMLElement | null>(null);
 
     const onChangeCell = (date: Moment) => {
@@ -29,8 +30,10 @@ export function TrainingPage() {
         const element = document.querySelector(`[title*="${chankSelector}"]`) as HTMLElement | null;
         const cellDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
         const trainingDate = date.toISOString();
+        const trainingsDay = trainings.filter((item) => item.date === chankSelector);
 
         setSelectedDate(cellDate);
+        setSelectedTrainingsDay(trainingsDay);
         setTargetCell(element);
 
         dispatch(trainingActions.setCreateTrainingDate(trainingDate));
@@ -58,6 +61,7 @@ export function TrainingPage() {
                         date={selectedDate}
                         listTraining={listNameTraining}
                         onCloseAddTraining={onCloseAddTraining}
+                        trainingsDay={selectedTraininsgDay}
                     />
                 </AppPortal>
             )}
