@@ -52,6 +52,7 @@ export function TrainingModal({
 
     const [step, setStep] = useState(1);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+    const [selectExercise, setSelectExercise] = useState('');
 
     const nextStep = () => {
         setStep((prev) => prev + 1);
@@ -96,7 +97,12 @@ export function TrainingModal({
                             />
                         )}
                         {step === 2 && (
-                            <ExtraAddExercise listTraining={remainTraining} prevStep={prevStep} />
+                            <ExtraAddExercise
+                                listTraining={remainTraining}
+                                prevStep={prevStep}
+                                setSelectExercise={setSelectExercise}
+                                selectExercise={selectExercise}
+                            />
                         )}
                     </>
                 }
@@ -109,12 +115,18 @@ export function TrainingModal({
                         onClick={nextStep}
                         disabled={isOldDay || isAllTraining}
                     >
-                        {LayoutConfig.BUTTON_CREATE_TRAINING}
+                        {trainingsDay.length
+                            ? LayoutConfig.BUTTON_ADD_TRAINING
+                            : LayoutConfig.BUTTON_CREATE_TRAINING}
                     </Button>
                 )}
                 {step === 2 && (
                     <div className=''>
-                        <Button block onClick={onOpenDrawer}>
+                        <Button
+                            block
+                            onClick={onOpenDrawer}
+                            disabled={Boolean(selectExercise === '')}
+                        >
                             {LayoutConfig.BUTTON_ADD_EXERCISE}
                         </Button>
                         <Button block type='text' onClick={onSave}>

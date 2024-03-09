@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { Button, Select } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
@@ -12,11 +12,18 @@ import styles from './extra-add-exercise.module.less';
 type ExtraAddExerciseProps = {
     prevStep: () => void;
     listTraining: TrainingName[] | [];
+    setSelectExercise: Dispatch<SetStateAction<string>>;
+    selectExercise: string;
 };
 
-export function ExtraAddExercise({ prevStep, listTraining }: ExtraAddExerciseProps) {
+export function ExtraAddExercise({
+    prevStep,
+    listTraining,
+    selectExercise,
+    setSelectExercise,
+}: ExtraAddExerciseProps) {
     const dispatch = useAppDispatch();
-    const [selectExercise, setSelectExercise] = useState('');
+
     const selectOptions = listTraining.map((item) => ({ value: item.name, label: item.name }));
 
     const onSelectExercise = (value: string) => {
