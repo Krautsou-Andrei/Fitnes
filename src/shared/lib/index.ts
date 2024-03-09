@@ -1,9 +1,10 @@
 import { config } from './config';
 import { cryptPassword } from './crypt-password';
 import { decryptPassword } from './decrypt-password';
-import { formatDate } from './format-date';
+import { formatDate, weekDay } from './format-date';
 import { getLocalStorage } from './local-storage/get-local-storage';
 import { getSessionStorage } from './session-storage/get-session-storage';
+import { offSet } from './off-set';
 import { removeLocalStorage } from './local-storage/remove-local-storage';
 import { removeSessionStorage } from './session-storage/remove-session-storage';
 import { setLocalStorage } from './local-storage/set-local-storage';
@@ -21,6 +22,7 @@ export {
     formatDate,
     getLocalStorage,
     getSessionStorage,
+    offSet,
     removeLocalStorage,
     removeSessionStorage,
     setLocalStorage,
@@ -29,5 +31,6 @@ export {
     showErrorForDevelop,
     splitString,
     wait,
+    weekDay,
     wrapSelectedText,
 };

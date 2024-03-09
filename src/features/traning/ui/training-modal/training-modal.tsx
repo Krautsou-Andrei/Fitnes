@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'antd';
+import clsn from 'classnames';
+import type { Moment } from 'moment';
 
 import { AppDrawer } from '../app-drawer';
 import { ExtraAddExercise, ExtraViewTraining } from './extra';
@@ -12,15 +14,16 @@ import {
     trainingActions,
 } from '@entities/training';
 
-import { LayoutConfig } from '@shared/config';
+import { DateFormatConfig, LayoutConfig } from '@shared/config';
 import { AppCard } from '@shared/ui';
-import { showErrorForDevelop } from '@shared/lib';
+import { formatDate, showErrorForDevelop } from '@shared/lib';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './taining-modal.module.less';
 
 type AddNewTrainingModalProps = {
-    date: string;
+    date: string | Moment;
+    isOffSet: boolean;
     listTraining: TrainingName[] | [];
     onCloseAddTraining: () => void;
     trainingsDay: Training[];
@@ -29,12 +32,15 @@ type AddNewTrainingModalProps = {
 export function TrainingModal({
     date,
     listTraining,
+    isOffSet,
     onCloseAddTraining,
-    trainingsDay
+    trainingsDay,
 }: AddNewTrainingModalProps) {
     const { exercises } = useAppSelector(selectCreateTraining);
     const dispatch = useAppDispatch();
+
     const createTraining = useAppSelector(selectCreateTraining);
+    const currentDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
 
     const [step, setStep] = useState(1);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -69,12 +75,14 @@ export function TrainingModal({
     return (
         <>
             <AppCard
-                className={styles['calendar-cell']}
+                className={clsn(styles['calendar-cell'], {
+                    [styles['calendar-cell-right']]: isOffSet,
+                })}
                 extra={
                     <>
                         {step === 1 && (
                             <ExtraViewTraining
-                                date={date}
+                                date={currentDate}
                                 listTraining={trainingsDay}
                                 onCloseAddTraining={onCloseAddTraining}
                             />

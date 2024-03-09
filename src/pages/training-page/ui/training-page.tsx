@@ -5,34 +5,38 @@ import { Content } from 'antd/lib/layout/layout';
 
 import { useTraningPage } from '../hooks';
 import { locale } from '../config';
+import { TrainingDay } from './training-day';
 
 import { TrainingModal } from '@features/traning';
 
 import { Training, trainingActions } from '@entities/training';
 
 import { AppPortal } from '@shared/ui';
-import { formatDate } from '@shared/lib';
-import { DateFormatConfig } from '@shared/config';
+import { formatDate, offSet } from '@shared/lib';
+import { DateFormatConfig, Width } from '@shared/config';
 import { useAppDispatch } from '@shared/hooks';
 
 import styles from './training-page.module.less';
-import { TrainingDay } from './training-day';
 
 export function TrainingPage() {
     const dispatch = useAppDispatch();
     const { listNameTraining, trainings } = useTraningPage();
-    const [selectedDate, setSelectedDate] = useState<string>('');
+    const [selectedDate, setSelectedDate] = useState<string | Moment>('');
     const [selectedTraininsgDay, setSelectedTrainingsDay] = useState<Training[]>([]);
     const [targetCell, setTargetCell] = useState<HTMLElement | null>(null);
+    const [isOffSet, setIsOffSet] = useState(false);
 
     const onChangeCell = (date: Moment) => {
         const chankSelector = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
         const element = document.querySelector(`[title*="${chankSelector}"]`) as HTMLElement | null;
-        const cellDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
         const trainingDate = date.toISOString();
         const trainingsDay = trainings.filter((item) => item.date === chankSelector);
 
-        setSelectedDate(cellDate);
+        if (element) {
+            setIsOffSet(offSet(element, Width.TRAINING_MODAL));
+        }
+
+        setSelectedDate(date);
         setSelectedTrainingsDay(trainingsDay);
         setTargetCell(element);
 
@@ -59,6 +63,7 @@ export function TrainingPage() {
                 <AppPortal container={targetCell}>
                     <TrainingModal
                         date={selectedDate}
+                        isOffSet={isOffSet}
                         listTraining={listNameTraining}
                         onCloseAddTraining={onCloseAddTraining}
                         trainingsDay={selectedTraininsgDay}

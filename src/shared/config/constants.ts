@@ -35,3 +35,7 @@ export const STYLES = {
 
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
 };
+
+export const enum Width {
+    TRAINING_MODAL = 264,
+}

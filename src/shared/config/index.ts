@@ -9,6 +9,7 @@ import { LocalStorageConfig } from './local-storage-config';
 import { PathConfig } from './path-config';
 import { regExpConfig } from './reg-exp-config';
 import { SessionStorageConfig } from './session-storage-config';
+import { Width } from './constants';
 
 export {
     ConstantsMediaQuery,
@@ -22,4 +23,5 @@ export {
     PathConfig,
     regExpConfig,
     SessionStorageConfig,
+    Width,
 };
