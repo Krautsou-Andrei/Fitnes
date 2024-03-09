@@ -5,7 +5,6 @@
         margin-bottom: @gap-m;
 
         display: flex;
-        justify-content: space-between;
 
         .calendar-cell-title {
             margin-bottom: @gap-3xs;
@@ -34,7 +33,7 @@
 
     :global(.ant-empty-image) {
         margin-bottom: 0;
-        
+
         img {
             width: (@rem * 32);
             height: (@rem * 32);
@@ -43,5 +42,12 @@
 
     :global(.ant-empty-description) {
         display: none;
+    }
+
+    .empty {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: end;
     }
 }

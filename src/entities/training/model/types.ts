@@ -37,5 +37,5 @@ export type CreateTraining = {
 
 export type Training = {
     date: string;
-    traning: TrainingType;
+    training: TrainingType;
 };

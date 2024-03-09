@@ -1,7 +1,7 @@
 import { Button, Empty, Space } from 'antd';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 
-import type { Training } from '@entities/training';
+import type { TrainingType } from '@entities/training';
 import { LayoutConfig } from '@shared/config';
 
 import { AppBadge } from '@shared/ui';
@@ -12,7 +12,7 @@ import styles from './extra-view-training.module.less';
 type ExtraViewTrainingProps = {
     date: string;
     onCloseAddTraining: () => void;
-    listTraining: Training[];
+    listTraining: TrainingType[];
 };
 
 export function ExtraViewTraining({
@@ -41,12 +41,12 @@ export function ExtraViewTraining({
                     icon={<CloseOutlined />}
                 />
             </div>
-            {listTraining.length > 0 ? (
+            {listTraining.length ? (
                 listTraining.map((item) => (
-                    <div key={item.traning.id} className={styles['trainig-item']}>
+                    <div key={item.id} className={styles['trainig-item']}>
                         <Space>
-                            <AppBadge name={item.traning.name} />
-                            {item.traning.name}
+                            <AppBadge name={item.name} />
+                            {item.name}
                         </Space>
                         <Button type='link' className={styles['button-edit']}>
                             <EditOutlined />
@@ -55,6 +55,7 @@ export function ExtraViewTraining({
                 ))
             ) : (
                 <Empty
+                    className={styles.empty}
                     image='https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg'
                     imageStyle={{ height: STYLES.HEIGHT_EMPTY_TRAINIG_MODAL }}
                 />

@@ -6,7 +6,7 @@ import { DateFormatConfig } from '@shared/config';
 export function mapTraining(dto: TrainingDto): Training {
     return {
         date: formatDate(dto.date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED),
-        traning: {
+        training: {
             id: dto._id,
             name: dto.name,
             date: dto.date,
