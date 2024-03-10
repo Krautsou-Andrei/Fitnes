@@ -13,6 +13,11 @@ export type RequestTrainingBody = {
     exercises: Exercises[] | [];
 };
 
+export type RequestTrainingEditBody = {
+    trainingId: string;
+    body: RequestTrainingBody;
+};
+
 export type TrainingDto = {
     _id: string;
     name: string;

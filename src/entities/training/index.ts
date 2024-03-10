@@ -5,6 +5,7 @@ import {
     useLazyGetTrainingQuery,
     useGetTrainingListQuery,
     useLazyGetTrainingListQuery,
+    useEditTrainingMutation,
 } from './api/training-api';
 
 import {
@@ -26,8 +27,9 @@ export {
     trainingApi,
     trainingSlice,
     useAddTrainingMutation,
+    useEditTrainingMutation,
     useGetTrainingQuery,
-    useLazyGetTrainingQuery,
     useGetTrainingListQuery,
+    useLazyGetTrainingQuery,
     useLazyGetTrainingListQuery,
 };

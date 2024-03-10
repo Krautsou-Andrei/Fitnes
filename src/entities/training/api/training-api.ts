@@ -1,7 +1,12 @@
 import { ApiEndpoints } from '../config/api-endpoints';
 
 import { mapTraining, mapTrainingList } from '../lib';
-import type { TrainingDto, RequestTrainingBody, TrainingNameDto } from './types';
+import type {
+    TrainingDto,
+    RequestTrainingBody,
+    TrainingNameDto,
+    RequestTrainingEditBody,
+} from './types';
 import type { TrainingName, Training } from '../model/types';
 
 import { baseApi } from '@shared/api';
@@ -26,6 +31,15 @@ export const trainingApi = baseApi.injectEndpoints({
             invalidatesTags: [TRAINING_TAG],
             transformResponse: (response: TrainingDto) => mapTraining(response),
         }),
+        editTraining: build.mutation<Training, RequestTrainingEditBody>({
+            query: ({ trainingId, body }) => ({
+                url: `${ApiEndpoints.TRAINING}/${trainingId}`,
+                method: 'PUT',
+                body,
+            }),
+            invalidatesTags: [TRAINING_TAG],
+            transformResponse: (response: TrainingDto) => mapTraining(response),
+        }),
         getTrainingList: build.query<TrainingName[], void>({
             query: () => ({
                 url: ApiEndpoints.CATALOGS_TRAINING_LIST,
@@ -42,4 +56,5 @@ export const {
     useLazyGetTrainingQuery,
     useGetTrainingListQuery,
     useLazyGetTrainingListQuery,
+    useEditTrainingMutation,
 } = trainingApi;
