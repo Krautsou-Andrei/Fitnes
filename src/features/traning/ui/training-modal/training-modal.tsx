@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'antd';
 import clsn from 'classnames';
-import type { Moment } from 'moment';
+import moment, { type Moment } from 'moment';
 
 import { AppDrawer } from '../app-drawer';
 import { ExtraAddExercise, ExtraViewTraining } from './extra';
@@ -52,7 +52,7 @@ export function TrainingModal({
 
     const [step, setStep] = useState(1);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
-    const [selectExercise, setSelectExercise] = useState('');
+    const [selectTrainingName, setSelectTrainingName] = useState('');
 
     const nextStep = () => {
         setStep((prev) => prev + 1);
@@ -66,16 +66,24 @@ export function TrainingModal({
         if (!exercises.length) {
             dispatch(trainingActions.addDefaultExercises());
         }
+
+        if (moment.isMoment(date)) {
+            dispatch(trainingActions.setCreateTrainingDate(date.toISOString()));
+        }
+
         setIsOpenDrawer((prev) => !prev);
     };
 
     const onCloseDrawer = () => {
+        dispatch(trainingActions.clearExerciseEmptyName());
         setIsOpenDrawer((prev) => !prev);
     };
 
     const onSave = async () => {
         try {
-            dispatch(addTraningThunk(createTraining));
+            await dispatch(addTraningThunk(createTraining));
+            dispatch(trainingActions.clearCreateTraining());
+            setStep(1);
         } catch (error: unknown) {
             showErrorForDevelop('Create training', error);
         }
@@ -101,8 +109,8 @@ export function TrainingModal({
                                 listTrainingName={remainTraining}
                                 listTraining={trainingsDay}
                                 prevStep={prevStep}
-                                setSelectExercise={setSelectExercise}
-                                selectExercise={selectExercise}
+                                setSelectTrainingName={setSelectTrainingName}
+                                selectTrainingName={selectTrainingName}
                             />
                         )}
                     </>
@@ -126,11 +134,11 @@ export function TrainingModal({
                         <Button
                             block
                             onClick={onOpenDrawer}
-                            disabled={Boolean(selectExercise === '')}
+                            disabled={Boolean(selectTrainingName === '')}
                         >
                             {LayoutConfig.BUTTON_ADD_EXERCISE}
                         </Button>
-                        <Button block type='text' onClick={onSave}>
+                        <Button block type='text' onClick={onSave} disabled={!exercises.length}>
                             {LayoutConfig.BUTTON_SAVE_EXERCISE}
                         </Button>
                     </div>

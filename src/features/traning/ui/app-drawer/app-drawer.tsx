@@ -4,12 +4,12 @@ import { PlusOutlined } from '@ant-design/icons';
 import { TrainingFormExerciseConfig } from '@features/traning/config';
 import { ExerciseForm } from './ui/exercise-form';
 
-import { CreateTraining, selectCreateTraining } from '@entities/training';
+import { CreateTraining, selectCreateTraining, trainingActions } from '@entities/training';
 
 import { formatDate } from '@shared/lib';
 import { DateFormatConfig } from '@shared/config';
 import { AppBadge } from '@shared/ui';
-import { useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './app-drawer.module.less';
 
@@ -23,6 +23,11 @@ type AppDrawerProps = {
 
 export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerProps) {
     const { exercises } = useAppSelector(selectCreateTraining);
+    const dispatch = useAppDispatch();
+
+    const addExercise = () => {
+        dispatch(trainingActions.addDefaultExercises());
+    };
 
     return (
         <Drawer
@@ -45,7 +50,14 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
             </Space>
             <div className={styles['exercises']}>
                 {exercises.map((exercise, index: number) => (
-                    <ExerciseForm key={index} indexExercise={index} />
+                    <ExerciseForm
+                        key={index}
+                        indexExercise={index}
+                        approachesDefault={exercise.approaches}
+                        exerciseNameDefault={exercise.name}
+                        replaysDefault={exercise.replays}
+                        weightDefault={exercise.weight}
+                    />
                 ))}
             </div>
             <div className={styles['button-wrapper']}>
@@ -54,6 +66,7 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
                     type='link'
                     icon={<PlusOutlined />}
                     size='small'
+                    onClick={addExercise}
                 >
                     {TrainingFormExerciseConfig.BUTTON_ADD_EXERCISE}
                 </Button>

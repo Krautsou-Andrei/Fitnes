@@ -1,43 +1,43 @@
-import { type Dispatch, type SetStateAction, useState } from 'react';
-import { Button, Divider, Empty, Select, Space } from 'antd';
+import type { Dispatch, SetStateAction } from 'react';
+import { Button, Divider, Empty, Select } from 'antd';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 
 import {
-    type Exercises,
     type TrainingType,
     type TrainingName,
     trainingActions,
+    selectCreateTraining,
 } from '@entities/training';
 
 import { LayoutConfig } from '@shared/config';
-import { useAppDispatch } from '@shared/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-add-exercise.module.less';
-import { STYLES } from '@shared/config/constants';
 
 type ExtraAddExerciseProps = {
     prevStep: () => void;
     listTrainingName: TrainingName[] | [];
     listTraining: TrainingType[] | [];
-    setSelectExercise: Dispatch<SetStateAction<string>>;
-    selectExercise: string;
+    setSelectTrainingName: Dispatch<SetStateAction<string>>;
+    selectTrainingName: string;
 };
 
 export function ExtraAddExercise({
     prevStep,
     listTrainingName,
-    listTraining,
-    selectExercise,
-    setSelectExercise,
+    selectTrainingName,
+    setSelectTrainingName,
 }: ExtraAddExerciseProps) {
     const dispatch = useAppDispatch();
-    const [selectTraining, setSelectTraining] = useState<Exercises[] | []>([]);
+    const { exercises } = useAppSelector(selectCreateTraining);
 
     const selectOptions = listTrainingName.map((item) => ({ value: item.name, label: item.name }));
 
-    const onSelectExercise = (value: string) => {
-        setSelectExercise(value);
+    const onSelectTraining = (value: string) => {
+        setSelectTrainingName(value);
 
+        dispatch(trainingActions.clearCreateTraining());
         dispatch(trainingActions.setCreateTrainingName(value));
     };
     return (
@@ -51,17 +51,17 @@ export function ExtraAddExercise({
                     icon={<ArrowLeftOutlined />}
                 />
                 <Select
-                    value={selectExercise || LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
+                    value={selectTrainingName || LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
                     className={styles['select-exercise']}
                     options={selectOptions}
-                    onChange={onSelectExercise}
+                    onChange={onSelectTraining}
                 />
             </div>
             <Divider className={styles['training-add-title-divider']} />
             <div className={styles['header-body']}>
-                {selectTraining.length ? (
-                    selectTraining.map((item) => (
-                        <div key={item.id} className={styles['trainig-item']}>
+                {exercises.length ? (
+                    exercises.map((item, index) => (
+                        <div key={item.name + index} className={styles['trainig-item']}>
                             {item.name}
                             <Button type='link' className={styles['button-edit']}>
                                 <EditOutlined />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Calendar } from 'antd';
 import { Moment } from 'moment';
 import { Content } from 'antd/lib/layout/layout';
@@ -26,27 +26,33 @@ export function TrainingPage() {
     const [targetCell, setTargetCell] = useState<HTMLElement | null>(null);
     const [isOffSet, setIsOffSet] = useState(false);
 
-    const onChangeCell = (date: Moment) => {
-        const chankSelector = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
-        const element = document.querySelector(`[title*="${chankSelector}"]`) as HTMLElement | null;
-        const trainingDate = date.toISOString();
-        const trainingsDay = trainings
-            .filter((item) => item.date === chankSelector)
-            .map((item) => item.training);
+    const onChangeCell = useCallback(
+        (date: Moment) => {
+            const chankSelector = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
+            const element = document.querySelector(
+                `[title*="${chankSelector}"]`,
+            ) as HTMLElement | null;
 
-        if (element) {
-            setIsOffSet(offSet(element, Width.TRAINING_MODAL));
-        }
+            const trainingsDay = trainings
+                .filter((item) => item.date === chankSelector)
+                .map((item) => item.training);
 
-        setSelectedDate(date);
-        setSelectedTrainingsDay(trainingsDay);
-        setTargetCell(element);
+            if (element) {
+                setIsOffSet(offSet(element, Width.TRAINING_MODAL));
+            }
 
-        dispatch(trainingActions.setCreateTrainingDate(trainingDate));
-    };
+            setSelectedDate(date);
+            setSelectedTrainingsDay(trainingsDay);
+            setTargetCell(element);
+
+            dispatch(trainingActions.clearCreateTraining());
+        },
+        [dispatch, trainings],
+    );
 
     const onCloseAddTraining = () => {
         setTargetCell(null);
+        dispatch(trainingActions.clearCreateTraining());
     };
 
     const cellRender = (date: Moment) => {
@@ -57,6 +63,12 @@ export function TrainingPage() {
             <TrainingDay key={item.training.id} name={item.training.name} />
         ));
     };
+
+    useEffect(() => {
+        if (targetCell) {
+            onChangeCell(selectedDate as Moment);
+        }
+    }, [onChangeCell, selectedDate, targetCell]);
 
     return (
         <Content className={styles['traning-page']}>

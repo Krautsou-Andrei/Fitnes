@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Input, InputNumber, Space } from 'antd';
 
-import { TrainingFormExerciseConfig } from '@features/traning/config';
+import { ExercisesDefaultConfig, TrainingFormExerciseConfig } from '@features/traning/config';
 
 import { trainingActions } from '@entities/training';
 
@@ -11,14 +11,25 @@ import styles from './exercise-form.module.less';
 
 type ExerciseFormProps = {
     indexExercise: number;
+    exerciseNameDefault: string;
+    approachesDefault: number;
+    weightDefault: number;
+    replaysDefault: number;
 };
 
-export function ExerciseForm({ indexExercise }: ExerciseFormProps) {
+export function ExerciseForm({
+    indexExercise,    
+    approachesDefault,
+    exerciseNameDefault,
+    weightDefault,
+    replaysDefault,    
+}: ExerciseFormProps) {
     const dispatch = useAppDispatch();
-    const [exerciseName, setExerciseName] = useState<string>('');
-    const [approaches, setApproaches] = useState<number>(1);
-    const [weight, setWeight] = useState<number>(0);
-    const [replays, setReplays] = useState<number>(1);
+
+    const [approaches, setApproaches] = useState<number>( approachesDefault || ExercisesDefaultConfig.APPROACHES );
+    const [exerciseName, setExerciseName] = useState<string>( exerciseNameDefault || ExercisesDefaultConfig.EXERCISE_NAME );
+    const [replays, setReplays] = useState<number>( replaysDefault || ExercisesDefaultConfig.REPLAYS );
+    const [weight, setWeight] = useState<number>(weightDefault || ExercisesDefaultConfig.WEIGHT);
 
     const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
