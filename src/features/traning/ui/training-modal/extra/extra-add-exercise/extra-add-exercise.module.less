@@ -3,7 +3,7 @@
 :global(.ant-card-extra) {
     .header-wrapper {
         margin-bottom: @gap-m;
-        padding: 0 @gap-s;
+        padding: @gap-s @gap-s 0;
 
         display: flex;
         justify-content: space-between;
@@ -21,6 +21,22 @@
 
         display: flex;
         flex-direction: column;
+    }
+
+    .button-edit {
+        padding: 0;
+        float: right;
+        width: (@rem * 18);
+        height: (@rem * 18);
+    }
+
+    .trainig-item {
+        margin-top: @gap-m;
+        color: @app-text-color-secondary;
+    }
+
+    .trainig-item + .trainig-item {
+        margin-top: @gap-xs;
     }
 
     :global(.ant-divider).training-add-title-divider {
