@@ -12,6 +12,7 @@ import { AppLayout } from './app-layout/app-layout';
 import { AppLoader } from './app-loader/app-loader';
 import { AppPortal } from './app-portal/app-portal';
 import { AppTabs } from './app-tabs/app-tabs';
+import { AppTrainingDay } from './app-training-day/app-training-day';
 
 export type * from './app-icon/types';
 export type * from './app-tabs/model/types';
@@ -31,4 +32,5 @@ export {
     AppLoader,
     AppPortal,
     AppTabs,
+    AppTrainingDay,
 };
