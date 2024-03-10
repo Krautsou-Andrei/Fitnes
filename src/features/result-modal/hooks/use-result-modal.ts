@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { push } from 'redux-first-history';
 import { Modal, ModalProps } from 'antd';
 
@@ -12,7 +12,7 @@ import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks'
 import { PathConfig } from '@shared/config';
 import { showErrorForDevelop, splitString } from '@shared/lib';
 
-type ModalErrorTraningList = {
+type modalErrorTraning = {
     destroy: () => void;
     update: (configUpdate: ModalProps) => void;
 };
@@ -23,8 +23,9 @@ export function useResultModal() {
         useAppSelector(selectResultModal);
     const dispatch = useAppDispatch();
 
-    const modalErrorTraningList = useRef<ModalErrorTraningList | null>(null);
+    const modalErrorTraning = useRef<modalErrorTraning | null>(null);
 
+    const isAddTraining = typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING;
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
 
     const onClickClose = useCallback(() => {
@@ -36,7 +37,7 @@ export function useResultModal() {
             dispatch(push(PathConfig.HOME));
             return;
         }
-        modalErrorTraningList.current?.destroy();
+        modalErrorTraning.current?.destroy();
         dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
     }, [dispatch, typeModal.type]);
 
@@ -48,8 +49,27 @@ export function useResultModal() {
     }, [dispatch, onClickClose]);
 
     useEffect(() => {
+        if (isAddTraining) {
+            modalErrorTraning.current = Modal.error({
+                title: modalCofig[typeModal.type].title,
+                content: React.createElement('div', null, modalCofig[typeModal.type].desciption),
+                okText: modalCofig[typeModal.type].buttonTitle,
+                onOk: onClickClose,
+                mask: false,
+                centered: true,
+            });
+
+            return () => {
+                if (modalErrorTraning.current) {
+                    modalErrorTraning.current.destroy();
+                }
+            };
+        }
+    }, [isAddTraining, onClickClose, typeModal.type]);
+
+    useEffect(() => {
         if (isTraningList) {
-            modalErrorTraningList.current = Modal.error({
+            modalErrorTraning.current = Modal.error({
                 title: modalCofig[typeModal.type].title,
                 okText: modalCofig[typeModal.type].buttonTitle,
                 onCancel: onClickClose,
@@ -60,8 +80,8 @@ export function useResultModal() {
             });
 
             return () => {
-                if (modalErrorTraningList.current) {
-                    modalErrorTraningList.current.destroy();
+                if (modalErrorTraning.current) {
+                    modalErrorTraning.current.destroy();
                 }
             };
         }
@@ -86,10 +106,11 @@ export function useResultModal() {
     return {
         description,
         isOpen,
+        isAddTraining,
         isTraningList,
         onClickAgayn,
         onClickClose,
         typeModal,
-        modalErrorTraningList,
+        modalErrorTraning,
     };
 }

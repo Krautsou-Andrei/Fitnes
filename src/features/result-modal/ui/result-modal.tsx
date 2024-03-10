@@ -9,13 +9,13 @@ import { STYLES } from '@shared/config/constants';
 import styles from './result-modal.module.less';
 
 export function ResultModal() {
-    const { description, isOpen, isTraningList, onClickAgayn, onClickClose, typeModal } =
+    const { description, isOpen, isAddTraining, isTraningList, onClickAgayn, onClickClose, typeModal } =
         useResultModal();
 
     return (
         <Modal
             className={clsn(styles[`${typeModal.type}`], {
-                [styles['modal-error-training']]: isTraningList,
+                [styles['modal-error-training']]: isTraningList || isAddTraining,
             })}
             open={isOpen}
             maskStyle={{
@@ -27,7 +27,7 @@ export function ResultModal() {
             closable={false}
             transitionName=''
         >
-            {isTraningList ? (
+            {isTraningList || isAddTraining ? (
                 <div />
             ) : (
                 <Result

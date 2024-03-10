@@ -16,6 +16,11 @@ export const modalCofig: ModalConfig = {
         desciption: 'Что-то пошло не так. Попробуйте ещё раз.',
         title: 'Данные не сохранились',
     },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {        
+        buttonTitle: 'Закрыть',
+        desciption: 'Придётся попробовать ещё раз',
+        title: 'При сохранении данных произошла ошибка',
+    },
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
@@ -42,6 +47,10 @@ export const modalCofig: ModalConfig = {
 export const modalResultConfig: ModalResultConfig = {
     [ModalTypeConfig.ERROR_ADD_FEEDBACK]: {
         type: ModalTypeConfig.ERROR_ADD_FEEDBACK,
+        status: 'error',
+    },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {
+        type: ModalTypeConfig.ERROR_ADD_TRAINING,
         status: 'error',
     },
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
