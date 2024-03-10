@@ -30,6 +30,7 @@ export type TrainingName = {
 };
 
 export type CreateTraining = {
+    id: string;
     name: string;
     date: string;
     isImplementation: boolean;

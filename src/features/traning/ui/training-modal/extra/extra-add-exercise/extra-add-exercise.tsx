@@ -38,6 +38,7 @@ export function ExtraAddExercise({
         setSelectTrainingName(value);
 
         dispatch(trainingActions.clearCreateTraining());
+        dispatch(trainingActions.setIsEdit(false));
         dispatch(trainingActions.setCreateTrainingName(value));
     };
     return (

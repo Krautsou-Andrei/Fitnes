@@ -10,6 +10,7 @@ import {
 
 import {
     selectCreateTraining,
+    selectIsEdit,
     selectTraining,
     selectTrainingName,
     trainingActions,
@@ -21,6 +22,7 @@ export type * from './api/types';
 
 export {
     selectCreateTraining,
+    selectIsEdit,
     selectTraining,
     selectTrainingName,
     trainingActions,

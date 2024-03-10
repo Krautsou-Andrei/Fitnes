@@ -13,6 +13,7 @@ const defaultExercises = {
 };
 
 const defaultCreateTraining = {
+    id: '',
     name: '',
     date: '',
     isImplementation: false,
@@ -20,12 +21,14 @@ const defaultCreateTraining = {
 };
 
 type TrainingSliceType = {
+    isEdit: boolean;
     trainings: Training[];
     trainingName: TrainingName[];
     createTraining: CreateTraining;
 };
 
 const initialState: TrainingSliceType = {
+    isEdit: false,
     trainings: [],
     trainingName: [],
     createTraining: defaultCreateTraining,
@@ -52,9 +55,6 @@ export const trainingSlice = createSlice({
         ) => {
             state.createTraining = payload;
         },
-        setCreateTrainingName: (state: TrainingSliceType, { payload }: PayloadAction<string>) => {
-            state.createTraining.name = payload;
-        },
         setCreateTrainingDate: (state: TrainingSliceType, { payload }: PayloadAction<string>) => {
             state.createTraining.date = payload;
         },
@@ -66,6 +66,21 @@ export const trainingSlice = createSlice({
                 ...state.createTraining.exercises[payload.index],
                 ...payload.partialExercises,
             };
+        },
+        setCreateTrainingExercises: (
+            state: TrainingSliceType,
+            { payload }: PayloadAction<Exercises[]>,
+        ) => {
+            state.createTraining.exercises = payload;
+        },
+        setCreateTrainingId: (state: TrainingSliceType, { payload }: PayloadAction<string>) => {
+            state.createTraining.id = payload;
+        },
+        setCreateTrainingName: (state: TrainingSliceType, { payload }: PayloadAction<string>) => {
+            state.createTraining.name = payload;
+        },
+        setIsEdit: (state: TrainingSliceType, { payload }: PayloadAction<boolean>) => {
+            state.isEdit = payload;
         },
         setTraning: (state: TrainingSliceType, { payload }: PayloadAction<Training[]>) => {
             state.trainings = payload;
@@ -91,6 +106,7 @@ export const trainingSlice = createSlice({
 });
 
 export const selectCreateTraining = (state: RootState) => state.trainings.createTraining;
+export const selectIsEdit = (state: RootState) => state.trainings.isEdit;
 export const selectTraining = (state: RootState) => state.trainings.trainings;
 export const selectTrainingName = (state: RootState) => state.trainings.trainingName;
 

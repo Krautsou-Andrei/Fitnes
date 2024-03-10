@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { Button, Drawer, Space, Typography } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { TrainingFormExerciseConfig } from '@features/traning/config';
 import { ExerciseForm } from './ui/exercise-form';
 
-import { CreateTraining, selectCreateTraining, trainingActions } from '@entities/training';
+import {
+    CreateTraining,
+    selectCreateTraining,
+    selectIsEdit,
+    trainingActions,
+} from '@entities/training';
 
 import { formatDate } from '@shared/lib';
 import { DateFormatConfig } from '@shared/config';
@@ -23,10 +29,30 @@ type AppDrawerProps = {
 
 export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerProps) {
     const { exercises } = useAppSelector(selectCreateTraining);
+    const isEdit = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
+
+    const [checkedExersices, setCheckedExercises] = useState<number[]>([]);
 
     const addExercise = () => {
         dispatch(trainingActions.addDefaultExercises());
+    };
+
+    const onSetCheckedExercises = (indexExercise: number) => {
+        if (checkedExersices.includes(indexExercise)) {
+            setCheckedExercises(checkedExersices.filter((item) => item !== indexExercise));
+            return;
+        }
+
+        setCheckedExercises([...checkedExersices, indexExercise]);
+    };
+
+    const deleteExercise = () => {
+        const newExercises = exercises.filter(
+            (_exersise, index: number) => !checkedExersices.includes(index),
+        );
+        dispatch(trainingActions.setCreateTrainingExercises(newExercises));
+        setCheckedExercises([]);
     };
 
     return (
@@ -57,19 +83,27 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
                         exerciseNameDefault={exercise.name}
                         replaysDefault={exercise.replays}
                         weightDefault={exercise.weight}
+                        checkedExersices={checkedExersices}
+                        onSetCheckedExercises={onSetCheckedExercises}
                     />
                 ))}
             </div>
             <div className={styles['button-wrapper']}>
-                <Button
-                    className={styles['button-add']}
-                    type='link'
-                    icon={<PlusOutlined />}
-                    size='small'
-                    onClick={addExercise}
-                >
+                <Button type='link' icon={<PlusOutlined />} size='small' onClick={addExercise}>
                     {TrainingFormExerciseConfig.BUTTON_ADD_EXERCISE}
                 </Button>
+                {isEdit && (
+                    <Button
+                        className={styles['button-delete']}
+                        type='link'
+                        icon={<MinusOutlined />}
+                        size='small'
+                        disabled={!checkedExersices.length}
+                        onClick={deleteExercise}
+                    >
+                        {TrainingFormExerciseConfig.BUTTON_DELETE_EXERCISE}
+                    </Button>
+                )}
             </div>
         </Drawer>
     );

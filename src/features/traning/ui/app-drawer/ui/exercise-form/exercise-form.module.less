@@ -1,19 +1,23 @@
 @import '@shared/styles/constants';
 
-
-.exercise-form{
+.exercise-form {
     padding-top: @gap-xl;
 }
 input:global(.ant-input) {
     padding: (@rem * 3) @gap-xs;
 }
 
+:global(.ant-input-group-wrapper).input-exercise,
 :global(.ant-input).input-exercise {
     margin-bottom: @gap-xs;
 }
 
 .input-exercise {
     height: (@rem * 24);
+    
+    input {
+        line-height: (@rem * 16);
+    }
 }
 
 .wrapper-labels {

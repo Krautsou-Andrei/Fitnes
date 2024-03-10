@@ -34,7 +34,7 @@
         padding-top: 0;
     }
 
-    .exercises{
+    .exercises {
         margin-bottom: @gap-xl;
     }
 
@@ -45,6 +45,10 @@
         padding: @gap-xs @gap-s;
         background-color: @app-form-exercise-label-background;
         border-radius: 0 0 (@rem * 8) (@rem * 8);
+
+        :global(.ant-btn-link:not([disabled])).button-delete {
+            color: @app-text-color-primary;
+        }
     }
 }
 

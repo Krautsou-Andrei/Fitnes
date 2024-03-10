@@ -12,6 +12,7 @@ import {
     type TrainingType,
     selectCreateTraining,
     trainingActions,
+    selectIsEdit,
 } from '@entities/training';
 
 import { DateFormatConfig, LayoutConfig } from '@shared/config';
@@ -20,6 +21,7 @@ import { formatDate, isOldDate, showErrorForDevelop } from '@shared/lib';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './taining-modal.module.less';
+import { editTraningThunk } from '@features/traning/model/edit-training';
 
 type AddNewTrainingModalProps = {
     date: string | Moment;
@@ -36,8 +38,10 @@ export function TrainingModal({
     onCloseAddTraining,
     trainingsDay,
 }: AddNewTrainingModalProps) {
-    const { exercises } = useAppSelector(selectCreateTraining);
+    const { exercises, id } = useAppSelector(selectCreateTraining);
+    const isEditTraining = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
+    console.log('trainingsDay', trainingsDay);
 
     const createTraining = useAppSelector(selectCreateTraining);
     const currentDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
@@ -81,7 +85,12 @@ export function TrainingModal({
 
     const onSave = async () => {
         try {
-            await dispatch(addTraningThunk(createTraining));
+            if (isEditTraining) {
+                await dispatch(editTraningThunk({ trainingId: id, body: createTraining }));
+            } else {
+                await dispatch(addTraningThunk(createTraining));
+            }
+
             dispatch(trainingActions.clearCreateTraining());
             setStep(1);
         } catch (error: unknown) {
@@ -101,7 +110,9 @@ export function TrainingModal({
                             <ExtraViewTraining
                                 date={currentDate}
                                 listTraining={trainingsDay}
+                                nextStep={nextStep}
                                 onCloseAddTraining={onCloseAddTraining}
+                                setSelectTrainingName={setSelectTrainingName}
                             />
                         )}
                         {step === 2 && (

@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
-import { Input, InputNumber, Space } from 'antd';
+import { Checkbox, Input, InputNumber, Space } from 'antd';
 
 import { ExercisesDefaultConfig, TrainingFormExerciseConfig } from '@features/traning/config';
 
-import { trainingActions } from '@entities/training';
+import { selectIsEdit, trainingActions } from '@entities/training';
 
-import { useAppDispatch } from '@shared/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './exercise-form.module.less';
 
@@ -15,21 +15,34 @@ type ExerciseFormProps = {
     approachesDefault: number;
     weightDefault: number;
     replaysDefault: number;
+    checkedExersices: number[];
+    onSetCheckedExercises: (indexExercise: number) => void;
 };
 
 export function ExerciseForm({
-    indexExercise,    
+    indexExercise,
     approachesDefault,
     exerciseNameDefault,
     weightDefault,
-    replaysDefault,    
+    replaysDefault,
+    checkedExersices,
+    onSetCheckedExercises,
 }: ExerciseFormProps) {
     const dispatch = useAppDispatch();
+    const isEditTraining = useAppSelector(selectIsEdit);
 
-    const [approaches, setApproaches] = useState<number>( approachesDefault || ExercisesDefaultConfig.APPROACHES );
-    const [exerciseName, setExerciseName] = useState<string>( exerciseNameDefault || ExercisesDefaultConfig.EXERCISE_NAME );
-    const [replays, setReplays] = useState<number>( replaysDefault || ExercisesDefaultConfig.REPLAYS );
+    const [approaches, setApproaches] = useState<number>(
+        approachesDefault || ExercisesDefaultConfig.APPROACHES,
+    );
+    const [exerciseName, setExerciseName] = useState<string>(
+        exerciseNameDefault || ExercisesDefaultConfig.EXERCISE_NAME,
+    );
+    const [replays, setReplays] = useState<number>(
+        replaysDefault || ExercisesDefaultConfig.REPLAYS,
+    );
     const [weight, setWeight] = useState<number>(weightDefault || ExercisesDefaultConfig.WEIGHT);
+
+    const isChecked = checkedExersices.includes(indexExercise);
 
     const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -67,6 +80,14 @@ export function ExerciseForm({
                 placeholder={TrainingFormExerciseConfig.INPUT_PLACEHOLDER_EXERCISE}
                 value={exerciseName}
                 onChange={onChangeExerciseName}
+                addonAfter={
+                    isEditTraining && (
+                        <Checkbox
+                            checked={isChecked}
+                            onChange={() => onSetCheckedExercises(indexExercise)}
+                        />
+                    )
+                }
             />
             <Space className={styles['wrapper-labels']}>
                 <label>

@@ -1,25 +1,42 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { Button, Empty, Space } from 'antd';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 
-import type { TrainingType } from '@entities/training';
+import { trainingActions, type Exercises, type TrainingType } from '@entities/training';
 import { LayoutConfig } from '@shared/config';
 
 import { AppBadge } from '@shared/ui';
+import { useAppDispatch } from '@shared/hooks';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-view-training.module.less';
 
 type ExtraViewTrainingProps = {
     date: string;
+    nextStep: () => void;
     onCloseAddTraining: () => void;
     listTraining: TrainingType[];
+    setSelectTrainingName: Dispatch<SetStateAction<string>>;
 };
 
 export function ExtraViewTraining({
     date,
+    nextStep,
     onCloseAddTraining,
     listTraining,
+    setSelectTrainingName,
 }: ExtraViewTrainingProps) {
+    const dispatch = useAppDispatch();
+
+    const onEditTraining = (id: string, name: string, exercises: Exercises[]) => {
+        dispatch(trainingActions.setCreateTrainingId(id));
+        dispatch(trainingActions.setIsEdit(true));
+        dispatch(trainingActions.setCreateTrainingExercises(exercises));
+        dispatch(trainingActions.setCreateTrainingName(name));
+        setSelectTrainingName(name);
+        nextStep();
+    };
+
     return (
         <>
             <div className={styles['header-wrapper']}>
@@ -49,7 +66,11 @@ export function ExtraViewTraining({
                                 <AppBadge name={item.name} />
                                 {item.name}
                             </Space>
-                            <Button type='link' className={styles['button-edit']}>
+                            <Button
+                                type='link'
+                                className={styles['button-edit']}
+                                onClick={() => onEditTraining(item.id, item.name, item.exercises)}
+                            >
                                 <EditOutlined />
                             </Button>
                         </div>
