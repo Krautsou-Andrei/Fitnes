@@ -32,7 +32,8 @@ export type TrainingName = {
 export type CreateTraining = {
     name: string;
     date: string;
-    exercises: Exercises[] | [];
+    isImplementation: boolean;
+    exercises: Exercises[];
 };
 
 export type Training = {

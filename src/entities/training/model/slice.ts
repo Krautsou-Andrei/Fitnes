@@ -5,14 +5,19 @@ import type { TrainingName, Exercises, CreateTraining, Training } from './types'
 
 import type { RootState } from '@shared/types/store';
 
-const defaultExercises = [
-    {
-        approaches: 1,
-        name: '',
-        replays: 1,
-        weight: 0,
-    },
-];
+const defaultExercises = {
+    approaches: 1,
+    name: '',
+    replays: 1,
+    weight: 0,
+};
+
+const defaultCreateTraining = {
+    name: '',
+    date: '',
+    isImplementation: false,
+    exercises: [],
+};
 
 type TrainingSliceType = {
     trainings: Training[];
@@ -23,11 +28,7 @@ type TrainingSliceType = {
 const initialState: TrainingSliceType = {
     trainings: [],
     trainingName: [],
-    createTraining: {
-        name: '',
-        date: '',
-        exercises: [],
-    },
+    createTraining: defaultCreateTraining,
 };
 
 export const trainingSlice = createSlice({
@@ -35,7 +36,15 @@ export const trainingSlice = createSlice({
     initialState,
     reducers: {
         addDefaultExercises(state) {
-            state.createTraining.exercises = defaultExercises;
+            state.createTraining.exercises.push(defaultExercises);
+        },
+        clearCreateTraining: (state: TrainingSliceType) => {
+            state.createTraining = defaultCreateTraining;
+        },
+        clearExerciseEmptyName: (state: TrainingSliceType) => {
+            state.createTraining.exercises = state.createTraining.exercises.filter(
+                (exercise) => exercise.name !== '',
+            );
         },
         setCreateTraining: (
             state: TrainingSliceType,
