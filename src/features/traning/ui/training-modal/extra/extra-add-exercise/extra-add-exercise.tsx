@@ -1,58 +1,31 @@
-import type { Dispatch, SetStateAction } from 'react';
 import { Button, Divider, Empty, Select } from 'antd';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 
-import {
-    type TrainingType,
-    type TrainingName,
-    trainingActions,
-    selectCreateTraining,
-} from '@entities/training';
+import { SelectOptions } from '@features/traning/model/types';
+import { Exercises } from '@entities/training';
 
 import { LayoutConfig } from '@shared/config';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
-import { isOldDate } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-add-exercise.module.less';
 
 type ExtraAddExerciseProps = {
-    date: string;
+    exercises: Exercises[];
     prevStep: () => void;
-    listTrainingName: TrainingName[] | [];
-    listTraining: TrainingType[] | [];
-    onOpenDrawer: () => void;
-    setSelectTrainingName: Dispatch<SetStateAction<string>>;
     selectTrainingName: string;
+    selectOptions: SelectOptions[];
+    onEditExercise: () => void;
+    onSelectTraining: (value: string) => void;
 };
 
 export function ExtraAddExercise({
-    date,
+    exercises,
     prevStep,
-    listTrainingName,
-    onOpenDrawer,
     selectTrainingName,
-    setSelectTrainingName,
+    selectOptions,
+    onEditExercise,
+    onSelectTraining,
 }: ExtraAddExerciseProps) {
-    const dispatch = useAppDispatch();
-    const { exercises } = useAppSelector(selectCreateTraining);
-
-    const selectOptions = listTrainingName.map((item) => ({ value: item.name, label: item.name }));
-
-    const onSelectTraining = (value: string) => {
-        setSelectTrainingName(value);
-
-        dispatch(trainingActions.clearCreateTraining());
-        dispatch(trainingActions.setIsEdit(false));
-        dispatch(trainingActions.setCreateTrainingName(value));
-    };
-
-    const onEditExercise = () => {
-        if (isOldDate(date)) {
-            dispatch(trainingActions.setIsImplementation(true));
-        }
-        onOpenDrawer();
-    };
     return (
         <>
             <div className={styles['header-wrapper']}>
