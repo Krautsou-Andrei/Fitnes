@@ -1,3 +1,4 @@
+import { calendarSelectedDay } from './calendar-selected-day';
 import { config } from './config';
 import { cryptPassword } from './crypt-password';
 import { decryptPassword } from './decrypt-password';
@@ -18,6 +19,7 @@ import { wait } from './wait';
 import { wrapSelectedText } from './wrap-selected-text';
 
 export {
+    calendarSelectedDay,
     config,
     cryptPassword,
     decryptPassword,
