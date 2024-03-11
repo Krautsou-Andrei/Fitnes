@@ -15,7 +15,7 @@
 
     box-shadow: @app-box-shadow-card;
 
-    :global(.ant-card-head) {       
+    :global(.ant-card-head) {
         padding: 0;
         flex: 1;
 
@@ -47,4 +47,15 @@
 :global(.ant-card).calendar-cell-right {
     left: unset;
     right: 0;
+}
+
+:global(.ant-card).calendar-cell-mobile {
+    margin: 0 @gap-m;
+
+    position: fixed;
+
+    top: unset;
+    left: 0;
+
+    width: calc(100vw - @gap-4xl);
 }
