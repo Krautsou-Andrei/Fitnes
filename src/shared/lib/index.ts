@@ -6,6 +6,7 @@ import { isOldDate } from './format-date';
 import { getLocalStorage } from './local-storage/get-local-storage';
 import { getSessionStorage } from './session-storage/get-session-storage';
 import { offSet } from './off-set';
+import { offSetTop } from './off-set-top';
 import { removeLocalStorage } from './local-storage/remove-local-storage';
 import { removeSessionStorage } from './session-storage/remove-session-storage';
 import { setLocalStorage } from './local-storage/set-local-storage';
@@ -25,6 +26,7 @@ export {
     getLocalStorage,
     getSessionStorage,
     offSet,
+    offSetTop,
     removeLocalStorage,
     removeSessionStorage,
     setLocalStorage,

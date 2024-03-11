@@ -7,6 +7,7 @@ export const enum ConstantsMediaQuery {
     XS = 480,
     MD = 768,
     APP_TABLET = 834,
+    APP_TOP_ROW_CALENDAR = 80,
 }
 
 export const enum Gap {
