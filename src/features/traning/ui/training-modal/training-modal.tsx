@@ -18,16 +18,17 @@ import {
 import { DateFormatConfig, LayoutConfig } from '@shared/config';
 import { AppCard } from '@shared/ui';
 import { formatDate, isOldDate, showErrorForDevelop } from '@shared/lib';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 
 import styles from './taining-modal.module.less';
 import { editTraningThunk } from '@features/traning/model/edit-training';
 
 type AddNewTrainingModalProps = {
-    date: string | Moment;
+    date: Moment;
     isOffSet: boolean;
     listTraining: TrainingName[] | [];
     onCloseAddTraining: () => void;
+    offSetTop?: number;
     trainingsDay: TrainingType[];
 };
 
@@ -35,13 +36,14 @@ export function TrainingModal({
     date,
     listTraining,
     isOffSet,
+    offSetTop,
     onCloseAddTraining,
     trainingsDay,
 }: AddNewTrainingModalProps) {
     const { exercises, id } = useAppSelector(selectCreateTraining);
+    const { isQueryXS } = useAppMediaQuery();
     const isEditTraining = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
-    console.log('trainingsDay', trainingsDay);
 
     const createTraining = useAppSelector(selectCreateTraining);
     const currentDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
@@ -49,8 +51,16 @@ export function TrainingModal({
     const isAllTraining = trainingsDay.length === listTraining.length;
 
     const remainTraining = listTraining.filter((training) => {
-        if (!trainingsDay.some((item) => item.name === training.name)) {
-            return training;
+        if (isOldDay) {
+            if (
+                trainingsDay.some((item) => item.name === training.name && !item.isImplementation)
+            ) {
+                return training;
+            }
+        } else {
+            if (!trainingsDay.some((item) => item.name === training.name)) {
+                return training;
+            }
         }
     });
 
@@ -101,14 +111,21 @@ export function TrainingModal({
     return (
         <>
             <AppCard
-                className={clsn(styles['calendar-cell'], {
-                    [styles['calendar-cell-right']]: isOffSet,
-                })}
+                className={clsn(
+                    styles['calendar-cell'],
+                    {
+                        [styles['calendar-cell-right']]: isOffSet,
+                    },
+                    {
+                        [styles['calendar-cell-mobile']]: isQueryXS,
+                    },
+                )}
+                style={offSetTop ? { top: `${offSetTop}px` } : undefined}
                 extra={
                     <>
                         {step === 1 && (
                             <ExtraViewTraining
-                                date={currentDate}
+                                date={date}
                                 listTraining={trainingsDay}
                                 nextStep={nextStep}
                                 onCloseAddTraining={onCloseAddTraining}
@@ -117,8 +134,10 @@ export function TrainingModal({
                         )}
                         {step === 2 && (
                             <ExtraAddExercise
+                                date={currentDate}
                                 listTrainingName={remainTraining}
                                 listTraining={trainingsDay}
+                                onOpenDrawer={onOpenDrawer}
                                 prevStep={prevStep}
                                 setSelectTrainingName={setSelectTrainingName}
                                 selectTrainingName={selectTrainingName}

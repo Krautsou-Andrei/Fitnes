@@ -11,21 +11,26 @@ import {
 
 import { LayoutConfig } from '@shared/config';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { isOldDate } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-add-exercise.module.less';
 
 type ExtraAddExerciseProps = {
+    date: string;
     prevStep: () => void;
     listTrainingName: TrainingName[] | [];
     listTraining: TrainingType[] | [];
+    onOpenDrawer: () => void;
     setSelectTrainingName: Dispatch<SetStateAction<string>>;
     selectTrainingName: string;
 };
 
 export function ExtraAddExercise({
+    date,
     prevStep,
     listTrainingName,
+    onOpenDrawer,
     selectTrainingName,
     setSelectTrainingName,
 }: ExtraAddExerciseProps) {
@@ -40,6 +45,13 @@ export function ExtraAddExercise({
         dispatch(trainingActions.clearCreateTraining());
         dispatch(trainingActions.setIsEdit(false));
         dispatch(trainingActions.setCreateTrainingName(value));
+    };
+
+    const onEditExercise = () => {
+        if (isOldDate(date)) {
+            dispatch(trainingActions.setIsImplementation(true));
+        }
+        onOpenDrawer();
     };
     return (
         <>
@@ -64,7 +76,11 @@ export function ExtraAddExercise({
                     exercises.map((item, index) => (
                         <div key={item.name + index} className={styles['trainig-item']}>
                             {item.name}
-                            <Button type='link' className={styles['button-edit']}>
+                            <Button
+                                type='link'
+                                className={styles['button-edit']}
+                                onClick={onEditExercise}
+                            >
                                 <EditOutlined />
                             </Button>
                         </div>

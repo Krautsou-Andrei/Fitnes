@@ -82,6 +82,9 @@ export const trainingSlice = createSlice({
         setIsEdit: (state: TrainingSliceType, { payload }: PayloadAction<boolean>) => {
             state.isEdit = payload;
         },
+        setIsImplementation: (state: TrainingSliceType, { payload }: PayloadAction<boolean>) => {
+            state.createTraining.isImplementation = payload;
+        },
         setTraning: (state: TrainingSliceType, { payload }: PayloadAction<Training[]>) => {
             state.trainings = payload;
         },
