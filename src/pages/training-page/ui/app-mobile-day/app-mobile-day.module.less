@@ -1,0 +1,37 @@
+@import '@shared/styles/constants';
+
+:global(.ant-picker-cell) {
+    :global(.ant-picker-cell-inner.ant-picker-calendar-date) {
+        min-width: (@rem * 37);
+    }
+}
+
+.app-mobile-day {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    background-color: @app-background-calendar-training-mobile;
+}
+
+:global(.ant-picker-cell-today) {
+    .app-mobile-day {
+        background-color: @app-background-primary;
+    }
+}
+
+:global(.ant-picker-cell-selected) {
+    .app-mobile-day {
+        background-color: transparent;
+    }
+}
+
+:global(.ant-picker-cell:has(.training)):before {
+    background-color: @app-background-calendar-training-mobile;
+}

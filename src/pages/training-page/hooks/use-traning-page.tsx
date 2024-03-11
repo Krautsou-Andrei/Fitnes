@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import moment, { type Moment } from 'moment';
 
+import { AppDesctopDay } from '../ui/app-desctop-day';
+import { AppMobileDay } from '../ui/app-mobile-day';
+
 import { getTraningListThunk } from '@features/traning';
 
 import {
@@ -13,8 +16,6 @@ import {
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { calendarSelectedDay, formatDate, offSet, showErrorForDevelop } from '@shared/lib';
 import { DateFormatConfig, Width } from '@shared/config';
-import { AppTrainingDay } from '@shared/ui';
-import { AppDesctopDay } from '../ui/app-desctop-day';
 
 export function useTraningPage() {
     const { isQueryXS } = useAppMediaQuery();
@@ -98,13 +99,7 @@ export function useTraningPage() {
         const selectDate = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
         const trainingsDay = trainings.filter((item) => item.date === selectDate);
 
-        return trainingsDay?.map((item) => (
-            <AppTrainingDay
-                key={item.training.id}
-                name={item.training.name}
-                isImplementation={item.training.isImplementation}
-            />
-        ));
+        return <AppMobileDay isTraining={Boolean(trainingsDay.length)} />;
     };
 
     useEffect(() => {
