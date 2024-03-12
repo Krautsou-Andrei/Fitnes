@@ -4,16 +4,25 @@ import clsn from 'classnames';
 import { useResultModal } from '../hooks/use-result-modal';
 import { Extra, modalCofig } from '../config';
 
+import { DataTestIdConfig } from '@shared/config';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './result-modal.module.less';
 
 export function ResultModal() {
-    const { description, isOpen, isAddTraining, isTraningList, onClickAgayn, onClickClose, typeModal } =
-        useResultModal();
+    const {
+        description,
+        isOpen,
+        isAddTraining,
+        isTraningList,
+        onClickAgayn,
+        onClickClose,
+        typeModal,
+    } = useResultModal();
 
     return (
         <Modal
+            data-test-id={DataTestIdConfig.MODAL_NO_REVIEW}
             className={clsn(styles[`${typeModal.type}`], {
                 [styles['modal-error-training']]: isTraningList || isAddTraining,
             })}

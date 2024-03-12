@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Drawer, Space, Typography } from 'antd';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { TrainingFormExerciseConfig } from '@features/traning/config';
 import { ExerciseForm } from './ui/exercise-form';
@@ -13,7 +13,7 @@ import {
 } from '@entities/training';
 
 import { formatDate } from '@shared/lib';
-import { DateFormatConfig } from '@shared/config';
+import { DataTestIdConfig, DateFormatConfig } from '@shared/config';
 import { AppBadge } from '@shared/ui';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
@@ -57,9 +57,13 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
 
     return (
         <Drawer
+            data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT}
             className={styles['app-drawer']}
             open={isOpen}
             onClose={onClickClose}
+            closeIcon={
+                <CloseOutlined data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_BUTTON_CLOSE} />
+            }
             extra={
                 <Space>
                     <PlusOutlined />

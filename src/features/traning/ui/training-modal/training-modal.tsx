@@ -6,10 +6,11 @@ import { AppDrawer } from '../app-drawer';
 import { ExtraAddExercise, ExtraViewTraining } from './extra';
 
 import { useTainingModal } from '@features/traning/hooks';
+import { CancelChangeTrainingNotification } from '@features/notification/ui';
 
 import { type TrainingName, type TrainingType } from '@entities/training';
 
-import { LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 import { AppCard } from '@shared/ui';
 
 import styles from './training-modal.module.less';
@@ -33,23 +34,25 @@ export function TrainingModal({
 }: AddNewTrainingModalProps) {
     const {
         exercises,
-        createTraining,
-        isQueryXS,
-        isOldDay,
-        step,
-        isOpenDrawer,
-        selectTrainingName,
-        prevStep,
-        nextStep,
-        onOpenDrawer,
-        currentDate,
         isAllTraining,
+        isQueryXS,
+        isLoadingCalendar,
+        isOldDay,
+        isOpenDrawer,
+        currentDate,
+        createTraining,
+        nextStep,
+        onCancelRequestEditTraning,
         onCloseDrawer,
-        onSave,
-        selectOptions,
-        onSelectTraining,
         onEditExercise,
         onEditTraining,
+        onOpenDrawer,
+        onSave,
+        onSelectTraining,
+        prevStep,
+        selectOptions,
+        selectTrainingName,
+        step,
     } = useTainingModal({
         date,
         listTraining,
@@ -59,6 +62,11 @@ export function TrainingModal({
     return (
         <>
             <AppCard
+                data-test-id={
+                    step === 1
+                        ? DataTestIdConfig.MODAL_CREATE_TRAINING
+                        : DataTestIdConfig.MODAL_CREATE_EXEXRCISE
+                }
                 className={clsn(
                     styles['calendar-cell'],
                     {
@@ -114,8 +122,16 @@ export function TrainingModal({
                         >
                             {LayoutConfig.BUTTON_ADD_EXERCISE}
                         </Button>
-                        <Button block type='text' onClick={onSave} disabled={!exercises.length}>
-                            {LayoutConfig.BUTTON_SAVE_EXERCISE}
+                        <Button
+                            block
+                            type='text'
+                            onClick={onSave}
+                            disabled={!exercises.length}
+                            loading={isLoadingCalendar}
+                        >
+                            {isOldDay
+                                ? LayoutConfig.BUTTON_SAVE_CHANGE_EXERCISE
+                                : LayoutConfig.BUTTON_SAVE_EXERCISE}
                         </Button>
                     </div>
                 )}
@@ -125,6 +141,8 @@ export function TrainingModal({
                 isOpen={isOpenDrawer}
                 onClickClose={onCloseDrawer}
             />
+
+            <CancelChangeTrainingNotification onCancel={onCancelRequestEditTraning} />
         </>
     );
 }

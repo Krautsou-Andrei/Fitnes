@@ -6,6 +6,7 @@ import { ExercisesDefaultConfig, TrainingFormExerciseConfig } from '@features/tr
 import { selectIsEdit, trainingActions } from '@entities/training';
 
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { DataTestIdConfig } from '@shared/config';
 
 import styles from './exercise-form.module.less';
 
@@ -76,6 +77,7 @@ export function ExerciseForm({
     return (
         <div className={styles['exercise-form']}>
             <Input
+                data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${indexExercise}`}
                 className={styles['input-exercise']}
                 placeholder={TrainingFormExerciseConfig.INPUT_PLACEHOLDER_EXERCISE}
                 value={exerciseName}
@@ -83,6 +85,7 @@ export function ExerciseForm({
                 addonAfter={
                     isEditTraining && (
                         <Checkbox
+                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${indexExercise}`}
                             checked={isChecked}
                             onChange={() => onSetCheckedExercises(indexExercise)}
                         />
@@ -94,21 +97,34 @@ export function ExerciseForm({
                     <div className={styles['label-exericise']}>
                         {TrainingFormExerciseConfig.LABEL_APPROACHES}
                     </div>
-                    <InputNumber addonBefore='+' value={approaches} onChange={onChangeApproaches} />
+                    <InputNumber
+                        data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_APPROACH}${indexExercise}`}
+                        addonBefore='+'
+                        value={approaches}
+                        onChange={onChangeApproaches}
+                    />
                 </label>
                 <Space className={styles['labels-right']}>
                     <label>
                         <div className={styles['label-exericise']}>
                             {TrainingFormExerciseConfig.LABEL_WEIGHT}
                         </div>
-                        <InputNumber value={weight} onChange={onChangeWeight} />
+                        <InputNumber
+                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${index}`}
+                            value={weight}
+                            onChange={onChangeWeight}
+                        />
                     </label>
                     <div>x</div>
                     <label>
                         <div className={styles['label-exericise']}>
-                            {TrainingFormExerciseConfig.LABEL_APPROACHES}
+                            {TrainingFormExerciseConfig.LABEL_REPLAYS}
                         </div>
-                        <InputNumber value={replays} onChange={onChangeReplays} />
+                        <InputNumber
+                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_QUANTUTY}${index}`}
+                            value={replays}
+                            onChange={onChangeReplays}
+                        />
                     </label>
                 </Space>
             </Space>

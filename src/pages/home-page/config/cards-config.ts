@@ -4,7 +4,7 @@ import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons
 import type { CardActive } from '../ui/app-card-active/model/types';
 import type { CardText } from '../ui/app-card-text/model/types';
 
-import { PathConfig } from '@shared/config';
+import { DataTestIdConfig, PathConfig } from '@shared/config';
 
 export const cardsInfoConfig: CardText[] = [
     {
@@ -41,6 +41,7 @@ export const cardsActionsConfig: CardActive[] = [
             href: PathConfig.CALENDAR,
             title: 'Календарь',
         },
+        dataTestId: DataTestIdConfig.MENU_BUTTON_CALENDAR,
     },
     {
         id: 3,

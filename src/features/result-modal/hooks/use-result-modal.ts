@@ -1,15 +1,18 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { push } from 'redux-first-history';
 import { Modal, ModalProps } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
+
+import { configButton, configDescription, configIconClose, configTitle } from './config';
+import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
+import { resultModalActions, selectResultModal } from '../model/slice';
 
 import { getTraningListThunk } from '@features/traning/@ex/result-modal';
 
-import { resultModalActions, selectResultModal } from '../model/slice';
-import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
 import { feedbackActions } from '@entities/feedbacks';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
-import { PathConfig } from '@shared/config';
+import { ConstantsMediaQuery, PathConfig } from '@shared/config';
 import { showErrorForDevelop, splitString } from '@shared/lib';
 
 type modalErrorTraning = {
@@ -70,13 +73,22 @@ export function useResultModal() {
     useEffect(() => {
         if (isTraningList) {
             modalErrorTraning.current = Modal.error({
-                title: modalCofig[typeModal.type].title,
-                okText: modalCofig[typeModal.type].buttonTitle,
+                title: configTitle(modalCofig[typeModal.type].title),
+                content: React.createElement(
+                    'div',
+                    null,
+                    configDescription(modalCofig[typeModal.type].desciption),
+                ),
+                okText: configButton(modalCofig[typeModal.type].buttonTitle),
                 onCancel: onClickClose,
                 mask: false,
                 closable: true,
                 centered: true,
+                closeIcon: configIconClose(),
                 onOk: getTraningListAgayn,
+                icon: React.createElement(CloseCircleOutlined, {
+                    style: { color: `${ConstantsMediaQuery.ICON_COLOR_ERROR_LIST}` },
+                }),
             });
 
             return () => {

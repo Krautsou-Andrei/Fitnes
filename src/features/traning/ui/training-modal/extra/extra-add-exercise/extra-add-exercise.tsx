@@ -4,7 +4,7 @@ import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { SelectOptions } from '@features/traning/model/types';
 import { Exercises } from '@entities/training';
 
-import { LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './extra-add-exercise.module.less';
@@ -30,6 +30,7 @@ export function ExtraAddExercise({
         <>
             <div className={styles['header-wrapper']}>
                 <Button
+                    data-test-id={DataTestIdConfig.MODAL_EXERCISE_TRAINING_BUTTON_CLOSE}
                     className={styles.button}
                     type='text'
                     size='small'
@@ -37,6 +38,7 @@ export function ExtraAddExercise({
                     icon={<ArrowLeftOutlined />}
                 />
                 <Select
+                    data-test-id={DataTestIdConfig.MODAL_CREATE_EXERCISE_SELECT}
                     value={selectTrainingName || LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
                     className={styles['select-exercise']}
                     options={selectOptions}

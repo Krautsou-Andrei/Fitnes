@@ -4,4 +4,5 @@ export type CardActive = {
     id: number;
     title: string;
     button: ButtonLink;
+    dataTestId?: string;
 };

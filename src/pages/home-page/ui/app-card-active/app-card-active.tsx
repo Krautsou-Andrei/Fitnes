@@ -14,7 +14,7 @@ export function AppCardActive({ card }: AppCardActiveProps) {
     const { onClick } = useLinkMenuClick();
 
     return (
-        <AppCard className={styles['app-card']} title={card.title}>
+        <AppCard className={styles['app-card']} title={card.title} data-test-id={card.dataTestId}>
             <Button type='link' onClick={() => onClick(card.button.href)}>
                 {card.button.icon}
                 {card.button.title}

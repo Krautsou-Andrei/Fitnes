@@ -2,7 +2,7 @@ import { Button, Empty } from 'antd';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 
 import { type Exercises, type TrainingType } from '@entities/training';
-import { LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 
 import { AppTrainingDay } from '@shared/ui';
 
@@ -38,6 +38,7 @@ export function ExtraViewTraining({
                     )}
                 </div>
                 <Button
+                    data-test-id={DataTestIdConfig.MODAL_CREATE_TRAINING_BUTTON_CLOSE}
                     className={styles.button}
                     type='text'
                     size='small'
@@ -47,13 +48,14 @@ export function ExtraViewTraining({
             </div>
             <div className={styles['header-body']}>
                 {listTraining.length ? (
-                    listTraining.map((item) => (
+                    listTraining.map((item, index) => (
                         <div key={item.id} className={styles['trainig-item']}>
                             <AppTrainingDay
                                 name={item.name}
                                 isImplementation={item.isImplementation}
                             />
                             <Button
+                                data-test-id={`${DataTestIdConfig.MODAL_CREATE_TRAINING_EDIT_BUTTON}${index}`}
                                 type='link'
                                 className={styles['button-edit']}
                                 disabled={item.isImplementation}
