@@ -6,7 +6,6 @@ import { AppDrawer } from '../app-drawer';
 import { ExtraAddExercise, ExtraViewTraining } from './extra';
 
 import { useTainingModal } from '@features/traning/hooks';
-import { CancelChangeTrainingNotification } from '@features/notification/ui';
 
 import { type TrainingName, type TrainingType } from '@entities/training';
 
@@ -42,7 +41,6 @@ export function TrainingModal({
         currentDate,
         createTraining,
         nextStep,
-        onCancelRequestEditTraning,
         onCloseDrawer,
         onEditExercise,
         onEditTraining,
@@ -141,8 +139,6 @@ export function TrainingModal({
                 isOpen={isOpenDrawer}
                 onClickClose={onCloseDrawer}
             />
-
-            <CancelChangeTrainingNotification onCancel={onCancelRequestEditTraning} />
         </>
     );
 }

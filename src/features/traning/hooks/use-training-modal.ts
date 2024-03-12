@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import moment, { type Moment } from 'moment';
 
 import { editTraningThunk } from '../model/edit-training';
@@ -11,8 +11,9 @@ import {
     type TrainingName,
     type TrainingType,
     type Exercises,
+    useLazyGetTrainingQuery,
 } from '@entities/training';
-import { selectIsLoadingn, selectIsLoadingnCalendar, sessionActions } from '@entities/session';
+import { selectIsLoadingn, selectIsLoadingnCalendar } from '@entities/session';
 
 import { DateFormatConfig } from '@shared/config';
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
@@ -28,6 +29,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const createTraining = useAppSelector(selectCreateTraining);
     const isLoading = useAppSelector(selectIsLoadingn);
     const isLoadingCalendar = useAppSelector(selectIsLoadingnCalendar);
+    const [gettraining] = useLazyGetTrainingQuery();
     const exercises = createTraining.exercises;
     const id = createTraining.id;
     const { isQueryXS } = useAppMediaQuery();
@@ -37,8 +39,6 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const [step, setStep] = useState(1);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
     const [selectTrainingName, setSelectTrainingName] = useState('');
-
-    const timeoutRef = useRef<string | number | NodeJS.Timeout | undefined>(undefined);
 
     const currentDate = formatDate(date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT);
     const isOldDay = isOldDate(date);
@@ -58,12 +58,17 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
         }
     });
 
+    const clearSelectTrainingName = () => {
+        setSelectTrainingName('');
+    };
+
     const nextStep = () => {
         setStep((prev) => prev + 1);
     };
 
     const prevStep = () => {
         setStep((prev) => prev - 1);
+        clearSelectTrainingName();
     };
 
     const onOpenDrawer = () => {
@@ -84,35 +89,20 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     };
 
     const onSave = async () => {
-        const startRequest = () => {
-            dispatch(sessionActions.setIsLoadingCalendar(true));
-            return new Promise((resolve, reject) => {
-                timeoutRef.current = setTimeout(() => {
-                    resolve(dispatch(editTraningThunk({ trainingId: id, body: createTraining })));
-                }, 5000);
-            });
-        };
-
         try {
-            if (isOldDay && isEditTraining) {
-                await startRequest();
-            } else if (isEditTraining) {
+            if (isEditTraining) {
                 await dispatch(editTraningThunk({ trainingId: id, body: createTraining }));
+                gettraining();
             } else {
                 await dispatch(addTraningThunk(createTraining));
             }
 
             dispatch(trainingActions.clearCreateTraining());
             setStep(1);
+            clearSelectTrainingName();
         } catch (error) {
             showErrorForDevelop('Create training', error);
         }
-    };
-
-    const onCancelRequestEditTraning = () => {
-        clearTimeout(timeoutRef.current);
-        dispatch(sessionActions.setIsLoadingCalendar(false));
-        setStep(1);
     };
 
     const selectOptions = remainTraining.map((item) => ({ value: item.name, label: item.name }));
@@ -156,7 +146,6 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
         currentDate,
         createTraining,
         nextStep,
-        onCancelRequestEditTraning,
         onCloseDrawer,
         onEditExercise,
         onEditTraining,
