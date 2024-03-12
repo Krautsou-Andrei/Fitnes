@@ -17,7 +17,7 @@ export const addTraningThunk = createAsyncThunk<
     EventApiConfig.TRAINING_ADD,
 
     async (data, { dispatch, rejectWithValue }) => {
-        dispatch(sessionActions.setIsLoading(true));
+        dispatch(sessionActions.setIsLoadingCalendar(true));
 
         try {
             const result = await dispatch(
@@ -32,7 +32,7 @@ export const addTraningThunk = createAsyncThunk<
 
             throw new Error('Unknown error');
         } finally {
-            dispatch(sessionActions.setIsLoading(false));
+            dispatch(sessionActions.setIsLoadingCalendar(false));
         }
     },
 );

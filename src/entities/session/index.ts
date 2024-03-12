@@ -12,6 +12,7 @@ import {
     selectAccessToken,
     selectIsAuthorized,
     selectIsLoadingn,
+    selectIsLoadingnCalendar,
     sessionSlice,
 } from './model/slice';
 
@@ -29,5 +30,6 @@ export {
     selectAccessToken,
     selectIsAuthorized,
     selectIsLoadingn,
+    selectIsLoadingnCalendar,
     sessionSlice,
 };
