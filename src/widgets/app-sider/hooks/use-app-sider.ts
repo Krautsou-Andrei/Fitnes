@@ -13,7 +13,10 @@ export function useAppSider() {
 
     useEffect(() => {
         dispatch(siderActions.setIsCollapsed(isCollapsed));
-    }, [dispatch, isCollapsed]);
+        if (isQueryMD) {
+            isSetCollapsed(true);
+        }
+    }, [dispatch, isCollapsed, isQueryMD]);
 
     return { isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed };
 }
