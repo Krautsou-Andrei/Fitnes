@@ -9,6 +9,7 @@ export const enum LayoutConfig {
     BUTTON_REGISTER = 'Войти',
     BUTTON_REGISTER_GOOGLE = 'Регистрация через Google',
     BUTTON_REVIEWS = 'Смотреть отзывы',
+    BUTTON_SAVE_CHANGE_EXERCISE = 'Сохранить изменения',
     BUTTON_SAVE_EXERCISE = 'Сохранить',
     BUTTON_SAVE_NEW_PASSWORD = 'Сохранить',
     BUTTON_SETTINGS = 'Настройки',

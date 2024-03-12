@@ -8,6 +8,8 @@ export const enum ConstantsMediaQuery {
     MD = 768,
     APP_TABLET = 834,
     APP_TOP_ROW_CALENDAR = 80,
+
+    ICON_COLOR_ERROR_LIST = '#2F54EB',
 }
 
 export const enum Gap {
