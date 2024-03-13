@@ -1,4 +1,4 @@
-import { Modal, Result } from 'antd';
+import { Button, Modal, Result } from 'antd';
 import clsn from 'classnames';
 
 import { useResultModal } from '../hooks/use-result-modal';
@@ -8,6 +8,7 @@ import { DataTestIdConfig } from '@shared/config';
 import { STYLES } from '@shared/config/constants';
 
 import styles from './result-modal.module.less';
+// import { configButton, configDescription, configIconClose, configTitle } from '../hooks/config';
 
 export function ResultModal() {
     const {
@@ -15,6 +16,7 @@ export function ResultModal() {
         isOpen,
         isAddTraining,
         isTraningList,
+        // getTraningListAgayn,
         onClickAgayn,
         onClickClose,
         typeModal,
@@ -37,7 +39,18 @@ export function ResultModal() {
             transitionName=''
         >
             {isTraningList || isAddTraining ? (
-                <div />
+                <div>
+                    {/* <div>{configTitle(modalCofig[typeModal.type].title)}</div>
+                    <div>{configDescription(modalCofig[typeModal.type].desciption)}</div>
+                    <div>
+                        <Button onClick={onClickClose}>{configIconClose()}</Button>
+                    </div>
+                    <div>
+                        <Button onClick={isAddTraining ? onClickClose : getTraningListAgayn}>
+                            {configButton(modalCofig[typeModal.type].buttonTitle)}
+                        </Button>
+                    </div> */}
+                </div>
             ) : (
                 <Result
                     status={typeModal.status}

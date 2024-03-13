@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { push } from 'redux-first-history';
 import { Modal, ModalProps } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
@@ -14,6 +14,7 @@ import { feedbackActions } from '@entities/feedbacks';
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { ConstantsMediaQuery, PathConfig } from '@shared/config';
 import { showErrorForDevelop, splitString } from '@shared/lib';
+import { STYLES } from '@shared/config/constants';
 
 import styles from '../ui/result-modal.module.less';
 
@@ -27,8 +28,15 @@ export function useResultModal() {
     const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
     const dispatch = useAppDispatch();
+    // const [isAddTraining, setIsAddTraining] = useState<boolean>(false);
+    // const [isTraningList, setIsTrainingList] = useState<boolean>(false);
 
     const modalErrorTraning = useRef<modalErrorTraning | null>(null);
+
+    // useEffect(() => {
+    //     setIsAddTraining(typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING);
+    //     setIsTrainingList(typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST);
+    // }, [typeModal.type]);
 
     const isAddTraining = typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING;
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
@@ -53,7 +61,7 @@ export function useResultModal() {
         });
     }, [dispatch, onClickClose]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isAddTraining) {
             modalErrorTraning.current = Modal.error({
                 title: configTitle(modalCofig[typeModal.type].title),
@@ -62,10 +70,13 @@ export function useResultModal() {
                     null,
                     configDescription(modalCofig[typeModal.type].desciption),
                 ),
+                maskStyle: {
+                    backdropFilter: STYLES.BLURE,
+                    background: STYLES.BACKGROUND_BLURE,
+                },
                 okText: configButton(modalCofig[typeModal.type].buttonTitle),
                 closeIcon: configIconClose(),
                 onOk: onClickClose,
-                mask: false,
                 centered: true,
             });
 
@@ -77,7 +88,7 @@ export function useResultModal() {
         }
     }, [isAddTraining, onClickClose, typeModal.type]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isTraningList) {
             modalErrorTraning.current = Modal.error({
                 className: styles['error-get-training-list'],
@@ -87,9 +98,12 @@ export function useResultModal() {
                     null,
                     configDescription(modalCofig[typeModal.type].desciption),
                 ),
+                maskStyle: {
+                    backdropFilter: STYLES.BLURE,
+                    background: STYLES.BACKGROUND_BLURE,
+                },
                 okText: configButton(modalCofig[typeModal.type].buttonTitle),
                 onCancel: onClickClose,
-                mask: false,
                 closable: true,
                 centered: true,
                 closeIcon: configIconClose(),
@@ -128,6 +142,7 @@ export function useResultModal() {
         isOpen,
         isAddTraining,
         isTraningList,
+        getTraningListAgayn,
         onClickAgayn,
         onClickClose,
         typeModal,

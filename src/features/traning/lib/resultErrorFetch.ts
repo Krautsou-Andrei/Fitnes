@@ -13,7 +13,7 @@ export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
     if (error.status !== StatusError.ERROR_403) {
         if (type === EventApiConfig.TRAINING_ADD) {
             return resultModalActions.setResultModal({
-                isOpen: true,
+                isOpen: false,
                 typeModal: {
                     type: modalResultConfig[ModalTypeConfig.ERROR_ADD_TRAINING].type,
                     status: modalResultConfig[ModalTypeConfig.ERROR_ADD_TRAINING].status,
@@ -23,7 +23,7 @@ export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
 
         if (type === EventApiConfig.TRAINING_GET_LIST_NAME) {
             return resultModalActions.setResultModal({
-                isOpen: true,
+                isOpen: false,
                 typeModal: {
                     type: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].type,
                     status: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].status,
