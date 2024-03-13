@@ -136,6 +136,7 @@ export function TrainingModal({
             </AppCard>
             <AppDrawer
                 createTraining={createTraining}
+                isOldDay={isOldDay}
                 isOpen={isOpenDrawer}
                 onClickClose={onCloseDrawer}
             />

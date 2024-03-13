@@ -28,7 +28,7 @@ export function TrainingPage() {
     } = useTraningPage();
 
     return (
-        <Content className={!isQueryXS ? styles['traning-page'] : ''}>
+        <Content className={!isQueryXS ? styles['traning-page'] : styles['traning-page-mobile']}>
             <Calendar
                 fullscreen={!isQueryXS}
                 dateFullCellRender={!isQueryXS ? handleFullCellRender : undefined}

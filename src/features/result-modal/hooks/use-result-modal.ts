@@ -15,6 +15,8 @@ import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks'
 import { ConstantsMediaQuery, PathConfig } from '@shared/config';
 import { showErrorForDevelop, splitString } from '@shared/lib';
 
+import styles from '../ui/result-modal.module.less';
+
 type modalErrorTraning = {
     destroy: () => void;
     update: (configUpdate: ModalProps) => void;
@@ -54,9 +56,14 @@ export function useResultModal() {
     useEffect(() => {
         if (isAddTraining) {
             modalErrorTraning.current = Modal.error({
-                title: modalCofig[typeModal.type].title,
-                content: React.createElement('div', null, modalCofig[typeModal.type].desciption),
-                okText: modalCofig[typeModal.type].buttonTitle,
+                title: configTitle(modalCofig[typeModal.type].title),
+                content: React.createElement(
+                    'div',
+                    null,
+                    configDescription(modalCofig[typeModal.type].desciption),
+                ),
+                okText: configButton(modalCofig[typeModal.type].buttonTitle),
+                closeIcon: configIconClose(),
                 onOk: onClickClose,
                 mask: false,
                 centered: true,
@@ -73,6 +80,7 @@ export function useResultModal() {
     useEffect(() => {
         if (isTraningList) {
             modalErrorTraning.current = Modal.error({
+                className: styles['error-get-training-list'],
                 title: configTitle(modalCofig[typeModal.type].title),
                 content: React.createElement(
                     'div',

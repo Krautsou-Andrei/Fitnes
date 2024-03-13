@@ -24,10 +24,11 @@ const { Title } = Typography;
 type AppDrawerProps = {
     createTraining: CreateTraining;
     isOpen: boolean;
+    isOldDay: boolean;
     onClickClose: () => void;
 };
 
-export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerProps) {
+export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: AppDrawerProps) {
     const { exercises } = useAppSelector(selectCreateTraining);
     const isEdit = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
@@ -58,6 +59,7 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
 
     return (
         <Drawer
+            mask={false}
             data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT}
             className={styles['app-drawer']}
             open={isOpen}
@@ -118,9 +120,11 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
                     )}
                 </div>
             </div>
-            <div className={styles.notification}>
-                {splitString(TrainingFormExerciseConfig.NOTIFICATION)}
-            </div>
+            {isOldDay && (
+                <div className={styles.notification}>
+                    {splitString(TrainingFormExerciseConfig.NOTIFICATION)}
+                </div>
+            )}
         </Drawer>
     );
 }

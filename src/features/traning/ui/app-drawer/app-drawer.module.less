@@ -1,8 +1,21 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .app-drawer {
     :global(.ant-drawer-content-wrapper) {
         width: @app-width-drawer !important;
+
+        .media-xs({
+            margin-top: @gap-7xxl;
+            border-radius: (@rem *24) (@rem *24) 0 0;
+            width: 100vw !important;
+        });
+
+        :global(.ant-drawer-content) {
+            .media-xs({               
+                border-radius: (@rem *24) (@rem *24) 0 0;                
+            });
+        }
 
         :global(.ant-drawer-header) {
             padding: @gap-xl @gap-4xl @gap-m;
@@ -32,6 +45,22 @@
 
     :global(.ant-drawer-body) {
         padding-top: 0;
+        padding-bottom: @gap-4xl;
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .form-wrapper {
+            padding-bottom: @gap-xl;
+
+            flex: 1;
+        }
+
+        .notification {
+            text-align: center;
+            color: @app-text-color-secondary;
+        }
     }
 
     .exercises {

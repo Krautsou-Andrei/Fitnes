@@ -1,8 +1,13 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { DataTestIdConfig } from '@shared/config';
+import { splitString } from '@shared/lib';
 
 export function configTitle(title: string) {
-    return <span data-test-id={DataTestIdConfig.MODAL_ERROR_USER_TRAINING_TITLE}>{title}</span>;
+    return (
+        <span data-test-id={DataTestIdConfig.MODAL_ERROR_USER_TRAINING_TITLE}>
+            {splitString(title)}
+        </span>
+    );
 }
 
 export function configDescription(description: string | undefined) {

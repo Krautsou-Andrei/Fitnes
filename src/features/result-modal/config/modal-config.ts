@@ -36,7 +36,7 @@ export const modalCofig: ModalConfig = {
     [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
         buttonTitle: 'Обновить',
         desciption: 'Попробуйте ещё раз.',
-        title: 'При открытии данных произошла ошибка',
+        title: 'При открытии данных\n произошла ошибка',
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         buttonTitle: 'Отлично',

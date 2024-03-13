@@ -12,10 +12,11 @@ export function useAppSider() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        isSetCollapsed(isQueryMD ? true : false);
+    }, [isQueryMD]);
+
+    useEffect(() => {
         dispatch(siderActions.setIsCollapsed(isCollapsed));
-        if (isQueryMD) {
-            isSetCollapsed(true);
-        }
     }, [dispatch, isCollapsed, isQueryMD]);
 
     return { isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed };
