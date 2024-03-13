@@ -13,10 +13,10 @@ export function mapTraining(dto: TrainingDto): Training {
             isImplementation: dto.isImplementation,
             userId: dto.userId,
             parameters: {
-                repeat: dto.parameters.repeat,
-                period: dto.parameters.period,
-                jointTraining: dto.parameters.jointTraining,
-                participants: dto.parameters.participants,
+                repeat: dto.parameters?.repeat,
+                period: dto.parameters?.period,
+                jointTraining: dto.parameters?.jointTraining,
+                participants: dto.parameters?.participants,
             },
             exercises: dto.exercises.map((item) => ({
                 id: item._id,

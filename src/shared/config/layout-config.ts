@@ -3,7 +3,7 @@ export const enum LayoutConfig {
     BUTTON_ANDROID = 'Android OS',
     BUTTON_APPLE = 'Aplle iOS',
     BUTTON_AUTHENTIFICATION_COOGLE = 'Войти через Google',
-    BUTTON_ADD_TRAINING = 'Добавить тренировку',
+    BUTTON_ADD_TRAINING = 'Создать тренировку',
     BUTTON_CREATE_TRAINING = 'Создать тренировку',
     BUTTON_RESET_ERROR_BIUNDARY = 'Вернуться на главную',
     BUTTON_REGISTER = 'Войти',

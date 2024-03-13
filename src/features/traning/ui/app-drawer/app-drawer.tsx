@@ -12,7 +12,7 @@ import {
     trainingActions,
 } from '@entities/training';
 
-import { formatDate } from '@shared/lib';
+import { formatDate, splitString } from '@shared/lib';
 import { DataTestIdConfig, DateFormatConfig } from '@shared/config';
 import { AppBadge } from '@shared/ui';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
@@ -51,6 +51,7 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
         const newExercises = exercises.filter(
             (_exersise, index: number) => !checkedExersices.includes(index),
         );
+
         dispatch(trainingActions.setCreateTrainingExercises(newExercises));
         setCheckedExercises([]);
     };
@@ -67,47 +68,58 @@ export function AppDrawer({ createTraining, isOpen, onClickClose }: AppDrawerPro
             extra={
                 <Space>
                     <PlusOutlined />
-                    <Title level={4}>{TrainingFormExerciseConfig.TITLE_DRAWER}</Title>
+                    <Title level={4}>
+                        {isEdit
+                            ? TrainingFormExerciseConfig.TITLE_DRAWER_EDIT
+                            : TrainingFormExerciseConfig.TITLE_DRAWER}
+                    </Title>
                 </Space>
             }
         >
-            <Space className={styles['title-exercise']}>
-                <Space>
-                    <AppBadge name={createTraining.name} />
-                    <div>{createTraining.name}</div>
+            <div className={styles['form-wrapper']}>
+                <Space className={styles['title-exercise']}>
+                    <Space>
+                        <AppBadge name={createTraining.name} />
+                        <div>{createTraining.name}</div>
+                    </Space>
+                    <div>
+                        {formatDate(createTraining.date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT)}
+                    </div>
                 </Space>
-                <div>{formatDate(createTraining.date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT)}</div>
-            </Space>
-            <div className={styles['exercises']}>
-                {exercises.map((exercise, index: number) => (
-                    <ExerciseForm
-                        key={index}
-                        indexExercise={index}
-                        approachesDefault={exercise.approaches}
-                        exerciseNameDefault={exercise.name}
-                        replaysDefault={exercise.replays}
-                        weightDefault={exercise.weight}
-                        checkedExersices={checkedExersices}
-                        onSetCheckedExercises={onSetCheckedExercises}
-                    />
-                ))}
-            </div>
-            <div className={styles['button-wrapper']}>
-                <Button type='link' icon={<PlusOutlined />} size='small' onClick={addExercise}>
-                    {TrainingFormExerciseConfig.BUTTON_ADD_EXERCISE}
-                </Button>
-                {isEdit && (
-                    <Button
-                        className={styles['button-delete']}
-                        type='link'
-                        icon={<MinusOutlined />}
-                        size='small'
-                        disabled={!checkedExersices.length}
-                        onClick={deleteExercise}
-                    >
-                        {TrainingFormExerciseConfig.BUTTON_DELETE_EXERCISE}
+                <div className={styles['exercises']}>
+                    {exercises.map((exercise, index: number) => (
+                        <ExerciseForm
+                            key={exercise.name + index}
+                            indexExercise={index}
+                            approachesDefault={exercise.approaches}
+                            exerciseNameDefault={exercise.name}
+                            replaysDefault={exercise.replays}
+                            weightDefault={exercise.weight}
+                            checkedExersices={checkedExersices}
+                            onSetCheckedExercises={onSetCheckedExercises}
+                        />
+                    ))}
+                </div>
+                <div className={styles['button-wrapper']}>
+                    <Button type='link' icon={<PlusOutlined />} size='small' onClick={addExercise}>
+                        {TrainingFormExerciseConfig.BUTTON_ADD_EXERCISE}
                     </Button>
-                )}
+                    {isEdit && (
+                        <Button
+                            className={styles['button-delete']}
+                            type='link'
+                            icon={<MinusOutlined />}
+                            size='small'
+                            disabled={!checkedExersices.length}
+                            onClick={deleteExercise}
+                        >
+                            {TrainingFormExerciseConfig.BUTTON_DELETE_EXERCISE}
+                        </Button>
+                    )}
+                </div>
+            </div>
+            <div className={styles.notification}>
+                {splitString(TrainingFormExerciseConfig.NOTIFICATION)}
             </div>
         </Drawer>
     );

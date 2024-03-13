@@ -13,7 +13,6 @@ import styles from './extra-view-training.module.less';
 type ExtraViewTrainingProps = {
     currentDate: string;
     onEditTraining: (id: string, name: string, exercises: Exercises[]) => void;
-
     onCloseAddTraining: () => void;
     listTraining: TrainingType[];
 };
@@ -23,7 +22,7 @@ export function ExtraViewTraining({
     onEditTraining,
     onCloseAddTraining,
     listTraining,
-}: ExtraViewTrainingProps) {
+}: ExtraViewTrainingProps) {    
     return (
         <>
             <div className={styles['header-wrapper']}>
@@ -55,7 +54,7 @@ export function ExtraViewTraining({
                                 isImplementation={item.isImplementation}
                             />
                             <Button
-                                data-test-id={`${DataTestIdConfig.MODAL_CREATE_TRAINING_EDIT_BUTTON}${index}`}
+                                data-test-id={`${DataTestIdConfig.MODAL_UPADATE_TRAINING_EDIT_BUTTON}${index}`}
                                 type='link'
                                 className={styles['button-edit']}
                                 disabled={item.isImplementation}

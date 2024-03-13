@@ -55,6 +55,7 @@ export function ExtraAddExercise({
                                 type='link'
                                 className={styles['button-edit']}
                                 onClick={onEditExercise}
+                                data-test-id={`${DataTestIdConfig.MODAL_UPADATE_TRAINING_EDIT_BUTTON}${index}`}
                             >
                                 <EditOutlined />
                             </Button>

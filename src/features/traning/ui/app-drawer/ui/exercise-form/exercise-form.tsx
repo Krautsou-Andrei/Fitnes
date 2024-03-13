@@ -46,7 +46,7 @@ export function ExerciseForm({
     const isChecked = checkedExersices.includes(indexExercise);
 
     const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+        const value = e.target.value;       
         setExerciseName(value);
         dispatch(
             trainingActions.setCreateTrainingExercise({
@@ -82,6 +82,7 @@ export function ExerciseForm({
                 placeholder={TrainingFormExerciseConfig.INPUT_PLACEHOLDER_EXERCISE}
                 value={exerciseName}
                 onChange={onChangeExerciseName}
+                autoFocus={true}
                 addonAfter={
                     isEditTraining && (
                         <Checkbox
@@ -110,7 +111,7 @@ export function ExerciseForm({
                             {TrainingFormExerciseConfig.LABEL_WEIGHT}
                         </div>
                         <InputNumber
-                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${index}`}
+                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${indexExercise}`}
                             value={weight}
                             onChange={onChangeWeight}
                         />
@@ -121,7 +122,7 @@ export function ExerciseForm({
                             {TrainingFormExerciseConfig.LABEL_REPLAYS}
                         </div>
                         <InputNumber
-                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_QUANTUTY}${index}`}
+                            data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_QUANTUTY}${indexExercise}`}
                             value={replays}
                             onChange={onChangeReplays}
                         />
