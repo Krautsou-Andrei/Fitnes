@@ -1,21 +1,16 @@
-import { useState } from 'react';
 import { Button, Drawer, Space, Typography } from 'antd';
 import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+
+import { useAppDrawer } from './hooks';
 
 import { TrainingFormExerciseConfig } from '@features/traning/config';
 import { ExerciseForm } from './ui/exercise-form';
 
-import {
-    CreateTraining,
-    selectCreateTraining,
-    selectIsEdit,
-    trainingActions,
-} from '@entities/training';
+import { CreateTraining } from '@entities/training';
 
 import { formatDate, splitString } from '@shared/lib';
 import { DataTestIdConfig, DateFormatConfig } from '@shared/config';
 import { AppBadge } from '@shared/ui';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './app-drawer.module.less';
 
@@ -29,34 +24,15 @@ type AppDrawerProps = {
 };
 
 export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: AppDrawerProps) {
-    const { exercises } = useAppSelector(selectCreateTraining);
-    const isEdit = useAppSelector(selectIsEdit);
-    const dispatch = useAppDispatch();
-
-    const [checkedExersices, setCheckedExercises] = useState<number[]>([]);
-
-    const addExercise = () => {
-        dispatch(trainingActions.addDefaultExercises());
-    };
-
-    const onSetCheckedExercises = (indexExercise: number) => {
-        if (checkedExersices.includes(indexExercise)) {
-            setCheckedExercises(checkedExersices.filter((item) => item !== indexExercise));
-            return;
-        }
-
-        setCheckedExercises([...checkedExersices, indexExercise]);
-    };
-
-    const deleteExercise = () => {
-        const newExercises = exercises.filter(
-            (_exersise, index: number) => !checkedExersices.includes(index),
-        );
-
-        dispatch(trainingActions.setCreateTrainingExercises(newExercises));
-        setCheckedExercises([]);
-    };
-
+    const {
+        addExercise,
+        checkedExersices,
+        deleteExercise,
+        exercises,
+        isEdit,
+        onSetCheckedExercises,
+    } = useAppDrawer();
+  
     return (
         <Drawer
             mask={false}

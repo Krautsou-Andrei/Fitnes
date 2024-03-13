@@ -1,11 +1,9 @@
-import { ChangeEvent, useState } from 'react';
 import { Checkbox, Input, InputNumber, Space } from 'antd';
 
-import { ExercisesDefaultConfig, TrainingFormExerciseConfig } from '@features/traning/config';
+import { useExerciseForm } from './hooks';
 
-import { selectIsEdit, trainingActions } from '@entities/training';
+import { TrainingFormExerciseConfig } from '@features/traning/config';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { DataTestIdConfig } from '@shared/config';
 
 import styles from './exercise-form.module.less';
@@ -29,50 +27,25 @@ export function ExerciseForm({
     checkedExersices,
     onSetCheckedExercises,
 }: ExerciseFormProps) {
-    const dispatch = useAppDispatch();
-    const isEditTraining = useAppSelector(selectIsEdit);
-
-    const [approaches, setApproaches] = useState<number>(
-        approachesDefault || ExercisesDefaultConfig.APPROACHES,
-    );
-    const [exerciseName, setExerciseName] = useState<string>(
-        exerciseNameDefault || ExercisesDefaultConfig.EXERCISE_NAME,
-    );
-    const [replays, setReplays] = useState<number>(
-        replaysDefault || ExercisesDefaultConfig.REPLAYS,
-    );
-    const [weight, setWeight] = useState<number>(weightDefault || ExercisesDefaultConfig.WEIGHT);
-
-    const isChecked = checkedExersices.includes(indexExercise);
-
-    const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;       
-        setExerciseName(value);
-        dispatch(
-            trainingActions.setCreateTrainingExercise({
-                partialExercises: { name: value },
-                index: indexExercise,
-            }),
-        );
-    };
-
-    const onChangeApproaches = (value: number | null) => {
-        if (value && value > 0) {
-            setApproaches(value);
-        }
-    };
-
-    const onChangeWeight = (value: number | null) => {
-        if (value !== null && value >= 0) {
-            setWeight(value);
-        }
-    };
-
-    const onChangeReplays = (value: number | null) => {
-        if (value && value > 0) {
-            setReplays(value);
-        }
-    };
+    const {
+        approaches,
+        exerciseName,
+        isChecked,
+        isEditTraining,
+        onChangeApproaches,
+        onChangeExerciseName,
+        onChangeReplays,
+        onChangeWeight,
+        replays,
+        weight,
+    } = useExerciseForm({
+        approachesDefault,
+        checkedExersices,
+        exerciseNameDefault,
+        indexExercise,
+        replaysDefault,
+        weightDefault,
+    });    
 
     return (
         <div className={styles['exercise-form']}>

@@ -43,8 +43,16 @@
 }
 
 :global(.ant-layout-content).traning-page-mobile {
-    padding: 0 @gap-xl @gap-xl;
+    padding: @gap-4xs @gap-xl @gap-xl;
     background-color: @app-header-background-color;
+
+    thead {
+        height: (@rem * 30);
+    }
+
+    :global(.ant-picker-calendar-mini .ant-picker-content) {
+        height: (@rem * 196);
+    }
 
     :global(.ant-picker-calendar-header) {
         display: flex;
