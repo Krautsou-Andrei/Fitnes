@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef } from 'react';
 import { push } from 'redux-first-history';
 import { Modal, ModalProps } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
@@ -28,15 +28,8 @@ export function useResultModal() {
     const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
     const dispatch = useAppDispatch();
-    // const [isAddTraining, setIsAddTraining] = useState<boolean>(false);
-    // const [isTraningList, setIsTrainingList] = useState<boolean>(false);
 
     const modalErrorTraning = useRef<modalErrorTraning | null>(null);
-
-    // useEffect(() => {
-    //     setIsAddTraining(typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING);
-    //     setIsTrainingList(typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST);
-    // }, [typeModal.type]);
 
     const isAddTraining = typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING;
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
@@ -102,7 +95,7 @@ export function useResultModal() {
                     backdropFilter: STYLES.BLURE,
                     background: STYLES.BACKGROUND_BLURE,
                 },
-                okText: configButton(modalCofig[typeModal.type].buttonTitle),
+                okText: configButton(modalCofig[typeModal.type].buttonTitle),                
                 onCancel: onClickClose,
                 closable: true,
                 centered: true,
