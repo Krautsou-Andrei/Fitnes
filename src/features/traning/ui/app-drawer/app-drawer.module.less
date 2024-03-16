@@ -44,12 +44,17 @@
     }
 
     :global(.ant-drawer-body) {
-        padding-top: 0;
-        padding-bottom: @gap-4xl;
+        padding: 0 @gap-4xl @gap-4xl;
 
         display: flex;
         flex-direction: column;
         height: 100%;
+
+        .media-xs(
+            {
+                padding: 0 @gap-m @gap-m;
+            }
+        );
 
         .form-wrapper {
             padding-bottom: @gap-xl;
