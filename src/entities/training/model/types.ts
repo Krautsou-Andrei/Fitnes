@@ -1,9 +1,9 @@
 export type Exercises = {
-    id?: string;
     name: string;
     replays: number;
     weight: number;
     approaches: number;
+    id?: string;
     isImplementation?: boolean;
 };
 
@@ -13,15 +13,13 @@ export type TrainingType = {
     date: string;
     isImplementation: boolean;
     userId: string;
-    parameters:
-        | {
-              repeat: boolean;
-              period: number;
-              jointTraining: boolean;
-              participants?: [string];
-          }
-        | undefined;
     exercises: Exercises[] | [];
+    parameters?: {
+        repeat: boolean;
+        period: number;
+        jointTraining: boolean;
+        participants?: [string];
+    };
 };
 
 export type TrainingName = {

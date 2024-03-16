@@ -3,6 +3,7 @@ import { Exercises } from '../model/types';
 export type RequestTrainingBody = {
     name: string;
     date: string;
+    exercises: Exercises[] | [];
     isImplementation?: boolean;
     parameters?: {
         repeat: boolean;
@@ -10,7 +11,6 @@ export type RequestTrainingBody = {
         jointTraining: boolean;
         participants?: [string];
     };
-    exercises: Exercises[] | [];
 };
 
 export type RequestTrainingEditBody = {
@@ -24,12 +24,6 @@ export type TrainingDto = {
     date: string;
     isImplementation: boolean;
     userId: string;
-    parameters: {
-        repeat: boolean;
-        period: number;
-        jointTraining: boolean;
-        participants?: [string];
-    };
     exercises: [
         {
             _id: string;
@@ -40,6 +34,12 @@ export type TrainingDto = {
             isImplementation: boolean;
         },
     ];
+    parameters?: {
+        repeat: boolean;
+        period: number;
+        jointTraining: boolean;
+        participants?: [string];
+    };
 };
 export type TrainingNameDto = {
     name: string;
