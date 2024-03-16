@@ -1,3 +1,4 @@
+import { DateFormatConfig } from '@shared/config';
 import { PickerLocale } from 'antd/es/date-picker/generatePicker';
 
 export const locale: PickerLocale = {
@@ -17,11 +18,11 @@ export const locale: PickerLocale = {
         monthSelect: 'Выберите месяц',
         yearSelect: 'Выберите год',
         decadeSelect: 'Выберите десятилетие',
-        yearFormat: 'YYYY',
-        dateFormat: 'D/M/YYYY',
-        dayFormat: 'D',
-        dateTimeFormat: 'D/M/YYYY HH:mm:ss',
-        monthFormat: 'MMMM',
+        yearFormat: DateFormatConfig.LANG_FORMAT_YEAR,
+        dateFormat: DateFormatConfig.LANG_FORMAT_DATE,
+        dayFormat: DateFormatConfig.LANG_FORMAT_DAY,
+        dateTimeFormat: `${DateFormatConfig.LANG_FORMAT_DATE} ${DateFormatConfig.FORMAT_DATE_TIME}`,
+        monthFormat: DateFormatConfig.LANG_FORMAT_MONTH,
         monthBeforeYear: true,
         previousMonth: 'Предыдущий месяц (PageUp)',
         nextMonth: 'Следующий месяц (PageDown)',
@@ -50,8 +51,8 @@ export const locale: PickerLocale = {
     timePickerLocale: {
         placeholder: 'Выберите время',
     },
-    dateFormat: 'DD-MM-YYYY',
-    dateTimeFormat: 'DD-MM-YYYY HH:mm:ss',
-    weekFormat: 'wo-YYYY',
-    monthFormat: 'MM-YYYY',
+    dateFormat: DateFormatConfig.FORMAT_DD_MM_YYYY_DASHED,
+    dateTimeFormat: `${DateFormatConfig.FORMAT_DD_MM_YYYY_DASHED} ${DateFormatConfig.FORMAT_DATE_TIME}`,
+    weekFormat: DateFormatConfig.FORMAT_WEEK,
+    monthFormat: DateFormatConfig.FORMAT_MONTH,
 };
