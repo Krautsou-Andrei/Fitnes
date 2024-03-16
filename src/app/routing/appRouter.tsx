@@ -37,7 +37,7 @@ export function AppRouter() {
                 element={
                     <WithErrorBoundary>
                         <AuthGuard>
-                            <BaseLayout isSimple={true} />
+                            <BaseLayout isNoTitle={true} isNoFooter={true} />
                         </AuthGuard>
                     </WithErrorBoundary>
                 }

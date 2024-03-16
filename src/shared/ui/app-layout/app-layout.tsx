@@ -14,7 +14,7 @@ type AppLayoutProps = {
     footerSlot?: ReactNode;
     isCollapsed?: boolean;
     isAuthLayout?: boolean;
-    isSimple?: boolean;
+    isNoTitle?: boolean;
 };
 
 export function AppLayout({
@@ -23,7 +23,7 @@ export function AppLayout({
     headerSlot,
     footerSlot,
     isAuthLayout,
-    isSimple,
+    isNoTitle,
 }: AppLayoutProps) {
     const { isCalendar, styleCollapsed } = useAppLayout();
 
@@ -34,7 +34,7 @@ export function AppLayout({
                 {headerSlot}
                 <div
                     className={clsn(styles['main-content'], {
-                        [styles['main-content-simple']]: isSimple && !isCalendar,
+                        [styles['main-content-simple']]: isNoTitle && !isCalendar,
                     })}
                 >
                     <Outlet />
