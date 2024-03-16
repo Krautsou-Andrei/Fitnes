@@ -5,6 +5,7 @@ import { AppDesctopDay } from '../ui/app-desctop-day';
 import { AppMobileDay } from '../ui/app-mobile-day';
 
 import { getTraningListThunk } from '@features/traning';
+import { ModalTypeConfig } from '@features/result-modal/config';
 
 import {
     type TrainingType,
@@ -12,6 +13,7 @@ import {
     selectTrainingName,
     trainingActions,
 } from '@entities/training';
+import { selectResultModal } from '@features/result-modal/model/slice';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { calendarSelectedDay, formatDate, offSet, showErrorForDevelop } from '@shared/lib';
@@ -22,6 +24,7 @@ export function useTraningPage() {
 
     const trainings = useAppSelector(selectTraining);
     const listNameTraining = useAppSelector(selectTrainingName);
+    const { typeModal } = useAppSelector(selectResultModal);
 
     const dispatch = useAppDispatch();
 
@@ -32,11 +35,20 @@ export function useTraningPage() {
 
     const month = useRef(false);
 
+    const isErrorAddTrainin = typeModal?.type === ModalTypeConfig.ERROR_ADD_TRAINING;
+    const isErrorTraningList = typeModal?.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
+
     useEffect(() => {
         dispatch(getTraningListThunk()).catch((error: unknown) => {
             showErrorForDevelop('Get training list', error);
         });
     }, [dispatch]);
+
+    useEffect(() => {
+        if (isErrorAddTrainin || isErrorTraningList) {
+            setTargetCell(null);
+        }
+    }, [isErrorAddTrainin, isErrorTraningList]);
 
     const onPanelChange = (_date: Moment, mode: string) => {
         if (mode === 'month' && isQueryXS) {
