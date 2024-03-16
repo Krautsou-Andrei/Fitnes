@@ -1,4 +1,4 @@
-import { splitString } from '../../../shared/lib/slpit-string';
+import { splitString } from '@shared/lib/slpit-string';
 
 describe('splitString', () => {
     it('should return the string itself if there is no newline character', () => {

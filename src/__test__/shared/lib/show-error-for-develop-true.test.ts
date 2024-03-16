@@ -1,6 +1,6 @@
-import { showErrorForDevelop } from '../../../shared/lib/show-error-for-develop';
+import { showErrorForDevelop } from '@shared/lib/show-error-for-develop';
 
-jest.mock('../../../shared/lib/config', () => ({
+jest.mock('@shared/lib/config', () => ({
     config: {
         MODE_DEV: true,
     },

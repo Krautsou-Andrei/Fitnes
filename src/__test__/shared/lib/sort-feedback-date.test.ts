@@ -1,5 +1,5 @@
-import { sortFeedbackDate } from '../../../shared/lib/sort-feedback-date';
-import { FeedbackType } from '../../../entities/feedbacks/model/types';
+import { sortFeedbackDate } from '@shared/lib/sort-feedback-date';
+import { FeedbackType } from '@entities/feedbacks/model/types';
 
 describe('sortFeedbackDate', () => {
     it('should sort feedbacks by createdAt date in descending order', () => {

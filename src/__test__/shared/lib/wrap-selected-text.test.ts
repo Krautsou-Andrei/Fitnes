@@ -1,37 +1,41 @@
-import { wrapSelectedText } from '../../../shared/lib/wrap-selected-text';
+import { wrapSelectedText } from '@shared/lib/wrap-selected-text';
 
 describe('wrapSelectedText', () => {
-    it('should wrap selected text with a span element', () => {
-        const text = 'There should be an email here';
-        const searchString = 'email';
-        const className = 'highlight';
+  let text: string;
+  let searchString: string;
+  let className: string;
 
-        const result = wrapSelectedText({ text, searchString, className });
+  beforeEach(() => {
+    text = 'There should be an email here';
+    searchString = 'email';
+    className = 'highlight';
+  });
 
-        expect(result).toMatchInlineSnapshot(`
-            [
-              "There should be an ",
-              <span
-                className="highlight"
-              >
-                email
-              </span>,
-              " here",
-            ]
-        `);
-    });
+  it('should wrap selected text with a span element', () => {
+    const result = wrapSelectedText({ text, searchString, className });
 
-    it('should handle no matches', () => {
-        const text = 'There should be an email here';
-        const searchString = 'foo';
-        const className = 'highlight';
+    expect(result).toMatchInlineSnapshot(`
+      [
+        "There should be an ",
+        <span
+          className="highlight"
+        >
+          email
+        </span>,
+        " here",
+      ]
+    `);
+  });
 
-        const result = wrapSelectedText({ text, searchString, className });
+  it('should handle no matches', () => {
+    searchString = 'foo';
 
-        expect(result).toMatchInlineSnapshot(`
-            [
-              "There should be an email here",
-            ]
-        `);
-    });
+    const result = wrapSelectedText({ text, searchString, className });
+
+    expect(result).toMatchInlineSnapshot(`
+      [
+        "There should be an email here",
+      ]
+    `);
+  });
 });

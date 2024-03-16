@@ -1,6 +1,6 @@
 import { AES } from 'crypto-js';
-import { decryptPassword } from '../../../shared/lib/decrypt-password';
-import { config } from '../../../shared/lib/config';
+import { decryptPassword } from '@shared/lib/decrypt-password';
+import { config } from '@shared/lib/config';
 
 jest.mock('crypto-js', () => ({
     AES: {
@@ -13,7 +13,7 @@ jest.mock('crypto-js', () => ({
     },
 }));
 
-jest.mock('../../../shared/lib/config', () => ({
+jest.mock('@shared/lib/config', () => ({
     config: {
         SECRET_KEY: 'secretKey',
     },
