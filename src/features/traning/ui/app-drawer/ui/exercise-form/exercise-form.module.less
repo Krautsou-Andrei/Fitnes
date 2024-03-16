@@ -14,7 +14,7 @@ input:global(.ant-input) {
 
 .input-exercise {
     height: (@rem * 24);
-    
+
     input {
         line-height: (@rem * 16);
     }
@@ -26,7 +26,6 @@ input:global(.ant-input) {
 
     :global(.ant-input-number-input) {
         height: (@rem * 22);
-        // color: @app-form-exercise-text-secondary;
     }
 
     :global(.ant-space-item:first-child) {
@@ -46,8 +45,11 @@ input:global(.ant-input) {
 
 .label-exericise {
     margin-bottom: @gap-2xs;
-    padding: 0 @gap-xs;
+    padding: @gap-3xs @gap-xs;
     height: (@rem * 24);
+
+    font-size: @font-size-s;
+    line-height: @font-line-m;
 
     border-radius: (@rem * 2);
     background-color: @app-form-exercise-label-background;
