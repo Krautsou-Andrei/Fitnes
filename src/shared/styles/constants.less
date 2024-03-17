@@ -21,6 +21,10 @@
 @colorSilver: rgb(191, 191, 191); /* bfbfbf */
 @colorWildSand: rgb(245, 245, 245); /* f5f5f5 */
 
+/* __________________________________box-shadow ___________________________________ */
+
+@app-box-shadow-card: 0 (@rem * 2) (@rem * 8) 0 rgba(0, 0, 0, 0.15);
+
 /* __________________________________ font ________________________________________ */
 
 @fontSize: 16;
@@ -41,6 +45,7 @@
 @app-icon-color: @colorCatalinaBlue;
 @app-text-color-primary: @colorMineShaft;
 @app-text-color-secondary: @colorGray;
+@app-text-color-disabled: @colorSilver;
 @app-header-background-color: @colorZircon;
 @app-card-text-color-primary: @colorCatalinaBlue;
 @app-form-background: @colorWhite;
@@ -54,6 +59,11 @@
 @app-avatar-background-color: @colorWildSand;
 @app-avatar-color: @colorMineShaft;
 @app-scrollbar-color: @colorRoyalBlue;
+@app-calendar-cell-background: @colorWhite;
+@app-form-exercise-text-secondary: @colorSilver;
+@app-form-exercise-label-background: @colorGallery;
+@app-background-calendar-training-mobile: @colorZircon;
+@app-background-calendar-cell-selected: @colorWildSand;
 
 /* __________________________________ padding ______________________________________ */
 
@@ -119,6 +129,7 @@
 @height-m: (@rem * 16px);
 @height-xl: (@rem * 40px);
 @height-2xl: (@rem * 46px);
+@app-height-calendar-cell: (@rem * 200px);
 
 /* __________________________________size width _____________________________________ */
 
@@ -129,6 +140,9 @@
 @app-width-user-feedback: (@rem * 174px);
 @app-width-validate-input: (@rem * 280px);
 @app-width-scrollbar: (@rem * 5px);
+@app-width-calendar-cell: (@rem * 264px);
+@app-width-drawer: (@rem * 408px);
+@app-widht-notification: (@rem * 384px);
 
 /* __________________________________ z-index ________________________________________ */
 

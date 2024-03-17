@@ -6,6 +6,7 @@ import { AppBreadcrumb } from './app-breadcrumb';
 import { AppSettingsButton } from './app-settings-button';
 
 import { LayoutConfig } from '@shared/config';
+import { usePageIsEqual } from '@shared/hooks';
 
 import styles from './app-header.module.less';
 
@@ -17,6 +18,8 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ className, isSimple }: AppHeaderProps) {
+    const { isCalendar } = usePageIsEqual();
+
     return (
         <Header className={clsn(styles['app-header'], className)}>
             <AppBreadcrumb />
@@ -29,6 +32,7 @@ export function AppHeader({ className, isSimple }: AppHeaderProps) {
                     <AppSettingsButton />
                 </div>
             )}
+            {isCalendar && <AppSettingsButton className={styles['setting-traning-page']} />}
         </Header>
     );
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'antd';
 
-import { AddFeedbackThunk } from '@features/feedbacks/model/addFeedback';
+import { AddFeedbackThunk } from '@features/feedbacks/model/add-feedback';
 
 import { selectIsLoadingn } from '@entities/session';
 import {

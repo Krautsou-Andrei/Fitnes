@@ -7,8 +7,10 @@ import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { HomePage } from '@pages/home-page';
+import { NotFoundPage } from '@pages/not-fount-page';
 import { RegisterPage } from '@pages/register-page';
 import { ResultPage } from '@pages/result-page';
+import { TrainingPage } from '@pages/training-page';
 
 import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
 
@@ -32,16 +34,16 @@ export function AppRouter() {
                 <Route path={PathConfig.HOME} element={<HomePage />} />
             </Route>
             <Route
-                path={PathConfig.FEEDBACKS}
                 element={
                     <WithErrorBoundary>
                         <AuthGuard>
-                            <BaseLayout isSimple={true} />
+                            <BaseLayout isNoTitle={true} isNoFooter={true} />
                         </AuthGuard>
                     </WithErrorBoundary>
                 }
             >
                 <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
+                <Route path={PathConfig.CALENDAR} element={<TrainingPage />} />
             </Route>
             <Route
                 element={
@@ -84,6 +86,9 @@ export function AppRouter() {
                 }
             >
                 <Route index={true} path=':resultType' element={<ResultPage />} />
+            </Route>
+            <Route element={<AuthLayout />}>
+                <Route path={PathConfig.NOT_FOUND_PAGE} element={<NotFoundPage />} />
             </Route>
         </Routes>
     );

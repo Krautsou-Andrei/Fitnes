@@ -1,0 +1,104 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.app-drawer {
+    :global(.ant-drawer-content-wrapper) {
+        width: @app-width-drawer !important;
+
+        .media-xs({
+            margin-top: @gap-7xxl;
+            border-radius: (@rem *24) (@rem *24) 0 0;
+            width: 100vw !important;
+        });
+
+        :global(.ant-drawer-content) {
+            .media-xs({               
+                border-radius: (@rem *24) (@rem *24) 0 0;                
+            });
+        }
+
+        :global(.ant-drawer-header) {
+            padding: @gap-xl @gap-4xl @gap-m;
+            border-bottom: none;
+
+            :global(.ant-drawer-close) {
+                margin-right: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .title-exercise {
+        margin-bottom: @gap-xs;
+
+        width: 100%;
+
+        font-weight: 500;
+        line-height: @font-line-m;
+
+        color: @app-text-color-secondary;
+
+        :global(.ant-space-item:first-child) {
+            flex: 1;
+        }
+    }
+
+    :global(.ant-drawer-body) {
+        padding: 0 @gap-4xl @gap-4xl;
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .media-xs(
+            {
+                padding: 0 @gap-m @gap-m;
+            }
+        );
+
+        .form-wrapper {
+            padding-bottom: @gap-xl;
+
+            flex: 1;
+        }
+
+        .notification {
+            text-align: center;
+            color: @app-text-color-secondary;
+        }
+    }
+
+    .exercises {
+        margin-bottom: @gap-xl;
+    }
+
+    .button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: @gap-xs @gap-s;
+        background-color: @app-form-exercise-label-background;
+        border-radius: 0 0 (@rem * 8) (@rem * 8);
+
+        :global(.ant-btn-link:not([disabled])).button-delete {
+            color: @app-text-color-primary;
+        }
+    }
+}
+
+:global(.ant-drawer-header) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    :global(.ant-drawer-header-title) {
+        flex: unset;
+    }
+
+    :global(.ant-drawer-extra) {
+        :global(.ant-typography) {
+            margin-bottom: 0;
+            line-height: @font-line-m;
+            font-weight: 500;
+        }
+    }
+}

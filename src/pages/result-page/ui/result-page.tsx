@@ -1,24 +1,16 @@
 import { Button } from 'antd';
-import { useLocation } from 'react-router-dom';
 
+import { useResultPage } from './hooks/use-result-page';
 import { resultConfig } from '../config/result-config';
 
-import { AppResultCard, ResultPageConfig, useResultButtonClick } from '@features/result';
+import { AppResultCard } from '@features/result';
 
 import { AppBackgroundBlur, AppGuestContent } from '@shared/ui';
 
 import styles from './result-page.module.less';
 
 export function ResultPage() {
-    const location = useLocation();
-    const lastPartUrl = location.pathname.split('/').at(-1);
-    const type = lastPartUrl as ResultPageConfig;
-
-    const typeOnClick = useResultButtonClick(type);
-
-    const onClick = () => {
-        typeOnClick && typeOnClick();
-    };
+    const { description, onClick, type } = useResultPage();
 
     return (
         <AppBackgroundBlur>
@@ -27,7 +19,7 @@ export function ResultPage() {
                 <AppResultCard
                     title={resultConfig[type].title}
                     icon={resultConfig[type].icon}
-                    description={resultConfig[type].description}
+                    description={description}
                     className={styles[`${type}-content`]}
                     classNameIcon={styles[type]}
                 >

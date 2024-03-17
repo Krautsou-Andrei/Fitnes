@@ -16,11 +16,27 @@ export const modalCofig: ModalConfig = {
         desciption: 'Что-то пошло не так. Попробуйте ещё раз.',
         title: 'Данные не сохранились',
     },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {        
+        buttonTitle: 'Закрыть',
+        desciption: 'Придётся попробовать ещё раз',
+        title: 'При сохранении данных произошла ошибка',
+    },
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
         desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
+    },
+    [ModalTypeConfig.ERROR_GET_TRANING]: {
+        buttonTitle: 'Назад',
+        desciption: 'Произошла ошибка, попробуйте ещё раз.',
+        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
+        title: 'Что-то пошло не так',
+    },
+    [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных\n произошла ошибка',
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         buttonTitle: 'Отлично',
@@ -33,8 +49,20 @@ export const modalResultConfig: ModalResultConfig = {
         type: ModalTypeConfig.ERROR_ADD_FEEDBACK,
         status: 'error',
     },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {
+        type: ModalTypeConfig.ERROR_ADD_TRAINING,
+        status: 'error',
+    },
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         type: ModalTypeConfig.ERROR_GET_FEEDBACK,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_TRANING]: {
+        type: ModalTypeConfig.ERROR_GET_TRANING,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
+        type: ModalTypeConfig.ERROR_GET_TRANING_LIST,
         status: '500',
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {

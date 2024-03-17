@@ -4,8 +4,11 @@ import { createReduxHistoryContext } from 'redux-first-history';
 
 import { siderSlice } from '@widgets/app-sider';
 
-import { sessionSlice } from '@entities/session';
+import { resultModalSlice } from '@features/result-modal';
+
 import { feedbackSlice } from '@entities/feedbacks';
+import { sessionSlice } from '@entities/session';
+import { trainingSlice } from '@entities/training';
 
 import { baseApi } from '@shared/api';
 
@@ -17,6 +20,8 @@ export const rootReducer = combineReducers({
     router: routerReducer,
     [baseApi.reducerPath]: baseApi.reducer,
     [feedbackSlice.name]: feedbackSlice.reducer,
+    [resultModalSlice.name]: resultModalSlice.reducer,
     [sessionSlice.name]: sessionSlice.reducer,
     [siderSlice.name]: siderSlice.reducer,
+    [trainingSlice.name]: trainingSlice.reducer,
 });

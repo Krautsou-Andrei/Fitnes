@@ -1,4 +1,6 @@
 import { AppBackgroundBlur } from './app-background-blur/app-backgound-blur';
+import { AppBadge } from './app-badge/app-badge';
+import { AppButtonReturnToHome } from './app-button-return-to-home';
 import { AppCard } from './app-card/app-card';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
 import { AppGuestContent } from './app-guest-content/app-guest-content';
@@ -10,12 +12,15 @@ import { AppLayout } from './app-layout/app-layout';
 import { AppLoader } from './app-loader/app-loader';
 import { AppPortal } from './app-portal/app-portal';
 import { AppTabs } from './app-tabs/app-tabs';
+import { AppTrainingDay } from './app-training-day/app-training-day';
 
 export type * from './app-icon/types';
 export type * from './app-tabs/model/types';
 
 export {
     AppBackgroundBlur,
+    AppBadge,
+    AppButtonReturnToHome,
     AppCard,
     AppErrorFallback,
     AppGuestContent,
@@ -27,4 +32,5 @@ export {
     AppLoader,
     AppPortal,
     AppTabs,
+    AppTrainingDay,
 };

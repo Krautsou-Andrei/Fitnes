@@ -1,8 +1,13 @@
+import { calendarSelectedDay } from './calendar-selected-day';
 import { config } from './config';
 import { cryptPassword } from './crypt-password';
 import { decryptPassword } from './decrypt-password';
+import { formatDate, weekDay } from './format-date';
+import { isOldDate } from './format-date';
 import { getLocalStorage } from './local-storage/get-local-storage';
 import { getSessionStorage } from './session-storage/get-session-storage';
+import { offSet } from './off-set';
+import { offSetTop } from './off-set-top';
 import { removeLocalStorage } from './local-storage/remove-local-storage';
 import { removeSessionStorage } from './session-storage/remove-session-storage';
 import { setLocalStorage } from './local-storage/set-local-storage';
@@ -14,11 +19,16 @@ import { wait } from './wait';
 import { wrapSelectedText } from './wrap-selected-text';
 
 export {
+    calendarSelectedDay,
     config,
     cryptPassword,
     decryptPassword,
+    formatDate,
+    isOldDate,
     getLocalStorage,
     getSessionStorage,
+    offSet,
+    offSetTop,
     removeLocalStorage,
     removeSessionStorage,
     setLocalStorage,
@@ -27,5 +37,6 @@ export {
     showErrorForDevelop,
     splitString,
     wait,
+    weekDay,
     wrapSelectedText,
 };

@@ -1,0 +1,104 @@
+@import '@shared/styles/constants';
+
+:global(.ant-layout-content).traning-page {
+    padding-top: 0;
+    padding-bottom: @gap-10xxl;
+
+    background-color: @app-header-background-color;
+
+    :global(.ant-picker-calendar),
+    :global(.ant-picker-panel) {
+        background-color: transparent;
+    }
+
+    :global(.ant-picker-calendar .ant-picker-panel .ant-picker-body) {
+        padding-top: 0;
+    }
+
+    :global(.ant-picker-cell.ant-picker-cell-in-view.ant-picker-cell-selected) {
+        :global(.ant-picker-cell-inner.ant-picker-calendar-date) {
+            background-color: @app-calendar-cell-background;
+        }
+    }
+
+    :global(.ant-picker-cell-inner.ant-picker-calendar-date) {
+        margin: 0 @gap-4xs;
+        min-height: (@rem * 143);
+        background-color: @app-calendar-cell-background;
+
+        :global(.ant-picker-calendar-date-content) {
+            height: inherit;
+            overflow: hidden;
+        }
+    }
+
+    :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-value) {
+        line-height: @font-line-m;
+    }
+
+    :global(.ant-picker-calendar-date-content) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+:global(.ant-layout-content).traning-page-mobile {
+    padding: @gap-4xs @gap-xl @gap-xl;
+    background-color: @app-header-background-color;
+
+    thead {
+        height: (@rem * 30);
+    }
+
+    :global(
+            .ant-picker-cell-in-view.ant-picker-cell-selected
+                .ant-picker-cell-inner.ant-picker-calendar-date
+        ) {
+        background-color: @app-background-calendar-cell-selected;
+    }
+
+    :global(.ant-picker-calendar .ant-picker-panel .ant-picker-body) {
+        padding: @gap-xs;
+    }
+
+    :global(.ant-picker-calendar-mini .ant-picker-content) {
+        height: (@rem * 196);
+    }
+
+    :global(.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner) {
+        color: inherit;
+        background-color: @app-background-primary;
+        border-color: @app-primary-color;
+    }
+
+    :global(.ant-picker-calendar-header) {
+        display: flex;
+
+        :global(.ant-select-single .ant-select-selector),
+        :global(.ant-radio-group-small .ant-radio-button-wrapper) {
+            height: (@rem * 20);
+            line-height: @font-line-m;
+
+            :global(.ant-select-selection-item) {
+                height: (@rem * 20);
+                line-height: @font-line-m;
+            }
+        }
+
+        :global(.ant-picker-calendar-mode-switch) {
+            margin-left: @gap-xs;
+            margin-top: 0;
+            width: unset;
+
+            label {
+                width: unset;
+            }
+        }
+
+        :global(.ant-picker-calendar-year-select),
+        :global(.ant-picker-calendar-month-select) {
+            min-width: unset;
+            width: unset;
+        }
+    }
+}

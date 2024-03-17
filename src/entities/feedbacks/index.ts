@@ -10,7 +10,6 @@ import {
     feedbackSlice,
     selectFeedbacks,
     selectIsOpenModalNewFeedback,
-    selectResultModal,
 } from './model/slice';
 
 export type * from './model/types';
@@ -25,5 +24,4 @@ export {
     useLazyGetFeedbackQuery,
     selectFeedbacks,
     selectIsOpenModalNewFeedback,
-    selectResultModal,
 };

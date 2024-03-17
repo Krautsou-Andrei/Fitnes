@@ -10,6 +10,7 @@ type SessionSliceStateType = {
     isAuthorized: boolean;
     isError: boolean;
     isLoading: boolean;
+    isLoadingCalendar: boolean;
 };
 
 const initialState: SessionSliceStateType = {
@@ -17,6 +18,7 @@ const initialState: SessionSliceStateType = {
     isAuthorized: false,
     isError: false,
     isLoading: false,
+    isLoadingCalendar: false,
 };
 
 export const sessionSlice = createSlice({
@@ -32,6 +34,12 @@ export const sessionSlice = createSlice({
         },
         setIsLoading: (state: SessionSliceStateType, { payload }: PayloadAction<boolean>) => {
             state.isLoading = payload;
+        },
+        setIsLoadingCalendar: (
+            state: SessionSliceStateType,
+            { payload }: PayloadAction<boolean>,
+        ) => {
+            state.isLoadingCalendar = payload;
         },
     },
     extraReducers: (builder) => {
@@ -52,5 +60,6 @@ export const selectAccessToken = (state: RootState) => state.session.accessToken
 export const selectIsAuthorized = (state: RootState) => state.session.isAuthorized;
 export const selectIsError = (state: RootState) => state.session.isError;
 export const selectIsLoadingn = (state: RootState) => state.session.isLoading;
+export const selectIsLoadingnCalendar = (state: RootState) => state.session.isLoadingCalendar;
 
 export const { actions: sessionActions } = sessionSlice;

@@ -4,6 +4,8 @@ import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons
 import type { CardActive } from '../ui/app-card-active/model/types';
 import type { CardText } from '../ui/app-card-text/model/types';
 
+import { DataTestIdConfig, PathConfig } from '@shared/config';
+
 export const cardsInfoConfig: CardText[] = [
     {
         id: 1,
@@ -36,9 +38,10 @@ export const cardsActionsConfig: CardActive[] = [
         title: 'Назначить календарь',
         button: {
             icon: React.createElement(CalendarOutlined),
-            href: '/',
+            href: PathConfig.CALENDAR,
             title: 'Календарь',
         },
+        dataTestId: DataTestIdConfig.MENU_BUTTON_CALENDAR,
     },
     {
         id: 3,

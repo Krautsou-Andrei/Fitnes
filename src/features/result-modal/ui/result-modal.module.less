@@ -3,7 +3,8 @@
 
 .error-get-feedback,
 .success-feedback,
-.error-add-feedback {
+.error-add-feedback,
+.error-get-traning {
     max-width: @app-width-modal !important;
     width: 100% !important;
 
@@ -24,7 +25,8 @@
 
 :global(.ant-modal).error-get-feedback,
 :global(.ant-modal).error-add-feedback,
-:global(.ant-modal).success-feedback {
+:global(.ant-modal).success-feedback,
+:global(.ant-modal).error-get-traning {
     padding: @gap-m;
 }
 
@@ -40,7 +42,8 @@
     }
 }
 
-.error-get-feedback {
+.error-get-feedback,
+.error-get-traning {
     :global(.ant-modal-body) {
         padding-top: @gap-m;
         padding-bottom: @gap-xs;
@@ -57,6 +60,14 @@
     }
 }
 
+.error-get-traning {
+    :global(.ant-result) {
+        .media-md({
+            padding: @gap-10xl @gap-m @gap-8xl;
+        });
+    }
+}
+
 .success-feedback,
 .error-add-feedback {
     :global(.ant-modal-body) {
@@ -64,7 +75,7 @@
             padding: 0;
         });
 
-         :global(.ant-result-icon) {
+        :global(.ant-result-icon) {
             .media-md({
                 margin-bottom: @gap-3xl;
             });
@@ -97,5 +108,51 @@
     svg {
         width: @app-width-modal-icon;
         height: @app-width-modal-icon;
+    }
+}
+
+.modal-error-training {
+    animation: none;
+    :global(.ant-modal-body) {
+        padding: 0;
+    }
+}
+
+:global(.ant-modal).error-get-training-list,
+:global(.ant-modal).error-add-training {
+    padding-left: @gap-m;
+    padding-right: @gap-m;
+}
+
+.error-get-training-list,
+.error-add-training {
+    max-width: @app-widht-notification !important;
+    width: 100% !important;
+
+    :global(.ant-modal-confirm .ant-modal-body) {
+        padding: @gap-m @gap-xl;
+    }
+
+    :global(.ant-modal-confirm-body .ant-modal-confirm-title) {
+        line-height: @font-line-m;
+    }
+
+    :global(.ant-modal-close-x) {
+        width: (@rem * 70);
+    }
+}
+
+:global(.ant-modal-confirm).error-get-training-list {
+    :global(.ant-modal-body) {
+        padding: @gap-m @gap-xl;
+    }
+
+    :global(.ant-modal-confirm-btns) {
+        margin-top: @gap-s;
+
+        :global(.ant-btn) {
+            height: (@rem * 28);
+            line-height: @font-line-m;
+        }
     }
 }

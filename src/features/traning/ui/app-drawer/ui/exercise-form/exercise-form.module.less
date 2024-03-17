@@ -1,0 +1,56 @@
+@import '@shared/styles/constants';
+
+.exercise-form {
+    padding-top: @gap-xl;
+}
+input:global(.ant-input) {
+    padding: (@rem * 3) @gap-xs;
+}
+
+:global(.ant-input-group-wrapper).input-exercise,
+:global(.ant-input).input-exercise {
+    margin-bottom: @gap-xs;
+}
+
+.input-exercise {
+    height: (@rem * 24);
+
+    input {
+        line-height: (@rem * 16);
+    }
+}
+
+.wrapper-labels {
+    width: 100%;
+    justify-content: space-between;
+
+    :global(.ant-input-number-input) {
+        height: (@rem * 22);
+    }
+
+    :global(.ant-space-item:first-child) {
+        max-width: (@rem * 120);
+    }
+
+    .labels-right {
+        gap: @gap-4xs !important;
+
+        :global(.ant-space-item:nth-child(2)) {
+            height: (@rem * 24);
+            align-self: self-end;
+            color: @app-form-exercise-text-secondary;
+        }
+    }
+}
+
+.label-exericise {
+    margin-bottom: @gap-2xs;
+    padding: @gap-3xs @gap-xs;
+    height: (@rem * 24);
+
+    font-size: @font-size-s;
+    line-height: @font-line-m;
+
+    border-radius: (@rem * 2);
+    background-color: @app-form-exercise-label-background;
+}
