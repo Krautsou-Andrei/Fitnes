@@ -6,6 +6,7 @@ import svg from '@neodx/svg/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    base: '/Krautsou-Andrei/',
     plugins: [
         react(),
         svg({
