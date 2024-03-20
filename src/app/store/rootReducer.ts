@@ -7,6 +7,7 @@ import { siderSlice } from '@widgets/app-sider';
 import { resultModalSlice } from '@features/result-modal';
 
 import { feedbackSlice } from '@entities/feedbacks';
+import { profileSlice } from '@entities/profile';
 import { sessionSlice } from '@entities/session';
 import { trainingSlice } from '@entities/training';
 
@@ -20,6 +21,7 @@ export const rootReducer = combineReducers({
     router: routerReducer,
     [baseApi.reducerPath]: baseApi.reducer,
     [feedbackSlice.name]: feedbackSlice.reducer,
+    [profileSlice.name]: profileSlice.reducer,
     [resultModalSlice.name]: resultModalSlice.reducer,
     [sessionSlice.name]: sessionSlice.reducer,
     [siderSlice.name]: siderSlice.reducer,
