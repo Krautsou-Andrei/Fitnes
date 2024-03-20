@@ -1,6 +1,7 @@
 import { Content } from 'antd/lib/layout/layout';
 import { Col, Row } from 'antd';
 
+import { useHomePage } from '../hooks/use-home-page';
 import { cardsActionsConfig, cardsInfoConfig } from '../config/cards-config';
 
 import { AppCardActive } from './app-card-active';
@@ -9,6 +10,8 @@ import { AppCardText } from './app-card-text';
 import styles from './home-page.module.less';
 
 export function HomePage() {
+    useHomePage();
+    
     return (
         <Content>
             <Row className={styles['content-cards']} gutter={[0, 16]}>
