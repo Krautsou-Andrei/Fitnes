@@ -1,7 +1,11 @@
 import { Form, Input } from 'antd';
+import clsn from 'classnames';
+
 import { validateConfirmPasswordRules } from '../lib/validate-confirm-password-rules';
 
 import { LayoutConfig } from '@shared/config';
+
+import styles from './app-input-confirm-password.module.less';
 
 type AppInputConfirmPasswordProps = {
     className?: string;
@@ -11,7 +15,7 @@ type AppInputConfirmPasswordProps = {
 export function AppInputConfirmPassword({ className, dataTestId }: AppInputConfirmPasswordProps) {
     return (
         <Form.Item
-            className={className}
+            className={clsn(styles['input-password'], className)}
             label={LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM}
             name={LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM}
             dependencies={[LayoutConfig.INPUT_TYPE_PASSWORD]}
@@ -19,7 +23,7 @@ export function AppInputConfirmPassword({ className, dataTestId }: AppInputConfi
         >
             <Input.Password
                 type='password'
-                placeholder={LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM}                
+                placeholder={LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM}
                 autoComplete='new-password'
                 data-test-id={dataTestId}
             />
