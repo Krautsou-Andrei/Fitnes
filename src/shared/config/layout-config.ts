@@ -35,6 +35,7 @@ export const enum LayoutConfig {
     TITLE_MODAL_CHANGE_EXERCISE = 'Выбор типа тренировки',
     TITLE_MODAL_TRAINING_DATE = 'Тренировки на ',
     TITLE_ONE = 'Приветствуем тебя в CleverFit — приложении,',
+    TITLE_PROFILE = 'Профиль',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
     USER = 'Пользователь',
 }

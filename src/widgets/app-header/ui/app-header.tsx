@@ -18,16 +18,28 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ className, isSimple }: AppHeaderProps) {
-    const { isCalendar } = usePageIsEqual();
+    const { isCalendar, isProfile } = usePageIsEqual();
 
     return (
-        <Header className={clsn(styles['app-header'], className)}>
-            <AppBreadcrumb />
+        <Header
+            className={clsn(
+                styles['app-header'],
+                { [styles['app-header-profile']]: isProfile },
+                className,
+            )}
+        >
+            {isProfile ? null : <AppBreadcrumb />}
             {!isSimple && (
                 <div className={styles.content}>
-                    <Title level={1}>
-                        <div>{LayoutConfig.TITLE_ONE}</div>
-                        <div>{LayoutConfig.TITLE_TWO}</div>
+                    <Title level={isProfile ? 4 : 1}>
+                        {isProfile ? (
+                            <div>{LayoutConfig.TITLE_PROFILE}</div>
+                        ) : (
+                            <>
+                                <div>{LayoutConfig.TITLE_ONE}</div>
+                                <div>{LayoutConfig.TITLE_TWO}</div>
+                            </>
+                        )}
                     </Title>
                     <AppSettingsButton />
                 </div>
