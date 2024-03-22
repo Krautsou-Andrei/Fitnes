@@ -1,4 +1,4 @@
-import { Tariff } from '../model/types';
+import { TariffUser } from '../model/types';
 import { Email, Password } from '@shared/types/app';
 
 export type UserDto = {
@@ -9,11 +9,11 @@ export type UserDto = {
     imgSrc: string;
     readyForJointTraining: boolean;
     sendNotification: boolean;
-    tariff?: Tariff;
+    tariff?: TariffUser;
 };
 
 export type RequestUserUpdateBody = {
-    email: Email; 
+    email: Email;
     firstName: string;
     lastName: string;
     birthday: string;
@@ -21,4 +21,16 @@ export type RequestUserUpdateBody = {
     readyForJointTraining: boolean;
     sendNotification: boolean;
     password?: Password;
+};
+
+export type TariffDto = {
+    name: string;
+    periods: [
+        {
+            text: string;
+            cost: 0;
+            days: 0;
+        },
+    ];
+    id?: string;
 };

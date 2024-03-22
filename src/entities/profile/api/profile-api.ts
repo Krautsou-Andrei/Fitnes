@@ -1,9 +1,9 @@
 import { ApiEndpoints } from '../config/api-endpoints';
 
-import { mapGetUser } from '../lib/map-get-user';
+import { mapGetTariffList, mapGetUser } from '../lib';
 
-import type { RequestUserUpdateBody, UserDto } from './types';
-import type { User } from '../model/types';
+import type { RequestUserUpdateBody, TariffDto, UserDto } from './types';
+import type { Tariff, User } from '../model/types';
 
 import { baseApi } from '@shared/api';
 
@@ -23,6 +23,13 @@ export const profileApi = baseApi.injectEndpoints({
                 body,
             }),
             transformResponse: (response: UserDto) => mapGetUser(response),
+        }),
+        getTariff: build.mutation<Tariff[], void>({
+            query: () => ({
+                url: ApiEndpoints.GET_TARIFF,
+                method: 'GET',
+            }),
+            transformResponse: (response: TariffDto[]) => response.map(mapGetTariffList),
         }),
     }),
 });

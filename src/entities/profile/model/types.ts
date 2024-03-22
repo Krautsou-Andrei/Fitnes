@@ -1,6 +1,6 @@
 import { Email } from '@shared/types/app';
 
-export type Tariff = {
+export type TariffUser = {
     tariffId: string;
     expired: string;
 };
@@ -13,5 +13,17 @@ export type User = {
     imgSrc: string;
     readyForJointTraining: boolean;
     sendNotification: boolean;
-    tariff?: Tariff;
+    tariff?: TariffUser;
+};
+
+export type Tariff = {
+    name: string;
+    periods: [
+        {
+            text: string;
+            cost: 0;
+            days: 0;
+        },
+    ];
+    id?: string;
 };
