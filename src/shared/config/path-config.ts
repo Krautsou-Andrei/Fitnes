@@ -8,6 +8,7 @@ export const enum PathConfig {
     FEEDBACKS = '/feedbacks',
     HOME = '/main',
     NOT_FOUND_PAGE = '*',
+    PROFILE = '/profile',
     REGISTRATION = '/auth/registration',
     RESULT = '/result',
     RESULT_ERROR = '/result/error',
@@ -18,4 +19,5 @@ export const enum PathConfig {
     RESULT_ERROR_USER_EXIST = '/result/error-user-exist',
     RESULT_SUCCESS = '/result/success',
     RESULT_SUCCESS_CHANGE_PASSWORD = '/result/success-change-password',
+    SETTINGS = '/settings',
 }

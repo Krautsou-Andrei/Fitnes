@@ -26,7 +26,7 @@ export const menuConfig: MenuItem[] = [
     {
         id: 4,
         icon: React.createElement(IdcardOutlined),
-        link: '/',
+        link: PathConfig.PROFILE,
         title: 'Профиль',
     },
 ];
