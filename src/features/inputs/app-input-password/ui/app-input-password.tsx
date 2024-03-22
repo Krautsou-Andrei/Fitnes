@@ -10,14 +10,22 @@ import styles from './app-input-password.module.less';
 
 type AppInputPasswordProps = {
     autoComplete: string;
-    classNames?: string;
-    dataTestId: string;
-    title?: string;
     type: InputPasswordType;
+    classNames?: string;
+    dataTestId?: string;
+    isRequire?: boolean;
+    title?: string;
 };
 
-export function AppInputPassword({ autoComplete, classNames, title, type, dataTestId }: AppInputPasswordProps) {
-    const rules = validatePasswordRules(type);
+export function AppInputPassword({
+    autoComplete,
+    title,
+    classNames,
+    dataTestId,
+    isRequire,
+    type,
+}: AppInputPasswordProps) {
+    const rules = validatePasswordRules(type, isRequire);
 
     return (
         <Form.Item

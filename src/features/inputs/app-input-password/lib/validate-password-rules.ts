@@ -3,14 +3,20 @@ import { InputPasswordType } from '../model/types';
 
 import { ErrorValidateConfig, regExpConfig } from '@shared/config';
 
-export function validatePasswordRules(type: InputPasswordType): Rule[] {
+export function validatePasswordRules(type: InputPasswordType, isRequired?: boolean): Rule[] {
     if (type === 'login') {
-        return [{ required: true, min: 8, message: ErrorValidateConfig.PASSWORD_REQUIRE }];
+        return [
+            {
+                required: isRequired !== undefined ? isRequired : true,
+                min: 8,
+                message: ErrorValidateConfig.PASSWORD_REQUIRE,
+            },
+        ];
     }
     if (type === 'register') {
         return [
             {
-                required: true,
+                required: isRequired !== undefined ? isRequired : true,
                 message: ErrorValidateConfig.PASSWORD_REQUIRE,
             },
             {

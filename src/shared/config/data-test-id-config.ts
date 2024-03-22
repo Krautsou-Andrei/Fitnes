@@ -8,6 +8,7 @@ export const enum DataTestIdConfig {
     CHECK_BACK_BUTTON = 'check-back-button',
     CHECK_RETRY_BUTTON = 'check-retry-button',
     LOADER = 'loader',
+    LOGIN_EMAIL = 'login-email',
     LOGIN_FORGOT_BUTTON = 'login-forgot-button',
     LOGIN_PASSWORD = 'login-password',
     LOGIN_REMEMBER = 'login-remember',

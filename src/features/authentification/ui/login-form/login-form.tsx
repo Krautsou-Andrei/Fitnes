@@ -2,7 +2,11 @@ import { AppRemember } from './app-remember';
 
 import { useLoginForm } from './hooks/use-login-form';
 
-import { AppInputLogin, AppInputPassword } from '@features/inputs/@ex/authentification';
+import {
+    AppInputLogin,
+    AppInputPassword,
+    AutoCompleteConfig,
+} from '@features/inputs/@ex/authentification';
 
 import { AppForm } from '@shared/ui';
 import { DataTestIdConfig } from '@shared/config';
@@ -24,11 +28,11 @@ export function LoginForm() {
             onChange={checkEmail}
             onClickGoogle={onClickGoogle}
         >
-            <AppInputLogin dataTestId='login-email' />
+            <AppInputLogin dataTestId={DataTestIdConfig.LOGIN_EMAIL} />
             <AppInputPassword
                 type='login'
                 classNames={styles['input-password']}
-                autoComplete='current-password'
+                autoComplete={AutoCompleteConfig.CURRENT_PASSWORD}
                 dataTestId={DataTestIdConfig.LOGIN_PASSWORD}
             />
             <AppRemember isDisabledForgot={isValidateEmail} onClick={onClickForgot} />
