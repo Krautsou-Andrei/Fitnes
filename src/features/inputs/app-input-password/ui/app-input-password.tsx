@@ -15,6 +15,7 @@ type AppInputPasswordProps = {
     dataTestId?: string;
     isRequire?: boolean;
     title?: string;
+    help?: string;
 };
 
 export function AppInputPassword({
@@ -24,6 +25,7 @@ export function AppInputPassword({
     dataTestId,
     isRequire,
     type,
+    help,
 }: AppInputPasswordProps) {
     const rules = validatePasswordRules(type, isRequire);
 
@@ -33,6 +35,7 @@ export function AppInputPassword({
             label={LayoutConfig.INPUT_TYPE_PASSWORD}
             name={LayoutConfig.INPUT_TYPE_PASSWORD}
             rules={rules}
+            help={help}
         >
             <Input.Password
                 placeholder={title ? title : LayoutConfig.INPUT_TEXT_PASSWORD}

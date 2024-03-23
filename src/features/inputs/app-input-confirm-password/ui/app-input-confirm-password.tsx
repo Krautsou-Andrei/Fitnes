@@ -9,13 +9,13 @@ import { LayoutConfig } from '@shared/config';
 import styles from './app-input-confirm-password.module.less';
 
 type AppInputConfirmPasswordProps = {
-    className?: string;
+    classNames?: string;
     dataTestId?: string;
     isRequire?: boolean;
 };
 
 export function AppInputConfirmPassword({
-    className,
+    classNames,
     dataTestId,
     isRequire,
 }: AppInputConfirmPasswordProps) {
@@ -23,7 +23,7 @@ export function AppInputConfirmPassword({
 
     return (
         <Form.Item
-            className={clsn(styles['input-password'], className)}
+            className={clsn(styles['input-password'], classNames)}
             label={LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM}
             name={LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM}
             dependencies={[LayoutConfig.INPUT_TYPE_PASSWORD]}
