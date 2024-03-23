@@ -48,7 +48,7 @@ export const cardsActionsConfig: CardActive[] = [
         title: 'Заполнить профиль',
         button: {
             icon: React.createElement(IdcardOutlined),
-            href: '/',
+            href: PathConfig.PROFILE,
             title: 'Профиль',
         },
     },
