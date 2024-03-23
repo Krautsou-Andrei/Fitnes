@@ -36,6 +36,8 @@ export function useProfileForm() {
         form.setFieldValue(LayoutConfig.INPUT_TYPE_LAST_NAME, user.lastName);
         form.setFieldValue(LayoutConfig.INPUT_TYPE_EMAIL, user.email);
         form.setFieldValue(LayoutConfig.INPUT_TYPE_AVATAR, user.imgSrc);
+        form.setFieldValue(LayoutConfig.INPUT_TYPE_PASSWORD, undefined);
+        form.setFieldValue(LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM, undefined);
     }, [form, user.birthday, user.email, user.firstName, user.imgSrc, user.lastName]);
 
     const validateForm = () => {
@@ -102,6 +104,10 @@ export function useProfileForm() {
             (error: unknown) => {
                 showErrorForDevelop('register', error);
             };
+        } finally {
+            form.setFieldValue(LayoutConfig.INPUT_TYPE_PASSWORD, undefined);
+            form.setFieldValue(LayoutConfig.INPUT_TYPE_PASSWORD_CONFIRM, undefined);
+            setIsDisabledSubmit(true);
         }
     };
 

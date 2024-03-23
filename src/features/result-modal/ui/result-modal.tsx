@@ -18,39 +18,43 @@ export function ResultModal() {
         onClickAgayn,
         onClickClose,
         typeModal,
+        contextHolder,
     } = useResultModal();
 
     return (
-        <Modal
-            data-test-id={DataTestIdConfig.MODAL_NO_REVIEW}
-            className={clsn(styles[`${typeModal.type}`], {
-                [styles['modal-error-training']]: isTraningList || isAddTraining,
-            })}
-            open={isOpen}
-            maskStyle={{
-                backdropFilter: STYLES.BLURE,
-                background: STYLES.BACKGROUND_BLURE,
-            }}
-            centered={true}
-            footer={null}
-            closable={false}
-            transitionName=''
-        >
-            <Result
-                status={typeModal.status}
-                title={modalCofig[typeModal.type].title}
-                subTitle={description}
-                extra={
-                    <Extra
-                        type={typeModal.type}
-                        className={styles.button}
-                        title={modalCofig[typeModal.type].buttonTitle}
-                        titleClose={modalCofig[typeModal.type].buttonCloseTitle}
-                        onClick={onClickAgayn}
-                        onClickClose={onClickClose}
-                    />
-                }
-            />
-        </Modal>
+        <>
+            <Modal
+                data-test-id={DataTestIdConfig.MODAL_NO_REVIEW}
+                className={clsn(styles[`${typeModal.type}`], {
+                    [styles['modal-error-training']]: isTraningList || isAddTraining,
+                })}
+                open={isOpen}
+                maskStyle={{
+                    backdropFilter: STYLES.BLURE,
+                    background: STYLES.BACKGROUND_BLURE,
+                }}
+                centered={true}
+                footer={null}
+                closable={false}
+                transitionName=''
+            >
+                <Result
+                    status={typeModal.status}
+                    title={modalCofig[typeModal.type].title}
+                    subTitle={description}
+                    extra={
+                        <Extra
+                            type={typeModal.type}
+                            className={styles.button}
+                            title={modalCofig[typeModal.type].buttonTitle}
+                            titleClose={modalCofig[typeModal.type].buttonCloseTitle}
+                            onClick={onClickAgayn}
+                            onClickClose={onClickClose}
+                        />
+                    }
+                />
+            </Modal>
+            {contextHolder}
+        </>
     );
 }

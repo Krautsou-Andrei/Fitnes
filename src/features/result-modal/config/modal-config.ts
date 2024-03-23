@@ -52,6 +52,10 @@ export const modalCofig: ModalConfig = {
         buttonTitle: 'Отлично',
         title: 'Отзыв успешно опубликован',
     },
+    [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
+        buttonTitle: 'Отлично',
+        title: 'Данные профиля успешно обновлены',
+    },
 };
 
 export const modalResultConfig: ModalResultConfig = {
@@ -85,6 +89,10 @@ export const modalResultConfig: ModalResultConfig = {
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         type: ModalTypeConfig.SUCCESS_ADD_FEEDBACK,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
+        type: ModalTypeConfig.SUCCESS_UPDATE_USER,
         status: 'success',
     },
 };
