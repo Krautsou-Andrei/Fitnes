@@ -5,7 +5,7 @@ import { mapGetTariffList, mapGetUser } from '../lib';
 import type { RequestUserUpdateBody, TariffDto, UserDto } from './types';
 import type { Tariff, User } from '../model/types';
 
-import { baseApi } from '@shared/api';
+import { baseApi, USER_TAG } from '@shared/api';
 
 export const profileApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -14,6 +14,7 @@ export const profileApi = baseApi.injectEndpoints({
                 url: ApiEndpoints.GET_USER,
                 method: 'GET',
             }),
+            providesTags: [USER_TAG],
             transformResponse: (response: UserDto) => mapGetUser(response),
         }),
         updateUser: build.mutation<User, Partial<RequestUserUpdateBody>>({
@@ -22,6 +23,7 @@ export const profileApi = baseApi.injectEndpoints({
                 method: 'PUT',
                 body,
             }),
+            invalidatesTags: [USER_TAG],
             transformResponse: (response: UserDto) => mapGetUser(response),
         }),
         getTariff: build.mutation<Tariff[], void>({
