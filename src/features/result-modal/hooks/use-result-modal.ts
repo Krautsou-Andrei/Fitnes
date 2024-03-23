@@ -34,6 +34,7 @@ export function useResultModal() {
     const isAddTraining = typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING;
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
     const isImage = typeModal.type === ModalTypeConfig.ERROR_ADD_IMAGE;
+    const isUpdateUser = typeModal.type === ModalTypeConfig.ERROR_UPDATE_USER;
 
     const onClickClose = useCallback(() => {
         if (
@@ -116,8 +117,8 @@ export function useResultModal() {
     }, [getTraningListAgayn, isTraningList, onClickClose, typeModal.type]);
 
     useLayoutEffect(() => {
-        if (isImage) {
-            modalErrorTraning.current = Modal.error({              
+        if (isImage || isUpdateUser) {
+            modalErrorTraning.current = Modal.error({
                 title: configTitle(modalCofig[typeModal.type].title),
                 content: React.createElement(
                     'div',
@@ -129,11 +130,8 @@ export function useResultModal() {
                     background: STYLES.BACKGROUND_BLURE,
                 },
                 okText: configButton(modalCofig[typeModal.type].buttonTitle),
-                onCancel: onClickClose,               
-                centered: true,                          
-                icon: React.createElement(CloseCircleOutlined, {
-                    style: { color: `${ConstantsMediaQuery.ICON_COLOR_ERROR_LIST}` },
-                }),
+                onCancel: onClickClose,
+                centered: true,               
             });
 
             return () => {
@@ -142,7 +140,7 @@ export function useResultModal() {
                 }
             };
         }
-    }, [ isImage, onClickClose, typeModal.type]);
+    }, [isImage, isUpdateUser, onClickClose, typeModal.type]);
 
     const onClickAgayn = () => {
         onClickClose();

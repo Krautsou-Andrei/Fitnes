@@ -29,7 +29,9 @@ export function useProfileForm() {
     const initialAvatar = getInitialAvatar(url);
 
     useEffect(() => {
-        form.setFieldValue(LayoutConfig.INPUT_TYPE_BIRTH_DAY, moment(user.birthday));
+        if (user.birthday) {
+            form.setFieldValue(LayoutConfig.INPUT_TYPE_BIRTH_DAY, moment(user.birthday));
+        }
         form.setFieldValue(LayoutConfig.INPUT_TYPE_FIRST_NAME, user.firstName);
         form.setFieldValue(LayoutConfig.INPUT_TYPE_LAST_NAME, user.lastName);
         form.setFieldValue(LayoutConfig.INPUT_TYPE_EMAIL, user.email);
