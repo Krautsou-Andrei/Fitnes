@@ -16,7 +16,12 @@ export const modalCofig: ModalConfig = {
         desciption: 'Что-то пошло не так. Попробуйте ещё раз.',
         title: 'Данные не сохранились',
     },
-    [ModalTypeConfig.ERROR_ADD_TRAINING]: {        
+    [ModalTypeConfig.ERROR_ADD_IMAGE]: {
+        buttonTitle: 'Закрыть',
+        desciption: 'Выберите файл размером менее 5МБ.',
+        title: 'Файл слишком большой',
+    },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {
         buttonTitle: 'Закрыть',
         desciption: 'Придётся попробовать ещё раз',
         title: 'При сохранении данных произошла ошибка',
@@ -47,6 +52,10 @@ export const modalCofig: ModalConfig = {
 export const modalResultConfig: ModalResultConfig = {
     [ModalTypeConfig.ERROR_ADD_FEEDBACK]: {
         type: ModalTypeConfig.ERROR_ADD_FEEDBACK,
+        status: 'error',
+    },
+    [ModalTypeConfig.ERROR_ADD_IMAGE]: {
+        type: ModalTypeConfig.ERROR_ADD_IMAGE,
         status: 'error',
     },
     [ModalTypeConfig.ERROR_ADD_TRAINING]: {

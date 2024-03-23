@@ -33,6 +33,7 @@ export function useResultModal() {
 
     const isAddTraining = typeModal.type === ModalTypeConfig.ERROR_ADD_TRAINING;
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
+    const isImage = typeModal.type === ModalTypeConfig.ERROR_ADD_IMAGE;
 
     const onClickClose = useCallback(() => {
         if (
@@ -95,7 +96,7 @@ export function useResultModal() {
                     backdropFilter: STYLES.BLURE,
                     background: STYLES.BACKGROUND_BLURE,
                 },
-                okText: configButton(modalCofig[typeModal.type].buttonTitle),                
+                okText: configButton(modalCofig[typeModal.type].buttonTitle),
                 onCancel: onClickClose,
                 closable: true,
                 centered: true,
@@ -113,6 +114,35 @@ export function useResultModal() {
             };
         }
     }, [getTraningListAgayn, isTraningList, onClickClose, typeModal.type]);
+
+    useLayoutEffect(() => {
+        if (isImage) {
+            modalErrorTraning.current = Modal.error({              
+                title: configTitle(modalCofig[typeModal.type].title),
+                content: React.createElement(
+                    'div',
+                    null,
+                    configDescription(modalCofig[typeModal.type].desciption),
+                ),
+                maskStyle: {
+                    backdropFilter: STYLES.BLURE,
+                    background: STYLES.BACKGROUND_BLURE,
+                },
+                okText: configButton(modalCofig[typeModal.type].buttonTitle),
+                onCancel: onClickClose,               
+                centered: true,                          
+                icon: React.createElement(CloseCircleOutlined, {
+                    style: { color: `${ConstantsMediaQuery.ICON_COLOR_ERROR_LIST}` },
+                }),
+            });
+
+            return () => {
+                if (modalErrorTraning.current) {
+                    modalErrorTraning.current.destroy();
+                }
+            };
+        }
+    }, [ isImage, onClickClose, typeModal.type]);
 
     const onClickAgayn = () => {
         onClickClose();
