@@ -26,9 +26,9 @@ export const profileApi = baseApi.injectEndpoints({
             invalidatesTags: [USER_TAG],
             transformResponse: (response: UserDto) => mapGetUser(response),
         }),
-        getTariff: build.mutation<Tariff[], void>({
+        getTariffList: build.mutation<Tariff[], void>({
             query: () => ({
-                url: ApiEndpoints.GET_TARIFF,
+                url: ApiEndpoints.GET_TARIFF_LIST,
                 method: 'GET',
             }),
             transformResponse: (response: TariffDto[]) => response.map(mapGetTariffList),
@@ -36,4 +36,9 @@ export const profileApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetUserQuery, useLazyGetUserQuery, useUpdateUserMutation } = profileApi;
+export const {
+    useGetUserQuery,
+    useLazyGetUserQuery,
+    useUpdateUserMutation,
+    useGetTariffListMutation,
+} = profileApi;

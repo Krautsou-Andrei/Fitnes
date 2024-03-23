@@ -13,7 +13,7 @@ export const getTariffListThunk = createAsyncThunk<Tariff[], void, { state: Root
         dispatch(sessionActions.setIsLoading(true));
 
         try {
-            const result = await dispatch(profileApi.endpoints.getTariff.initiate()).unwrap();
+            const result = await dispatch(profileApi.endpoints.getTariffList.initiate()).unwrap();
             return result;
         } catch (error: unknown | undefined) {
             throw new Error('Unknown error');
