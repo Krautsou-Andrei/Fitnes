@@ -1,12 +1,11 @@
-import { CSSProperties } from 'react';
 import { Button } from 'antd';
 import clsn from 'classnames';
 
 import { FeedbackConfig } from '@pages/feedbacks-page/config/feedback-config';
-import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks';
 
 import { NewFeedbackButton } from '@features/feedbacks';
 
+import { useOpenNewFeedbackModal } from '@shared/hooks';
 import { DataTestIdConfig } from '@shared/config';
 
 import styles from './feedback-buttons.module.less';
