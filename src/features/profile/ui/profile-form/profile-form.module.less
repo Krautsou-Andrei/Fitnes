@@ -1,0 +1,42 @@
+@import '@shared/styles/constants';
+
+:global(.ant-form).profile-form {
+    max-width: @app-width-form-profile;
+
+    legend {
+        margin-bottom: @gap-xl;
+        border-bottom: 0;
+    }
+
+    .person-info-wrapper,
+    .private-info-wrapper {
+        width: 100%;
+    }
+
+    .person-info-wrapper {
+        margin-bottom: @gap-xl;
+        display: flex;
+        gap: @gap-m;
+
+        .inputs-wrapper {
+            width: 100%;
+
+            :global(.ant-form-item) {
+                margin-bottom: @gap-m;
+            }
+        }
+    }
+
+    .private-info-wrapper {
+        margin-bottom:@gap-11xl;
+        width: 100%;
+
+        :global(.ant-form-item) {
+            margin-bottom: @gap-4xl;
+        }
+
+        :global(.input-password) {
+            margin-bottom: @gap-10xl;
+        }
+    }
+}

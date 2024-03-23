@@ -4,6 +4,7 @@ import { cryptPassword } from './crypt-password';
 import { decryptPassword } from './decrypt-password';
 import { formatDate, weekDay } from './format-date';
 import { isOldDate } from './format-date';
+import { getInitialAvatar } from './get-initial-avatar';
 import { getLocalStorage } from './local-storage/get-local-storage';
 import { getSessionStorage } from './session-storage/get-session-storage';
 import { offSet } from './off-set';
@@ -25,6 +26,7 @@ export {
     decryptPassword,
     formatDate,
     isOldDate,
+    getInitialAvatar,
     getLocalStorage,
     getSessionStorage,
     offSet,

@@ -29,7 +29,8 @@ export const STYLES = {
     COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,
         transition: 'margin-left 0.2s ease',
-    },   
+    },
+    DATE_PICKER_COLOR: '#BFBFBF',
     NO_COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED_NO}px`,
         transition: 'margin-left 0.2s ease',

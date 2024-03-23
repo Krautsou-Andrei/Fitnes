@@ -14,4 +14,5 @@ export const enum EventApiConfig {
     TRAINING_GET = 'training/get',
     TRAINING_GET_LIST_NAME = 'catalog/training-list',
     USER = 'user/me',
+    USER_UPDATE = 'user/update',
 }
