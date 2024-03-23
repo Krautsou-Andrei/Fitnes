@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import { selectIsProfile } from '@entities/profile';
 import { getUserThunk } from '@features/profile';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
-import { useEffect } from 'react';
 
-export function useHomePage() {
+export function useBaseLayout() {
     const isProfile = useAppSelector(selectIsProfile);
     const dispatch = useAppDispatch();
 

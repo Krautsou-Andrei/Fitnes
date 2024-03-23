@@ -1,3 +1,5 @@
+import { useBaseLayout } from './hooks/use-base-layout';
+
 import { AppSider } from '@widgets/app-sider';
 import { AppHeader } from '@widgets/app-header';
 import { AppFooter } from '@widgets/app-footer';
@@ -13,6 +15,7 @@ type BaseLayoutProps = {
 };
 
 export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
+    useBaseLayout();
     const { isFeedback, isProfile, isSettings } = usePageIsEqual();
 
     return (
