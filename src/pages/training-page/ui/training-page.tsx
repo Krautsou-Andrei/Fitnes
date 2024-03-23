@@ -3,12 +3,12 @@ import { Moment } from 'moment';
 import { Content } from 'antd/lib/layout/layout';
 
 import { useTraningPage } from '../hooks';
-import { locale } from '../config';
 
 import { TrainingModal } from '@features/traning';
 
 import { AppPortal } from '@shared/ui';
 import { offSetTop } from '@shared/lib';
+import { locale } from '@shared/config';
 
 import styles from './training-page.module.less';
 

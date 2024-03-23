@@ -9,9 +9,10 @@ import styles from './app-button-feedbacks.module.less';
 
 type AppButtonFeedbacksProps = {
     className?: string;
+    buttonText?: string;
 };
 
-export function AppButtonFeedbacks({ className }: AppButtonFeedbacksProps) {
+export function AppButtonFeedbacks({ className, buttonText }: AppButtonFeedbacksProps) {
     const dispatch = useAppDispatch();
 
     const onclick = async () => {
@@ -25,7 +26,7 @@ export function AppButtonFeedbacks({ className }: AppButtonFeedbacksProps) {
             onClick={onclick}
             data-test-id={DataTestIdConfig.SEE_REVIEWS}
         >
-            {LayoutConfig.BUTTON_REVIEWS}
+            {buttonText ? buttonText : LayoutConfig.BUTTON_REVIEWS}
         </Button>
     );
 }
