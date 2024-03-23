@@ -29,14 +29,13 @@ export const STYLES = {
     COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,
         transition: 'margin-left 0.2s ease',
-    },
-
+    },   
     NO_COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED_NO}px`,
         transition: 'margin-left 0.2s ease',
     },
-
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
+    STROKE_WIDT_UPLOAD_USER_IMAGE: 4,
 };
 
 export const enum Width {
