@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { UploadFile } from 'antd';
 import { UploadChangeParam } from 'antd/lib/upload';
 
-import { AcceptConfig, AppInputUploadAvatarConfig, initialAvatarError } from '../config';
+import { AcceptConfig, initialAvatarError } from '../config';
 
-import { useGetToken } from '@shared/hooks';
+import { profileActions } from '@entities/profile/model/slice';
+
+import { useAppDispatch, useGetToken } from '@shared/hooks';
 
 type UseAppInputAvatarParams = {
     isFile: boolean;
@@ -13,6 +15,7 @@ type UseAppInputAvatarParams = {
 
 export function useAppInputAvatar({ isFile, initialAvatar }: UseAppInputAvatarParams) {
     const token = useGetToken();
+    const dispatch = useAppDispatch();
 
     const [fileList, setFileList] = useState<UploadFile[]>([]);
 
@@ -24,10 +27,12 @@ export function useAppInputAvatar({ isFile, initialAvatar }: UseAppInputAvatarPa
 
     const onChange = (info: UploadChangeParam<UploadFile<AcceptConfig.IMAGE>>) => {
         const isError = info?.file?.error;
-        const load = document.querySelector('.ant-upload-list-item-thumbnail');
+        const isRemoved = info?.file?.status === 'removed';
 
-        if (load) {
-            load.textContent = AppInputUploadAvatarConfig.UPLOAD_STATUS_LOADING;
+        if (isRemoved) {
+            setFileList([]);
+            dispatch(profileActions.setImage(''));
+            return;
         }
 
         if (isError) {

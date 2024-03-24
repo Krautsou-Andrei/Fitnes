@@ -36,6 +36,9 @@ export const profileSlice = createSlice({
         setIsProfile: (state: ProfileSliceType, { payload }: PayloadAction<boolean>) => {
             state.isProfile = payload;
         },
+        setImage: (state: ProfileSliceType, { payload }: PayloadAction<string>) => {
+            state.profile.imgSrc = payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addMatcher(
