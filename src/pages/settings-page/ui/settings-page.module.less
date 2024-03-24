@@ -1,0 +1,29 @@
+@import '@shared/styles/constants';
+
+.settings-page {
+    height: 100%;
+    background-color: @app-settings-content-background;
+
+    .settings-content {
+        max-width: @app-width-settings-content;
+        width: 100%;
+
+        .card-wrapper {
+            width: 100%;
+
+            display: flex;
+            gap: @gap-xl;
+            margin-bottom: @gap-xl;
+        }
+
+        .form-wrapper {
+            margin-bottom: @gap-10xxl;
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: @gap-m;
+            line-height: @font-line-m;
+            font-weight: 500;
+        }
+    }
+}
