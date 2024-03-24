@@ -29,13 +29,13 @@ export const modalCofig: ModalConfig = {
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
-        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
+        desciptionMobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
     [ModalTypeConfig.ERROR_GET_TRANING]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
-        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
+        desciptionMobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
     [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
@@ -51,6 +51,12 @@ export const modalCofig: ModalConfig = {
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         buttonTitle: 'Отлично',
         title: 'Отзыв успешно опубликован',
+    },
+    [ModalTypeConfig.SUCCESS_BUY_TARIFF]: {
+        buttonTitle: 'Не пришло письмо? Проверьте папку Спам.',
+        descriptionEmail: (email) =>
+            ` Мы отправили инструкцию для оплаты вам на\n e-mail ${email}. После подтверждения оплаты войдите\n вприложение заново.`,
+        title: 'Чек для оплаты у вас на почте',
     },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
         buttonTitle: 'Отлично',
@@ -89,6 +95,10 @@ export const modalResultConfig: ModalResultConfig = {
     },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         type: ModalTypeConfig.SUCCESS_ADD_FEEDBACK,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_BUY_TARIFF]: {
+        type: ModalTypeConfig.SUCCESS_BUY_TARIFF,
         status: 'success',
     },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {

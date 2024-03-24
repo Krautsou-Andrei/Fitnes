@@ -7,13 +7,15 @@ import { configButton, configDescription, configIconClose, configTitle } from '.
 import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
 import { resultModalActions, selectResultModal } from '../model/slice';
 
+import { logoutThunk } from '@features/logout/@ex/result-modal';
 import { getTraningListThunk } from '@features/traning/@ex/result-modal';
 
 import { feedbackActions } from '@entities/feedbacks';
+import { selectGetUser } from '@entities/profile';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { PathConfig } from '@shared/config';
-import { showErrorForDevelop, splitString } from '@shared/lib';
+import { showErrorForDevelop, splitString, wrapSelectedText } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
 import styles from '../ui/result-modal.module.less';
@@ -27,6 +29,7 @@ export function useResultModal() {
     const { isQueryMD } = useAppMediaQuery();
     const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
+    const user = useAppSelector(selectGetUser);
     const dispatch = useAppDispatch();
     const [api, contextHolder] = notification.useNotification();
 
@@ -40,7 +43,7 @@ export function useResultModal() {
     const isUpdateUser = typeModal.type === ModalTypeConfig.ERROR_UPDATE_USER;
     const isSccessUpdateUser = typeModal.type === ModalTypeConfig.SUCCESS_UPDATE_USER;
 
-    const onClickClose = useCallback(() => {
+    const onClickClose = useCallback(async () => {
         if (
             typeModal.type === ModalTypeConfig.ERROR_GET_FEEDBACK ||
             typeModal.type === ModalTypeConfig.ERROR_GET_TRANING
@@ -52,6 +55,14 @@ export function useResultModal() {
 
         if (isSccessUpdateUser) {
             notificationChange.current = false;
+        }
+
+        if (typeModal.type === ModalTypeConfig.SUCCESS_BUY_TARIFF) {
+            try {
+                await dispatch(logoutThunk()).unwrap();
+            } catch {
+                (error: unknown) => showErrorForDevelop('logout', error);
+            }
         }
 
         modalErrorTraning.current?.destroy();
@@ -186,10 +197,27 @@ export function useResultModal() {
 
     let description;
 
-    if (modalCofig[typeModal.type].desciption_mobile || modalCofig[typeModal.type].desciption) {
+    if (
+        modalCofig[typeModal.type] &&
+        typeof modalCofig[typeModal.type].descriptionEmail === 'function'
+    ) {
+        const descriptionEmail = modalCofig[typeModal.type].descriptionEmail as (
+            email: string,
+        ) => string;
+        description = wrapSelectedText({
+            text: descriptionEmail(user.email),
+            searchString: user.email,
+            className: 'wrapper-email',
+        });
+    }
+
+    if (
+        (modalCofig[typeModal.type].desciptionMobile || modalCofig[typeModal.type].desciption) &&
+        !modalCofig[typeModal.type].descriptionEmail
+    ) {
         description = splitString(
             isQueryMD
-                ? modalCofig[typeModal.type].desciption_mobile || ''
+                ? modalCofig[typeModal.type].desciptionMobile || ''
                 : modalCofig[typeModal.type].desciption || '',
         );
     }

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Form } from 'antd';
 import moment from 'moment';
 
+import { resultSuccessFetch } from '../lib';
+
 import { updateUserThunk } from '@features/profile';
 import {
     ModalTypeConfig,
@@ -100,9 +102,10 @@ export function useProfileForm() {
 
         try {
             await dispatch(updateUserThunk(body)).unwrap();
+            dispatch(resultSuccessFetch());
         } catch {
             (error: unknown) => {
-                showErrorForDevelop('register', error);
+                showErrorForDevelop('update user', error);
             };
         } finally {
             form.setFieldValue(LayoutConfig.INPUT_TYPE_PASSWORD, undefined);
