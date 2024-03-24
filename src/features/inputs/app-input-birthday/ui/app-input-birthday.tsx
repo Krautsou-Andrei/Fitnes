@@ -9,9 +9,10 @@ import styles from './app-input-birthday.module.less';
 type AppInputBirthdayProps = {
     name?: string;
     placeholder?: string;
+    dataTestId?: string;
 };
 
-export function AppInputBirthday({ name, placeholder }: AppInputBirthdayProps) {
+export function AppInputBirthday({ name, placeholder, dataTestId }: AppInputBirthdayProps) {
     return (
         <Form.Item className={styles['input-birthday']} name={name}>
             <DatePicker
@@ -23,7 +24,8 @@ export function AppInputBirthday({ name, placeholder }: AppInputBirthdayProps) {
                         twoToneColor={[STYLES.DATE_PICKER_COLOR, STYLES.DATE_PICKER_COLOR]}
                     />
                 }
-            ></DatePicker>
+                data-test-id={dataTestId}
+            />
         </Form.Item>
     );
 }

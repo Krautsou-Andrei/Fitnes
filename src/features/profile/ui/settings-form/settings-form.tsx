@@ -18,6 +18,8 @@ export function SettingsForm() {
                         titleOption={option.TITLE_SETTING}
                         titleTooltip={option.TITLE_TOOLTIP}
                         isDisabled={option.NAME === SettingsConfig.INPUT_TYPE_THEME && !user.tariff}
+                        dataTestIcon={option.DATA_TEST_ICON}
+                        dataTestSwitch={option.DATA_TEST_SWITCH}
                     />
                 );
             })}

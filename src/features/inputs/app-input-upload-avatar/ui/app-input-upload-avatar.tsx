@@ -14,13 +14,18 @@ import { STYLES } from '@shared/config/constants';
 type AppInputUploadAvatarProps = {
     isFile: boolean;
     initialAvatar: UploadFile;
+    dataTestId?: string;
 };
 
-export function AppInputUploadAvatar({ isFile, initialAvatar }: AppInputUploadAvatarProps) {
+export function AppInputUploadAvatar({
+    isFile,
+    initialAvatar,
+    dataTestId,
+}: AppInputUploadAvatarProps) {
     const { token, fileList, onChange } = useAppInputAvatar({ isFile, initialAvatar });
 
     return (
-        <Form.Item name={LayoutConfig.INPUT_TYPE_AVATAR}>
+        <Form.Item name={LayoutConfig.INPUT_TYPE_AVATAR} data-test-id={dataTestId}>
             <Upload
                 action={`${config.API_ENDPOINT}${ApiEndpoints.UPLOAD_IMAGE}`}
                 headers={{ authorization: `Bearer ${token}` }}

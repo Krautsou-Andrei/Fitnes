@@ -1,7 +1,7 @@
 import { UploadFileStatus } from 'antd/lib/upload/interface';
 
 export const initialAvatarError = {
-    uid: '-1',
+    uid: '2',
     name: 'image.png',
     status: 'error' as UploadFileStatus,
 };

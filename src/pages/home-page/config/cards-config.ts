@@ -51,5 +51,6 @@ export const cardsActionsConfig: CardActive[] = [
             href: PathConfig.PROFILE,
             title: 'Профиль',
         },
+        dataTestId: DataTestIdConfig.MENU_BUTTON_PROFILE,
     },
 ];

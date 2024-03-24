@@ -7,6 +7,7 @@ import { SettingsPageConfig } from '@pages/settings-page/config';
 import { AppCard } from '@shared/ui';
 
 import styles from './app-tariff-card.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 const { Title } = Typography;
 
@@ -15,6 +16,7 @@ type AppTariffCardProps = {
     onClickButtonMore: () => void;
     isActive?: boolean;
     activeDays?: string;
+    isActivePro?: boolean;
 };
 
 export function AppTariffCard({
@@ -22,9 +24,11 @@ export function AppTariffCard({
     onClickButtonMore,
     isActive,
     activeDays,
+    isActivePro,
 }: AppTariffCardProps) {
     return (
         <AppCard
+            data-test-id={isActive ? '' : DataTestIdConfig.PRO_TARIFF_CARD}
             className={styles['tariff-card']}
             title={`${title} ${SettingsPageConfig.TITLE_CADR_TARIFF}`}
             extra={
@@ -34,7 +38,7 @@ export function AppTariffCard({
             }
             cover={
                 <img
-                    className={isActive || activeDays ? '' : styles['imageNoActive']}
+                    className={isActive || isActivePro ? '' : styles['imageNoActive']}
                     src={tariffImage[title]}
                 />
             }
@@ -46,12 +50,17 @@ export function AppTariffCard({
                 </Title>
             )}
 
-            {!activeDays && !isActive && (
-                <Button type='primary' className={styles.button}>
+            {!isActivePro && !isActive && (
+                <Button
+                    type='primary'
+                    className={styles.button}
+                    onClick={onClickButtonMore}
+                    data-test-id={DataTestIdConfig.ACTIVATE_TARIFF_BTN}
+                >
                     {SettingsPageConfig.BUTTON_TEXT}
                 </Button>
             )}
-            {activeDays && !isActive && (
+            {isActivePro && !isActive && (
                 <Title level={5} className={styles['tariff-card-text-active-period']}>
                     {SettingsPageConfig.TEXT_ACTIVE}
                     <div>{activeDays}</div>

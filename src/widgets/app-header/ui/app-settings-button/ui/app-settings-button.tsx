@@ -4,7 +4,7 @@ import { type ButtonType } from 'antd/lib/button';
 
 import { useAppSettingsButton, useButtonMediaQuery } from '../hooks';
 
-import { LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 
 type AppSettingsButtonProps = {
     className?: string;
@@ -20,6 +20,7 @@ export function AppSettingsButton({ className }: AppSettingsButtonProps) {
             shape={isQueryMD ? 'circle' : 'default'}
             className={className}
             onClick={onClick}
+            data-test-id={DataTestIdConfig.HEADER_SETTINGS}
         >
             {((isTablet && isQueryMD) || !isTablet) && <SettingOutlined />}
             {!isQueryMD && LayoutConfig.BUTTON_SETTINGS}

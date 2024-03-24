@@ -13,7 +13,7 @@ import {
     AppInputUploadAvatar,
 } from '@features/inputs/@ex/profile';
 
-import { ErrorValidateConfig, LayoutConfig } from '@shared/config';
+import { DataTestIdConfig, ErrorValidateConfig, LayoutConfig } from '@shared/config';
 
 import styles from './profile-form.module.less';
 
@@ -34,19 +34,26 @@ export function ProfileForm() {
                 <Title level={5}>{ProfileConfig.TITLE_PERSON_INFO}</Title>
             </legend>
             <div className={styles['person-info-wrapper']}>
-                <AppInputUploadAvatar isFile={isImage} initialAvatar={initialAvatar} />
+                <AppInputUploadAvatar
+                    isFile={isImage}
+                    initialAvatar={initialAvatar}
+                    dataTestId={DataTestIdConfig.PROFILE_AVATAR}
+                />
                 <div className={styles['inputs-wrapper']}>
                     <AppInputText
                         name={LayoutConfig.INPUT_TYPE_FIRST_NAME}
                         placeholder={ProfileConfig.PLACEHOLDER_FIRSTNAME}
+                        dataTestId={DataTestIdConfig.PROFILE_NAME}
                     />
                     <AppInputText
                         name={LayoutConfig.INPUT_TYPE_LAST_NAME}
                         placeholder={ProfileConfig.PLACEHOLDER_LASTNAME}
+                        dataTestId={DataTestIdConfig.PROFILE_SURNAME}
                     />
                     <AppInputBirthday
                         name={LayoutConfig.INPUT_TYPE_BIRTH_DAY}
                         placeholder={ProfileConfig.PLACEHOLDER_DATE_PICKER}
+                        dataTestId={DataTestIdConfig.PROFILE_BIRTHDAY}
                     />
                 </div>
             </div>
@@ -54,15 +61,20 @@ export function ProfileForm() {
                 <Title level={5}>{ProfileConfig.TITLE_PRIVATE_INFO}</Title>
             </legend>
             <div className={styles['private-info-wrapper']}>
-                <AppInputLogin />
+                <AppInputLogin dataTestId={DataTestIdConfig.PROFILE_EMAIL} />
                 <AppInputPassword
                     type='register'
                     classNames={'input-password'}
                     autoComplete={AutoCompleteConfig.NEW_PASSWORD}
                     isRequire={isPassword}
                     help={ErrorValidateConfig.PASSWORD_NO_VALIDATE}
+                    dataTestId={DataTestIdConfig.PROFILE_PASSWORD}
                 />
-                <AppInputConfirmPassword isRequire={isPassword} classNames={'input-password'} />
+                <AppInputConfirmPassword
+                    isRequire={isPassword}
+                    classNames={'input-password'}
+                    dataTestId={DataTestIdConfig.PROFILE_REPEAT_PASSWORD}
+                />
             </div>
             <Button
                 className={styles.button}
@@ -70,6 +82,7 @@ export function ProfileForm() {
                 htmlType='submit'
                 size='large'
                 disabled={isDisabledSubmit}
+                data-test-id={DataTestIdConfig.PROFILE_SUBMIT}
             >
                 {ProfileConfig.BUTTON_SAVE}
             </Button>

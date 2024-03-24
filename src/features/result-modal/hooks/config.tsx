@@ -18,8 +18,16 @@ export function configDescription(description: string | undefined) {
     );
 }
 
-export function configButton(text: string) {
-    return <span data-test-id={DataTestIdConfig.MODAL_ERROR_USER_TRAINING_BUTTON}>{text}</span>;
+export function configButton(text: string, dataTestId?: string) {
+    return (
+        <span
+            data-test-id={
+                dataTestId ? dataTestId : DataTestIdConfig.MODAL_ERROR_USER_TRAINING_BUTTON
+            }
+        >
+            {text}
+        </span>
+    );
 }
 
 export function configIconClose() {

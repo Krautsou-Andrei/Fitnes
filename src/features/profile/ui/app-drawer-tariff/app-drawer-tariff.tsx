@@ -10,6 +10,7 @@ import { FormTariff } from './ui/form-tariff';
 import { SettingsConfig } from '@features/profile/config';
 
 import styles from './app-drawer-tariff.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 const { Title } = Typography;
 
@@ -17,15 +18,18 @@ type AppDrawerProps = {
     isOpen: boolean;
     onClickClose: () => void;
     activeDays?: string;
+    isActivePro?: boolean;
 };
 
-export function AppDrawerTariff({ isOpen, onClickClose, activeDays }: AppDrawerProps) {
+export function AppDrawerTariff({ isOpen, onClickClose, activeDays, isActivePro }: AppDrawerProps) {
     const { form, isDisabledSubmit, tariffList, onHandleChange, onHandleFinish } =
         useAppDrawerTariff();
 
     return (
         <Drawer
+            data-test-id={DataTestIdConfig.TARIFF_SIDER}
             mask={false}
+            destroyOnClose={true}
             className={styles['app-drawer']}
             open={isOpen}
             onClose={onClickClose}
@@ -35,9 +39,11 @@ export function AppDrawerTariff({ isOpen, onClickClose, activeDays }: AppDrawerP
                     <Title level={4}>{SettingsConfig.TITLE_COMPARE_TARIFF}</Title>
                 </Space>
             }
-            footer={!activeDays && <AppButtonBuy disabled={isDisabledSubmit} />}
+            footer={
+                !isActivePro && <AppButtonBuy disabled={isDisabledSubmit} onClick={onClickClose} />
+            }
         >
-            {activeDays ? (
+            {isActivePro ? (
                 <div
                     className={styles['active-tariff-title']}
                 >{`${SettingsConfig.TEXT_ACTIVE_TARIFF} ${activeDays}`}</div>
@@ -46,8 +52,8 @@ export function AppDrawerTariff({ isOpen, onClickClose, activeDays }: AppDrawerP
             )}
 
             <div className={styles['form-wrapper']}>
-                <TableCompare activeDays={activeDays} />
-                {!activeDays && (
+                <TableCompare isActivePro={isActivePro} />
+                {!isActivePro && (
                     <FormTariff
                         form={form}
                         onChange={onHandleChange}

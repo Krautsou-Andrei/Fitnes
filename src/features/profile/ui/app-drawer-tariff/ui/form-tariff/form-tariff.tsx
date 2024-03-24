@@ -4,6 +4,7 @@ import { SettingsConfig } from '@features/profile/config';
 import { Tariff } from '@entities/profile';
 
 import styles from './form-tariff.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 const { Text } = Typography;
 
@@ -15,7 +16,7 @@ export function FormTariff({ tariffList, ...rest }: FormTariffProps) {
     return (
         <div className={styles['form-tariff']}>
             <Text className={styles['form-tariff-title']}>{SettingsConfig.TITLE_TARIFF_FORM}</Text>
-            <Form id='form-tariff' {...rest}>
+            <Form id='form-tariff' {...rest} data-test-id={DataTestIdConfig.TARIFF_COST}>
                 <Form.Item name={SettingsConfig.INPUT_TYPE_RADIO}>
                     <Radio.Group name='radio-tariff' size='large'>
                         <Space direction='vertical'>
@@ -25,6 +26,7 @@ export function FormTariff({ tariffList, ...rest }: FormTariffProps) {
                                         className={styles['radio-label']}
                                         value={period.days}
                                         key={period.text}
+                                        data-test-id={`tariff-${period.cost}`}
                                     >
                                         <div className={styles['radio-label-title']}>
                                             <div className=''>{period.text}</div>

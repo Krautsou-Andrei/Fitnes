@@ -12,6 +12,8 @@ type SettingsOptionsItemProps = {
     titleTooltip: string;
     name: string;
     isDisabled: boolean;
+    dataTestIcon?: string;
+    dataTestSwitch?: string;
 };
 
 export function SettingsOptionsItem({
@@ -19,6 +21,8 @@ export function SettingsOptionsItem({
     titleOption,
     titleTooltip,
     isDisabled,
+    dataTestIcon,
+    dataTestSwitch,
 }: SettingsOptionsItemProps) {
     return (
         <div className={styles['settings-option']}>
@@ -29,11 +33,14 @@ export function SettingsOptionsItem({
                     title={titleTooltip}
                     color={STYLES.BACKGROUND_TOOLTIP}
                 >
-                    <ExclamationCircleOutlined className={styles['settings-tooltip-icon']} />
+                    <ExclamationCircleOutlined
+                        className={styles['settings-tooltip-icon']}
+                        data-test-id={dataTestIcon}
+                    />
                 </Tooltip>
             </div>
             <Form.Item name={name} valuePropName='checked'>
-                <Switch disabled={isDisabled}></Switch>
+                <Switch disabled={isDisabled} data-test-id={dataTestSwitch}></Switch>
             </Form.Item>
         </div>
     );
