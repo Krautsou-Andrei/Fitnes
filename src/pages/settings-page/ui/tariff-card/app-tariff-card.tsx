@@ -8,16 +8,21 @@ import { AppCard } from '@shared/ui';
 
 import styles from './app-tariff-card.module.less';
 
-
 const { Title } = Typography;
 
 type AppTariffCardProps = {
     title: string;
     onClickButtonMore: () => void;
     isActive?: boolean;
+    activeDays?: string;
 };
 
-export function AppTariffCard({ title, onClickButtonMore, isActive }: AppTariffCardProps) {
+export function AppTariffCard({
+    title,
+    onClickButtonMore,
+    isActive,
+    activeDays,
+}: AppTariffCardProps) {
     return (
         <AppCard
             className={styles['tariff-card']}
@@ -28,18 +33,29 @@ export function AppTariffCard({ title, onClickButtonMore, isActive }: AppTariffC
                 </Button>
             }
             cover={
-                <img className={isActive ? '' : styles['imageNoActive']} src={tariffImage[title]} />
+                <img
+                    className={isActive || activeDays ? '' : styles['imageNoActive']}
+                    src={tariffImage[title]}
+                />
             }
         >
-            {isActive ? (
-                <Title level={5} className={styles['tariff-card-text-axtive']}>
+            {isActive && (
+                <Title level={5} className={styles['tariff-card-text-active']}>
                     {SettingsPageConfig.TEXT_ACTIVE}
                     <CheckOutlined />
                 </Title>
-            ) : (
+            )}
+
+            {!activeDays && !isActive && (
                 <Button type='primary' className={styles.button}>
                     {SettingsPageConfig.BUTTON_TEXT}
                 </Button>
+            )}
+            {activeDays && !isActive && (
+                <Title level={5} className={styles['tariff-card-text-active-period']}>
+                    {SettingsPageConfig.TEXT_ACTIVE}
+                    <div>{activeDays}</div>
+                </Title>
             )}
         </AppCard>
     );

@@ -30,15 +30,24 @@
     :global(.ant-card-body) {
         padding-top: @gap-2xl;
         padding-bottom: @gap-2xl;
+        height: (@rem * 96);
+        
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        .tariff-card-text-axtive {
+        :global(.ant-typography).tariff-card-text-active {
             margin-bottom: 0;
             display: flex;
             gap: @gap-xs;
+        }
+
+        :global(.ant-typography).tariff-card-text-active-period {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 }

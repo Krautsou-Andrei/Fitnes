@@ -38,6 +38,7 @@
 
 .tariff-name-wrapper {
     margin-bottom: @gap-xl;
+
     .tariff-name {
         padding: @gap-3xs;
         max-width: (@rem * 56);
@@ -47,6 +48,15 @@
         line-height: @font-line-m;
 
         text-align: center;
+    }
+
+    .active {
+        font-weight: 500;
+    }
+
+    .active-icon {
+        margin-left: @gap-3xs;
+        color: @app-result-success;
     }
 
     .tariff-name:nth-child(1) {

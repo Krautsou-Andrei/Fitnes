@@ -14,11 +14,9 @@ import styles from './settings-page.module.less';
 const { Title } = Typography;
 
 export function SettingsPage() {
-    const { tariffList, onClick, isOpenDrawer, onToggleDrawer } = useSettingsPage();
+    const { tariffList, onClick, isOpenDrawer, onToggleDrawer, activeDays } = useSettingsPage();
 
     const tariffs = [freeTariff, ...tariffList];
-
-    console.log('tariff', tariffs);
 
     return (
         <Content className={styles['settings-page']}>
@@ -32,6 +30,7 @@ export function SettingsPage() {
                                     key={tariff.name}
                                     title={tariff.name.toUpperCase()}
                                     isActive={tariff.isActive}
+                                    activeDays={activeDays}
                                     onClickButtonMore={onToggleDrawer}
                                 />
                             );
@@ -47,7 +46,11 @@ export function SettingsPage() {
                 </div>
             </AppContentWrapper>
             <NewFeedbackModal />
-            <AppDrawerTariff isOpen={isOpenDrawer} onClickClose={onToggleDrawer} />
+            <AppDrawerTariff
+                isOpen={isOpenDrawer}
+                onClickClose={onToggleDrawer}
+                activeDays={activeDays}
+            />
         </Content>
     );
 }

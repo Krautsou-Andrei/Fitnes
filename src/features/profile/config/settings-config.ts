@@ -4,6 +4,7 @@ export const enum SettingsConfig {
     INPUT_TYPE_NOTIFICATiON = 'notification',
     INPUT_TYPE_RADIO = 'radioGroupe',
     INPUT_TYPE_THEME = 'theme',
+    TEXT_ACTIVE_TARIFF = 'Ваш PRO tarif активен до',
     TITLE_COMPARE_TARIFF = 'Сравнить тарифы',
     TITLE_TARIFF_FORM = 'Стоимость тарифа',
 }

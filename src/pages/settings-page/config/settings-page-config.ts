@@ -2,6 +2,7 @@ import imageFree from '/assets/tariff-free.png';
 import imagePro from '/assets/tariff-pro.png';
 
 export const enum SettingsPageConfig {
+    BEFORE_TEXT = 'до',
     BUTTON_FEEDBACK_TEXT = 'Смотреть все отзывы',
     BUTTON_MORE_TEXT = 'Подробнее',
     BUTTON_TEXT = 'Активировать',

@@ -16,9 +16,10 @@ const { Title } = Typography;
 type AppDrawerProps = {
     isOpen: boolean;
     onClickClose: () => void;
+    activeDays?: string;
 };
 
-export function AppDrawerTariff({ isOpen, onClickClose }: AppDrawerProps) {
+export function AppDrawerTariff({ isOpen, onClickClose, activeDays }: AppDrawerProps) {
     const { form, isDisabledSubmit, tariffList, onHandleChange, onHandleFinish } =
         useAppDrawerTariff();
 
@@ -34,17 +35,26 @@ export function AppDrawerTariff({ isOpen, onClickClose }: AppDrawerProps) {
                     <Title level={4}>{SettingsConfig.TITLE_COMPARE_TARIFF}</Title>
                 </Space>
             }
-            footer={<AppButtonBuy disabled={isDisabledSubmit} />}
+            footer={!activeDays && <AppButtonBuy disabled={isDisabledSubmit} />}
         >
-            <div className={styles.empty} />
+            {activeDays ? (
+                <div
+                    className={styles['active-tariff-title']}
+                >{`${SettingsConfig.TEXT_ACTIVE_TARIFF} ${activeDays}`}</div>
+            ) : (
+                <div className={styles.empty} />
+            )}
+
             <div className={styles['form-wrapper']}>
-                <TableCompare />
-                <FormTariff
-                    form={form}
-                    onChange={onHandleChange}
-                    onFinish={onHandleFinish}
-                    tariffList={tariffList}
-                />
+                <TableCompare activeDays={activeDays} />
+                {!activeDays && (
+                    <FormTariff
+                        form={form}
+                        onChange={onHandleChange}
+                        onFinish={onHandleFinish}
+                        tariffList={tariffList}
+                    />
+                )}
             </div>
         </Drawer>
     );
