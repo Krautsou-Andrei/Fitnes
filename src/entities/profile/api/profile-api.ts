@@ -34,9 +34,10 @@ export const profileApi = baseApi.injectEndpoints({
             transformResponse: (response: TariffDto[]) => response.map(mapGetTariffList),
         }),
         buyTariff: build.mutation<void, RequestBuyTariffBody>({
-            query: () => ({
+            query: (body) => ({
                 url: ApiEndpoints.BUY_TARIFF,
                 method: 'POST',
+                body,
             }),
         }),
     }),

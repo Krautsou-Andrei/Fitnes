@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { resultSuccessFetch } from '../lib';
+
+import { ModalTypeConfig } from '@features/result-modal/@ex/profile';
+
 import { RequestBuyTariffBody, profileApi } from '@entities/profile';
 import { sessionActions } from '@entities/session';
 
@@ -14,6 +18,7 @@ export const buyTariffThunk = createAsyncThunk<void, RequestBuyTariffBody, { sta
 
         try {
             await dispatch(profileApi.endpoints.buyTariff.initiate(body)).unwrap();
+            dispatch(resultSuccessFetch(ModalTypeConfig.SUCCESS_BUY_TARIFF));
         } catch (error: unknown | undefined) {
             throw new Error('Unknown error');
         } finally {
