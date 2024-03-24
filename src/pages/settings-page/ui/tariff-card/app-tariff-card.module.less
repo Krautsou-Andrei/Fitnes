@@ -1,0 +1,44 @@
+@import '@shared/styles/constants';
+
+.tariff-card {
+    max-width: @app-width-tariff-card;
+    width: 100%;
+
+    box-shadow: @app-box-shadow-card;
+
+    .button-more {
+        padding: 0;
+    }
+
+    .button {
+        height: @height-xl;
+    }
+
+    .imageNoActive {
+        filter: grayscale(100%);
+        opacity: 0.4;
+    }
+
+    :global(.ant-card-head-wrapper) {
+        height: (@rem * 53);
+    }
+
+    :global(.ant-card-head-title) {
+        line-height: @font-line-m;
+    }
+
+    :global(.ant-card-body) {
+        padding-top: @gap-2xl;
+        padding-bottom: @gap-2xl;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .tariff-card-text-axtive {
+            margin-bottom: 0;
+            display: flex;
+            gap: @gap-xs;
+        }
+    }
+}
