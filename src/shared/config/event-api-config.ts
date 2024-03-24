@@ -1,4 +1,5 @@
 export const enum EventApiConfig {
+    BUY_TARIFF = 'tariff/buy',
     CHANGE_PASSWORD = 'authentification/change-password',
     CHECK_EMAIL = 'authentification/check-email',
     CONFIRM_EMAIL = 'authentification/confirm-email',
