@@ -23,6 +23,7 @@ export const enum COL {
 
 export const STYLES = {
     BACKGROUND_BLURE: 'rgba(121, 156, 212, 0.1)',
+    BACKGROUND_TOOLTIP: '#000000',
     BLURE: 'blur(5px)',
     COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { resultErrorFetch, resultSuccessFetch } from '../lib';
+import { resultErrorFetch } from '../lib';
 
 import { RequestUserUpdateBody, User, profileApi } from '@entities/profile';
 import { sessionActions } from '@entities/session';
@@ -21,7 +21,6 @@ export const updateUserThunk = createAsyncThunk<
 
         try {
             const result = await dispatch(profileApi.endpoints.updateUser.initiate(body)).unwrap();
-            dispatch(resultSuccessFetch());
             return result;
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {

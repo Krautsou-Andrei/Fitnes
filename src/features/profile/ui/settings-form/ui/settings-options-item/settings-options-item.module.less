@@ -1,0 +1,35 @@
+@import '@shared/styles/constants';
+
+:global(.ant-form) {
+    .settings-option {
+        margin-bottom: @gap-m;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .setting-title {
+            display: flex;
+            align-items: center;
+            gap: @gap-3xs;
+
+            :global(.ant-typography) {
+                font-weight: 700;
+                margin-bottom: 0;
+            }
+        }
+
+        .settings-tooltip-icon {
+            color: @app-text-color-secondary;
+            font-size: @font-size-m;
+        }
+
+        :global(.ant-form-item) {
+            margin-bottom: 0;
+
+            :global(.ant-form-item-control-input) {
+                min-height: unset;
+            }
+        }
+    }
+}
