@@ -26,4 +26,5 @@ export type Tariff = {
         },
     ];
     id?: string;
+    isActive?: boolean;
 };

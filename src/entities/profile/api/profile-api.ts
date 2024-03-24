@@ -2,7 +2,7 @@ import { ApiEndpoints } from '../config/api-endpoints';
 
 import { mapGetTariffList, mapGetUser } from '../lib';
 
-import type { RequestUserUpdateBody, TariffDto, UserDto } from './types';
+import type { RequestBuyTariffBody, RequestUserUpdateBody, TariffDto, UserDto } from './types';
 import type { Tariff, User } from '../model/types';
 
 import { baseApi, USER_TAG } from '@shared/api';
@@ -33,10 +33,17 @@ export const profileApi = baseApi.injectEndpoints({
             }),
             transformResponse: (response: TariffDto[]) => response.map(mapGetTariffList),
         }),
+        buyTariff: build.mutation<void, RequestBuyTariffBody>({
+            query: () => ({
+                url: ApiEndpoints.BUY_TARIFF,
+                method: 'POST',
+            }),
+        }),
     }),
 });
 
 export const {
+    useBuyTariffMutation,
     useGetUserQuery,
     useLazyGetUserQuery,
     useUpdateUserMutation,

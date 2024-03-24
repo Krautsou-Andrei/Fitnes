@@ -27,6 +27,11 @@ export type RequestUserUpdateBody = {
     password?: Password;
 };
 
+export type RequestBuyTariffBody = {
+    tariffId: string;
+    days: number;
+};
+
 export type TariffDto = {
     name: string;
     periods: [
@@ -36,5 +41,5 @@ export type TariffDto = {
             days: 0;
         },
     ];
-    id?: string;
+    _id?: string;
 };
