@@ -4,9 +4,8 @@ import clsn from 'classnames';
 
 import { AppBreadcrumb } from './app-breadcrumb';
 import { AppSettingsButton } from './app-settings-button';
-
-import { LayoutConfig } from '@shared/config';
-import { usePageIsEqual } from '@shared/hooks';
+import { AppButtonArrow } from './app-button-arrow';
+import { useAppHeader } from '../hooks/use-app-header';
 
 import styles from './app-header.module.less';
 
@@ -18,18 +17,25 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ className, isSimple }: AppHeaderProps) {
-    const { isCalendar } = usePageIsEqual();
+    const { isBreadcrumb, isCalendar, isHome, isProfile, isSettings, title } = useAppHeader();
 
     return (
-        <Header className={clsn(styles['app-header'], className)}>
-            <AppBreadcrumb />
+        <Header
+            className={clsn(
+                styles['app-header'],
+                { [styles['app-header-profile']]: isProfile || isSettings },
+                className,
+            )}
+        >
+            {isBreadcrumb ? <AppBreadcrumb /> : null}
             {!isSimple && (
                 <div className={styles.content}>
-                    <Title level={1}>
-                        <div>{LayoutConfig.TITLE_ONE}</div>
-                        <div>{LayoutConfig.TITLE_TWO}</div>
+                    <Title level={isHome ? 1 : 4}>
+                        {isSettings ? <AppButtonArrow /> : null}
+                        {title}
                     </Title>
-                    <AppSettingsButton />
+                    {isSettings || isProfile ? null : <AppSettingsButton />}
+                    {isProfile && <AppSettingsButton className={styles['setting-profile-page']} />}
                 </div>
             )}
             {isCalendar && <AppSettingsButton className={styles['setting-traning-page']} />}

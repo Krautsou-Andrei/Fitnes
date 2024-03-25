@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .input-login {
     :global(.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input) {
@@ -7,5 +8,14 @@
 
     :global(.ant-input-group-wrapper-status-error .ant-input-group-addon) {
         color: @app-text-color-primary;
+    }
+
+    :global(.ant-col.ant-form-item-label) {
+        .visually-hidden;
+    }
+
+    :global(.ant-input) {
+        font-size: @font-size-2m;
+        line-height: (@rem * 30);
     }
 }

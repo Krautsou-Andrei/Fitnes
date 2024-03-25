@@ -8,8 +8,6 @@ export const enum ConstantsMediaQuery {
     MD = 768,
     APP_TABLET = 834,
     APP_TOP_ROW_CALENDAR = 60,
-
-    ICON_COLOR_ERROR_LIST = '#2F54EB',
 }
 
 export const enum Gap {
@@ -25,18 +23,22 @@ export const enum COL {
 
 export const STYLES = {
     BACKGROUND_BLURE: 'rgba(121, 156, 212, 0.1)',
+    BACKGROUND_TOOLTIP: '#000000',
     BLURE: 'blur(5px)',
     COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,
         transition: 'margin-left 0.2s ease',
     },
-
+    DATE_PICKER_COLOR: '#BFBFBF',
+    ICON_COLOR_ERROR_LIST: '#2F54EB',
+    ICON_COLOR_SUCCESS_UPDATE_USER: '#52C41A',
     NO_COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED_NO}px`,
         transition: 'margin-left 0.2s ease',
     },
-
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
+    SIZE_ICON_UPLOAD_USER: '18px',
+    STROKE_WIDT_UPLOAD_USER_IMAGE: 4,
 };
 
 export const enum Width {

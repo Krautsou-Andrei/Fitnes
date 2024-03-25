@@ -3,6 +3,7 @@ import {
     AppInputConfirmPassword,
     AppInputLogin,
     AppInputPassword,
+    AutoCompleteConfig,
 } from '@features/inputs/@ex/register';
 
 import { DataTestIdConfig } from '@shared/config';
@@ -24,7 +25,7 @@ export function RegisterForm() {
             <AppInputPassword
                 type='register'
                 classNames={'input-password'}
-                autoComplete='new-password'
+                autoComplete={AutoCompleteConfig.NEW_PASSWORD}
                 dataTestId={DataTestIdConfig.REGISTRATION_PASSWORD}
             />
 

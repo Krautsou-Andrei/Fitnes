@@ -4,7 +4,8 @@
 .error-get-feedback,
 .success-feedback,
 .error-add-feedback,
-.error-get-traning {
+.error-get-traning,
+.success-buy-tariff {
     max-width: @app-width-modal !important;
     width: 100% !important;
 
@@ -155,4 +156,30 @@
             line-height: @font-line-m;
         }
     }
+}
+
+.success-buy-tariff {
+    :global(.ant-result-icon) {
+        :global(.anticon.anticon-check-circle) {
+            color: @app-primary-color;
+        }
+    }
+
+    :global(.ant-result-subtitle),
+    :global(.extra-buy-tariff) {
+        line-height: @font-line-m;
+        color: @app-text-color-secondary;
+    }
+
+    :global(.extra-buy-tariff-close-icon) {
+        position: absolute;
+        top: @gap-xl;
+        right: @gap-xl;
+
+        color: @app-text-color-secondary;
+    }
+}
+
+:global(.wrapper-email) {
+    font-weight: 700;
 }

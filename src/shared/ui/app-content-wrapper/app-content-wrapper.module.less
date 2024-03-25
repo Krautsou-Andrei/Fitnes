@@ -1,0 +1,18 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.content-wrapper {
+    padding: @gap-xl;
+
+    height: 100%;
+
+    border-radius: (@rem * 8);
+
+    background-color: @app-background-primary;
+
+    .media-xs({
+        padding: @gap-2m @gap-xl @gap-6xl;
+
+        border-radius: 0;
+    });
+}

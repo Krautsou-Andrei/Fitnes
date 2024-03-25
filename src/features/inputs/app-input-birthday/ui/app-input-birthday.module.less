@@ -1,0 +1,26 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.input-birthday {
+    width: 100%;
+
+    :global(.ant-picker) {
+        width: 100%;
+
+        font-size: @font-size-2m;
+        line-height: (@rem * 30);
+
+        :global(.ant-form-item-explain) {
+            font-size: @gap-s;
+        }
+
+        :global(.ant-col.ant-form-item-label) {
+            .visually-hidden;
+        }
+
+        :global(.ant-picker-input > input) {
+            font-size: @font-size-2m;
+            line-height: (@rem * 30);
+        }
+    }
+}

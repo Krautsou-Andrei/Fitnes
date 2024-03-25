@@ -5,6 +5,7 @@ import { ErrorValidateConfig } from './error-validate-config';
 import { EventApiConfig } from './event-api-config';
 import { HistoryStateConfig } from './history-state-config';
 import { LayoutConfig } from './layout-config';
+import { locale } from './locale';
 import { LocalStorageConfig } from './local-storage-config';
 import { PathConfig } from './path-config';
 import { regExpConfig } from './reg-exp-config';
@@ -19,6 +20,7 @@ export {
     EventApiConfig,
     HistoryStateConfig,
     LayoutConfig,
+    locale,
     LocalStorageConfig,
     PathConfig,
     regExpConfig,

@@ -19,6 +19,13 @@ export function useLinkMenuClick() {
                 } catch (error: unknown) {
                     showErrorForDevelop('Get menu calendar', error);
                 }
+                break;
+            case PathConfig.PROFILE:
+                try {
+                    dispatch(push(type));
+                } catch (error: unknown) {
+                    showErrorForDevelop('Get prifile', error);
+                }
         }
     };
 

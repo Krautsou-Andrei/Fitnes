@@ -1,7 +1,6 @@
 import { FeedbackConfig } from '@pages/feedbacks-page/config/feedback-config';
-import { useOpenNewFeedbackModal } from '@pages/feedbacks-page/hooks/use-open-new-feedback-modal';
 
-import { useAppMediaQuery } from '@shared/hooks';
+import { useAppMediaQuery, useOpenNewFeedbackModal } from '@shared/hooks';
 import { splitString } from '@shared/lib';
 
 export function useNoFeedback() {

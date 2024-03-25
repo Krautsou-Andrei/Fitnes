@@ -23,6 +23,11 @@
 
         gap: @gap-s;
 
+        .image {
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
         .media-md({
             margin-bottom: @gap-s;
 
@@ -74,7 +79,7 @@
                     margin-right: @gap-2xs;
                 }
 
-                :global(.anticon){
+                :global(.anticon) {
                     color: @app-rating-stars-color;
                 }
             }

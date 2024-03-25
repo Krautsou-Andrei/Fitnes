@@ -1,12 +1,14 @@
 import { Form, Input } from 'antd';
 import { validateLoginRules } from '../lib/validate-login-rules';
 
+import { AutoCompleteConfig } from '@features/inputs/config';
+
 import { LayoutConfig } from '@shared/config';
 
 import styles from './app-input-login.module.less';
 
 type AppInputLoginProps = {
-    dataTestId: string;
+    dataTestId?: string;
 };
 
 export function AppInputLogin({ dataTestId }: AppInputLoginProps) {
@@ -19,8 +21,8 @@ export function AppInputLogin({ dataTestId }: AppInputLoginProps) {
         >
             <Input
                 type='email'
-                addonBefore={LayoutConfig.INPUT_TEXT_EMAIL}              
-                autoComplete='username'
+                addonBefore={LayoutConfig.INPUT_TEXT_EMAIL}
+                autoComplete={AutoCompleteConfig.USER_NAME}
                 style={{
                     boxShadow: 'none',
                     borderColor: '<desired-color>',

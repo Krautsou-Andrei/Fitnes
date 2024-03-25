@@ -1,0 +1,51 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+:global(.ant-form.ant-form-horizontal) {
+    .settings-option {
+        margin-bottom: @gap-m;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .media-xs({
+            margin-bottom: @gap-xl;
+            
+            gap: @gap-xl;
+            line-height: @font-line-m;
+           
+        });
+
+        .setting-title {
+            margin-bottom: @gap-m;
+            display: flex;
+            align-items: center;
+            gap: @gap-3xs;
+
+            .media-xs({
+                margin-bottom:0;
+                align-items: flex-start;
+            });
+
+            :global(.ant-typography) {
+                font-weight: 700;
+                margin-bottom: 0;
+            }
+        }
+
+        .settings-tooltip-icon {
+            color: @app-text-color-secondary;
+            font-size: @font-size-m;
+        }
+
+        :global(.ant-form-item) {
+            margin-bottom: 0;
+            line-height: @font-line-m;
+
+            :global(.ant-form-item-control-input) {
+                min-height: unset;
+            }
+        }
+    }
+}

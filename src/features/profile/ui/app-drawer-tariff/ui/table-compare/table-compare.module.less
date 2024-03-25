@@ -1,0 +1,70 @@
+@import '@shared/styles/constants';
+
+.tariff-table-compare {
+    margin-bottom: @gap-5xxl;
+}
+
+.tariff-cell-wrapper,
+.tariff-name-wrapper {
+    display: flex;
+    justify-content: end;
+    gap: @gap-2m;
+}
+
+.tariff-cell-wrapper {
+    margin-bottom: @gap-m;
+
+    .cell-title {
+        flex: 1;
+        text-align: left;
+        line-height: @font-line-m;
+    }
+
+    .cell-icon,
+    .cell-icon-disabled {
+        max-width: (@rem * 56);
+        width: 100%;
+
+        font-size: (@rem * 16);
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .cell-icon-disabled {
+        color: @app-text-color-disabled;
+    }
+}
+
+.tariff-name-wrapper {
+    margin-bottom: @gap-xl;
+
+    .tariff-name {
+        padding: @gap-3xs;
+        max-width: (@rem * 56);
+        width: 100%;
+
+        font-size: @font-size-s;
+        line-height: @font-line-m;
+
+        text-align: center;
+    }
+
+    .active {
+        font-weight: 500;
+    }
+
+    .active-icon {
+        margin-left: @gap-3xs;
+        color: @app-result-success;
+    }
+
+    .tariff-name:nth-child(1) {
+        background-color: @app-devider;
+    }
+
+    .tariff-name:nth-child(2) {
+        background-color: @app-header-background-color;
+        color: @app-active-color-tariff;
+    }
+}

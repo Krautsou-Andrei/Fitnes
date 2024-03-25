@@ -8,8 +8,10 @@ import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { HomePage } from '@pages/home-page';
 import { NotFoundPage } from '@pages/not-fount-page';
+import { ProfilePage } from '@pages/profile-page';
 import { RegisterPage } from '@pages/register-page';
 import { ResultPage } from '@pages/result-page';
+import { SettingsPage } from '@pages/settings-page';
 import { TrainingPage } from '@pages/training-page';
 
 import { AuthGuard, GuestGuard, ResponseGuard } from '@features/guard-router';
@@ -32,6 +34,8 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.BASE} element={<Navigate to={PathConfig.HOME} />} />
                 <Route path={PathConfig.HOME} element={<HomePage />} />
+                <Route path={PathConfig.PROFILE} element={<ProfilePage />} />
+                <Route path={PathConfig.SETTINGS} element={<SettingsPage />} />
             </Route>
             <Route
                 element={

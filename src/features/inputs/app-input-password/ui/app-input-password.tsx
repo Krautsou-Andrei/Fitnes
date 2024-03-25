@@ -10,14 +10,24 @@ import styles from './app-input-password.module.less';
 
 type AppInputPasswordProps = {
     autoComplete: string;
-    classNames?: string;
-    dataTestId: string;
-    title?: string;
     type: InputPasswordType;
+    classNames?: string;
+    dataTestId?: string;
+    isRequire?: boolean;
+    title?: string;
+    help?: string;
 };
 
-export function AppInputPassword({ autoComplete, classNames, title, type, dataTestId }: AppInputPasswordProps) {
-    const rules = validatePasswordRules(type);
+export function AppInputPassword({
+    autoComplete,
+    title,
+    classNames,
+    dataTestId,
+    isRequire,
+    type,
+    help,
+}: AppInputPasswordProps) {
+    const rules = validatePasswordRules(type, isRequire);
 
     return (
         <Form.Item
@@ -25,6 +35,7 @@ export function AppInputPassword({ autoComplete, classNames, title, type, dataTe
             label={LayoutConfig.INPUT_TYPE_PASSWORD}
             name={LayoutConfig.INPUT_TYPE_PASSWORD}
             rules={rules}
+            help={help}
         >
             <Input.Password
                 placeholder={title ? title : LayoutConfig.INPUT_TEXT_PASSWORD}

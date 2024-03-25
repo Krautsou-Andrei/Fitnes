@@ -1,0 +1,27 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.upload-button {
+    padding: @gap-2m @gap-m;
+    color: @app-text-color-secondary;
+    line-height: @font-line-m;
+
+    border: 0;
+    background: transparent;
+
+    .media-xs({
+        padding: @gap-2s @gap-xl;
+        border: (@rem *1) solid @app-border-color-primary;
+        border-radius: (@rem *2 )
+
+    });
+
+    .button-text {
+        margin-top: @gap-xs;
+
+        .media-xs({
+            margin-left: @gap-2s;
+            color: @app-text-color-primary;
+        });
+    }
+}

@@ -1,0 +1,88 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.app-drawer {
+    :global(.ant-drawer-content-wrapper) {
+        width: @app-width-drawer !important;
+
+        .media-xs({
+            margin-top: @gap-7xxl;
+            border-radius: (@rem *24) (@rem *24) 0 0;
+            width: 100vw !important;
+        });
+
+        .active-tariff-title {
+            width: 100%;
+            padding-top: @gap-2m;
+            padding-bottom: @gap-2m;
+
+            text-align: center;
+            font-size: @font-size-m;
+            line-height: @font-line-m;
+            font-weight: 500;
+
+            background-color: @app-header-background-color;
+        }
+
+        :global(.ant-drawer-content) {
+            .media-xs({               
+                border-radius: (@rem *24) (@rem *24) 0 0;                
+            });
+        }
+
+        :global(.ant-drawer-header) {
+            padding: @gap-xl @gap-4xl @gap-m;
+
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            border-bottom: none;
+
+            :global(.ant-drawer-header-title) {
+                flex: unset;
+            }
+
+            :global(.ant-drawer-extra) {
+                :global(.ant-typography) {
+                    margin-bottom: 0;
+                    line-height: @font-line-m;
+                    font-weight: 500;
+                }
+            }
+
+            :global(.ant-drawer-close) {
+                margin-right: 0;
+                padding: 0;
+            }
+        }
+
+        :global(.ant-drawer-footer) {
+            padding: @gap-s @gap-4xl;
+        }
+    }
+
+    :global(.ant-drawer-body) {
+        padding: 0 @gap-4xl @gap-4xl;
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .media-xs(
+            {
+                padding: 0 @gap-m @gap-m;
+            }
+        );
+
+        .empty {
+            height: (@rem * 24);
+        }
+
+        .form-wrapper {
+            padding-top: @gap-xl;
+            padding-bottom: @gap-xl;
+
+            flex: 1;
+        }
+    }
+}

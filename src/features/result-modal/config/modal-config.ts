@@ -16,7 +16,12 @@ export const modalCofig: ModalConfig = {
         desciption: 'Что-то пошло не так. Попробуйте ещё раз.',
         title: 'Данные не сохранились',
     },
-    [ModalTypeConfig.ERROR_ADD_TRAINING]: {        
+    [ModalTypeConfig.ERROR_ADD_IMAGE]: {
+        buttonTitle: 'Закрыть',
+        desciption: 'Выберите файл размером менее 5 МБ.',
+        title: 'Файл слишком большой',
+    },
+    [ModalTypeConfig.ERROR_ADD_TRAINING]: {
         buttonTitle: 'Закрыть',
         desciption: 'Придётся попробовать ещё раз',
         title: 'При сохранении данных произошла ошибка',
@@ -24,13 +29,13 @@ export const modalCofig: ModalConfig = {
     [ModalTypeConfig.ERROR_GET_FEEDBACK]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
-        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
+        desciptionMobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
     [ModalTypeConfig.ERROR_GET_TRANING]: {
         buttonTitle: 'Назад',
         desciption: 'Произошла ошибка, попробуйте ещё раз.',
-        desciption_mobile: 'Произошла ошибка,\n попробуйте ещё раз.',
+        desciptionMobile: 'Произошла ошибка,\n попробуйте ещё раз.',
         title: 'Что-то пошло не так',
     },
     [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
@@ -38,15 +43,34 @@ export const modalCofig: ModalConfig = {
         desciption: 'Попробуйте ещё раз.',
         title: 'При открытии данных\n произошла ошибка',
     },
+    [ModalTypeConfig.ERROR_UPDATE_USER]: {
+        buttonTitle: 'Закрыть',
+        desciption: 'Придётся попробовать ещё раз',
+        title: 'При сохранении данных произошла ошибка',
+    },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         buttonTitle: 'Отлично',
         title: 'Отзыв успешно опубликован',
+    },
+    [ModalTypeConfig.SUCCESS_BUY_TARIFF]: {
+        buttonTitle: 'Не пришло письмо? Проверьте папку Спам.',
+        descriptionEmail: (email) =>
+            ` Мы отправили инструкцию для оплаты вам на\n e-mail ${email}. После подтверждения оплаты войдите\n вприложение заново.`,
+        title: 'Чек для оплаты у вас на почте',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
+        buttonTitle: 'Отлично',
+        title: 'Данные профиля успешно обновлены',
     },
 };
 
 export const modalResultConfig: ModalResultConfig = {
     [ModalTypeConfig.ERROR_ADD_FEEDBACK]: {
         type: ModalTypeConfig.ERROR_ADD_FEEDBACK,
+        status: 'error',
+    },
+    [ModalTypeConfig.ERROR_ADD_IMAGE]: {
+        type: ModalTypeConfig.ERROR_ADD_IMAGE,
         status: 'error',
     },
     [ModalTypeConfig.ERROR_ADD_TRAINING]: {
@@ -65,8 +89,20 @@ export const modalResultConfig: ModalResultConfig = {
         type: ModalTypeConfig.ERROR_GET_TRANING_LIST,
         status: '500',
     },
+    [ModalTypeConfig.ERROR_UPDATE_USER]: {
+        type: ModalTypeConfig.ERROR_UPDATE_USER,
+        status: 'error',
+    },
     [ModalTypeConfig.SUCCESS_ADD_FEEDBACK]: {
         type: ModalTypeConfig.SUCCESS_ADD_FEEDBACK,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_BUY_TARIFF]: {
+        type: ModalTypeConfig.SUCCESS_BUY_TARIFF,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
+        type: ModalTypeConfig.SUCCESS_UPDATE_USER,
         status: 'success',
     },
 };

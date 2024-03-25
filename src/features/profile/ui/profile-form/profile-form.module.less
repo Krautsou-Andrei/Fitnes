@@ -1,0 +1,62 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+:global(.ant-form).profile-form {
+    max-width: @app-width-form-profile;
+
+    legend {
+        margin-bottom: @gap-xl;
+        border-bottom: 0;
+
+        .media-xs({
+            margin-bottom: @gap-l;
+        });
+    }
+
+    .person-info-wrapper,
+    .private-info-wrapper {
+        width: 100%;
+    }
+
+    .person-info-wrapper {
+        margin-bottom: @gap-xl;
+        display: flex;
+        gap: @gap-m;
+
+        .media-xs({
+            margin-bottom:@gap-xs;
+            flex-direction: column-reverse;
+            gap: 0;
+        });
+
+        .inputs-wrapper {
+            width: 100%;
+
+            :global(.ant-form-item) {
+                margin-bottom: @gap-m;
+            }
+        }
+
+        :global(.ant-col.ant-form-item-label),
+        :global(.ant-col.ant-form-item-control) {
+            flex: unset;
+        }
+
+        :global(.ant-col.ant-form-item-label > label) {
+            font-size: @font-size-s;
+        }
+    }
+
+    .private-info-wrapper {
+        margin-bottom: @gap-11xl;
+        width: 100%;
+
+        :global(.ant-form-item) {
+            margin-bottom: @gap-4xl;
+        }
+
+        :global(.input-password) {
+            margin-bottom: @gap-10xl;
+        }
+    }
+}

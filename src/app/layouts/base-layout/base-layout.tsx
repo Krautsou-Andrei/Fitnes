@@ -1,3 +1,5 @@
+import { useBaseLayout } from './hooks/use-base-layout';
+
 import { AppSider } from '@widgets/app-sider';
 import { AppHeader } from '@widgets/app-header';
 import { AppFooter } from '@widgets/app-footer';
@@ -13,7 +15,8 @@ type BaseLayoutProps = {
 };
 
 export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
-    const { isFeedback } = usePageIsEqual();
+    useBaseLayout();
+    const { isFeedback, isProfile, isSettings } = usePageIsEqual();
 
     return (
         <AppLayout
@@ -26,7 +29,7 @@ export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
                     className={isNoTitle && isFeedback ? styles['header-sticky'] : ''}
                 />
             }
-            footerSlot={isNoFooter ? null : <AppFooter />}
+            footerSlot={isNoFooter || isProfile || isSettings ? null : <AppFooter />}
         />
     );
 }

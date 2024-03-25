@@ -1,4 +1,4 @@
-import { Avatar, Rate } from 'antd';
+import { Avatar, Image, Rate } from 'antd';
 import { Typography } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -32,7 +32,11 @@ export function FeedBackCard({
     return (
         <AppCard className={styles['feedback-card']}>
             <div className={styles['feedback-user']}>
-                <Avatar size={42} icon={imageSrc || <UserOutlined />}></Avatar>
+                {imageSrc ? (
+                    <Image src={imageSrc} width={42} height={42} className={styles.image} />
+                ) : (
+                    <Avatar size={42} icon={<UserOutlined />}></Avatar>
+                )}
                 <div className={styles['feedback-user__name']}>
                     <Text>{firstName}</Text>
                     {lastName && <Text>{lastName}</Text>}

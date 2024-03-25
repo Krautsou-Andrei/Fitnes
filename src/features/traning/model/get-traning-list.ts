@@ -20,6 +20,7 @@ export const getTraningListThunk = createAsyncThunk<void, void, { state: RootSta
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 dispatch(resultErrorFetch(error, EventApiConfig.TRAINING_GET_LIST_NAME));
+                dispatch(sessionActions.setIsError(true));
             }
 
             throw new Error('Unknown error');

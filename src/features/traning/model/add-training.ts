@@ -27,6 +27,7 @@ export const addTraningThunk = createAsyncThunk<
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 dispatch(resultErrorFetch(error, EventApiConfig.TRAINING_ADD));
+                dispatch(sessionActions.setIsError(true));
                 return rejectWithValue(error);
             }
 

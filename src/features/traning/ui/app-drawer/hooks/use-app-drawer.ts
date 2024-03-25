@@ -1,13 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { selectCreateTraining, selectIsEdit, trainingActions } from '@entities/training';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
-export function useAppDrawer() {
+export function useAppDrawer(isOpen: boolean) {
     const { exercises } = useAppSelector(selectCreateTraining);
     const isEdit = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
 
     const [checkedExersices, setCheckedExercises] = useState<number[]>([]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen]);
 
     const addExercise = () => {
         dispatch(trainingActions.addDefaultExercises());

@@ -38,6 +38,35 @@
     }
 
     .setting-traning-page {
-       float: right;
+        float: right;
+    }
+}
+
+:global(.ant-layout-header).app-header.app-header-profile {
+    padding-bottom: @gap-l;
+
+    .content {
+        align-items: center;
+
+        .media-tabtet({
+            align-items: flex-start;
+        });
+
+        .setting-profile-page {
+            .media-tabtet({
+                margin-top: @gap-2xl;
+            });
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: 0;
+            font-weight: 500;
+
+            .media-tabtet({
+                font-size: @font-size-2m;
+                line-height: @font-line-m;
+                font-weight: 400 ;
+            });
+        }
     }
 }

@@ -1,0 +1,60 @@
+@import '@shared/styles/constants';
+
+:global(.ant-drawer-body) {
+    .form-tariff {
+        padding-top: @gap-s;
+        padding-bottom: @gap-s;
+
+        .form-tariff-title {
+            display: block;
+            margin-bottom: @gap-xl;
+
+            font-size: @font-size-2m;
+            line-height: @font-line-m;
+            font-weight: 700;
+        }
+
+        .radio-label {
+            padding: @gap-2xs 0;
+            margin: 0;
+
+            width: 100%;
+
+            flex-direction: row-reverse;
+
+            line-height: @font-line-m;
+
+            span:nth-child(2) {
+                padding: 0;
+                flex: 1;
+            }
+
+            :global(.ant-radio) {
+                margin-left: @gap-l;
+                margin-right: @gap-l;
+            }
+
+            .radio-label-title {
+                display: flex;
+
+                div:nth-child(1) {
+                    flex: 1;
+                }
+
+                div:nth-child(2) {
+                    width: (@rem * 56);
+                }
+            }
+        }
+
+        :global(.ant-space.ant-space-vertical) {
+            gap: @gap-m !important;
+        }
+
+        :global(.ant-space-item),
+        :global(.ant-radio-group),
+        :global(.ant-space.ant-space-vertical) {
+            width: 100%;
+        }
+    }
+}
