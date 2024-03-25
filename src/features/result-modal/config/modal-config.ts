@@ -18,7 +18,7 @@ export const modalCofig: ModalConfig = {
     },
     [ModalTypeConfig.ERROR_ADD_IMAGE]: {
         buttonTitle: 'Закрыть',
-        desciption: 'Выберите файл размером менее 5МБ.',
+        desciption: 'Выберите файл размером менее 5 МБ.',
         title: 'Файл слишком большой',
     },
     [ModalTypeConfig.ERROR_ADD_TRAINING]: {

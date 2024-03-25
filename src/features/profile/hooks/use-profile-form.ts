@@ -17,6 +17,7 @@ import { LayoutConfig } from '@shared/config';
 import { StatusError } from '@shared/api';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { config, getInitialAvatar, showErrorForDevelop } from '@shared/lib';
+import { sessionActions } from '@entities/session';
 
 export function useProfileForm() {
     const [form] = Form.useForm();
@@ -48,13 +49,14 @@ export function useProfileForm() {
         const passwordConfirm = form.getFieldValue(LayoutConfig.INPUT_TEXT_PASSWORD_CONFIRM);
 
         if (avatar?.file?.status === 'error') {
-            if (avatar.file.response.statusCode === StatusError.ERROR_409) {
+            if (avatar.file.error.status === StatusError.ERROR_409) {
+                dispatch(sessionActions.setIsError(true));
                 dispatch(
                     resultModalActions.setResultModal({
                         isOpen: false,
                         typeModal: {
-                            type: modalResultConfig[ModalTypeConfig.ERROR_ADD_TRAINING].type,
-                            status: modalResultConfig[ModalTypeConfig.ERROR_ADD_TRAINING].status,
+                            type: modalResultConfig[ModalTypeConfig.ERROR_ADD_IMAGE].type,
+                            status: modalResultConfig[ModalTypeConfig.ERROR_ADD_IMAGE].status,
                         },
                     }),
                 );

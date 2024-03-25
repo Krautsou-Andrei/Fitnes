@@ -1,7 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef } from 'react';
 import { push } from 'redux-first-history';
-import { Modal, ModalProps, notification } from 'antd';
-import { CheckCircleFilled, CloseCircleOutlined } from '@ant-design/icons';
+import { Modal, ModalProps } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 import { configButton, configDescription, configIconClose, configTitle } from './config';
 import { ModalTypeConfig, modalCofig, modalResultConfig } from '../config';
@@ -12,9 +12,11 @@ import { getTraningListThunk } from '@features/traning/@ex/result-modal';
 
 import { feedbackActions } from '@entities/feedbacks';
 import { selectGetUser } from '@entities/profile';
+import { sessionActions } from '@entities/session';
+import { selectIsError } from '@entities/session/model/slice';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
-import { PathConfig } from '@shared/config';
+import { DataTestIdConfig, PathConfig } from '@shared/config';
 import { showErrorForDevelop, splitString, wrapSelectedText } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
@@ -30,10 +32,8 @@ export function useResultModal() {
     const { isOpen, typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
     const user = useAppSelector(selectGetUser);
+    const isError = useAppSelector(selectIsError);
     const dispatch = useAppDispatch();
-    const [api, contextHolder] = notification.useNotification();
-
-    const notificationChange = useRef<boolean>(false);
 
     const modalErrorTraning = useRef<modalErrorTraning | null>(null);
 
@@ -41,7 +41,11 @@ export function useResultModal() {
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
     const isImage = typeModal.type === ModalTypeConfig.ERROR_ADD_IMAGE;
     const isUpdateUser = typeModal.type === ModalTypeConfig.ERROR_UPDATE_USER;
-    const isSccessUpdateUser = typeModal.type === ModalTypeConfig.SUCCESS_UPDATE_USER;
+
+    const isSuccessBuyTariff = typeModal.type === ModalTypeConfig.SUCCESS_BUY_TARIFF;
+    const dataTestID = isSuccessBuyTariff
+        ? DataTestIdConfig.TARIFF_MODAL_SUCCESS
+        : DataTestIdConfig.MODAL_NO_REVIEW;
 
     const onClickClose = useCallback(async () => {
         if (
@@ -53,10 +57,6 @@ export function useResultModal() {
             return;
         }
 
-        if (isSccessUpdateUser) {
-            notificationChange.current = false;
-        }
-
         if (typeModal.type === ModalTypeConfig.SUCCESS_BUY_TARIFF) {
             try {
                 await dispatch(logoutThunk()).unwrap();
@@ -66,29 +66,9 @@ export function useResultModal() {
         }
 
         modalErrorTraning.current?.destroy();
+        dispatch(sessionActions.setIsError(false));
         dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
-    }, [dispatch, isSccessUpdateUser, typeModal.type]);
-
-    const openNotificationWithIcon = useCallback(
-        (type: 'success') => {
-            api[type]({
-                className: styles['success-update-user'],
-                icon: React.createElement(CheckCircleFilled, {
-                    style: {
-                        color: `${STYLES.ICON_COLOR_SUCCESS_UPDATE_USER}`,
-                        width: `${STYLES.SIZE_ICON_UPLOAD_USER}`,
-                        height: `${STYLES.SIZE_ICON_UPLOAD_USER}`,
-                    },
-                }),
-                duration: 0,
-                message: modalCofig[typeModal.type].title,
-                placement: 'bottom',
-                onClose: onClickClose,
-            });
-            notificationChange.current = true;
-        },
-        [api, onClickClose, typeModal.type],
-    );
+    }, [dispatch, typeModal.type]);
 
     const getTraningListAgayn = useCallback(() => {
         onClickClose();
@@ -98,7 +78,7 @@ export function useResultModal() {
     }, [dispatch, onClickClose]);
 
     useLayoutEffect(() => {
-        if (isAddTraining) {
+        if (isAddTraining && isError) {
             modalErrorTraning.current = Modal.error({
                 title: configTitle(modalCofig[typeModal.type].title),
                 content: React.createElement(
@@ -122,10 +102,10 @@ export function useResultModal() {
                 }
             };
         }
-    }, [isAddTraining, onClickClose, typeModal.type]);
+    }, [isAddTraining, isError, onClickClose, typeModal.type]);
 
     useLayoutEffect(() => {
-        if (isTraningList) {
+        if (isTraningList && isError) {
             modalErrorTraning.current = Modal.error({
                 className: styles['error-get-training-list'],
                 title: configTitle(modalCofig[typeModal.type].title),
@@ -155,10 +135,10 @@ export function useResultModal() {
                 }
             };
         }
-    }, [getTraningListAgayn, isTraningList, onClickClose, typeModal.type]);
+    }, [getTraningListAgayn, isError, isTraningList, onClickClose, typeModal.type]);
 
     useLayoutEffect(() => {
-        if (isImage || isUpdateUser) {
+        if ((isImage || isUpdateUser) && isError) {
             modalErrorTraning.current = Modal.error({
                 title: configTitle(modalCofig[typeModal.type].title),
                 content: React.createElement(
@@ -170,8 +150,11 @@ export function useResultModal() {
                     backdropFilter: STYLES.BLURE,
                     background: STYLES.BACKGROUND_BLURE,
                 },
-                okText: configButton(modalCofig[typeModal.type].buttonTitle),
-                onCancel: onClickClose,
+                okText: configButton(
+                    modalCofig[typeModal.type].buttonTitle,
+                    DataTestIdConfig.BIG_FILE_ERROR_CLOSE,
+                ),
+                onOk: onClickClose,
                 centered: true,
             });
 
@@ -181,19 +164,13 @@ export function useResultModal() {
                 }
             };
         }
-    }, [isImage, isUpdateUser, onClickClose, typeModal.type]);
+    }, [isError, isImage, isUpdateUser, onClickClose, typeModal.type]);
 
     const onClickAgayn = () => {
         onClickClose();
 
         dispatch(feedbackActions.setIsOpenModalNewFeedback(true));
     };
-
-    useLayoutEffect(() => {
-        if (isSccessUpdateUser) {
-            if (!notificationChange.current) openNotificationWithIcon('success');
-        }
-    }, [isSccessUpdateUser, openNotificationWithIcon]);
 
     let description;
 
@@ -223,6 +200,7 @@ export function useResultModal() {
     }
 
     return {
+        dataTestID,
         description,
         isOpen,
         isAddTraining,
@@ -232,6 +210,6 @@ export function useResultModal() {
         onClickClose,
         typeModal,
         modalErrorTraning,
-        contextHolder,
+        // contextHolder,
     };
 }
