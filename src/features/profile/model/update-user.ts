@@ -25,6 +25,7 @@ export const updateUserThunk = createAsyncThunk<
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 dispatch(resultErrorFetch());
+                dispatch(sessionActions.setIsError(true));
             }
             throw new Error('Unknown error');
         } finally {
