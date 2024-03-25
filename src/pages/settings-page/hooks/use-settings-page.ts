@@ -23,6 +23,8 @@ export function useSettingsPage() {
         month,
     ).padStart(2, '0')}`;
 
+    const isActivePro = Boolean(user.tariff);
+
     useEffect(() => {
         let ignore = false;
         if (!ignore) {
@@ -42,5 +44,5 @@ export function useSettingsPage() {
         setIsOpenDrawer((prev) => !prev);
     };
 
-    return { onClick, tariffList, isOpenDrawer, onToggleDrawer, activeDays };
+    return { onClick, tariffList, isOpenDrawer, isActivePro, onToggleDrawer, activeDays };
 }

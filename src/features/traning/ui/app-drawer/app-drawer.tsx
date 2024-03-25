@@ -37,6 +37,7 @@ export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: Ap
         <Drawer
             mask={false}
             data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT}
+            destroyOnClose={true}
             className={styles['app-drawer']}
             open={isOpen}
             onClose={onClickClose}

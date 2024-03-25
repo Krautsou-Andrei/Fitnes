@@ -21,7 +21,9 @@ export function Extra({ type, className, title, titleClose, onClick, onClickClos
             {type === ModalTypeConfig.SUCCESS_BUY_TARIFF ? (
                 <>
                     <div className='extra-buy-tariff'>{title}</div>
-                    <CloseOutlined className='extra-buy-tariff-close-icon' onClick={onClickClose} />
+                    <Button type='text' onClick={onClickClose} className='extra-buy-tariff-close-icon'>
+                        <CloseOutlined  />
+                    </Button>
                 </>
             ) : (
                 <>

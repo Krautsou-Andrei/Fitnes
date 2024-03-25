@@ -14,7 +14,8 @@ import styles from './settings-page.module.less';
 const { Title } = Typography;
 
 export function SettingsPage() {
-    const { tariffList, onClick, isOpenDrawer, onToggleDrawer, activeDays } = useSettingsPage();
+    const { tariffList, onClick, isOpenDrawer, onToggleDrawer, activeDays, isActivePro } =
+        useSettingsPage();
 
     const tariffs = [freeTariff, ...tariffList];
 
@@ -32,6 +33,7 @@ export function SettingsPage() {
                                     isActive={tariff.isActive}
                                     activeDays={activeDays}
                                     onClickButtonMore={onToggleDrawer}
+                                    isActivePro={isActivePro}
                                 />
                             );
                         })}
@@ -50,6 +52,7 @@ export function SettingsPage() {
                 isOpen={isOpenDrawer}
                 onClickClose={onToggleDrawer}
                 activeDays={activeDays}
+                isActivePro={isActivePro}
             />
         </Content>
     );

@@ -10,17 +10,17 @@ import styles from './table-compare.module.less';
 const { Text } = Typography;
 
 type TableCompareProps = {
-    activeDays?: string;
+    isActivePro?: boolean;
 };
 
-export function TableCompare({ activeDays }: TableCompareProps) {
+export function TableCompare({ isActivePro }: TableCompareProps) {
     return (
         <>
             <div className={styles['tariff-name-wrapper']}>
                 <div className={styles['tariff-name']}>{TariffTypeConfig.FREE.toUpperCase()}</div>
-                <div className={clsn(styles['tariff-name'], { [styles.active]: activeDays })}>
+                <div className={clsn(styles['tariff-name'], { [styles.active]: isActivePro })}>
                     {TariffTypeConfig.PRO.toUpperCase()}
-                    {activeDays && <CheckCircleOutlined className={styles['active-icon']} />}
+                    {isActivePro && <CheckCircleOutlined className={styles['active-icon']} />}
                 </div>
             </div>
             <div className={styles['tariff-table-compare']}>
