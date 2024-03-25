@@ -14,8 +14,15 @@ import styles from './settings-page.module.less';
 const { Title } = Typography;
 
 export function SettingsPage() {
-    const { tariffList, onClick, isOpenDrawer, onToggleDrawer, activeDays, isActivePro } =
-        useSettingsPage();
+    const {
+        tariffList,
+        onClick,
+        isQueryXS,
+        isOpenDrawer,
+        onToggleDrawer,
+        activeDays,
+        isActivePro,
+    } = useSettingsPage();
 
     const tariffs = [freeTariff, ...tariffList];
 
@@ -41,9 +48,12 @@ export function SettingsPage() {
                     <div className={styles['form-wrapper']}>
                         <SettingsForm />
                     </div>
-                    <div className=''>
-                        <NewFeedbackButton onClick={onClick} />
-                        <AppButtonFeedbacks buttonText={SettingsPageConfig.BUTTON_FEEDBACK_TEXT} />
+                    <div className={styles['buttons-wrapper']}>
+                        <NewFeedbackButton onClick={onClick} block={isQueryXS} />
+                        <AppButtonFeedbacks
+                            buttonText={SettingsPageConfig.BUTTON_FEEDBACK_TEXT}
+                            block={isQueryXS}
+                        />
                     </div>
                 </div>
             </AppContentWrapper>

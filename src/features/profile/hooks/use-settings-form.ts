@@ -6,12 +6,13 @@ import { updateUserThunk } from '../model/update-user';
 
 import { selectGetUser } from '@entities/profile';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
 
 export function useSettingsForm() {
     const [form] = Form.useForm();
     const user = useAppSelector(selectGetUser);
+    const { isQueryXS } = useAppMediaQuery();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -44,5 +45,5 @@ export function useSettingsForm() {
         }
     };
 
-    return { form, onHandleChange, user };
+    return { form, isQueryXS, onHandleChange, user };
 }

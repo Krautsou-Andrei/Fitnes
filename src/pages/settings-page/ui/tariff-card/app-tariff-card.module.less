@@ -1,10 +1,15 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
-.tariff-card {
+:global(.ant-card).tariff-card {
     max-width: @app-width-tariff-card;
     width: 100%;
 
     box-shadow: @app-box-shadow-card;
+
+    .media-xs({
+        max-width: 100%; 
+    });
 
     .button-more {
         padding: 0;
@@ -31,11 +36,15 @@
         padding-top: @gap-2xl;
         padding-bottom: @gap-2xl;
         height: (@rem * 96);
-        
 
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .media-xs({
+            padding: 0;
+            height: (@rem * 64);
+        });
 
         :global(.ant-typography).tariff-card-text-active {
             margin-bottom: 0;

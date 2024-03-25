@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Form, Switch, Tooltip, Typography } from 'antd';
 
@@ -8,12 +9,13 @@ import styles from './settings-options-item.module.less';
 const { Text } = Typography;
 
 type SettingsOptionsItemProps = {
-    titleOption: string;
+    titleOption: string | ReactNode;
     titleTooltip: string;
     name: string;
     isDisabled: boolean;
     dataTestIcon?: string;
     dataTestSwitch?: string;
+    isQueryXS: boolean;
 };
 
 export function SettingsOptionsItem({
@@ -23,6 +25,7 @@ export function SettingsOptionsItem({
     isDisabled,
     dataTestIcon,
     dataTestSwitch,
+    isQueryXS,
 }: SettingsOptionsItemProps) {
     return (
         <div className={styles['settings-option']}>
@@ -40,7 +43,11 @@ export function SettingsOptionsItem({
                 </Tooltip>
             </div>
             <Form.Item name={name} valuePropName='checked'>
-                <Switch disabled={isDisabled} data-test-id={dataTestSwitch}></Switch>
+                <Switch
+                    disabled={isDisabled}
+                    size={isQueryXS ? 'small' : 'default'}
+                    data-test-id={dataTestSwitch}
+                ></Switch>
             </Form.Item>
         </div>
     );

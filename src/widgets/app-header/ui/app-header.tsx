@@ -34,7 +34,8 @@ export function AppHeader({ className, isSimple }: AppHeaderProps) {
                         {isSettings ? <AppButtonArrow /> : null}
                         {title}
                     </Title>
-                    {isSettings ? null : <AppSettingsButton />}
+                    {isSettings || isProfile ? null : <AppSettingsButton />}
+                    {isProfile && <AppSettingsButton className={styles['setting-profile-page']} />}
                 </div>
             )}
             {isCalendar && <AppSettingsButton className={styles['setting-traning-page']} />}

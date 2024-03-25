@@ -1,23 +1,54 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
-.settings-page {
+:global(.ant-layout-content).settings-page {
     height: 100%;
     background-color: @app-settings-content-background;
+
+    .media-xs({
+        padding-right: 0;
+        padding-left: 0;
+    });
 
     .settings-content {
         max-width: @app-width-settings-content;
         width: 100%;
 
         .card-wrapper {
+            margin-bottom: @gap-xl;
             width: 100%;
 
             display: flex;
             gap: @gap-xl;
-            margin-bottom: @gap-xl;
+
+            .media-xs({
+                margin-bottom: (@rem *36);
+
+                flex-direction: column;
+                gap: @gap-s;
+            });
+
+            :global(.ant-card-cover > img) {
+                .media-xs({
+                    height: (@rem *195);
+                });
+            }
         }
 
         .form-wrapper {
             margin-bottom: @gap-10xxl;
+
+            .media-xs({
+                margin-bottom: @gap-6xl;
+            });
+        }
+
+        .buttons-wrapper {
+            .media-xs ({
+                :global(.ant-btn):nth-child(1) {
+                    margin-bottom: @gap-m;
+                }
+            });;  
         }
 
         :global(.ant-typography) {

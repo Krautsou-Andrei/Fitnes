@@ -6,6 +6,12 @@ export const initialAvatarError = {
     status: 'error' as UploadFileStatus,
 };
 
+export const initialAvatarErrorMobile = {
+    uid: '2',
+    name: '',
+    status: 'error' as UploadFileStatus,
+};
+
 export const enum ListTypeConfig {
     PICTURE = 'picture',
     PICTIRE_CARD = 'picture-card',
@@ -21,5 +27,7 @@ export const enum MaxCountConfig {
 
 export const enum AppInputUploadAvatarConfig {
     UPLOAD_BUTTON_TEXT = 'Загрузить фото профиля',
+    UPLOAD_BUTTON_TEXT_MOBILE = 'Загрузить',
+    UPLOAD_PHOTO_TEXT = 'Загрузить фото профиля::',
     UPLOAD_STATUS_LOADING = 'Загружаем',
 }

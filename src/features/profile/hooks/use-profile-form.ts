@@ -15,7 +15,7 @@ import { RequestUserUpdateBody, selectGetUser } from '@entities/profile';
 
 import { LayoutConfig } from '@shared/config';
 import { StatusError } from '@shared/api';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { config, getInitialAvatar, showErrorForDevelop } from '@shared/lib';
 import { sessionActions } from '@entities/session';
 
@@ -23,6 +23,7 @@ export function useProfileForm() {
     const [form] = Form.useForm();
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectGetUser);
+    const {isQueryXS} = useAppMediaQuery()
     const [isDisabledSubmit, setIsDisabledSubmit] = useState<boolean>(true);
     const [isPassword, setIsPassword] = useState<boolean>(false);
 
@@ -121,6 +122,7 @@ export function useProfileForm() {
         isDisabledSubmit,
         isPassword,
         isImage,
+        isQueryXS,
         initialAvatar,
         validateForm,
         onFinish,

@@ -6,13 +6,19 @@ import { SettingsPageConfig } from '../config';
 import { getTariffListThunk } from '@features/profile/model/get-tariff-list';
 import { selectGetTariffList, selectGetUser } from '@entities/profile';
 
-import { useAppDispatch, useAppSelector, useOpenNewFeedbackModal } from '@shared/hooks';
+import {
+    useAppDispatch,
+    useAppMediaQuery,
+    useAppSelector,
+    useOpenNewFeedbackModal,
+} from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
 
 export function useSettingsPage() {
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectGetUser);
     const tariffList = useAppSelector(selectGetTariffList);
+    const { isQueryXS } = useAppMediaQuery();
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
     const date = moment(user.tariff?.expired);
@@ -44,5 +50,13 @@ export function useSettingsPage() {
         setIsOpenDrawer((prev) => !prev);
     };
 
-    return { onClick, tariffList, isOpenDrawer, isActivePro, onToggleDrawer, activeDays };
+    return {
+        onClick,
+        tariffList,
+        isQueryXS,
+        isOpenDrawer,
+        isActivePro,
+        onToggleDrawer,
+        activeDays,
+    };
 }

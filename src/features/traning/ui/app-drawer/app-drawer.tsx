@@ -31,8 +31,8 @@ export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: Ap
         exercises,
         isEdit,
         onSetCheckedExercises,
-    } = useAppDrawer();
-  
+    } = useAppDrawer(isOpen);
+
     return (
         <Drawer
             mask={false}

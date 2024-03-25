@@ -20,8 +20,16 @@ import styles from './profile-form.module.less';
 const { Title } = Typography;
 
 export function ProfileForm() {
-    const { form, initialAvatar, isDisabledSubmit, isImage, isPassword, validateForm, onFinish } =
-        useProfileForm();
+    const {
+        form,
+        initialAvatar,
+        isDisabledSubmit,
+        isQueryXS,
+        isImage,
+        isPassword,
+        validateForm,
+        onFinish,
+    } = useProfileForm();
 
     return (
         <Form
@@ -77,6 +85,7 @@ export function ProfileForm() {
                 />
             </div>
             <Button
+                block={isQueryXS}
                 className={styles.button}
                 type='primary'
                 htmlType='submit'

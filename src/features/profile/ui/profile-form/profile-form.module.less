@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-form).profile-form {
     max-width: @app-width-form-profile;
@@ -6,6 +7,10 @@
     legend {
         margin-bottom: @gap-xl;
         border-bottom: 0;
+
+        .media-xs({
+            margin-bottom: @gap-l;
+        });
     }
 
     .person-info-wrapper,
@@ -18,6 +23,12 @@
         display: flex;
         gap: @gap-m;
 
+        .media-xs({
+            margin-bottom:@gap-xs;
+            flex-direction: column-reverse;
+            gap: 0;
+        });
+
         .inputs-wrapper {
             width: 100%;
 
@@ -25,10 +36,19 @@
                 margin-bottom: @gap-m;
             }
         }
+
+        :global(.ant-col.ant-form-item-label),
+        :global(.ant-col.ant-form-item-control) {
+            flex: unset;
+        }
+
+        :global(.ant-col.ant-form-item-label > label) {
+            font-size: @font-size-s;
+        }
     }
 
     .private-info-wrapper {
-        margin-bottom:@gap-11xl;
+        margin-bottom: @gap-11xl;
         width: 100%;
 
         :global(.ant-form-item) {

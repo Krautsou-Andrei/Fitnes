@@ -23,7 +23,7 @@ type AppDrawerProps = {
 
 export function AppDrawerTariff({ isOpen, onClickClose, activeDays, isActivePro }: AppDrawerProps) {
     const { form, isDisabledSubmit, tariffList, onHandleChange, onHandleFinish } =
-        useAppDrawerTariff();
+        useAppDrawerTariff(isOpen);
 
     return (
         <Drawer

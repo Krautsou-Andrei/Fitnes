@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form } from 'antd';
 
 import { SettingsConfig } from '@features/profile/config';
@@ -8,11 +8,22 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { buyTariffThunk } from '@features/profile/model/buy-tariff';
 import { showErrorForDevelop } from '@shared/lib';
 
-export function useAppDrawerTariff() {
+export function useAppDrawerTariff(isOpen: boolean) {
     const dispatch = useAppDispatch();
     const [form] = Form.useForm();
     const tariffList = useAppSelector(selectGetTariffList);
     const [isDisabledSubmit, setIsDisablesSubmit] = useState<boolean>(true);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen]);
 
     const onHandleChange = () => {
         setIsDisablesSubmit(false);

@@ -16,6 +16,7 @@ export const SettingsOptionsConfig = [
         ID: 1,
         NAME: SettingsConfig.INPUT_TYPE_FOR_JOINT_TRAINING,
         TITLE_SETTING: 'Открыт для совместных тренировок',
+        TITLE_SETTING_MOBILE: 'Открыт для совместных\n тренировок',
         TITLE_TOOLTIP: 'включеная функция позволит участвовать в совместных тренировках',
         DATA_TEST_SWITCH: DataTestIdConfig.TARIFF_TRAININGS,
         DATA_TEST_ICON: DataTestIdConfig.TARIFF_TRAININGS_ICON,
