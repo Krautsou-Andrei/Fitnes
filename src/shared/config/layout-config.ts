@@ -42,5 +42,6 @@ export const enum LayoutConfig {
     TITLE_PROFILE = 'Профиль',
     TITLE_SETTING = 'Настройки',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
+    TRAINING = 'Тренировки',
     USER = 'Пользователь',
 }

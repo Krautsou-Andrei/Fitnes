@@ -16,7 +16,7 @@ type BaseLayoutProps = {
 
 export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
     useBaseLayout();
-    const { isFeedback, isProfile, isSettings } = usePageIsEqual();
+    const { isFeedback, isProfile, isSettings, isTrainings } = usePageIsEqual();
 
     return (
         <AppLayout
@@ -29,7 +29,7 @@ export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
                     className={isNoTitle && isFeedback ? styles['header-sticky'] : ''}
                 />
             }
-            footerSlot={isNoFooter || isProfile || isSettings ? null : <AppFooter />}
+            footerSlot={isNoFooter || isProfile || isSettings || isTrainings ? null : <AppFooter />}
         />
     );
 }
