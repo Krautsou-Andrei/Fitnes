@@ -2,9 +2,9 @@ import { Button, Drawer, Space, Typography } from 'antd';
 import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { useAppDrawer } from './hooks';
+import { ExerciseForm } from '../exercise-form';
 
 import { TrainingFormExerciseConfig } from '@features/traning/config';
-import { ExerciseForm } from './ui/exercise-form';
 
 import { CreateTraining } from '@entities/training';
 
