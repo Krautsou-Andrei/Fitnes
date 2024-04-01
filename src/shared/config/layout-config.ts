@@ -35,6 +35,7 @@ export const enum LayoutConfig {
     INPUT_TYPE_PASSWORD_CONFIRM = 'confirmPassword',
     LINK_FORGOT_PASSWORD = 'Забыли пароль?',
     NO_ACTIVE_TRAINING = 'Нет активных тренировок',
+    NO_CREATED_TRAININGS = 'У вас ещё нет созданных тренировок',
     TITLE_FORM_CHANGE_PASSWORD = 'Восстановление аккауанта',
     TITLE_MODAL_CHANGE_EXERCISE = 'Выбор типа тренировки',
     TITLE_MODAL_TRAINING_DATE = 'Тренировки на ',

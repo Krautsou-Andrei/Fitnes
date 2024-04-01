@@ -1,0 +1,29 @@
+@import '@shared/styles/constants';
+
+.no-workout {
+    display: flex;
+    flex-direction: column;
+    gap: @gap-l;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+        min-height: (@rem * 291);
+
+        display: flex;
+        justify-content: center;
+        align-items: end;
+
+        :global(.ant-typography) {
+            padding-bottom: @gap-13xl;
+
+            font-size: @font-size-xl;
+            line-height: @font-line-m;
+            font-weight: 500;
+        }
+    }
+
+    :global(.ant-btn) {
+        height: @height-xl;
+    }
+}

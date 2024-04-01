@@ -9,6 +9,7 @@ import { AppGuestContentPadding } from './app-guest-content-padding/app-guest-co
 import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
+import { AppNoTrainings } from './app-no-trainings/app-no-trainings';
 import { AppLayout } from './app-layout/app-layout';
 import { AppLoader } from './app-loader/app-loader';
 import { AppPortal } from './app-portal/app-portal';
@@ -30,6 +31,7 @@ export {
     AppIcon,
     AppForm,
     AppMenu,
+    AppNoTrainings,
     AppLayout,
     AppLoader,
     AppPortal,

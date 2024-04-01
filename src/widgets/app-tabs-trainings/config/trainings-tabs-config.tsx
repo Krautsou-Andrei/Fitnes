@@ -1,10 +1,11 @@
+import { AppMyWorkouts } from '@features/my-trainings/ui';
 import { ItemsTabs } from '@shared/ui';
 
 export const trainingsTabsConfig: ItemsTabs[] = [
     {
         label: 'Мои тренировки',
         key: 'workouts',
-        children: <div />,
+        children: <AppMyWorkouts />,
     },
     {
         label: 'Совместные тренировки',
