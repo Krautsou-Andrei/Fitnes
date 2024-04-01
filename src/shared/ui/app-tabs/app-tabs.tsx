@@ -8,11 +8,12 @@ import { ItemsTabs } from './model/types';
 import styles from './app-tabs.module.less';
 
 type AppTabsProps = {
-    className?: string;
     items: ItemsTabs[];
+    className?: string;
+    onChange?: (key: string) => void;
 };
 
-export function AppTabs({ className, items }: AppTabsProps) {
+export function AppTabs({ className, items, onChange }: AppTabsProps) {
     const { pathname, onTabClick } = useAppTabs();
 
     return (
@@ -20,11 +21,9 @@ export function AppTabs({ className, items }: AppTabsProps) {
             defaultActiveKey={pathname}
             centered
             className={clsn(styles.tabs, className)}
-            onTabClick={onTabClick}
-            items={items.map((tab) => ({
-                label: tab.tab,
-                key: tab.key,
-            }))}
+            onTabClick={onChange ? undefined : onTabClick}
+            onChange={onChange}
+            items={items}
         />
     );
 }

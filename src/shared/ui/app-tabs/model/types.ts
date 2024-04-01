@@ -1,4 +1,7 @@
+import { ReactNode } from 'react';
+
 export type ItemsTabs = {
     key: string;
-    tab: string;
+    label: string;
+    children?: ReactNode;
 };

@@ -1,0 +1,26 @@
+@import '@shared/styles/constants';
+
+.tabs-my-trainings {
+    :global(.ant-tabs-nav-list) {
+        padding-right: @gap-4xl;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    :global(.ant-tabs-tab) {
+        padding: 0;
+        margin-left: @gap-s;
+        margin-right: @gap-s;
+
+        width: fit-content;
+        flex: unset;
+        font-weight: 500;
+
+        font-size: @font-size-xl;
+    }
+
+    :global(.ant-tabs-tab + .ant-tabs-tab) {
+        margin-left: @gap-s;
+        margin-right: @gap-s;
+    }
+}
