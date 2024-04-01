@@ -20,4 +20,5 @@ export const enum PathConfig {
     RESULT_SUCCESS = '/result/success',
     RESULT_SUCCESS_CHANGE_PASSWORD = '/result/success-change-password',
     SETTINGS = '/settings',
+    TRAINING = '/training',
 }
