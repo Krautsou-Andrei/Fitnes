@@ -7,6 +7,7 @@ import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { HomePage } from '@pages/home-page';
+import { MyTrainingsPage } from '@pages/my-trainings-page';
 import { NotFoundPage } from '@pages/not-fount-page';
 import { ProfilePage } from '@pages/profile-page';
 import { RegisterPage } from '@pages/register-page';
@@ -48,6 +49,7 @@ export function AppRouter() {
             >
                 <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
                 <Route path={PathConfig.CALENDAR} element={<TrainingPage />} />
+                <Route path={PathConfig.TRAINING} element={<MyTrainingsPage />} />
             </Route>
             <Route
                 element={
