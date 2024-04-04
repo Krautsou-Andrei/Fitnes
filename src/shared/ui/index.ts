@@ -6,6 +6,7 @@ import { AppContentWrapper } from './app-content-wrapper/app-content-wrapper';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
 import { AppGuestContent } from './app-guest-content/app-guest-content';
 import { AppGuestContentPadding } from './app-guest-content-padding/app-guest-content-padding';
+import { AppHeighlightText } from './app-heighlight-text/app-heightlight-text';
 import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
@@ -15,6 +16,7 @@ import { AppLoader } from './app-loader/app-loader';
 import { AppPortal } from './app-portal/app-portal';
 import { AppTabs } from './app-tabs/app-tabs';
 import { AppTrainingDay } from './app-training-day/app-training-day';
+import { mapBadge } from './app-badge/config';
 
 export type * from './app-icon/types';
 export type * from './app-tabs/model/types';
@@ -28,6 +30,7 @@ export {
     AppErrorFallback,
     AppGuestContent,
     AppGuestContentPadding,
+    AppHeighlightText,
     AppIcon,
     AppForm,
     AppMenu,
@@ -37,4 +40,5 @@ export {
     AppPortal,
     AppTabs,
     AppTrainingDay,
+    mapBadge,
 };
