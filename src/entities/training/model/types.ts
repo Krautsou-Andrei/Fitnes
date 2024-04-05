@@ -1,3 +1,5 @@
+import { string } from 'zod';
+
 export type Exercises = {
     name: string;
     replays: number;
@@ -7,6 +9,13 @@ export type Exercises = {
     isImplementation?: boolean;
 };
 
+export type Parametrs = {
+    repeat?: boolean;
+    period?: number;
+    jointTraining?: boolean;
+    participants?: [string];
+};
+
 export type TrainingType = {
     id: string;
     name: string;
@@ -14,12 +23,7 @@ export type TrainingType = {
     isImplementation: boolean;
     userId: string;
     exercises: Exercises[] | [];
-    parameters?: {
-        repeat: boolean;
-        period: number;
-        jointTraining: boolean;
-        participants?: [string];
-    };
+    parameters?: Parametrs;
 };
 
 export type TrainingName = {
@@ -33,9 +37,22 @@ export type CreateTraining = {
     date: string;
     isImplementation: boolean;
     exercises: Exercises[];
+    parameters?: Parametrs;
 };
 
 export type Training = {
     date: string;
     training: TrainingType;
 };
+
+export type Pal = {
+    id: string;
+    name: string;
+    trainingType: string;
+    imageSrc: string | null;
+    avgWeightInWeek: number;
+    inviteId: string;
+    status: string;
+};
+
+export type TrainingBestType = { trainingType?: string; status?: string | null };
