@@ -5,6 +5,8 @@ export const enum EventApiConfig {
     CONFIRM_EMAIL = 'authentification/confirm-email',
     FEEDBACK_ADD = 'feddback/add',
     FEEDBACKS_GET = 'feedbacks/get',
+    INVAITE = 'invite',
+    INVATE_SEND = 'invite/send',
     INVALIDATE_ACCESS_TOKEN = 'session/invalidateAccessToken',
     LOGIN = 'authentication/login',
     LOGOUT = 'authentication/logout',
@@ -14,6 +16,9 @@ export const enum EventApiConfig {
     TRAINING_EDIT = 'training/edit',
     TRAINING_GET = 'training/get',
     TRAINING_GET_LIST_NAME = 'catalog/training-list',
+    TRAINING_GET_PALS = 'catalog/training-pals',
     USER = 'user/me',
+    USER_JOINT_TRAINING_LIST = 'catalogs/user-joint-training-list',
+    USER_JOINT_TRAINING_LIST_BEST = 'catalogs/user-joint-training-list-best',
     USER_UPDATE = 'user/update',
 }
