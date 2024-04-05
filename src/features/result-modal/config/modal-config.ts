@@ -58,9 +58,17 @@ export const modalCofig: ModalConfig = {
             ` Мы отправили инструкцию для оплаты вам на\n e-mail ${email}. После подтверждения оплаты войдите\n вприложение заново.`,
         title: 'Чек для оплаты у вас на почте',
     },
+    [ModalTypeConfig.SUCCESS_CREATE_WORKOUT]: {
+        buttonTitle: 'Отлично',
+        title: 'Новая тренировка успешно добавлена',
+    },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
         buttonTitle: 'Отлично',
         title: 'Данные профиля успешно обновлены',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_WORKOUT]: {
+        buttonTitle: 'Отлично',
+        title: 'Тренировка успешно обновлена',
     },
 };
 
@@ -101,8 +109,16 @@ export const modalResultConfig: ModalResultConfig = {
         type: ModalTypeConfig.SUCCESS_BUY_TARIFF,
         status: 'success',
     },
+    [ModalTypeConfig.SUCCESS_CREATE_WORKOUT]: {
+        type: ModalTypeConfig.SUCCESS_CREATE_WORKOUT,
+        status: 'success',
+    },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
         type: ModalTypeConfig.SUCCESS_UPDATE_USER,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_WORKOUT]: {
+        type: ModalTypeConfig.SUCCESS_UPDATE_WORKOUT,
         status: 'success',
     },
 };

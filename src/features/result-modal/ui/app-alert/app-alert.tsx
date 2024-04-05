@@ -14,7 +14,11 @@ export function AppAlert() {
     const { typeModal = modalResultConfig[ModalTypeConfig.SUCCESS_ADD_FEEDBACK] } =
         useAppSelector(selectResultModal);
 
-    if (typeModal.type !== ModalTypeConfig.SUCCESS_UPDATE_USER) {
+    if (
+        typeModal.type !== ModalTypeConfig.SUCCESS_UPDATE_USER &&
+        typeModal.type !== ModalTypeConfig.SUCCESS_CREATE_WORKOUT &&
+        typeModal.type !== ModalTypeConfig.SUCCESS_UPDATE_WORKOUT
+    ) {
         return;
     }
 

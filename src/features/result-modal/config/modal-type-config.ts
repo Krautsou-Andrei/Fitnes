@@ -8,5 +8,7 @@ export const enum ModalTypeConfig {
     ERROR_UPDATE_USER = 'error-update-user',
     SUCCESS_ADD_FEEDBACK = 'success-feedback',
     SUCCESS_BUY_TARIFF = 'success-buy-tariff',
+    SUCCESS_CREATE_WORKOUT = 'success-create-workout',
     SUCCESS_UPDATE_USER = 'success-update-user',
+    SUCCESS_UPDATE_WORKOUT = 'success-update-workout',
 }
