@@ -32,6 +32,7 @@ export function ExerciseForm({
         exerciseName,
         isChecked,
         isEditTraining,
+        isSelectPal,
         onChangeApproaches,
         onChangeExerciseName,
         onChangeReplays,
@@ -45,7 +46,7 @@ export function ExerciseForm({
         indexExercise,
         replaysDefault,
         weightDefault,
-    });    
+    });
 
     return (
         <div className={styles['exercise-form']}>
@@ -57,7 +58,7 @@ export function ExerciseForm({
                 onChange={onChangeExerciseName}
                 autoFocus={true}
                 addonAfter={
-                    isEditTraining && (
+                    (isEditTraining || isSelectPal) && (
                         <Checkbox
                             data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${indexExercise}`}
                             checked={isChecked}

@@ -124,7 +124,7 @@ export function AppDrawer({
                     <Button type='link' icon={<PlusOutlined />} size='small' onClick={addExercise}>
                         {TrainingFormExerciseConfig.BUTTON_ADD_EXERCISE}
                     </Button>
-                    {isEdit && (
+                    {(isEdit || Boolean(selectPalforTraining)) && (
                         <Button
                             className={styles['button-delete']}
                             type='link'

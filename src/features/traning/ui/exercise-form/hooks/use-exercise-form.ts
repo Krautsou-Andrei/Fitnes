@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
 import { ExercisesDefaultConfig } from '@features/traning/config';
-import { selectIsEdit, trainingActions } from '@entities/training';
+import { selectIsEdit, selectPal, trainingActions } from '@entities/training';
 
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
@@ -37,6 +37,7 @@ export function useExerciseForm({
     const [weight, setWeight] = useState<number>(weightDefault || ExercisesDefaultConfig.WEIGHT);
 
     const isChecked = checkedExersices.includes(indexExercise);
+    const isSelectPal = Boolean(useAppSelector(selectPal));
 
     const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -90,6 +91,7 @@ export function useExerciseForm({
         exerciseName,
         isChecked,
         isEditTraining,
+        isSelectPal,
         onChangeApproaches,
         onChangeExerciseName,
         onChangeReplays,
