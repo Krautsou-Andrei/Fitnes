@@ -1,7 +1,7 @@
 type AppHeighlightTextProps = {
     classNames: string;
-    searchParams: string;
     text: string;
+    searchParams?: string;
 };
 
 export function AppHeighlightText({ searchParams, text, classNames }: AppHeighlightTextProps) {

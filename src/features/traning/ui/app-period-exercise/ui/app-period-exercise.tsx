@@ -99,7 +99,8 @@ export function AppPeriodExercise({
             {!isSelect && (
                 <Select
                     className={styles.select}
-                    value={selectTrainingName || LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
+                    placeholder={LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
+                    value={selectTrainingName ? selectTrainingName : undefined}
                     options={selectOptions}
                     onChange={onSelectTraining}
                 />
@@ -128,10 +129,8 @@ export function AppPeriodExercise({
                     {isRepeat && (
                         <Select
                             className={styles.select}
-                            value={
-                                getPeriodFindNumber(createTraining.parameters?.period) ||
-                                TrainingFormExerciseConfig.SELECT_OPTION_PERIOD_DEFAULT
-                            }
+                            placeholder={TrainingFormExerciseConfig.SELECT_OPTION_PERIOD_DEFAULT}
+                            value={getPeriodFindNumber(createTraining.parameters?.period)}
                             options={getPeriodTitles()}
                             onChange={handlerSelectPeriod}
                         />

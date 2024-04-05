@@ -16,10 +16,10 @@ export const periodOptions: Period[] = [
 export const getPeriodTitles = () =>
     periodOptions.map((option) => ({ label: option.title, value: option.title }));
 
-export const getPeriodFindNumber = (period: number | null | undefined): string => {
+export const getPeriodFindNumber = (period: number | null | undefined): string | undefined => {
     const foundOption = periodOptions.find((option) => option.period === period);
 
-    return foundOption ? foundOption.title : '';
+    return foundOption ? foundOption.title : undefined;
 };
 
 export const getPeriodFindTitle = (title: string): number | undefined => {
