@@ -17,3 +17,13 @@ export type RequestInviteBody = {
     to: string;
     trainingId: string;
 };
+
+export type RequestSendAnswerBody = {
+    id: string;
+    status: string;
+};
+
+export type RequestRejectSend = {
+    id: string;
+    status: string;
+};

@@ -2,6 +2,8 @@ import {
     inviteApi,
     useGetInvitiesQuery,
     useLazyGetInvitiesQuery,
+    useRejectInvitieMutation,
+    useSendAnswerInvitieMutation,
     useSendInvitieMutation,
 } from './api/invite-api';
 
@@ -16,5 +18,7 @@ export {
     selectGetInvities,
     useGetInvitiesQuery,
     useLazyGetInvitiesQuery,
+    useRejectInvitieMutation,
+    useSendAnswerInvitieMutation,
     useSendInvitieMutation,
 };

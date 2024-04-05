@@ -18,6 +18,7 @@ import {
     useLazyGetTrainingQuery,
     Training,
     selectPal,
+    useLazyGetUserJointTrainingListQuery,
 } from '@entities/training';
 import { selectIsLoadingn, selectIsLoadingnCalendar } from '@entities/session';
 
@@ -35,6 +36,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const dispatch = useAppDispatch();
 
     const [gettraining] = useLazyGetTrainingQuery();
+    const [getJointTraining] = useLazyGetUserJointTrainingListQuery();
 
     const { isTrainings } = usePageIsEqual();
     const { isQueryXS } = useAppMediaQuery();
@@ -135,7 +137,11 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                                 to: selectPalForTraining.id,
                                 trainingId: result.training.id,
                             };
-                            dispatch(sendInvitieThunk(body));
+                            dispatch(sendInvitieThunk(body))
+                                .unwrap()
+                                .then(() => {
+                                    getJointTraining();
+                                });
                         }
                     });
             }

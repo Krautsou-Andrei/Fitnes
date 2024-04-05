@@ -1,7 +1,12 @@
 import { ApiEndpoints } from '../config/api-endpoints';
 import { mapInvite } from '../lib/map-invite';
 import type { Invite } from '../model/types';
-import type { InviteDto, RequestInviteBody } from './types';
+import type {
+    InviteDto,
+    RequestInviteBody,
+    RequestRejectSend,
+    RequestSendAnswerBody,
+} from './types';
 
 import { baseApi } from '@shared/api';
 import { PALS_TAG } from '@shared/api/tags';
@@ -24,7 +29,28 @@ export const inviteApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [PALS_TAG],
         }),
+        sendAnswerInvitie: build.mutation<Invite, RequestSendAnswerBody>({
+            query: (body) => ({
+                url: ApiEndpoints.INVITE,
+                method: 'PUT',
+                body,
+            }),
+            invalidatesTags: [PALS_TAG],
+        }),
+        rejectInvitie: build.mutation<Invite, RequestRejectSend>({
+            query: ({ id }) => ({
+                url: `${ApiEndpoints.INVITE}/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: [PALS_TAG],
+        }),
     }),
 });
 
-export const { useGetInvitiesQuery, useLazyGetInvitiesQuery, useSendInvitieMutation } = inviteApi;
+export const {
+    useGetInvitiesQuery,
+    useLazyGetInvitiesQuery,
+    useSendAnswerInvitieMutation,
+    useRejectInvitieMutation,
+    useSendInvitieMutation,
+} = inviteApi;
