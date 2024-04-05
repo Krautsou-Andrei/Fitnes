@@ -5,6 +5,7 @@ export const enum LayoutConfig {
     BUTTON_AUTHENTIFICATION_COOGLE = 'Войти через Google',
     BUTTON_ADD_TRAINING = 'Создать тренировку',
     BUTTON_CREATE_TRAINING = 'Создать тренировку',
+    BUTTON_NEW_TRAINING = 'Новая тренировка',
     BUTTON_RESET_ERROR_BIUNDARY = 'Вернуться на главную',
     BUTTON_REGISTER = 'Войти',
     BUTTON_REGISTER_GOOGLE = 'Регистрация через Google',

@@ -52,18 +52,36 @@ export function useExerciseForm({
     const onChangeApproaches = (value: number | null) => {
         if (value && value > 0) {
             setApproaches(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { approaches: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 
     const onChangeWeight = (value: number | null) => {
         if (value !== null && value >= 0) {
             setWeight(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { weight: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 
     const onChangeReplays = (value: number | null) => {
         if (value && value > 0) {
             setReplays(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { replays: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 

@@ -1,0 +1,35 @@
+@import '@shared/styles/constants';
+
+.period-exercise {
+    :global(.ant-col) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.is-training {
+    background-color: @colorZircon;
+}
+
+:global(.ant-picker) {
+    height: (@rem * 28);
+    width: 100%;
+}
+
+:global(.ant-select.ant-select-single).select {
+    height: (@rem * 28);
+    width: 100%;
+
+    :global(.ant-select-selector) {
+        height: (@rem * 28);
+
+        :global(.ant-select-selection-item),
+        :global(.ant-select-selection-search) {
+            line-height: (@rem * 26);
+        }
+
+        input {
+            line-height: (@rem * 16);
+        }
+    }
+}

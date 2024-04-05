@@ -1,9 +1,13 @@
+import { ReactNode } from 'react';
 import { Button, Drawer, Space, Typography } from 'antd';
 import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { useAppDrawer } from './hooks';
 import { ExerciseForm } from '../exercise-form';
+import { AppPeriodExercise } from '../app-period-exercise';
+import { AppPalInfo } from '../app-pal-info';
 
+import { SelectOptions } from '@features/traning/model/types';
 import { TrainingFormExerciseConfig } from '@features/traning/config';
 
 import { CreateTraining } from '@entities/training';
@@ -21,9 +25,26 @@ type AppDrawerProps = {
     isOpen: boolean;
     isOldDay: boolean;
     onClickClose: () => void;
+    buttonSave?: ReactNode;
+    title?: string;
+    isMyTrainings?: boolean;
+    selectTrainingName?: string;
+    selectOptions?: SelectOptions[];
+    onSelectTraining?: (value: string) => void;
 };
 
-export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: AppDrawerProps) {
+export function AppDrawer({
+    createTraining,
+    isOldDay,
+    isOpen,
+    onClickClose,
+    buttonSave,
+    title,
+    isMyTrainings,
+    selectTrainingName,
+    selectOptions,
+    onSelectTraining,
+}: AppDrawerProps) {
     const {
         addExercise,
         checkedExersices,
@@ -31,6 +52,7 @@ export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: Ap
         exercises,
         isEdit,
         onSetCheckedExercises,
+        selectPalforTraining,
     } = useAppDrawer(isOpen);
 
     return (
@@ -48,23 +70,42 @@ export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: Ap
                 <Space>
                     <PlusOutlined />
                     <Title level={4}>
-                        {isEdit
+                        {title
+                            ? title
+                            : isEdit
                             ? TrainingFormExerciseConfig.TITLE_DRAWER_EDIT
                             : TrainingFormExerciseConfig.TITLE_DRAWER}
                     </Title>
                 </Space>
             }
+            footer={buttonSave}
         >
             <div className={styles['form-wrapper']}>
-                <Space className={styles['title-exercise']}>
-                    <Space>
-                        <AppBadge name={createTraining.name} />
-                        <div>{createTraining.name}</div>
+                {isMyTrainings && selectOptions && onSelectTraining && (
+                    <>
+                        {selectPalforTraining && <AppPalInfo pal={selectPalforTraining} />}
+                        <AppPeriodExercise
+                            selectOptions={selectOptions}
+                            selectTrainingName={selectTrainingName}
+                            onSelectTraining={onSelectTraining}
+                        />
+                    </>
+                )}
+                {!isMyTrainings && (
+                    <Space className={styles['title-exercise']}>
+                        <Space>
+                            <AppBadge name={createTraining.name} />
+                            <div>{createTraining.name}</div>
+                        </Space>
+                        <div>
+                            {formatDate(
+                                createTraining.date,
+                                DateFormatConfig.FORMAT_DD_MN_YYYY_DOT,
+                            )}
+                        </div>
                     </Space>
-                    <div>
-                        {formatDate(createTraining.date, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT)}
-                    </div>
-                </Space>
+                )}
+
                 <div className={styles['exercises']}>
                     {exercises.map((exercise, index: number) => (
                         <ExerciseForm
@@ -97,7 +138,7 @@ export function AppDrawer({ createTraining, isOldDay, isOpen, onClickClose }: Ap
                     )}
                 </div>
             </div>
-            {isOldDay && (
+            {isOldDay && !isMyTrainings && (
                 <div className={styles.notification}>
                     {splitString(TrainingFormExerciseConfig.NOTIFICATION)}
                 </div>

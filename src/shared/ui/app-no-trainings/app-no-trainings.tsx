@@ -9,16 +9,19 @@ const { Text } = Typography;
 type AppNoTrainingsProps = {
     text: string;
     isTrainingsNames: boolean;
+    onClick: () => void;
 };
 
-export function AppNoTrainings({ text, isTrainingsNames }: AppNoTrainingsProps) {
+export function AppNoTrainings({ text, isTrainingsNames, onClick }: AppNoTrainingsProps) {
     return (
         <div className={styles['no-workout']}>
             <div className={styles['content']}>
                 <Text>{text}</Text>
             </div>
             {isTrainingsNames && (
-                <Button type='primary'>{LayoutConfig.BUTTON_CREATE_TRAINING}</Button>
+                <Button type='primary' onClick={onClick}>
+                    {LayoutConfig.BUTTON_CREATE_TRAINING}
+                </Button>
             )}
         </div>
     );
