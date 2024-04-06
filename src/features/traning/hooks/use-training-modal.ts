@@ -208,11 +208,17 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
 
     const onEditWorkout = (training: Training) => {
         setStateWorkout(training);
+        if (isOldDate(training.date)) {
+            dispatch(trainingActions.setIsImplementation(true));
+        }
         setIsOpenDrawer((prev) => !prev);
     };
 
     const onOpenEditWorkoutModal = (training: Training) => {
         setStateWorkout(training);
+        if (isOldDate(date)) {
+            dispatch(trainingActions.setIsImplementation(true));
+        }
         setIsOpenEditWorkoutgModal(true);
     };
 

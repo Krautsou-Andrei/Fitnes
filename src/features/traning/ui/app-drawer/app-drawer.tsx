@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Button, Drawer, Space, Typography } from 'antd';
-import { CloseOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { useAppDrawer } from './hooks';
 import { ExerciseForm } from '../exercise-form';
@@ -68,7 +68,7 @@ export function AppDrawer({
             }
             extra={
                 <Space>
-                    <PlusOutlined />
+                    {isEdit ? <EditOutlined /> : <PlusOutlined />}
                     <Title level={4}>
                         {title
                             ? title

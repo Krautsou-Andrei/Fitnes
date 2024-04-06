@@ -1,0 +1,48 @@
+@import '@shared/styles/constants';
+
+:global(.ant-card).invite-card {
+    position: absolute;
+    width: (@rem * 288);
+    height: (@rem * 204);
+
+    box-shadow: @app-box-shadow-card;
+
+    & > div {
+        padding: 0;
+    }
+
+    z-index: @z-index-xl;
+}
+
+.card-title-wrapper {
+    padding: @gap-m @gap-s @gap-s;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: (@rem * 1) solid @app-devider;
+
+    & :global(.ant-select-selection-item.ant-select-selection-item) {
+        text-align: start;
+    }
+}
+
+.card-content {
+    padding: @gap-m @gap-s;
+
+    overflow: auto;
+    width: 100%;
+}
+
+.content-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .content-period {
+        font: @font-size-s;
+        color: @app-primary-color;
+    }
+}

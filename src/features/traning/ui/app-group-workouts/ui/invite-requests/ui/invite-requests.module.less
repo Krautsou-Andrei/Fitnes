@@ -1,0 +1,65 @@
+@import '@shared/styles/constants';
+
+.ivite-request {
+    padding: @gap-m @gap-xl @gap-xl;
+    background-color: @app-devider;
+
+    .new-sends {
+        display: block;
+
+        margin-bottom: @gap-m;
+    }
+
+    .pal-card {
+        padding: @gap-l;
+        margin-bottom: @gap-s;
+
+        display: flex;
+        gap: @gap-xs;
+        justify-content: space-between;
+        align-items: center;
+
+        border-radius: (@rem * 2) (@rem*16) (@rem*16) (@rem*16);
+
+        background-color: @app-background-primary;
+
+        .pal-info {
+            max-width: @app-width-user-feedback;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .pal-name {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .message {
+            flex: 1;
+
+            .details-training {
+                padding: 0;
+            }
+
+            .details-training:hover {
+                background-color: transparent;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: @gap-m;
+
+            .button-collapsed:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}

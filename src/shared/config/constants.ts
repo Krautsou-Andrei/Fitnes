@@ -10,9 +10,17 @@ export const enum ConstantsMediaQuery {
     APP_TOP_ROW_CALENDAR = 60,
 }
 
+export const enum Size {
+    SIZE_S = 12,
+    SIZE_8_XL = 42,
+}
+
 export const enum Gap {
+    GAP_3XS = 4,
     GAP_XS = 8,
+    GAP_2S = 10,
     GAP_S = 12,
+    GAP_2M = 14,
     GAP_M = 16,
     GAP_L = 20,
     GAP_XL = 24,
@@ -42,6 +50,7 @@ export const STYLES = {
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
     SIZE_ICON_UPLOAD_USER: '18px',
     STROKE_WIDT_UPLOAD_USER_IMAGE: 4,
+    WIDTH_TOOLTIP: '147px',
 };
 
 export const enum Width {

@@ -1,0 +1,38 @@
+@import '@shared/styles/constants';
+
+.search {
+    margin-bottom: @gap-xl;
+
+    max-width: (@rem * 734);
+    width: 100%;
+    height: (@rem * 38);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .search-box {
+        max-width: (@rem * 484);
+        height: (@rem * 28);
+
+        input {
+            height: (@rem * 28);
+        }
+
+        :global(.ant-btn) {
+            height: (@rem * 28);
+        }
+    }
+}
+
+.joint-list {
+    :global(.ant-list-items) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: @gap-m;
+    }
+
+    :global(.ant-list-pagination) {
+        text-align: left;
+    }
+}

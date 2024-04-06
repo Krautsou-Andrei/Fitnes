@@ -1,0 +1,49 @@
+@import '@shared/styles/constants';
+
+.heighlight {
+    color: @app-heighlight-color;
+}
+
+.card-pal {
+    max-width: @app-width-card-pal;
+    width: 100%;
+
+    .pal-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+
+        .status {
+            text-align: center;
+        }
+    }
+
+    .name {
+        width: (@rem * 2);
+        line-height: @font-line-m;
+    }
+
+    .pal-params {
+        gap: @gap-2m;
+        align-items: center;
+
+        flex: 1;
+        align-self: self-start;
+
+        .params-title {
+            font-size: @font-size-s;
+        }
+
+        .params-info {
+            color: @app-primary-color;
+            font-weight: 500;
+        }
+    }
+
+    :global(.ant-card-body) {
+        padding: @gap-m;
+
+        height: 100%;
+    }
+}

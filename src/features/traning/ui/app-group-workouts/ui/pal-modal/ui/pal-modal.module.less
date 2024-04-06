@@ -1,0 +1,48 @@
+@import '@shared/styles/constants';
+
+.pal-modal {
+    max-width: (@rem * 539) !important;
+    width: 100% !important;
+    padding: @gap-7xl @gap-4xl;
+
+    .pal-info {
+        margin-bottom: @gap-xl;
+    }
+
+    .params {
+        display: flex;
+        flex: 1;
+
+        .params-name {
+            display: flex;
+            flex-direction: column;
+            gap: (@rem * 5);
+
+            line-height: @font-line-m;
+            font-size: @font-size-s;
+            color: @app-text-color-secondary;
+        }
+
+        .params-info {
+            margin-left: @gap-m;
+
+            display: flex;
+            flex-direction: column;
+            gap: @gap-3xs;
+
+            color: @app-primary-color;
+            line-height: @font-line-m;
+            font-weight: 500;
+        }
+    }
+
+    .status {
+        display: flex;
+        align-items: center;
+        gap: @gap-xs;
+
+        .button {
+            height: @height-2xl;
+        }
+    }
+}
