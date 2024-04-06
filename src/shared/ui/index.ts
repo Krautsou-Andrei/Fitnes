@@ -1,5 +1,6 @@
 import { AppBackgroundBlur } from './app-background-blur/app-backgound-blur';
 import { AppBadge } from './app-badge/app-badge';
+import { AppBadgeCount } from './app-badge-count/app-badge-count';
 import { AppButtonReturnToHome } from './app-button-return-to-home';
 import { AppCard } from './app-card/app-card';
 import { AppContentWrapper } from './app-content-wrapper/app-content-wrapper';
@@ -24,6 +25,7 @@ export type * from './app-tabs/model/types';
 export {
     AppBackgroundBlur,
     AppBadge,
+    AppBadgeCount,
     AppButtonReturnToHome,
     AppCard,
     AppContentWrapper,

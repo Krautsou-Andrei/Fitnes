@@ -1,5 +1,5 @@
 import clsn from 'classnames';
-import { Tabs } from 'antd';
+import { Badge, Tabs } from 'antd';
 
 import { useAppTabs } from './hooks/useAppTabs';
 
@@ -14,7 +14,7 @@ type AppTabsProps = {
 };
 
 export function AppTabs({ className, items, onChange }: AppTabsProps) {
-    const { pathname, onTabClick } = useAppTabs();
+    const { countInvities, pathname, onTabClick } = useAppTabs();
 
     return (
         <Tabs
@@ -23,7 +23,22 @@ export function AppTabs({ className, items, onChange }: AppTabsProps) {
             className={clsn(styles.tabs, className)}
             onTabClick={onChange ? undefined : onTabClick}
             onChange={onChange}
-            items={items}
+            items={items.map((tab) => {
+                if (tab.badge && countInvities !== 0) {
+                    return {
+                        label: (
+                            <div>
+                                {tab.label}
+                                <Badge count={countInvities} />
+                            </div>
+                        ),
+                        key: `${tab.key}-${countInvities + 1}`,
+                        children: tab.children,
+                    };
+                }
+
+                return tab;
+            })}
         />
     );
 }

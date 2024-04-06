@@ -1,8 +1,11 @@
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
-import { useLinkMenuClick } from '@shared/hooks';
 import { menuConfig } from './config/menu-config';
+import { AppBadgeCount } from '../app-badge-count/app-badge-count';
+
+import { PathConfig } from '@shared/config';
+import { useLinkMenuClick } from '@shared/hooks';
 
 import styles from './app-menu.module.less';
 
@@ -21,7 +24,11 @@ export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
             mode='inline'
             items={menuConfig.map((item) => ({
                 key: String(item.id),
-                icon: isQueryMD ? null : item.icon,
+                icon: isQueryMD ? null : item.link === PathConfig.TRAINING ? (
+                    <AppBadgeCount icon={item.icon} />
+                ) : (
+                    item.icon
+                ),
                 label: `${item.title}`,
                 onClick: () => onClick(item.link),
                 style: isCollapsed

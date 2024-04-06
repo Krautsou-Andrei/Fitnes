@@ -1,4 +1,5 @@
-import { AppMyWorkouts } from '@features/my-trainings/ui';
+import { AppGroupWorkouts, AppMyWorkouts } from '@features/traning';
+
 import { ItemsTabs } from '@shared/ui';
 
 export const trainingsTabsConfig: ItemsTabs[] = [
@@ -10,7 +11,8 @@ export const trainingsTabsConfig: ItemsTabs[] = [
     {
         label: 'Совместные тренировки',
         key: 'workouts-group',
-        children: <div />,
+        children: <AppGroupWorkouts />,
+        badge: true,
     },
     {
         label: 'Марафоны',
