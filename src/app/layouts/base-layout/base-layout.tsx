@@ -20,7 +20,7 @@ export function BaseLayout({ isNoTitle, isNoFooter }: BaseLayoutProps) {
 
     return (
         <AppLayout
-            className={isNoTitle ? styles['main-full'] : ''}
+            className={isNoTitle && !isTrainings ? styles['main-full'] : ''}
             isNoTitle={isNoTitle}
             siderSlot={<AppSider />}
             headerSlot={
