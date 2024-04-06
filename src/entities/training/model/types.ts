@@ -1,5 +1,3 @@
-import { string } from 'zod';
-
 export type Exercises = {
     name: string;
     replays: number;

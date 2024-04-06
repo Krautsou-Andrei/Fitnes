@@ -21,12 +21,26 @@ export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
             });
         }
 
-        if (type === EventApiConfig.TRAINING_GET_LIST_NAME) {
+        if (
+            type === EventApiConfig.TRAINING_GET_LIST_NAME ||
+            type === EventApiConfig.USER_JOINT_TRAINING_LIST ||
+            type === EventApiConfig.USER_JOINT_TRAINING_LIST_BEST
+        ) {
             return resultModalActions.setResultModal({
                 isOpen: false,
                 typeModal: {
                     type: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].type,
                     status: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].status,
+                },
+            });
+        }
+
+        if (type === EventApiConfig.INVATE_SEND || EventApiConfig.INVITE_REJECT) {
+            return resultModalActions.setResultModal({
+                isOpen: false,
+                typeModal: {
+                    type: modalResultConfig[ModalTypeConfig.ERROR_UPDATE_USER].type,
+                    status: modalResultConfig[ModalTypeConfig.ERROR_UPDATE_USER].status,
                 },
             });
         }

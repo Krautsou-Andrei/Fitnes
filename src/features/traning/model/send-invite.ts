@@ -20,7 +20,8 @@ export const sendInvitieThunk = createAsyncThunk<Invite, RequestInviteBody, { st
             return result;
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(resultErrorFetch(error));
+                dispatch(resultErrorFetch(error, EventApiConfig.INVATE_SEND));
+                dispatch(sessionActions.setIsError(true));
                 return rejectWithValue(error);
             }
 

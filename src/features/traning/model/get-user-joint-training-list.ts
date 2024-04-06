@@ -22,7 +22,8 @@ export const getUserJointTrainingListThunk = createAsyncThunk<Pal[], void, { sta
             return result;
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(resultErrorFetch(error));
+                dispatch(resultErrorFetch(error, EventApiConfig.USER_JOINT_TRAINING_LIST));
+                dispatch(sessionActions.setIsError(true));
                 return rejectWithValue(error);
             }
 
