@@ -36,6 +36,7 @@ export function AppMyWorkouts() {
 
     const {
         id,
+        isButtonSaveDisabled,
         isEditTraining,
         isOldDay,
         isOpenDrawer,
@@ -78,7 +79,9 @@ export function AppMyWorkouts() {
                 isOldDay={isOldDay}
                 isOpen={isOpenDrawer}
                 onClickClose={onCloseDrawer}
-                buttonSave={<AppButtonSaveExercise onClick={onSave} />}
+                buttonSave={
+                    <AppButtonSaveExercise onClick={onSave} disabled={isButtonSaveDisabled} />
+                }
                 title={
                     isEditTraining
                         ? TrainingFormExerciseConfig.TITLE_DRAWER_EDIT_EXERCISE
