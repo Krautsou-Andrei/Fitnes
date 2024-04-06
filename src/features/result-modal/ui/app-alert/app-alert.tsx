@@ -6,6 +6,7 @@ import { resultModalActions, selectResultModal } from '@features/result-modal/mo
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 import styles from './app-alert.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 type AlertType = 'success' | 'error' | 'info' | 'warning' | undefined;
 
@@ -26,10 +27,21 @@ export function AppAlert() {
         dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
     };
 
+    const testId = () => {
+        if (
+            typeModal.type === ModalTypeConfig.SUCCESS_CREATE_WORKOUT ||
+            typeModal.type === ModalTypeConfig.SUCCESS_UPDATE_WORKOUT
+        ) {
+            return DataTestIdConfig.CREATE_TRAINING_SUCCESS_ALERT;
+        }
+
+        return DataTestIdConfig.ALERT;
+    };
+
     return (
         <AppPortal>
             <Alert
-                data-test-id='alert'
+                data-test-id={testId()}
                 className={styles['alert-success-update-user']}
                 message={modalCofig[typeModal.type].title}
                 type={typeModal.status as AlertType}

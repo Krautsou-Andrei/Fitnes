@@ -5,7 +5,7 @@ import type { Invite } from '@entities/invite';
 
 import { AppBadge } from '@shared/ui';
 import { formatDate, getPeriodFindNumber } from '@shared/lib';
-import { DateFormatConfig } from '@shared/config';
+import { DataTestIdConfig, DateFormatConfig } from '@shared/config';
 
 import styles from './invite-training-card.module.less';
 
@@ -18,7 +18,10 @@ type InviteTrainingCardProps = {
 
 export function InviteTrainingCard({ selectedInvite, onClose }: InviteTrainingCardProps) {
     return (
-        <Card className={styles['invite-card']}>
+        <Card
+            data-test-id={DataTestIdConfig.JOINT_TRAINING_REVIEW_CARD}
+            className={styles['invite-card']}
+        >
             <div className={styles['card-wrapper']}>
                 <div className={styles['card-title-wrapper']}>
                     <Space>

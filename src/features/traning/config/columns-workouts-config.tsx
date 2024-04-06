@@ -7,7 +7,7 @@ import { EditWorkoutModal } from '../ui/edit-workout-modal';
 
 import type { Training } from '@entities/training';
 
-import { DateFormatConfig } from '@shared/config';
+import { DataTestIdConfig, DateFormatConfig } from '@shared/config';
 import { formatDate, getPeriodFindNumber, isOldDate } from '@shared/lib';
 import { AppTrainingDay } from '@shared/ui';
 
@@ -79,9 +79,10 @@ export function columnsWorkoutsConfig({
         {
             key: 'action',
             title: '',
-            dataIndex: 'action',         
-            render: (_text, record) => (
+            dataIndex: 'action',
+            render: (_text, record, index) => (
                 <Button
+                    data-test-id={`${DataTestIdConfig.UPDATE_MY_TRAINING_TABLE_ICON}${index}`}
                     type='link'
                     disabled={record.training.isImplementation}
                     onClick={() => onEditWorkout(record)}

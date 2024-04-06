@@ -12,7 +12,7 @@ import {
     trainingActions,
 } from '@entities/training';
 
-import { DateFormatConfig, LayoutConfig, locale } from '@shared/config';
+import { DataTestIdConfig, DateFormatConfig, LayoutConfig, locale } from '@shared/config';
 import {
     formatDate,
     getPeriodFindNumber,
@@ -98,6 +98,7 @@ export function AppPeriodExercise({
         <div className={styles['period-exercise']}>
             {!isSelect && (
                 <Select
+                    data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_SELECT_PERIOD}
                     className={styles.select}
                     placeholder={LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
                     value={selectTrainingName ? selectTrainingName : undefined}
@@ -108,6 +109,7 @@ export function AppPeriodExercise({
             <Row gutter={Gap.GAP_M} style={{ marginTop: `${Gap.GAP_XL}px` }}>
                 <Col span={Gap.GAP_S}>
                     <DatePicker
+                        data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_DATE_PICKER}
                         size='small'
                         disabledDate={handlerDateDisables}
                         locale={locale}
@@ -119,6 +121,7 @@ export function AppPeriodExercise({
                 </Col>
                 <Col span={Gap.GAP_S}>
                     <Checkbox
+                        data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_CHECKBOX_PERIOD}
                         checked={createTraining.parameters?.repeat}
                         onChange={handlerChangeRepeat}
                     >

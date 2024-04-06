@@ -32,6 +32,7 @@ export const cardsActionsConfig: CardActive[] = [
             href: PathConfig.TRAINING,
             title: 'Тренировки',
         },
+        dataTestId: DataTestIdConfig.MENU_BUTTON_TRAINING,
     },
     {
         id: 2,

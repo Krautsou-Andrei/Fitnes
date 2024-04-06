@@ -35,7 +35,7 @@ export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
             });
         }
 
-        if (type === EventApiConfig.INVATE_SEND || EventApiConfig.INVITE_REJECT) {
+        if (type === EventApiConfig.INVATE_SEND || type === EventApiConfig.INVITE_REJECT) {
             return resultModalActions.setResultModal({
                 isOpen: false,
                 typeModal: {

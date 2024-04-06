@@ -11,6 +11,7 @@ import type { Pal } from '@entities/training';
 import { Size } from '@shared/config/constants';
 
 import styles from './invite-pals.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 type InvitePalsProps = {
     searchValue: string;
@@ -34,6 +35,7 @@ export function InvitePals({
                     {InviteConfig.BUTTON_BACK}
                 </Button>
                 <Search
+                    data-test-id={DataTestIdConfig.SEARCH_INPUT}
                     placeholder={InviteConfig.SEARCH_PLACEHOLDER}
                     onSearch={onSearch}
                     className={styles['search-box']}
@@ -42,8 +44,13 @@ export function InvitePals({
             <List
                 className={styles['joint-list']}
                 dataSource={userJointTrainingsList}
-                renderItem={(pal) => (
-                    <PalCard onOpenDrawer={onOpenDrawer} pal={pal} searchValue={searchValue} />
+                renderItem={(pal, index) => (
+                    <PalCard
+                        onOpenDrawer={onOpenDrawer}
+                        pal={pal}
+                        searchValue={searchValue}
+                        index={index}
+                    />
                 )}
                 pagination={{
                     hideOnSinglePage: true,

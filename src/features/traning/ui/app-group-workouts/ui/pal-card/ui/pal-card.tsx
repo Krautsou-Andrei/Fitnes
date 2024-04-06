@@ -15,16 +15,18 @@ import { AppHeighlightText } from '@shared/ui';
 import { useAppDispatch } from '@shared/hooks';
 import { Gap, STYLES, Size } from '@shared/config/constants';
 import { showErrorForDevelop } from '@shared/lib';
+import { DataTestIdConfig } from '@shared/config';
 
 import styles from './pal-card.module.less';
 
 type PalCardProps = {
     pal: Pal;
+    index: number;
     searchValue?: string;
     onOpenDrawer?: () => void;
 };
 
-export function PalCard({ pal, searchValue, onOpenDrawer }: PalCardProps) {
+export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps) {
     const dispatch = useAppDispatch();
     const [getJointTraining] = useLazyGetUserJointTrainingListQuery();
 
@@ -64,7 +66,12 @@ export function PalCard({ pal, searchValue, onOpenDrawer }: PalCardProps) {
     };
 
     return (
-        <Card key={pal.id} className={styles['card-pal']} onClick={onSelectPal}>
+        <Card
+            data-test-id={`${DataTestIdConfig.JOINT_TRAINING_CARDS}${index}`}
+            key={pal.id}
+            className={styles['card-pal']}
+            onClick={onSelectPal}
+        >
             <div className={styles['pal-wrapper']}>
                 <Row className={styles.userInfo}>
                     <Col>

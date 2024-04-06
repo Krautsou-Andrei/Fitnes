@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
 
 import styles from './pal-modal.module.less';
+import { DataTestIdConfig } from '@shared/config';
 
 type PalModalProps = {
     isOpenPalModal: boolean;
@@ -35,6 +36,7 @@ export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
     };
     return (
         <Modal
+            data-test-id={DataTestIdConfig.PARTNER_MODAL}
             className={styles['pal-modal']}
             open={isOpenPalModal}
             centered={true}

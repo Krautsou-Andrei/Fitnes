@@ -20,6 +20,7 @@ export const getTraningThunk = createAsyncThunk<Training[], void, { state: RootS
             return result;
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
+                console.log("skfjskldfjl")
                 dispatch(resultErrorFetch(error));
                 return rejectWithValue(error);
             }

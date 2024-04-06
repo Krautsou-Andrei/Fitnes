@@ -4,12 +4,13 @@ import { List, Space, Typography } from 'antd';
 import { PalCard } from '../../pal-card';
 import { PalModal } from '../../pal-modal';
 
+import { InviteConfig } from '@features/traning/config';
+
 import { selectPals } from '@entities/training';
 
 import { useAppSelector } from '@shared/hooks';
 
 import styles from './invite-partner.module.less';
-import { InviteConfig } from '@features/traning/config';
 
 const { Title, Text } = Typography;
 
@@ -33,7 +34,10 @@ export function InvitePartners() {
                 </Title>
                 {partners.length ? (
                     <Space className={styles['partners-list']} onClick={onOpenPalModal}>
-                        <List dataSource={partners} renderItem={(pal) => <PalCard pal={pal} />} />
+                        <List
+                            dataSource={partners}
+                            renderItem={(pal, index) => <PalCard pal={pal} index={index} />}
+                        />
                     </Space>
                 ) : (
                     <Text>{InviteConfig.MY_PARTNERS_NO}</Text>
