@@ -30,6 +30,7 @@ export function AppGroupWorkouts() {
         onOpenDrawer,
         onSave,
         onSelectTraining,
+        selectPalForTraining,
         selectOptions,
         selectTrainingName,
     } = useTainingModal({
@@ -85,7 +86,11 @@ export function AppGroupWorkouts() {
                 isOpen={isOpenDrawer}
                 onClickClose={onCloseDrawer}
                 buttonSave={
-                    <AppButtonSaveExercise onClick={onSave} disabled={isButtonSaveDisabled} />
+                    <AppButtonSaveExercise
+                        text={selectPalForTraining ? InviteConfig.BUTTON_SEND_INVITE : undefined}
+                        onClick={onSave}
+                        disabled={isButtonSaveDisabled}
+                    />
                 }
                 title={InviteConfig.DRAWER_JOINT_TRAINING_TITLE}
                 isMyTrainings={true}

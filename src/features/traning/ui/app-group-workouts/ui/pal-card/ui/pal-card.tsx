@@ -5,11 +5,7 @@ import { CheckCircleTwoTone, InfoCircleOutlined, UserOutlined } from '@ant-desig
 import { InviteConfig, PalStatusConfig, StatusConfig } from '@features/traning/config';
 import { rejectInvitieThunk } from '@features/traning/model/reject-invite';
 
-import {
-    type Pal,
-    trainingActions,
-    useLazyGetUserJointTrainingListQuery,
-} from '@entities/training';
+import { type Pal, trainingActions } from '@entities/training';
 
 import { AppHeighlightText } from '@shared/ui';
 import { useAppDispatch } from '@shared/hooks';
@@ -28,7 +24,6 @@ type PalCardProps = {
 
 export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps) {
     const dispatch = useAppDispatch();
-    const [getJointTraining] = useLazyGetUserJointTrainingListQuery();
 
     const name = useCallback(
         (name: string) => (
@@ -56,7 +51,7 @@ export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps)
     const handlerRejectTraining = (id: string) => {
         dispatch(rejectInvitieThunk({ id, status: StatusConfig.REJECTED }))
             .unwrap()
-            .then(() => getJointTraining())
+            .then(() => dispatch(trainingActions.removeUserJointTraining({ id: id })))
             .catch((error: unknown) => {
                 showErrorForDevelop('Get training pals', error);
             });

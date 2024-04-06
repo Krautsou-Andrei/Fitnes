@@ -15,6 +15,7 @@ export const enum InviteConfig {
     BUTTON_BACK = 'Назад',
     BUTTON_COLLAPSED_SHOW = 'Показать все сообщения',
     BUTTON_COLLAPSED_GOST = 'Скрыть все сообщения',
+    BUTTON_SEND_INVITE = 'Отправить приглашение',
     DRAWER_JOINT_TRAINING_TITLE = 'Совместная тренировка',
     MIDLE_WEIGHT = 'Средняя нагрузка:',
     MIDLE_WEIGHT_TITLE = 'кг/нед',

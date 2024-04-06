@@ -55,6 +55,12 @@ export const trainingSlice = createSlice({
                 (exercise) => exercise.name !== '',
             );
         },
+        removeUserJointTraining(
+            state: TrainingSliceType,
+            { payload: { id } }: PayloadAction<{ id: string }>,
+        ) {
+            state.pals = state.pals.filter((pal) => pal.inviteId !== id);
+        },
         setCreateTraining: (
             state: TrainingSliceType,
             { payload }: PayloadAction<CreateTraining>,
@@ -109,6 +115,14 @@ export const trainingSlice = createSlice({
         },
         setTraningName: (state: TrainingSliceType, { payload }: PayloadAction<TrainingName[]>) => {
             state.trainingName = payload;
+        },
+        setUserJointTrainingStatus(
+            state: TrainingSliceType,
+            { payload: { id, status } }: PayloadAction<{ id: string; status: string }>,
+        ) {
+            state.userJointTrainingList = state.userJointTrainingList.map((user) =>
+                user.id === id ? { ...user, status } : user,
+            );
         },
     },
     extraReducers: (builder) => {

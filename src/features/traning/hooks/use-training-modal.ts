@@ -5,6 +5,7 @@ import { editTraningThunk } from '../model/edit-training';
 import { addTraningThunk } from '../model/add-training';
 import { resultSuccessFetch } from '../lib';
 import { sendInvitieThunk } from '../model/send-invite';
+import { StatusConfig } from '../config';
 
 import { ModalTypeConfig } from '@features/result-modal/@ex/traning';
 
@@ -18,7 +19,6 @@ import {
     useLazyGetTrainingQuery,
     Training,
     selectPal,
-    useLazyGetUserJointTrainingListQuery,
 } from '@entities/training';
 import { selectIsLoadingn, selectIsLoadingnCalendar } from '@entities/session';
 
@@ -36,7 +36,6 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const dispatch = useAppDispatch();
 
     const [gettraining] = useLazyGetTrainingQuery();
-    const [getJointTraining] = useLazyGetUserJointTrainingListQuery();
 
     const { isTrainings } = usePageIsEqual();
     const { isQueryXS } = useAppMediaQuery();
@@ -120,10 +119,12 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                     .unwrap()
                     .then(() => {
                         gettraining();
+
                         if (isTrainings) {
                             dispatch(resultSuccessFetch(ModalTypeConfig.SUCCESS_UPDATE_WORKOUT));
                         }
-                    });
+                    })
+                    .catch((error) => showErrorForDevelop('Add training', error));
             } else {
                 dispatch(addTraningThunk(createTraining))
                     .unwrap()
@@ -140,10 +141,16 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                             dispatch(sendInvitieThunk(body))
                                 .unwrap()
                                 .then(() => {
-                                    getJointTraining();
+                                    dispatch(
+                                        trainingActions.setUserJointTrainingStatus({
+                                            id: body.to,
+                                            status: StatusConfig.PENDING,
+                                        }),
+                                    );
                                 });
                         }
-                    });
+                    })
+                    .catch((error) => showErrorForDevelop('Add training', error));
             }
 
             dispatch(trainingActions.clearCreateTraining());
@@ -257,6 +264,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
         onSave,
         onSelectTraining,
         prevStep,
+        selectPalForTraining,
         selectOptions,
         selectTrainingName,
         step,

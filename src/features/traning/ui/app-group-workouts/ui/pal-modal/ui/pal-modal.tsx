@@ -5,7 +5,7 @@ import { CheckCircleTwoTone, UserOutlined } from '@ant-design/icons';
 import { rejectInvitieThunk } from '@features/traning/model/reject-invite';
 import { InviteConfig, StatusConfig } from '@features/traning/config';
 
-import { selectPal, useLazyGetTrainingPalsQuery } from '@entities/training';
+import { selectPal, trainingActions } from '@entities/training';
 
 import { Gap, STYLES, Size } from '@shared/config/constants';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
@@ -21,14 +21,14 @@ type PalModalProps = {
 
 export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
     const dispatch = useAppDispatch();
-    const [getTrainingPal] = useLazyGetTrainingPalsQuery();
+
     const pal = useAppSelector(selectPal);
 
     const handlerRejectTraining = (id: string | undefined) => {
         if (id) {
             dispatch(rejectInvitieThunk({ id, status: StatusConfig.REJECTED }))
                 .unwrap()
-                .then(() => getTrainingPal())
+                .then(() => dispatch(trainingActions.removeUserJointTraining({ id: id })))
                 .catch((error: unknown) => {
                     showErrorForDevelop('Get training pals', error);
                 });

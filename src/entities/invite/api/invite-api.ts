@@ -47,10 +47,4 @@ export const inviteApi = baseApi.injectEndpoints({
     }),
 });
 
-export const {
-    useGetInvitiesQuery,
-    useLazyGetInvitiesQuery,
-    useSendAnswerInvitieMutation,
-    useRejectInvitieMutation,
-    useSendInvitieMutation,
-} = inviteApi;
+export const { useGetInvitiesQuery, useLazyGetInvitiesQuery, useSendAnswerInvitieMutation,useRejectInvitieMutation, useSendInvitieMutation } = inviteApi;

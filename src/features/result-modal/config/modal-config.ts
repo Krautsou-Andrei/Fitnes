@@ -43,6 +43,16 @@ export const modalCofig: ModalConfig = {
         desciption: 'Попробуйте ещё раз.',
         title: 'При открытии данных\n произошла ошибка',
     },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных\n произошла ошибка',
+    },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных\n произошла ошибка',
+    },
     [ModalTypeConfig.ERROR_UPDATE_USER]: {
         buttonTitle: 'Закрыть',
         desciption: 'Придётся попробовать ещё раз',
@@ -95,6 +105,14 @@ export const modalResultConfig: ModalResultConfig = {
     },
     [ModalTypeConfig.ERROR_GET_TRANING_LIST]: {
         type: ModalTypeConfig.ERROR_GET_TRANING_LIST,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]: {
+        type: ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST]: {
+        type: ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST,
         status: '500',
     },
     [ModalTypeConfig.ERROR_UPDATE_USER]: {

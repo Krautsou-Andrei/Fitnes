@@ -98,7 +98,7 @@ export function AppPeriodExercise({
         <div className={styles['period-exercise']}>
             {!isSelect && (
                 <Select
-                    data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_SELECT_PERIOD}
+                    data-test-id={DataTestIdConfig.MODAL_CREATE_EXERCISE_SELECT}
                     className={styles.select}
                     placeholder={LayoutConfig.TITLE_MODAL_CHANGE_EXERCISE}
                     value={selectTrainingName ? selectTrainingName : undefined}
@@ -131,6 +131,7 @@ export function AppPeriodExercise({
                 <Col span={COL.COL_S} style={{ marginTop: `${Gap.GAP_XS}px` }}>
                     {isRepeat && (
                         <Select
+                            data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_SELECT_PERIOD}
                             className={styles.select}
                             placeholder={TrainingFormExerciseConfig.SELECT_OPTION_PERIOD_DEFAULT}
                             value={getPeriodFindNumber(createTraining.parameters?.period)}

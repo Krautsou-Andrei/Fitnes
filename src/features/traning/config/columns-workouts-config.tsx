@@ -82,7 +82,7 @@ export function columnsWorkoutsConfig({
             dataIndex: 'action',
             render: (_text, record, index) => (
                 <Button
-                    data-test-id={`${DataTestIdConfig.UPDATE_MY_TRAINING_TABLE_ICON}${index}`}
+                    data-test-id={`${DataTestIdConfig.UPDATE_MY_TRAINING_TABLE_ICON}${index + 1}`}
                     type='link'
                     disabled={record.training.isImplementation}
                     onClick={() => onEditWorkout(record)}

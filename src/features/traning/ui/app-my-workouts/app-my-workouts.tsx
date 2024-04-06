@@ -84,8 +84,8 @@ export function AppMyWorkouts() {
                 }
                 title={
                     isEditTraining
-                        ? TrainingFormExerciseConfig.TITLE_DRAWER_EDIT_EXERCISE
-                        : TrainingFormExerciseConfig.TITLE_DRAWER_NEW_TRAINING
+                        ? TrainingFormExerciseConfig.TITLE_DRAWER_EDIT
+                        : TrainingFormExerciseConfig.TITLE_DRAWER
                 }
                 isMyTrainings={true}
                 onSelectTraining={onSelectTraining}

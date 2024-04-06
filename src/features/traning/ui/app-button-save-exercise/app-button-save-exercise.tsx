@@ -4,9 +4,11 @@ import { LayoutConfig } from '@shared/config';
 
 import styles from './app-button-save-exercise.module.less';
 
-type AppButtonSaveProps = ButtonProps;
+type AppButtonSaveProps = ButtonProps & {
+    text?: string;
+};
 
-export function AppButtonSaveExercise({ ...rest }: AppButtonSaveProps) {
+export function AppButtonSaveExercise({ text, ...rest }: AppButtonSaveProps) {
     return (
         <Button
             block
@@ -16,7 +18,7 @@ export function AppButtonSaveExercise({ ...rest }: AppButtonSaveProps) {
             htmlType='submit'
             {...rest}
         >
-            {LayoutConfig.BUTTON_SAVE_EXERCISE}
+            {text ? text : LayoutConfig.BUTTON_SAVE_EXERCISE}
         </Button>
     );
 }

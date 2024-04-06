@@ -5,6 +5,8 @@ export const enum ModalTypeConfig {
     ERROR_GET_FEEDBACK = 'error-get-feedback',
     ERROR_GET_TRANING = 'error-get-traning',
     ERROR_GET_TRANING_LIST = 'error-get-traning-list',
+    ERROR_GET_USER_JOINT_TRAINING_LIST = 'error-get-user-joint-training-list',
+    ERROR_GET_USER_JOINT_TRAINING_LIST_BEST = 'error-get-user-joint-training-list-best',
     ERROR_UPDATE_USER = 'error-update-user',
     SUCCESS_ADD_FEEDBACK = 'success-feedback',
     SUCCESS_BUY_TARIFF = 'success-buy-tariff',

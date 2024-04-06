@@ -39,7 +39,6 @@ export const trainingApi = baseApi.injectEndpoints({
                 body,
             }),
             invalidatesTags: [TRAINING_TAG],
-            transformResponse: (response: TrainingDto) => mapTraining(response),
         }),
         getTrainingList: build.query<TrainingName[], void>({
             query: () => ({
@@ -72,7 +71,6 @@ export const trainingApi = baseApi.injectEndpoints({
             },
             transformResponse: (response: PalDto[]) => response.map(mapPals),
         }),
-        
     }),
 });
 
