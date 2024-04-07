@@ -59,7 +59,7 @@ export function useGroupWorkouts() {
             .then(() => {
                 setIsOpenInviteList(true);
             })
-            .catch((error: unknown) => {               
+            .catch((error: unknown) => {
                 showErrorForDevelop('Get user joint training list', error);
             });
     };

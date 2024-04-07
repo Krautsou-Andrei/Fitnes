@@ -131,6 +131,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                     .then((result) => {
                         if (isTrainings) {
                             dispatch(resultSuccessFetch());
+                            gettraining();
                         }
 
                         if (selectPalForTraining) {

@@ -51,7 +51,7 @@ export function TableTrainings({
                 pagination={{
                     position: ['bottomLeft', 'bottomLeft'],
                     hideOnSinglePage: true,
-                    pageSize: quantityItems,
+                    // pageSize: quantityItems,
                 }}
                 dataSource={allTrainings}
                 size='small'
