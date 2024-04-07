@@ -1,4 +1,4 @@
-import { AppGroupWorkouts, AppMyWorkouts } from '@features/traning';
+import { AppGroupWorkouts, AppMarathons, AppMyWorkouts } from '@features/traning';
 
 import { ItemsTabs } from '@shared/ui';
 
@@ -17,6 +17,6 @@ export const trainingsTabsConfig: ItemsTabs[] = [
     {
         label: 'Марафоны',
         key: 'marathons',
-        children: <div />,
+        children: <AppMarathons />,
     },
 ];
