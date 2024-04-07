@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 
 import { ExercisesDefaultConfig } from '@features/traning/config';
-import { selectIsEdit, trainingActions } from '@entities/training';
+import { selectIsEdit, selectPal, trainingActions } from '@entities/training';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppSelector, usePageIsEqual } from '@shared/hooks';
 
 type UseExerciseFormParams = {
     approachesDefault: number;
@@ -24,6 +24,7 @@ export function useExerciseForm({
 }: UseExerciseFormParams) {
     const dispatch = useAppDispatch();
     const isEditTraining = useAppSelector(selectIsEdit);
+    const { isTrainings } = usePageIsEqual();
 
     const [approaches, setApproaches] = useState<number>(
         approachesDefault || ExercisesDefaultConfig.APPROACHES,
@@ -37,6 +38,7 @@ export function useExerciseForm({
     const [weight, setWeight] = useState<number>(weightDefault || ExercisesDefaultConfig.WEIGHT);
 
     const isChecked = checkedExersices.includes(indexExercise);
+    const isSelectPal = Boolean(useAppSelector(selectPal));
 
     const onChangeExerciseName = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -52,18 +54,36 @@ export function useExerciseForm({
     const onChangeApproaches = (value: number | null) => {
         if (value && value > 0) {
             setApproaches(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { approaches: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 
     const onChangeWeight = (value: number | null) => {
         if (value !== null && value >= 0) {
             setWeight(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { weight: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 
     const onChangeReplays = (value: number | null) => {
         if (value && value > 0) {
             setReplays(value);
+            dispatch(
+                trainingActions.setCreateTrainingExercise({
+                    partialExercises: { replays: value },
+                    index: indexExercise,
+                }),
+            );
         }
     };
 
@@ -72,6 +92,8 @@ export function useExerciseForm({
         exerciseName,
         isChecked,
         isEditTraining,
+        isSelectPal,
+        isTrainings,
         onChangeApproaches,
         onChangeExerciseName,
         onChangeReplays,

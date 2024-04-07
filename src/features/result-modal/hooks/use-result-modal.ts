@@ -16,11 +16,13 @@ import { sessionActions } from '@entities/session';
 import { selectIsError } from '@entities/session/model/slice';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
-import { DataTestIdConfig, PathConfig } from '@shared/config';
-import { showErrorForDevelop, splitString, wrapSelectedText } from '@shared/lib';
+import { DataTestIdConfig, PathConfig, SessionStorageConfig } from '@shared/config';
+import { getSessionStorage, showErrorForDevelop, splitString, wrapSelectedText } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
 import styles from '../ui/result-modal.module.less';
+import { getUserJointTrainingListThunk } from '@features/traning/model/get-user-joint-training-list';
+import { getUserJointTrainingListBestThunk } from '@features/traning/model/get-user-joint-training-list-best';
 
 type modalErrorTraning = {
     destroy: () => void;
@@ -41,6 +43,10 @@ export function useResultModal() {
     const isTraningList = typeModal.type === ModalTypeConfig.ERROR_GET_TRANING_LIST;
     const isImage = typeModal.type === ModalTypeConfig.ERROR_ADD_IMAGE;
     const isUpdateUser = typeModal.type === ModalTypeConfig.ERROR_UPDATE_USER;
+    const isUserJointTrainingList =
+        typeModal.type === ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST;
+    const isUserJointTrainingBestList =
+        typeModal.type === ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST;
 
     const isSuccessBuyTariff = typeModal.type === ModalTypeConfig.SUCCESS_BUY_TARIFF;
     const dataTestID = isSuccessBuyTariff
@@ -77,6 +83,23 @@ export function useResultModal() {
         });
     }, [dispatch, onClickClose]);
 
+    const getUserJointTrainingLIstAgayn = useCallback(() => {
+        onClickClose();
+        dispatch(getUserJointTrainingListThunk()).catch((error: unknown) => {
+            showErrorForDevelop('Get user join list', error);
+        });
+    }, [dispatch, onClickClose]);
+
+    const getUserJointTrainingLIstBestAgayn = useCallback(() => {
+        onClickClose();
+        const best = getSessionStorage(SessionStorageConfig.BEST_TRAINING);
+        dispatch(getUserJointTrainingListBestThunk({ trainingType: best })).catch(
+            (error: unknown) => {
+                showErrorForDevelop('Get user join best list', error);
+            },
+        );
+    }, [dispatch, onClickClose]);
+
     useLayoutEffect(() => {
         if (isAddTraining && isError) {
             modalErrorTraning.current = Modal.error({
@@ -104,8 +127,24 @@ export function useResultModal() {
         }
     }, [isAddTraining, isError, onClickClose, typeModal.type]);
 
+    const onOkModal = useCallback((): (() => void) => {
+        if (isUserJointTrainingBestList) {
+            return getUserJointTrainingLIstBestAgayn;
+        }
+        if (isUserJointTrainingList) {
+            return getUserJointTrainingLIstAgayn;
+        }
+        return getTraningListAgayn;
+    }, [
+        getTraningListAgayn,
+        getUserJointTrainingLIstAgayn,
+        getUserJointTrainingLIstBestAgayn,
+        isUserJointTrainingBestList,
+        isUserJointTrainingList,
+    ]);
+
     useLayoutEffect(() => {
-        if (isTraningList && isError) {
+        if ((isTraningList || isUserJointTrainingList || isUserJointTrainingBestList) && isError) {
             modalErrorTraning.current = Modal.error({
                 className: styles['error-get-training-list'],
                 title: configTitle(modalCofig[typeModal.type].title),
@@ -123,7 +162,7 @@ export function useResultModal() {
                 closable: true,
                 centered: true,
                 closeIcon: configIconClose(),
-                onOk: getTraningListAgayn,
+                onOk: onOkModal,
                 icon: React.createElement(CloseCircleOutlined, {
                     style: { color: `${STYLES.ICON_COLOR_ERROR_LIST}` },
                 }),
@@ -135,7 +174,16 @@ export function useResultModal() {
                 }
             };
         }
-    }, [getTraningListAgayn, isError, isTraningList, onClickClose, typeModal.type]);
+    }, [
+        getTraningListAgayn,
+        isError,
+        isTraningList,
+        isUserJointTrainingBestList,
+        isUserJointTrainingList,
+        onClickClose,
+        onOkModal,
+        typeModal.type,
+    ]);
 
     useLayoutEffect(() => {
         if ((isImage || isUpdateUser) && isError) {

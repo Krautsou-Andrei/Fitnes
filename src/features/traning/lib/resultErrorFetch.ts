@@ -9,9 +9,9 @@ import {
 import { StatusError } from '@shared/api';
 import { EventApiConfig } from '@shared/config';
 
-export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
+export function resultErrorFetch(error: FetchBaseQueryError, type?: string) { 
     if (error.status !== StatusError.ERROR_403) {
-        if (type === EventApiConfig.TRAINING_ADD) {
+        if (type === EventApiConfig.TRAINING_ADD || type === EventApiConfig.TRAINING_EDIT) {            
             return resultModalActions.setResultModal({
                 isOpen: false,
                 typeModal: {
@@ -27,6 +27,41 @@ export function resultErrorFetch(error: FetchBaseQueryError, type?: string) {
                 typeModal: {
                     type: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].type,
                     status: modalResultConfig[ModalTypeConfig.ERROR_GET_TRANING_LIST].status,
+                },
+            });
+        }
+
+        if (type === EventApiConfig.USER_JOINT_TRAINING_LIST) {
+            return resultModalActions.setResultModal({
+                isOpen: false,
+                typeModal: {
+                    type: modalResultConfig[ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]
+                        .type,
+                    status: modalResultConfig[ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]
+                        .status,
+                },
+            });
+        }
+
+        if (type === EventApiConfig.USER_JOINT_TRAINING_LIST_BEST) {
+            return resultModalActions.setResultModal({
+                isOpen: false,
+                typeModal: {
+                    type: modalResultConfig[ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST]
+                        .type,
+                    status: modalResultConfig[
+                        ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST
+                    ].status,
+                },
+            });
+        }
+
+        if (type === EventApiConfig.INVATE_SEND || type === EventApiConfig.INVITE_REJECT) {
+            return resultModalActions.setResultModal({
+                isOpen: false,
+                typeModal: {
+                    type: modalResultConfig[ModalTypeConfig.ERROR_UPDATE_USER].type,
+                    status: modalResultConfig[ModalTypeConfig.ERROR_UPDATE_USER].status,
                 },
             });
         }

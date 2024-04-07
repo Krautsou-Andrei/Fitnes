@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { selectCreateTraining, selectIsEdit, trainingActions } from '@entities/training';
+import { selectCreateTraining, selectIsEdit, selectPal, trainingActions } from '@entities/training';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 export function useAppDrawer(isOpen: boolean) {
     const { exercises } = useAppSelector(selectCreateTraining);
+    const selectPalforTraining = useAppSelector(selectPal);
     const isEdit = useAppSelector(selectIsEdit);
     const dispatch = useAppDispatch();
 
@@ -48,6 +49,7 @@ export function useAppDrawer(isOpen: boolean) {
         deleteExercise,
         exercises,
         isEdit,
+        selectPalforTraining,
         onSetCheckedExercises,
     };
 }

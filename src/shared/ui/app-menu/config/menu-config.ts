@@ -14,7 +14,7 @@ export const menuConfig: MenuItem[] = [
     {
         id: 2,
         icon: React.createElement(HeartFilled),
-        link: '/',
+        link: PathConfig.TRAINING,
         title: 'Тренировки',
     },
     {

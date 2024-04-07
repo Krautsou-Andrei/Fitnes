@@ -18,7 +18,7 @@ export const editTraningThunk = createAsyncThunk<
 
     async (data, { dispatch, rejectWithValue }) => {
         dispatch(sessionActions.setIsLoadingCalendar(true));
-
+              
         try {
             const result = await dispatch(
                 trainingApi.endpoints.editTraining.initiate(data),
@@ -26,7 +26,8 @@ export const editTraningThunk = createAsyncThunk<
             return result;
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
-                dispatch(resultErrorFetch(error, EventApiConfig.TRAINING_ADD));
+                dispatch(resultErrorFetch(error, EventApiConfig.TRAINING_EDIT));
+                dispatch(sessionActions.setIsError(true));
                 return rejectWithValue(error);
             }
 

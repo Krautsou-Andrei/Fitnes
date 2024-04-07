@@ -1,0 +1,58 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+:global(.ant-layout-content).my-traning-page {
+    padding-bottom: @gap-8xl;
+    height: 100%;
+
+    .media-md ({
+        padding-left: 0;
+        padding-right: 0;
+    });;
+
+    .content-wrapper {
+        .media-sm ({
+            padding-left: @gap-s;
+            padding-right: @gap-s;
+        });;
+    }
+
+    .content-wrapper.marathons {
+        background-image: url('public/assets/background_marathons.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        :global(.ant-tabs) {
+            height: 100%;
+        }
+
+        :global(.ant-tabs-content-holder) {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    :global(.ant-tabs-content-holder) {
+        .media-xs ({
+            padding-left: @gap-s;
+            padding-right: @gap-s;
+        });;
+    }
+
+    .settings-content {
+        max-width: @app-width-settings-content;
+        width: 100%;
+    }
+}
+
+:global(.ant-tabs).tabs {
+    padding: @gap-s 0;
+
+    :global(.ant-tabs-nav) {
+        margin-bottom: @gap-4xl;
+    }
+}

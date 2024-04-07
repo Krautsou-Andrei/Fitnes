@@ -3,7 +3,7 @@ import { useMainWidth } from '@shared/hooks/@ex/app-layout';
 
 export function useAppLayout() {
     const { styleCollapsed } = useMainWidth();
-    const { isCalendar } = usePageIsEqual();
+    const { isCalendar, isTrainings } = usePageIsEqual();
 
-    return { isCalendar, styleCollapsed };
+    return { isCalendar, isTrainings, styleCollapsed };
 }

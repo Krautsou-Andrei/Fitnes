@@ -1,0 +1,63 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.group-workouts-wrapper {
+    .description {
+        margin-bottom: @gap-xl;
+        padding-bottom: @gap-s;
+
+        display: flex;
+        flex-direction: column;
+
+        text-align: center;
+
+        background-color: @app-devider;
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+
+            .media-tabtet({
+                flex-direction: column;
+                align-items: center;
+                gap: @gap-m;
+            });
+
+            button:nth-child(1) {
+                color: @app-primary-color;
+            }
+        }
+
+        :global(.ant-divider-horizontal) {
+            margin: @gap-xl 0 @gap-m;
+        }
+
+        :global(h3.ant-typography),
+        :global(span.ant-typography) {
+            margin-bottom: 0;
+            line-height: @font-line-m;
+        }
+
+        :global(h3.ant-typography) {
+            padding: @gap-4xl @gap-xl;
+            font-weight: 500;
+
+            color: @app-card-text-color-primary;
+
+            .media-xs({
+                font-size:@font-size-xl ;
+                padding: @gap-4xl @gap-4xs;
+            });
+        }
+
+        :global(.ant-typography) {
+            padding: 0 @gap-xl;
+
+            color: @app-text-color-secondary;
+
+            .media-xs({                
+                padding: 0 @gap-4xs;
+            });
+        }
+    }
+}

@@ -13,11 +13,12 @@ export function useLinkMenuClick() {
     const onClick = async (type: string) => {
         switch (type) {
             case PathConfig.CALENDAR:
+            case PathConfig.TRAINING:
                 try {
                     await dispatch(getTraningThunk()).unwrap();
                     dispatch(push(type));
                 } catch (error: unknown) {
-                    showErrorForDevelop('Get menu calendar', error);
+                    showErrorForDevelop(`Get menu ${type}`, error);
                 }
                 break;
             case PathConfig.PROFILE:
@@ -26,6 +27,7 @@ export function useLinkMenuClick() {
                 } catch (error: unknown) {
                     showErrorForDevelop('Get prifile', error);
                 }
+                break;
         }
     };
 

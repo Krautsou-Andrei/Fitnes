@@ -7,8 +7,26 @@
     }
 }
 
+.media-xl(@rules) {
+    @media screen and (max-width: @screen-xl) {
+        @rules();
+    }
+}
+
+.media-lg(@rules) {
+    @media screen and (max-width: @screen-lg) {
+        @rules();
+    }
+}
+
 .media-md(@rules) {
     @media screen and (max-width: @screen-md) {
+        @rules();
+    }
+}
+
+.media-sm(@rules) {
+    @media screen and (max-width: @screen-sm) {
         @rules();
     }
 }

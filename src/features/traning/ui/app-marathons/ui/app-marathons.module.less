@@ -1,0 +1,38 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.marathons {
+    height: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    text-align: center;
+
+    :global(.ant-tabs-content-holder) {
+        height: 100%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: @gap-10xl;
+    }
+
+    :global(h3.ant-typography) {
+        margin-bottom: 0;
+        color: @app-icon-color;
+        line-height: @font-line-m;
+
+        .media-tabtet({
+            max-width: (@rem * 240);
+        });
+    }
+
+    :global(.ant-typography-secondary) {
+        line-height: @font-line-m;
+    }
+}

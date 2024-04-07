@@ -1,8 +1,13 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-alert).alert-success-update-user {
-   bottom: @gap-4xxl;
-   margin: auto;
+    bottom: @gap-4xxl;
+    margin: auto;
 
-   max-width: @app-width-notification-success-update-user;
+    max-width: @app-width-notification-success-update-user;
+
+    .media-sm({
+      width: calc(100% - @gap-10xl);
+   });
 }

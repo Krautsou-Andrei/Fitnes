@@ -5,6 +5,7 @@ export const enum LayoutConfig {
     BUTTON_AUTHENTIFICATION_COOGLE = 'Войти через Google',
     BUTTON_ADD_TRAINING = 'Создать тренировку',
     BUTTON_CREATE_TRAINING = 'Создать тренировку',
+    BUTTON_NEW_TRAINING = 'Новая тренировка',
     BUTTON_RESET_ERROR_BIUNDARY = 'Вернуться на главную',
     BUTTON_REGISTER = 'Войти',
     BUTTON_REGISTER_GOOGLE = 'Регистрация через Google',
@@ -35,6 +36,7 @@ export const enum LayoutConfig {
     INPUT_TYPE_PASSWORD_CONFIRM = 'confirmPassword',
     LINK_FORGOT_PASSWORD = 'Забыли пароль?',
     NO_ACTIVE_TRAINING = 'Нет активных тренировок',
+    NO_CREATED_TRAININGS = 'У вас ещё нет созданных тренировок',
     TITLE_FORM_CHANGE_PASSWORD = 'Восстановление аккауанта',
     TITLE_MODAL_CHANGE_EXERCISE = 'Выбор типа тренировки',
     TITLE_MODAL_TRAINING_DATE = 'Тренировки на ',
@@ -42,5 +44,6 @@ export const enum LayoutConfig {
     TITLE_PROFILE = 'Профиль',
     TITLE_SETTING = 'Настройки',
     TITLE_TWO = 'которое поможет тебе добиться своей мечты!',
+    TRAINING = 'Тренировки',
     USER = 'Пользователь',
 }

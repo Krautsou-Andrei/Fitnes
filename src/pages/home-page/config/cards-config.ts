@@ -29,9 +29,10 @@ export const cardsActionsConfig: CardActive[] = [
         title: 'Расписать тренировки',
         button: {
             icon: React.createElement(HeartFilled),
-            href: '/',
+            href: PathConfig.TRAINING,
             title: 'Тренировки',
         },
+        dataTestId: DataTestIdConfig.MENU_BUTTON_TRAINING,
     },
     {
         id: 2,

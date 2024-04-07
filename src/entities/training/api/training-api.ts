@@ -1,13 +1,14 @@
 import { ApiEndpoints } from '../config/api-endpoints';
 
-import { mapTraining, mapTrainingList } from '../lib';
+import { mapPals, mapTraining, mapTrainingList } from '../lib';
 import type {
     TrainingDto,
     RequestTrainingBody,
     TrainingNameDto,
     RequestTrainingEditBody,
+    PalDto,
 } from './types';
-import type { TrainingName, Training } from '../model/types';
+import type { TrainingName, Training, Pal, TrainingBestType } from '../model/types';
 
 import { baseApi } from '@shared/api';
 import { TRAINING_TAG } from '@shared/api/tags';
@@ -38,7 +39,6 @@ export const trainingApi = baseApi.injectEndpoints({
                 body,
             }),
             invalidatesTags: [TRAINING_TAG],
-            transformResponse: (response: TrainingDto) => mapTraining(response),
         }),
         getTrainingList: build.query<TrainingName[], void>({
             query: () => ({
@@ -47,14 +47,42 @@ export const trainingApi = baseApi.injectEndpoints({
             }),
             transformResponse: (response: TrainingNameDto[]) => response.map(mapTrainingList),
         }),
+        getTrainingPals: build.query<Pal[], void>({
+            query: () => ({
+                url: ApiEndpoints.CATALOG_TRAINING_PALS,
+                method: 'GEt',
+            }),
+            transformResponse: (response: PalDto[]) => response.map(mapPals),
+        }),
+        getUserJointTrainingList: build.query<Pal[], void>({
+            query: () => ({
+                url: ApiEndpoints.CATALOGS_USER_JOINT_TRAINING_LIST,
+                method: 'GEt',
+            }),
+            transformResponse: (response: PalDto[]) => response.map(mapPals),
+        }),
+        getUserJointTrainingListBest: build.query<Pal[], TrainingBestType>({
+            query: (params) => {
+                return {
+                    url: ApiEndpoints.CATALOGS_USER_JOINT_TRAINING_LIST,
+                    method: 'GET',
+                    params,
+                };
+            },
+            transformResponse: (response: PalDto[]) => response.map(mapPals),
+        }),
     }),
 });
 
 export const {
-    useGetTrainingQuery,
     useAddTrainingMutation,
-    useLazyGetTrainingQuery,
-    useGetTrainingListQuery,
-    useLazyGetTrainingListQuery,
     useEditTrainingMutation,
+    useGetTrainingQuery,
+    useGetTrainingListQuery,
+    useGetTrainingPalsQuery,
+    useGetUserJointTrainingListQuery,
+    useLazyGetTrainingQuery,
+    useLazyGetTrainingPalsQuery,
+    useLazyGetTrainingListQuery,
+    useLazyGetUserJointTrainingListQuery,
 } = trainingApi;

@@ -1,0 +1,56 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.period-exercise {
+    :global(.ant-col) {
+        display: flex;
+        align-items: center;
+    }
+
+    .data-picker-wrapper {
+        margin-top: @gap-xl;
+
+        .media-sm({
+            margin-top: @gap-m;
+        });
+
+        .select-period {
+            margin-top: @gap-xl;
+
+            .media-sm({
+                margin-top: @gap-xs;
+            });
+        }
+
+        :global(.ant-checkbox + span) {
+            padding-right: 0;
+        }
+    }
+}
+
+.is-training {
+    background-color: @colorZircon;
+}
+
+:global(.ant-picker) {
+    height: (@rem * 28);
+    width: 100%;
+}
+
+:global(.ant-select.ant-select-single).select {
+    height: (@rem * 28);
+    width: 100%;
+
+    :global(.ant-select-selector) {
+        height: (@rem * 28);
+
+        :global(.ant-select-selection-item),
+        :global(.ant-select-selection-search) {
+            line-height: (@rem * 26);
+        }
+
+        input {
+            line-height: (@rem * 16);
+        }
+    }
+}

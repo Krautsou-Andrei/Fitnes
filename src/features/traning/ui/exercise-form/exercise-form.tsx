@@ -1,4 +1,5 @@
 import { Checkbox, Input, InputNumber, Space } from 'antd';
+import clsn from 'classnames';
 
 import { useExerciseForm } from './hooks';
 
@@ -32,6 +33,8 @@ export function ExerciseForm({
         exerciseName,
         isChecked,
         isEditTraining,
+        isSelectPal,
+        isTrainings,
         onChangeApproaches,
         onChangeExerciseName,
         onChangeReplays,
@@ -45,10 +48,10 @@ export function ExerciseForm({
         indexExercise,
         replaysDefault,
         weightDefault,
-    });    
+    });
 
     return (
-        <div className={styles['exercise-form']}>
+        <div className={clsn(styles['exercise-form'], { [styles['training-page']]: isTrainings })}>
             <Input
                 data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${indexExercise}`}
                 className={styles['input-exercise']}
@@ -57,7 +60,7 @@ export function ExerciseForm({
                 onChange={onChangeExerciseName}
                 autoFocus={true}
                 addonAfter={
-                    isEditTraining && (
+                    (isEditTraining || isSelectPal) && (
                         <Checkbox
                             data-test-id={`${DataTestIdConfig.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${indexExercise}`}
                             checked={isChecked}

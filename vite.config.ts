@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => {
     return {
-        base: command === 'serve' ? '/' : 'ClevertecFrontendLab/Krautsou-Andrei',
+        base: command === 'serve' ? '/' : '/Krautsou-Andrei',
         plugins: [
             react(),
             svg({

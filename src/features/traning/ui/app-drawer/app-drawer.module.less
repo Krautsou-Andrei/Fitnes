@@ -50,6 +50,9 @@
         flex-direction: column;
         height: 100%;
 
+        overflow: auto;
+        scrollbar-width: @app-width-scrollbar;
+
         .media-xs(
             {
                 padding: 0 @gap-m @gap-m;
@@ -66,6 +69,24 @@
             text-align: center;
             color: @app-text-color-secondary;
         }
+    }
+
+    :global(.ant-drawer-body::-webkit-scrollbar) {
+        width: @app-width-scrollbar;
+    }
+
+    :global(.ant-drawer-body::-webkit-scrollbar-track) {
+        background-color: transparent;
+    }
+
+    :global(.ant-drawer-body::-webkit-scrollbar-thumb) {
+        background-color: @app-scrollbar-drawer-color;
+
+        border-radius: @app-width-scrollbar;
+    }
+
+    :global(.ant-drawer-body::-webkit-scrollbar-thumb:hover) {
+        background-color: @app-scrollbar-drawer-color;
     }
 
     .exercises {

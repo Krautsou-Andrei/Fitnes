@@ -1,18 +1,29 @@
 import clsn from 'classnames';
 import { Menu } from 'antd';
 
-import { useLinkMenuClick } from '@shared/hooks';
 import { menuConfig } from './config/menu-config';
+import { AppBadgeCount } from '../app-badge-count/app-badge-count';
+
+import { PathConfig } from '@shared/config';
+import { useLinkMenuClick } from '@shared/hooks';
 
 import styles from './app-menu.module.less';
 
 type AppMenuProps = {
     isCollapsed: boolean;
     isQueryMD?: boolean;
+    closeMenu?: () => void;
 };
 
-export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
+export function AppMenu({ isCollapsed, isQueryMD, closeMenu }: AppMenuProps) {
     const { onClick } = useLinkMenuClick();
+
+    const onClickMenu = (link: string) => {
+        onClick(link);
+        if (closeMenu) {
+            closeMenu();
+        }
+    };
 
     return (
         <Menu
@@ -21,9 +32,13 @@ export function AppMenu({ isCollapsed, isQueryMD }: AppMenuProps) {
             mode='inline'
             items={menuConfig.map((item) => ({
                 key: String(item.id),
-                icon: isQueryMD ? null : item.icon,
+                icon: isQueryMD ? null : item.link === PathConfig.TRAINING ? (
+                    <AppBadgeCount icon={item.icon} />
+                ) : (
+                    item.icon
+                ),
                 label: `${item.title}`,
-                onClick: () => onClick(item.link),
+                onClick: () => onClickMenu(item.link),
                 style: isCollapsed
                     ? { paddingLeft: 'calc(50% - 16px / 2)' }
                     : {

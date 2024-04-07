@@ -4,10 +4,10 @@ import { ItemsTabs } from '@shared/ui/app-tabs/@ex/config';
 export const tabsAuthConfig: ItemsTabs[] = [
     {
         key: `${PathConfig.AUTH}`,
-        tab: 'Вход',
+        label: 'Вход',
     },
     {
         key: `${PathConfig.REGISTRATION}`,
-        tab: 'Регистрация',
+        label: 'Регистрация',
     },
 ];

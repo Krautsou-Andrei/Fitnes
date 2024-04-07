@@ -6,9 +6,9 @@ export type RequestTrainingBody = {
     exercises: Exercises[] | [];
     isImplementation?: boolean;
     parameters?: {
-        repeat: boolean;
-        period: number;
-        jointTraining: boolean;
+        repeat?: boolean;
+        period?: number;
+        jointTraining?: boolean;
         participants?: [string];
     };
 };
@@ -35,13 +35,24 @@ export type TrainingDto = {
         },
     ];
     parameters?: {
-        repeat: boolean;
-        period: number;
-        jointTraining: boolean;
+        repeat?: boolean;
+        period?: number;
+        jointTraining?: boolean;
         participants?: [string];
     };
 };
+
 export type TrainingNameDto = {
     name: string;
     key: string;
+};
+
+export type PalDto = {
+    id: string;
+    name: string;
+    trainingType: string;
+    imageSrc: string | null;
+    avgWeightInWeek: number;
+    inviteId: string;
+    status: string;
 };

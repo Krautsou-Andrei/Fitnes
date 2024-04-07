@@ -25,16 +25,19 @@ export function AppLayout({
     isAuthLayout,
     isNoTitle,
 }: AppLayoutProps) {
-    const { isCalendar, styleCollapsed } = useAppLayout();
+    const { isCalendar, isTrainings, styleCollapsed } = useAppLayout();
 
     return (
         <Layout className={clsn(styles['main-page'], className)}>
             {siderSlot}
-            <Layout style={!isAuthLayout ? styleCollapsed : {}}>
+            <Layout
+                className={styles['content-wrapper']}
+                style={!isAuthLayout ? styleCollapsed : {}}
+            >
                 {headerSlot}
                 <div
                     className={clsn(styles['main-content'], {
-                        [styles['main-content-simple']]: isNoTitle && !isCalendar,
+                        [styles['main-content-simple']]: isNoTitle && !isCalendar && !isTrainings,
                     })}
                 >
                     <Outlet />

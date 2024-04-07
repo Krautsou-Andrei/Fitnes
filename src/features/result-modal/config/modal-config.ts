@@ -43,6 +43,16 @@ export const modalCofig: ModalConfig = {
         desciption: 'Попробуйте ещё раз.',
         title: 'При открытии данных\n произошла ошибка',
     },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных\n произошла ошибка',
+    },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST]: {
+        buttonTitle: 'Обновить',
+        desciption: 'Попробуйте ещё раз.',
+        title: 'При открытии данных\n произошла ошибка',
+    },
     [ModalTypeConfig.ERROR_UPDATE_USER]: {
         buttonTitle: 'Закрыть',
         desciption: 'Придётся попробовать ещё раз',
@@ -58,9 +68,17 @@ export const modalCofig: ModalConfig = {
             ` Мы отправили инструкцию для оплаты вам на\n e-mail ${email}. После подтверждения оплаты войдите\n вприложение заново.`,
         title: 'Чек для оплаты у вас на почте',
     },
+    [ModalTypeConfig.SUCCESS_CREATE_WORKOUT]: {
+        buttonTitle: 'Отлично',
+        title: 'Новая тренировка успешно добавлена',
+    },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
         buttonTitle: 'Отлично',
         title: 'Данные профиля успешно обновлены',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_WORKOUT]: {
+        buttonTitle: 'Отлично',
+        title: 'Тренировка успешно обновлена',
     },
 };
 
@@ -89,6 +107,14 @@ export const modalResultConfig: ModalResultConfig = {
         type: ModalTypeConfig.ERROR_GET_TRANING_LIST,
         status: '500',
     },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST]: {
+        type: ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST,
+        status: '500',
+    },
+    [ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST]: {
+        type: ModalTypeConfig.ERROR_GET_USER_JOINT_TRAINING_LIST_BEST,
+        status: '500',
+    },
     [ModalTypeConfig.ERROR_UPDATE_USER]: {
         type: ModalTypeConfig.ERROR_UPDATE_USER,
         status: 'error',
@@ -101,8 +127,16 @@ export const modalResultConfig: ModalResultConfig = {
         type: ModalTypeConfig.SUCCESS_BUY_TARIFF,
         status: 'success',
     },
+    [ModalTypeConfig.SUCCESS_CREATE_WORKOUT]: {
+        type: ModalTypeConfig.SUCCESS_CREATE_WORKOUT,
+        status: 'success',
+    },
     [ModalTypeConfig.SUCCESS_UPDATE_USER]: {
         type: ModalTypeConfig.SUCCESS_UPDATE_USER,
+        status: 'success',
+    },
+    [ModalTypeConfig.SUCCESS_UPDATE_WORKOUT]: {
+        type: ModalTypeConfig.SUCCESS_UPDATE_WORKOUT,
         status: 'success',
     },
 };

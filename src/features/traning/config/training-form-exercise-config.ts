@@ -1,11 +1,15 @@
 export const enum TrainingFormExerciseConfig {
     BUTTON_ADD_EXERCISE = 'Добавить ещё',
     BUTTON_DELETE_EXERCISE = 'Удалить',
+    CHECKBOX_PERIOD_LABEL = 'С периодичностью',
     INPUT_PLACEHOLDER_EXERCISE = 'Упражнение',
     LABEL_APPROACHES = 'Подходы',
     LABEL_REPLAYS = 'Количество',
     LABEL_WEIGHT = 'Вес, кг',
     NOTIFICATION = 'После сохранения внесенных изменений\n отредактировать проведенную тренировку\n будет невозможно',
+    SELECT_OPTION_PERIOD_DEFAULT = 'Периодичность',
     TITLE_DRAWER = 'Добавление упражнений',
     TITLE_DRAWER_EDIT = 'Редактирование',
+    TITLE_DRAWER_EDIT_EXERCISE = 'Редактировать тренировку',
+    TITLE_DRAWER_NEW_TRAINING = 'Новая тренировка',
 }

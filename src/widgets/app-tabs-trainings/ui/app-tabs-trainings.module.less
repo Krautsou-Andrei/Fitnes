@@ -1,0 +1,56 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+:global(.ant-tabs.ant-tabs-top).tabs-my-trainings {
+    :global(.ant-tabs-nav) {
+        margin-bottom: @gap-5xl;
+
+        overflow: hidden;
+
+        :global(.ant-tabs-nav-wrap) {
+            overflow: unset;
+        }
+
+        .media-sm(
+          {  margin-bottom: @gap-xl;}
+        );
+    }
+
+    :global(.ant-tabs-nav-list) {
+        padding-right: @gap-4xl;
+        width: 100%;
+        justify-content: space-between;
+
+        :global(.ant-tabs-tab),
+        :global(.ant-tabs-tab + .ant-tabs-tab) {
+            .media-sm({
+                margin-left: @gap-3xs;
+                margin-right: @gap-3xs;
+
+                height: (@rem *46)
+            });
+        }
+    }
+
+    :global(.ant-tabs-tab) {
+        padding: 0;
+        margin-left: @gap-s;
+        margin-right: @gap-s;
+
+        width: fit-content;
+        flex: unset;
+        font-weight: 500;
+
+        font-size: @font-size-xl;
+
+        .media-xl({
+            font-size: @font-size-2m;
+            font-weight: 400
+        });
+    }
+
+    :global(.ant-tabs-tab + .ant-tabs-tab) {
+        margin-left: @gap-s;
+        margin-right: @gap-s;
+    }
+}

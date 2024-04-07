@@ -7,7 +7,7 @@ import { usePageIsEqual } from '@shared/hooks';
 import styles from './app-breadcrumb.module.less';
 
 export function AppBreadcrumb() {
-    const { isCalendar, isFeedback } = usePageIsEqual();
+    const { isCalendar, isFeedback, isTrainings } = usePageIsEqual();
 
     return (
         <Breadcrumb className={styles['app-breadcrumb']}>
@@ -22,6 +22,11 @@ export function AppBreadcrumb() {
             {isCalendar && (
                 <Breadcrumb.Item>
                     <Link to={PathConfig.CALENDAR}>{LayoutConfig.CALENDAR}</Link>
+                </Breadcrumb.Item>
+            )}
+            {isTrainings && (
+                <Breadcrumb.Item>
+                    <Link to={PathConfig.TRAINING}>{LayoutConfig.TRAINING}</Link>
                 </Breadcrumb.Item>
             )}
         </Breadcrumb>

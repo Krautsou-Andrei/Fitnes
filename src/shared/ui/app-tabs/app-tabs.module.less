@@ -16,6 +16,19 @@
         margin: 0;
     }
 
+    .badge {
+        margin-left: @gap-3xs;
+
+        :global(.ant-badge-count) {
+            min-width: (@rem * 24);
+            height: (@rem * 16);
+
+            line-height: @font-line-m;
+
+            transform: translate(0, -15%);
+        }
+    }
+
     :global(.ant-tabs-tab) {
         padding: @gap-s 0;
         flex: 50%;
