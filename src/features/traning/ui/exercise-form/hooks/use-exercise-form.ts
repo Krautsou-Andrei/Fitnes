@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import { ExercisesDefaultConfig } from '@features/traning/config';
 import { selectIsEdit, selectPal, trainingActions } from '@entities/training';
 
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppSelector, usePageIsEqual } from '@shared/hooks';
 
 type UseExerciseFormParams = {
     approachesDefault: number;
@@ -24,6 +24,7 @@ export function useExerciseForm({
 }: UseExerciseFormParams) {
     const dispatch = useAppDispatch();
     const isEditTraining = useAppSelector(selectIsEdit);
+    const { isTrainings } = usePageIsEqual();
 
     const [approaches, setApproaches] = useState<number>(
         approachesDefault || ExercisesDefaultConfig.APPROACHES,
@@ -92,6 +93,7 @@ export function useExerciseForm({
         isChecked,
         isEditTraining,
         isSelectPal,
+        isTrainings,
         onChangeApproaches,
         onChangeExerciseName,
         onChangeReplays,

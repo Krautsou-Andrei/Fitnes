@@ -19,5 +19,9 @@ export function useAppSider() {
         dispatch(siderActions.setIsCollapsed(isCollapsed));
     }, [dispatch, isCollapsed, isQueryMD]);
 
-    return { isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed };
+    const closeMenu = () => {
+        isSetCollapsed(true);
+    };
+
+    return { closeMenu, isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed };
 }

@@ -24,6 +24,7 @@ export function AppGroupWorkouts() {
 
     const {
         isButtonSaveDisabled,
+        isQueryXS,
         isOldDay,
         isOpenDrawer,
         onCloseDrawer,
@@ -57,7 +58,11 @@ export function AppGroupWorkouts() {
                                 <Title level={3}>
                                     {splitString(WorkoutsConfig.GROUP_TITLE_ONE)}
                                 </Title>
-                                <Text>{WorkoutsConfig.GROUP_DESCRIPTION}</Text>
+                                <Text>
+                                    {isQueryXS
+                                        ? splitString(WorkoutsConfig.GROUP_DESCRIPTION_MOBILE)
+                                        : splitString(WorkoutsConfig.GROUP_DESCRIPTION)}
+                                </Text>
                                 <Divider />
 
                                 <ButtonGroup className={styles['button-group']}>

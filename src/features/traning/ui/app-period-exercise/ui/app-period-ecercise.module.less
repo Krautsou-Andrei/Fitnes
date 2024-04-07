@@ -1,9 +1,30 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .period-exercise {
     :global(.ant-col) {
         display: flex;
         align-items: center;
+    }
+
+    .data-picker-wrapper {
+        margin-top: @gap-xl;
+
+        .media-sm({
+            margin-top: @gap-m;
+        });
+
+        .select-period {
+            margin-top: @gap-xl;
+
+            .media-sm({
+                margin-top: @gap-xs;
+            });
+        }
+
+        :global(.ant-checkbox + span) {
+            padding-right: 0;
+        }
     }
 }
 

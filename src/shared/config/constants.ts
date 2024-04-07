@@ -12,6 +12,7 @@ export const enum ConstantsMediaQuery {
 
 export const enum Size {
     SIZE_S = 12,
+    SIZE_4_XL = 32,
     SIZE_8_XL = 42,
 }
 

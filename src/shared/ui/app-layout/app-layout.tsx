@@ -30,7 +30,10 @@ export function AppLayout({
     return (
         <Layout className={clsn(styles['main-page'], className)}>
             {siderSlot}
-            <Layout style={!isAuthLayout ? styleCollapsed : {}}>
+            <Layout
+                className={styles['content-wrapper']}
+                style={!isAuthLayout ? styleCollapsed : {}}
+            >
                 {headerSlot}
                 <div
                     className={clsn(styles['main-content'], {

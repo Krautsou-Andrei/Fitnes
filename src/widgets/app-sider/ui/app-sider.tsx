@@ -14,7 +14,8 @@ import { PathConfig } from '@shared/config';
 import styles from './app-sider.module.less';
 
 export function AppSider() {
-    const { isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed } = useAppSider();
+    const { closeMenu, isCollapsed, isSetCollapsed, isQueryMD, width, widthCollapsed } =
+        useAppSider();
 
     return (
         <Sider
@@ -36,7 +37,7 @@ export function AppSider() {
                 />
             </Link>
 
-            <AppMenu isCollapsed={isCollapsed} isQueryMD={isQueryMD} />
+            <AppMenu isCollapsed={isCollapsed} isQueryMD={isQueryMD} closeMenu={closeMenu} />
             <AppButtonSwitch isCollapsed={isCollapsed} isSetCollapsed={isSetCollapsed} />
             <Divider className={styles['app-divider']} />
             <AppButtonLogout isCollapsed={isCollapsed} isQueryMD={isQueryMD} />

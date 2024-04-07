@@ -1,8 +1,16 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .exercise-form {
     padding-top: @gap-xl;
 }
+
+.exercise-form.training-page {
+    .media-xs({
+        padding-top: @gap-m;
+    });
+}
+
 input:global(.ant-input) {
     padding: (@rem * 3) @gap-xs;
 }

@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import clsn from 'classnames';
 import { Avatar, Button, Card, Col, Row, Tooltip } from 'antd';
 import { CheckCircleTwoTone, InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 
@@ -9,7 +10,7 @@ import { type Pal, trainingActions } from '@entities/training';
 
 import { AppHeighlightText } from '@shared/ui';
 import { useAppDispatch } from '@shared/hooks';
-import { Gap, STYLES, Size } from '@shared/config/constants';
+import { STYLES, Size } from '@shared/config/constants';
 import { showErrorForDevelop } from '@shared/lib';
 import { DataTestIdConfig } from '@shared/config';
 
@@ -64,11 +65,11 @@ export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps)
         <Card
             data-test-id={`${DataTestIdConfig.JOINT_TRAINING_CARDS}${index}`}
             key={pal.id}
-            className={styles['card-pal']}
+            className={clsn(styles['card-pal'], { [styles.pal]: onOpenDrawer })}
             onClick={onSelectPal}
         >
             <div className={styles['pal-wrapper']}>
-                <Row className={styles.userInfo}>
+                <Row className={styles['user-info']}>
                     <Col>
                         <Avatar
                             size={Size.SIZE_8_XL}
@@ -77,8 +78,8 @@ export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps)
                             icon={!pal.imageSrc && <UserOutlined />}
                         />
                     </Col>
-                    <Col style={{ marginLeft: `${Gap.GAP_XS}px` }}>
-                        <div className={styles.name}>{name(pal.name)} </div>
+                    <Col className={styles.name}>
+                        <div>{name(pal.name)} </div>
                     </Col>
                 </Row>
                 <Row className={styles['pal-params']}>
@@ -97,14 +98,13 @@ export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps)
                     <>
                         <Button
                             block={true}
-                            size='middle'
                             type='primary'
+                            className={styles.button}
                             disabled={
                                 pal.status === StatusConfig.REJECTED ||
                                 pal.status === StatusConfig.PENDING
                             }
                             onClick={handlerButtonPal}
-                            style={{ marginTop: `${Gap.GAP_M}px` }}
                         >
                             {pal.status === StatusConfig.ACCEPTED
                                 ? InviteConfig.REJECT_TRAINING

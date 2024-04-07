@@ -1,4 +1,5 @@
 import { Content } from 'antd/lib/layout/layout';
+import clsn from 'classnames';
 
 import { useMyTrainingsPage } from '../hooks';
 
@@ -8,12 +9,19 @@ import { AppContentWrapper } from '@shared/ui';
 import styles from './my-trainings-page.module.less';
 
 export function MyTrainingsPage() {
-    useMyTrainingsPage();
+    const { state, functions } = useMyTrainingsPage();
 
     return (
         <Content className={styles['my-traning-page']}>
-            <AppContentWrapper>
-                <AppTabsTrainings classNames={styles['tabs']} />
+            <AppContentWrapper
+                classNames={clsn(styles['content-wrapper'], {
+                    [styles.marathons]: state.isMarathonTabs === 'marathons',
+                })}
+            >
+                <AppTabsTrainings
+                    classNames={styles['tabs']}
+                    onChangeTab={functions.onChangeTabs}
+                />
             </AppContentWrapper>
         </Content>
     );

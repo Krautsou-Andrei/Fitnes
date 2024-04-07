@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .no-workout {
     display: flex;
@@ -13,6 +14,15 @@
         display: flex;
         justify-content: center;
         align-items: end;
+
+        .media-tabtet({
+            max-width: (@rem *270);
+            text-align: center
+        });
+
+        .media-sm({
+            max-width: (@rem *280 );
+        });
 
         :global(.ant-typography) {
             padding-bottom: @gap-13xl;

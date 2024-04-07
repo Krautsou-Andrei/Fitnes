@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .search {
     margin-bottom: @gap-xl;
@@ -11,16 +12,43 @@
     justify-content: space-between;
     align-items: center;
 
+    .media-xs({
+        height: unset;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: @gap-xs;
+    });
+
+    :global(.ant-btn.ant-btn-text) {
+        .media-xs({
+            padding-left: 0;
+        });
+    }
+
     .search-box {
         max-width: (@rem * 484);
         height: (@rem * 28);
 
+        .media-xs({
+            height: (@rem * 32);
+        });
+
         input {
             height: (@rem * 28);
+
+            .media-xs({
+            height: (@rem * 32);
+        });
         }
 
         :global(.ant-btn) {
             height: (@rem * 28);
+
+            .media-xs({
+            height: (@rem * 32);
+        });
         }
     }
 }

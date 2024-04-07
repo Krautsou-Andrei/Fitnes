@@ -1,4 +1,5 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 :global(.ant-card).workout-modal {
     position: absolute;
@@ -14,6 +15,13 @@
     flex-direction: column;
 
     box-shadow: @app-box-shadow-card;
+
+    .media-xs({
+        position: fixed;
+        top: unset;
+        left: @gap-xl;
+        width: calc(100% - @gap-10xl);
+    });
 
     :global(.ant-card-head) {
         padding: 0;

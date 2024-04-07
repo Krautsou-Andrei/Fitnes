@@ -65,6 +65,7 @@ export function columnsWorkoutsConfig({
         {
             key: 'period',
             title: WorkoutsConfig.TITLE_PERIOD_TABLE,
+            className: styles && styles['column-sort'],
             dataIndex: 'period',
             render: (_text, record) => (
                 <div>{getPeriodFindNumber(record.training.parameters?.period)}</div>
@@ -82,6 +83,7 @@ export function columnsWorkoutsConfig({
             dataIndex: 'action',
             render: (_text, record, index) => (
                 <Button
+                    className={styles && styles['edit-button']}
                     data-test-id={`${DataTestIdConfig.UPDATE_MY_TRAINING_TABLE_ICON}${index + 1}`}
                     type='link'
                     disabled={record.training.isImplementation}

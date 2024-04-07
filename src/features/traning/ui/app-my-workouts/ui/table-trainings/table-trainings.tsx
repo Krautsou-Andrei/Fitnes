@@ -6,7 +6,7 @@ import { useChangeHeightTable } from '@features/traning/hooks';
 
 import { type Training, selectTraining } from '@entities/training';
 
-import { useAppSelector } from '@shared/hooks';
+import { useAppMediaQuery, useAppSelector } from '@shared/hooks';
 import { DataTestIdConfig, LayoutConfig } from '@shared/config';
 import { sortTrainingPeriod } from '@shared/lib';
 
@@ -31,6 +31,7 @@ export function TableTrainings({
 }: TableTrainingsProps) {
     const { quantityItems } = useChangeHeightTable();
     const trainingsState = useAppSelector(selectTraining);
+    const { isQueryXS } = useAppMediaQuery();
     const trainings = sortTrainingPeriod(trainingsState);
 
     const allTrainings = trainings.map((training) => ({ ...training, key: training.training.id }));
@@ -57,6 +58,8 @@ export function TableTrainings({
             />
             <Button
                 data-test-id={DataTestIdConfig.CREATE_NEW_TRAINING_BUTTON}
+                className={styles.button}
+                block={isQueryXS}
                 type='primary'
                 size='large'
                 icon={<PlusOutlined />}

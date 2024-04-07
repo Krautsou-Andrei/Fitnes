@@ -16,7 +16,8 @@ import {
 
 import { Size } from '@shared/config/constants';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
-import { showErrorForDevelop } from '@shared/lib';
+import { formatDate, showErrorForDevelop } from '@shared/lib';
+import { DateFormatConfig } from '@shared/config';
 
 import styles from './invite-requests.module.less';
 
@@ -89,8 +90,10 @@ export function InviteRequests() {
                         </div>
                     </div>
                     <div className={styles.message}>
-                        <Typography.Text type='secondary'>{item.createdAt}</Typography.Text>
-                        <Typography.Title level={5} style={{ color: '#061178', marginTop: '8px' }}>
+                        <Typography.Text type='secondary'>
+                            {formatDate(item.createdAt, DateFormatConfig.FORMAT_DD_MN_YYYY_DOT)}
+                        </Typography.Text>
+                        <Typography.Title level={5}>
                             Привет, я ищу партнёра для совместных{' '}
                             {
                                 TypeTrainingsInviteConfig[
@@ -115,10 +118,10 @@ export function InviteRequests() {
                         )}
                     </div>
                     <div className={styles.buttons}>
-                        <Button type='primary' onClick={() => acceptInviteHandler(item.id)}>
+                        <Button block type='primary' onClick={() => acceptInviteHandler(item.id)}>
                             {InviteConfig.TRAINING_JOINT}
                         </Button>
-                        <Button onClick={() => rejectInviteHandler(item.id)}>
+                        <Button block onClick={() => rejectInviteHandler(item.id)}>
                             {InviteConfig.REJECT_TRAINING}
                         </Button>
                     </div>

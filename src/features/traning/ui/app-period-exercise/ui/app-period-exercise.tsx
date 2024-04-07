@@ -106,7 +106,7 @@ export function AppPeriodExercise({
                     onChange={onSelectTraining}
                 />
             )}
-            <Row gutter={Gap.GAP_M} style={{ marginTop: `${Gap.GAP_XL}px` }}>
+            <Row gutter={Gap.GAP_M} className={styles['data-picker-wrapper']}>
                 <Col span={Gap.GAP_S}>
                     <DatePicker
                         data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_DATE_PICKER}
@@ -128,7 +128,7 @@ export function AppPeriodExercise({
                         {TrainingFormExerciseConfig.CHECKBOX_PERIOD_LABEL}
                     </Checkbox>
                 </Col>
-                <Col span={COL.COL_S} style={{ marginTop: `${Gap.GAP_XS}px` }}>
+                <Col span={COL.COL_S} className={styles['select-period']}>
                     {isRepeat && (
                         <Select
                             data-test-id={DataTestIdConfig.MODAL_DRAWER_RIGHT_SELECT_PERIOD}

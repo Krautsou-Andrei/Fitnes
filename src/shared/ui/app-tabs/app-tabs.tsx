@@ -29,7 +29,7 @@ export function AppTabs({ className, items, onChange }: AppTabsProps) {
                         label: (
                             <div>
                                 {tab.label}
-                                <Badge count={countInvities} />
+                                <Badge count={countInvities} className={styles.badge} />
                             </div>
                         ),
                         key: `${tab.key}-${countInvities + 1}`,

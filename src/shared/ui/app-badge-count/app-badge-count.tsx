@@ -1,8 +1,11 @@
 import { ReactNode } from 'react';
+import clsn from 'classnames';
 
 import { selectGetInvities } from '@entities/invite';
 import { useAppSelector } from '@shared/hooks';
 import { DataTestIdConfig } from '@shared/config';
+
+import styles from './app-badge-count.module.less';
 
 type AppBadgeCountProps = {
     icon?: ReactNode;
@@ -21,7 +24,7 @@ export function AppBadgeCount({ icon }: AppBadgeCountProps) {
                         <sup
                             data-test-id={DataTestIdConfig.NOTIFICATION_ABOUT_JOINT_TRAINING}
                             data-show='true'
-                            className='ant-scroll-number ant-badge-count'
+                            className={clsn('ant-scroll-number ant-badge-count', styles.badge)}
                             title={`${count}`}
                         >
                             <span className='ant-scroll-number-only'>
@@ -35,7 +38,7 @@ export function AppBadgeCount({ icon }: AppBadgeCountProps) {
             ) : (
                 <sup
                     data-show='true'
-                    className='ant-scroll-number ant-badge-count'
+                    className={clsn('ant-scroll-number ant-badge-count')}
                     title={`${count}`}
                 >
                     <span className='ant-scroll-number-only'>

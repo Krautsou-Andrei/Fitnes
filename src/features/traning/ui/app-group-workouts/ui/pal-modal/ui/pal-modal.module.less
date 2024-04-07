@@ -1,48 +1,102 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .pal-modal {
     max-width: (@rem * 539) !important;
     width: 100% !important;
     padding: @gap-7xl @gap-4xl;
 
+    .media-sm({
+        width: calc(100% - @gap-10xl) !important;
+    });
+
     .pal-info {
         margin-bottom: @gap-xl;
-    }
 
-    .params {
-        display: flex;
-        flex: 1;
-
-        .params-name {
-            display: flex;
+        .media-sm({
             flex-direction: column;
-            gap: (@rem * 5);
+            gap:@gap-s;
+        });
 
-            line-height: @font-line-m;
-            font-size: @font-size-s;
-            color: @app-text-color-secondary;
+        .avatar {
+            display: flex;
+            align-items: center;
+
+            .name {
+                display: inline-block;
+
+                margin-left: @gap-3xs;
+                width: (@rem * 2);
+
+                word-wrap: normal;
+            }
         }
 
-        .params-info {
-            margin-left: @gap-m;
-
+        .params {
             display: flex;
-            flex-direction: column;
-            gap: @gap-3xs;
+            flex: 1;
 
-            color: @app-primary-color;
-            line-height: @font-line-m;
-            font-weight: 500;
+            .params-name {
+                display: flex;
+                flex-direction: column;
+                gap: (@rem * 5);
+
+                line-height: @font-line-m;
+                font-size: @font-size-s;
+                color: @app-text-color-secondary;
+            }
+
+            .params-info {
+                margin-left: @gap-m;
+
+                display: flex;
+                flex-direction: column;
+                gap: @gap-3xs;
+
+                color: @app-primary-color;
+                line-height: @font-line-m;
+                font-weight: 500;
+            }
         }
     }
 
-    .status {
-        display: flex;
-        align-items: center;
-        gap: @gap-xs;
+    .controls {
+        .media-xs({
+         
+            flex-direction: column-reverse;
+            align-items: center;
+            gap:@gap-m;
+        });
+
+        :global(.ant-col) {
+            .media-xs({
+               width: 100%
+            });
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: @gap-xs;
+
+            span {
+                color: @app-result-success;
+            }
+
+            .media-xs({
+              justify-content: center;
+              max-width: 100%
+            });
+        }
 
         .button {
             height: @height-2xl;
         }
+    }
+
+    :global(.ant-modal-body) {
+        .media-sm({
+            padding: @gap-s;
+        });
     }
 }

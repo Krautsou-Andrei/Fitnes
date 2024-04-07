@@ -1,12 +1,18 @@
 @import '@shared/styles/constants';
+@import '@shared/styles/mixin';
 
 .heighlight {
     color: @app-heighlight-color;
 }
 
-.card-pal {
-    max-width: @app-width-card-pal;
-    width: 100%;
+:global(.ant-card).card-pal {
+    width: @app-width-card-pal;
+
+    border-radius: (@rem* 2);
+
+    .media-xs({
+        width: 100%
+    });
 
     .pal-wrapper {
         display: flex;
@@ -14,36 +20,55 @@
 
         height: 100%;
 
+        .user-info {
+            margin-bottom: @gap-s;
+            align-items: center;
+
+            .name {
+                margin-left: @gap-xs;
+                width: (@rem * 2);
+                line-height: @font-line-m;
+            }
+        }
+
+        .pal-params {
+            margin-bottom: @gap-m;
+
+            gap: @gap-2m;
+            align-items: center;
+
+            flex: 1;
+            align-self: self-start;
+
+            .params-title {
+                font-size: @font-size-s;
+            }
+
+            .params-info {
+                color: @app-primary-color;
+                font-weight: 500;
+            }
+        }
+
+        .button {
+            margin-bottom: @gap-xs;
+
+            height: (@rem * 28);
+            line-height: @font-line-m;
+        }
+
         .status {
             text-align: center;
         }
     }
 
-    .name {
-        width: (@rem * 2);
-        line-height: @font-line-m;
-    }
-
-    .pal-params {
-        gap: @gap-2m;
-        align-items: center;
-
-        flex: 1;
-        align-self: self-start;
-
-        .params-title {
-            font-size: @font-size-s;
-        }
-
-        .params-info {
-            color: @app-primary-color;
-            font-weight: 500;
-        }
-    }
-
     :global(.ant-card-body) {
-        padding: @gap-m;
+        padding: @gap-m @gap-m @gap-xs;
 
         height: 100%;
     }
+}
+
+:global(.ant-card).card-pal.pal {
+    background-color: @colorZircon;
 }
