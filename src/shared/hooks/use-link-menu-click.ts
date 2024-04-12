@@ -14,6 +14,7 @@ export function useLinkMenuClick() {
         switch (type) {
             case PathConfig.CALENDAR:
             case PathConfig.TRAINING:
+            case PathConfig.ACHIEVEMENTS:
                 try {
                     await dispatch(getTraningThunk()).unwrap();
                     dispatch(push(type));

@@ -1,4 +1,5 @@
 export const enum PathConfig {
+    ACHIEVEMENTS = '/achievements',
     AUTH = '/auth',
     AUTH_CHANGE_PASSWORD = '/auth/change-password',
     AUTH_CONFIRM_EMAIL = '/auth/confirm-email',

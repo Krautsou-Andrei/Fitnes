@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthLayout, BaseLayout } from '@app/layouts';
 
+import { AchievementsPage } from '@pages/achievements-page';
 import { AuthentificationPage } from '@pages/authentification-page';
 import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
@@ -50,6 +51,7 @@ export function AppRouter() {
                 <Route path={PathConfig.FEEDBACKS} element={<FeedbacksPage />} />
                 <Route path={PathConfig.CALENDAR} element={<TrainingPage />} />
                 <Route path={PathConfig.TRAINING} element={<MyTrainingsPage />} />
+                <Route path={PathConfig.ACHIEVEMENTS} element={<AchievementsPage />} />
             </Route>
             <Route
                 element={

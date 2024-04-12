@@ -20,7 +20,7 @@ export const menuConfig: MenuItem[] = [
     {
         id: 3,
         icon: React.createElement(TrophyFilled),
-        link: '/',
+        link: PathConfig.ACHIEVEMENTS,
         title: 'Достижения',
     },
     {
