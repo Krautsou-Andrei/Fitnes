@@ -3,13 +3,18 @@ import clsn from 'classnames';
 import { Avatar, Button, Card, Col, Row, Tooltip } from 'antd';
 import { CheckCircleTwoTone, InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 
-import { InviteConfig, PalStatusConfig, StatusConfig } from '@features/traning/config';
+import {
+    InviteConfig,
+    PalStatusConfig,
+    StatusConfig,
+    WorkoutsConfig,
+} from '@features/traning/config';
 import { rejectInvitieThunk } from '@features/traning/model/reject-invite';
 
-import { type Pal, trainingActions } from '@entities/training';
+import { type Pal, trainingActions, selectPals } from '@entities/training';
 
 import { AppHeighlightText } from '@shared/ui';
-import { useAppDispatch } from '@shared/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { STYLES, Size } from '@shared/config/constants';
 import { showErrorForDevelop } from '@shared/lib';
 import { DataTestIdConfig } from '@shared/config';
@@ -25,6 +30,7 @@ type PalCardProps = {
 
 export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps) {
     const dispatch = useAppDispatch();
+    const partners = useAppSelector(selectPals);
 
     const name = useCallback(
         (name: string) => (
@@ -102,7 +108,8 @@ export function PalCard({ pal, index, searchValue, onOpenDrawer }: PalCardProps)
                             className={styles.button}
                             disabled={
                                 pal.status === StatusConfig.REJECTED ||
-                                pal.status === StatusConfig.PENDING
+                                pal.status === StatusConfig.PENDING ||
+                                partners.length >= WorkoutsConfig.MAX_PARTNERS
                             }
                             onClick={handlerButtonPal}
                         >

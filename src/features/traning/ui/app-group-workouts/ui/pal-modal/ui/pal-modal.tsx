@@ -28,7 +28,10 @@ export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
         if (id) {
             dispatch(rejectInvitieThunk({ id, status: StatusConfig.REJECTED }))
                 .unwrap()
-                .then(() => dispatch(trainingActions.removeUserJointTraining({ id: id })))
+                .then(() => {
+                    dispatch(trainingActions.removeUserJointTraining({ id: id }));
+                    onClosePalModal();
+                })
                 .catch((error: unknown) => {
                     showErrorForDevelop('Get training pals', error);
                 });

@@ -4,6 +4,7 @@ import { getTrainingPalsThunk } from '../model/get-training-pals';
 import { getBestTraining } from '../lib';
 import { getUserJointTrainingListThunk } from '../model/get-user-joint-training-list';
 import { getUserJointTrainingListBestThunk } from '../model/get-user-joint-training-list-best';
+import { WorkoutsConfig } from '../config';
 
 import {
     selectCreateTraining,
@@ -30,6 +31,8 @@ export function useGroupWorkouts() {
     const userJointTrainingListState = useAppSelector(selectUsersJoint);
     const listTraining = useAppSelector(selectTrainingName);
     const createTraining = useAppSelector(selectCreateTraining);
+
+    const isMaxPartners = trainingPals.length >= WorkoutsConfig.MAX_PARTNERS;
 
     const chankSelector = formatDate(
         createTraining.date || '',
@@ -91,6 +94,7 @@ export function useGroupWorkouts() {
     return {
         state: {
             createTraining,
+            isMaxPartners,
             isOpenInviteList,
             listTraining,
             searchValue,

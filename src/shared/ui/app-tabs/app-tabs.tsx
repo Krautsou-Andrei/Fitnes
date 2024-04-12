@@ -14,7 +14,8 @@ type AppTabsProps = {
 };
 
 export function AppTabs({ className, items, onChange }: AppTabsProps) {
-    const { countInvities, pathname, onTabClick } = useAppTabs();
+    const { countInvities, isMaxPartners, pathname, onTabClick } = useAppTabs();
+
 
     return (
         <Tabs
@@ -29,7 +30,9 @@ export function AppTabs({ className, items, onChange }: AppTabsProps) {
                         label: (
                             <div>
                                 {tab.label}
-                                <Badge count={countInvities} className={styles.badge} />
+                                {!isMaxPartners && (
+                                    <Badge count={countInvities} className={styles.badge} />
+                                )}
                             </div>
                         ),
                         key: `${tab.key}-${countInvities + 1}`,

@@ -4,7 +4,7 @@ import { List, Space, Typography } from 'antd';
 import { PalCard } from '../../pal-card';
 import { PalModal } from '../../pal-modal';
 
-import { InviteConfig } from '@features/traning/config';
+import { InviteConfig, WorkoutsConfig } from '@features/traning/config';
 
 import { selectPals } from '@entities/training';
 
@@ -35,7 +35,7 @@ export function InvitePartners() {
                 {partners.length ? (
                     <Space className={styles['partners-list']} onClick={onOpenPalModal}>
                         <List
-                            dataSource={partners}
+                            dataSource={partners.slice(0, WorkoutsConfig.MAX_PARTNERS)}
                             renderItem={(pal, index) => <PalCard pal={pal} index={index} />}
                         />
                     </Space>

@@ -3,7 +3,11 @@ import clsn from 'classnames';
 
 import { selectIsCollapsed } from '@widgets/app-sider';
 
+import { WorkoutsConfig } from '@features/traning/config';
+
+import { selectPals } from '@entities/training';
 import { selectGetInvities } from '@entities/invite';
+
 import { useAppSelector } from '@shared/hooks';
 import { DataTestIdConfig } from '@shared/config';
 
@@ -16,13 +20,15 @@ type AppBadgeCountProps = {
 export function AppBadgeCount({ icon }: AppBadgeCountProps) {
     const invities = useAppSelector(selectGetInvities);
     const isCollapsed = useAppSelector(selectIsCollapsed);
+    const partners = useAppSelector(selectPals);
 
     const count = invities.length;
+    const isMaxPartners = partners.length >= WorkoutsConfig.MAX_PARTNERS;
 
     return (
         <>
             {icon ? (
-                count !== 0 ? (
+                count !== 0 && !isMaxPartners ? (
                     <span className='ant-badge ant-menu-item-icon'>
                         {icon}
                         <sup
