@@ -1,0 +1,55 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.table-wrapper {
+    padding-top: @gap-5xl;
+
+    max-width: (@rem * 183);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: @gap-2xl;
+
+    :global(.ant-typography) {
+        line-height: @font-line-m;
+    }
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: (@rem * 18);
+
+    .table-line {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: @gap-m;
+        justify-content: start;
+
+        line-height: @font-line-m;
+
+        :global(.ant-badge-count) {
+            min-width: (@rem * 16);
+            height: (@rem * 16);
+            width: (@rem * 16);
+
+            padding: 0;
+
+            background: @app-achievements-badge-background;
+            color: @app-primary-color;
+            line-height: @font-line-m;
+        }
+
+        .active {
+            :global(.ant-badge-count) {
+                background: @app-achievements-badge-active-background;
+                color: @app-badge-color-primary;
+            }
+        }
+
+        :global(.ant-typography-secondary) {
+            color: @app-text-color-secondary;
+        }
+    }
+}

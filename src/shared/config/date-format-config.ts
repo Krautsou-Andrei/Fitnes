@@ -1,7 +1,9 @@
 export const enum DateFormatConfig {
     FORMAT_DATE_TIME = 'HH:mm:ss',
+    FORMAT_DAY_WEEK = 'dddd',
     FORMAT_DD_MM_YYYY_DASHED = 'DD-MM-YYYY',
     FORMAT_DD_MN_YYYY_DOT = 'DD.MM.YYYY',
+    FORMAT_DD_MM_DOT = 'DD.MM',
     FORMAT_MONTH = 'MM-YYYY',
     FORMAT_WEEK = 'wo-YYYY',
     FORMAT_YYYY_MM_DD_DASHED = 'YYYY-MM-DD',
