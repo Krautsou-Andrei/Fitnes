@@ -10,12 +10,12 @@ import styles from './app-tabs.module.less';
 type AppTabsProps = {
     items: ItemsTabs[];
     className?: string;
+    isBadge?: boolean;
     onChange?: (key: string) => void;
 };
 
-export function AppTabs({ className, items, onChange }: AppTabsProps) {
+export function AppTabs({ items, className, isBadge, onChange }: AppTabsProps) {
     const { countInvities, isMaxPartners, pathname, onTabClick } = useAppTabs();
-
 
     return (
         <Tabs
@@ -25,7 +25,7 @@ export function AppTabs({ className, items, onChange }: AppTabsProps) {
             onTabClick={onChange ? undefined : onTabClick}
             onChange={onChange}
             items={items.map((tab) => {
-                if (tab.badge && countInvities !== 0) {
+                if (tab.badge && countInvities !== 0 && isBadge) {
                     return {
                         label: (
                             <div>
