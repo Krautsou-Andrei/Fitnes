@@ -1,0 +1,87 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.achievements-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: @gap-xl;
+
+    .buttons-filters {
+        padding: @gap-m 0;
+
+        display: flex;
+        gap: @gap-xl;
+
+        :global(.ant-radio-button-wrapper),
+        :global(.ant-radio-button-wrapper:first-child) {
+            padding: 0 @gap-xs;
+            height: (@rem * 18);
+
+            font-size: @font-size-s;
+            line-height: @font-line-m;
+
+            border: (@rem * 1) solid @app-devider;
+            border-radius: (@rem * 2);
+        }
+
+        :global(.ant-radio-button-wrapper:not(:first-child)::before) {
+            display: none;
+        }
+
+        :global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)),
+        :global(
+                .ant-radio-button-wrapper-checked:not(
+                        [class*=' ant-radio-button-wrapper-disabled']
+                    ).ant-radio-button-wrapper:first-child
+            ) {
+            background-color: @app-radio-button-background-checked;
+            border-color: @app-radio-button-border-color-checked;
+        }
+
+        :global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before) {
+            display: none;
+        }
+
+        :global(.ant-radio-group) {
+            display: flex;
+            gap: @gap-s;
+        }
+
+        :global(.ant-typography) {
+            line-height: @font-line-m;
+        }
+    }
+
+    .graph-wrapper,
+    .circle-diagram-wrapper {
+        display: flex;
+        gap: @gap-12xxl;
+    }
+
+    .table {
+        padding-top: @gap-5xl;
+    }
+
+    .info-achievements-cards {
+        padding: @gap-xl 0;
+
+        display: flex;
+        gap: @gap-xl;
+    }
+
+    .exercises-achievements-cards {
+        padding: @gap-xl 0;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .circle-diagram-wrapper {
+        .table-week {
+            :global(.ant-badge-count) {
+                background: @app-badge-background;
+                color: @app-badge-color-primary;
+            }
+        }
+    }
+}

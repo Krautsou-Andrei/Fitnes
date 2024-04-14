@@ -13,6 +13,7 @@ import {
 } from './api/training-api';
 
 import {
+    selectAchievementsType,
     selectCreateTraining,
     selectIsEdit,
     selectPals,
@@ -28,6 +29,7 @@ export type * from './model/types';
 export type * from './api/types';
 
 export {
+    selectAchievementsType,
     selectCreateTraining,
     selectIsEdit,
     selectPals,

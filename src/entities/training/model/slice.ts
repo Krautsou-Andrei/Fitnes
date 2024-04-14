@@ -21,6 +21,7 @@ const defaultCreateTraining = {
 };
 
 type TrainingSliceType = {
+    achievementsType?: number;
     isEdit: boolean;
     pals: Pal[];
     userJointTrainingList: Pal[];
@@ -31,6 +32,7 @@ type TrainingSliceType = {
 };
 
 const initialState: TrainingSliceType = {
+    achievementsType: undefined,
     isEdit: false,
     pals: [],
     userJointTrainingList: [],
@@ -60,6 +62,9 @@ export const trainingSlice = createSlice({
             { payload: { id } }: PayloadAction<{ id: string }>,
         ) {
             state.pals = state.pals.filter((pal) => pal.inviteId !== id);
+        },
+        setAchievementsType: (state: TrainingSliceType, { payload }: PayloadAction<number>) => {
+            state.achievementsType = payload;
         },
         setCreateTraining: (
             state: TrainingSliceType,
@@ -159,6 +164,7 @@ export const trainingSlice = createSlice({
     },
 });
 
+export const selectAchievementsType = (state: RootState) => state.trainings.achievementsType;
 export const selectCreateTraining = (state: RootState) => state.trainings.createTraining;
 export const selectIsEdit = (state: RootState) => state.trainings.isEdit;
 export const selectPals = (state: RootState) => state.trainings.pals;

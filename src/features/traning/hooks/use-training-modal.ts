@@ -108,13 +108,15 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
             dispatch(trainingActions.setSelectPal(undefined));
             setSelectTrainingName('');
         }
-        dispatch(trainingActions.setIsEdit(false));
+        if (isTrainings) {
+            dispatch(trainingActions.setIsEdit(false));
+        }
         setIsOpenDrawer(false);
     };
 
-    const onSave = async () => {
+    const onSave = async () => {       
         try {
-            if (isEditTraining) {
+            if (isEditTraining) {               
                 dispatch(editTraningThunk({ trainingId: id, body: createTraining }))
                     .unwrap()
                     .then(() => {
@@ -125,7 +127,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                         }
                     })
                     .catch((error) => showErrorForDevelop('Add training', error));
-            } else {
+            } else {               
                 dispatch(addTraningThunk(createTraining))
                     .unwrap()
                     .then((result) => {
