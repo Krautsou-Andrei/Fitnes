@@ -1,0 +1,25 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.card {
+    max-width: @app-width-info-achievements-card;
+    width: 100%;
+
+    :global(.ant-card-body) {
+        padding: @gap-xl @gap-l;
+        text-align: center;
+
+        :global(.ant-typography) {
+            margin-bottom: @gap-xs;
+            line-height: @font-line-m;
+        }
+
+        :global(h1.ant-typography) {
+            font-weight: 700;
+        }
+
+        :global(span.ant-typography) {
+            color: @app-text-color-secondary;
+        }
+    }
+}
