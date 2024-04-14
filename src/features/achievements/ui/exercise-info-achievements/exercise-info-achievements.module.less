@@ -1,0 +1,31 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.card {
+    :global(.ant-card-body) {
+        padding: @gap-s;
+
+        display: flex;
+        align-items: center;
+        gap: @gap-m;
+
+        :global(span.ant-typography) {
+            max-width: (@rem * 188);
+            width: 100%;
+
+            line-height: @font-line-m;
+            color: @app-text-color-secondary;
+        }
+
+        :global(h3.ant-typography) {
+            margin: 0;
+            font-weight: 500;
+            line-height: @font-line-m;
+        }
+    }
+
+    :global(.ant-card-body::before),
+    :global(.ant-card-body::after) {
+        display: none;
+    }
+}
