@@ -2,11 +2,6 @@
 @import '@shared/styles/mixin';
 
 .table-wrapper {
-    padding-top: @gap-5xl;
-
-    max-width: (@rem * 183);
-    width: 100%;
-
     display: flex;
     flex-direction: column;
     gap: @gap-2xl;
@@ -23,7 +18,7 @@
 
     .table-line {
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto (@rem * 92) auto;
         gap: @gap-m;
         justify-content: start;
 
@@ -50,6 +45,10 @@
 
         :global(.ant-typography-secondary) {
             color: @app-text-color-secondary;
+        }
+
+        :global(.ant-typography) {
+            white-space: nowrap;
         }
     }
 }

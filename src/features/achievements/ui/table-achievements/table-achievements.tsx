@@ -1,23 +1,25 @@
 import { Badge, Typography } from 'antd';
 import clsn from 'classnames';
 
-import { TrainingsMiddleDays } from '@features/achievements/model/types';
+import { BestExerciseDaysPeriod, TrainingsMiddleDays } from '@features/achievements/model/types';
 import { AchievementsConfig } from '@features/achievements/config';
-import { AchievementsDefaultConfig, DateFormatConfig } from '@shared/config';
+import { DateFormatConfig } from '@shared/config';
 import { formatDate, splitString } from '@shared/lib';
 
 import styles from './table-achievements.module.less';
 
 const { Text } = Typography;
 type TableAchievementsProps = {
-    trainings: TrainingsMiddleDays[];
+    trainings: (TrainingsMiddleDays | BestExerciseDaysPeriod)[];
     classNames?: string;
+    title?: string;
+    tick?: string;
 };
 
-export function TableAchievements({ trainings, classNames }: TableAchievementsProps) {
+export function TableAchievements({ trainings, classNames, title, tick }: TableAchievementsProps) {
     return (
         <div className={clsn(styles['table-wrapper'], classNames)}>
-            <Text>{splitString(AchievementsConfig.TITLE_TABLE_ACIEVEMENTS)}</Text>
+            <Text>{splitString(title ? title : AchievementsConfig.TITLE_TABLE_ACIEVEMENTS)}</Text>
             <div className={styles.table}>
                 {trainings.map((training, index) => (
                     <div key={training.date} className={styles['table-line']}>
@@ -30,7 +32,7 @@ export function TableAchievements({ trainings, classNames }: TableAchievementsPr
                         </Text>
                         {training.value ? (
                             <Text strong>
-                                {training.value} {AchievementsDefaultConfig.KG_TYPE}
+                                {training.value.toLocaleString('ru-RU')} {tick ? tick : ''}
                             </Text>
                         ) : null}
                     </div>
