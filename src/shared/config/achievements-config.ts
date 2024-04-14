@@ -5,6 +5,7 @@ export const enum AchievementsKeyConfig {
 }
 
 export const enum AchievementsDefaultConfig {
+    BUTTON_VALUE_ALL = 'all',
     KG_TYPE = 'кг',
     NUMBERS_DAYS_WEEK = 7,
     NUMBERS_DAYS_MONTH = 28,

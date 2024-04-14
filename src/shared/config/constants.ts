@@ -34,6 +34,7 @@ export const enum COL {
 }
 
 export const STYLES = {
+    AXIS_X_COLOR: '#8C8C8C',
     BACKGROUND_BLURE: 'rgba(121, 156, 212, 0.1)',
     BACKGROUND_TOOLTIP: '#000000',
     BLURE: 'blur(5px)',
@@ -42,6 +43,10 @@ export const STYLES = {
         transition: 'margin-left 0.2s ease',
     },
     DATE_PICKER_COLOR: '#BFBFBF',
+    FONT_POSITION_CENTER: 'center',
+    FONT_SIZE_2M: 14,
+    FONT_WEIGHT_NORMAL: 400,
+    GRID_COLOR: '#BFBFBF',
     ICON_COLOR_ERROR_LIST: '#2F54EB',
     ICON_COLOR_SUCCESS_UPDATE_USER: '#52C41A',
     NO_COLLAPSED: {
@@ -49,8 +54,10 @@ export const STYLES = {
         transition: 'margin-left 0.2s ease',
     },
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
+    HEIGHT_HISTOGRAM: 374,
     SIZE_ICON_UPLOAD_USER: '18px',
     STROKE_WIDT_UPLOAD_USER_IMAGE: 4,
+    WIDTH_HISTOGRAM: 520,
     WIDTH_TOOLTIP: '147px',
 };
 
