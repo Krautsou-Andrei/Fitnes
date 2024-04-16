@@ -7,7 +7,7 @@ import { AppContentWrapper } from './app-content-wrapper/app-content-wrapper';
 import { AppErrorFallback } from './app-error-fallback/app-error-fallback';
 import { AppGuestContent } from './app-guest-content/app-guest-content';
 import { AppGuestContentPadding } from './app-guest-content-padding/app-guest-content-padding';
-import { AppHeighlightText } from './app-heighlight-text/app-heightlight-text';
+import { AppHighlightText } from './app-highlight-text/app-hightlight-text';
 import { AppIcon } from './app-icon/app-icon';
 import { AppForm } from './app-form/app-form';
 import { AppMenu } from './app-menu/app-menu';
@@ -32,7 +32,7 @@ export {
     AppErrorFallback,
     AppGuestContent,
     AppGuestContentPadding,
-    AppHeighlightText,
+    AppHighlightText,
     AppIcon,
     AppForm,
     AppMenu,
