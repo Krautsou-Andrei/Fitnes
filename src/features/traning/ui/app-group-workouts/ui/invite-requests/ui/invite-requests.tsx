@@ -1,22 +1,13 @@
-import { useState } from 'react';
 import { Avatar, Button, Typography } from 'antd';
 import { DownOutlined, UpOutlined, UserOutlined } from '@ant-design/icons';
 
+import { useInviteRequests } from '../hooks';
 import { InviteTrainingCard } from '../../invite-training-card';
 
-import { InviteConfig, StatusConfig, TypeTrainingsInviteConfig } from '@features/traning/config';
-import { rejectInvitieThunk } from '@features/traning/model/reject-invite';
-import { sendAnswerInvitieThunk } from '@features/traning/model/send-answer-invite';
-
-import { selectGetInvities } from '@entities/invite';
-import {
-    useLazyGetTrainingPalsQuery,
-    useLazyGetUserJointTrainingListQuery,
-} from '@entities/training';
+import { InviteConfig, TypeTrainingsInviteConfig } from '@features/traning/config';
 
 import { Size } from '@shared/config/constants';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
-import { formatDate, showErrorForDevelop } from '@shared/lib';
+import { formatDate } from '@shared/lib';
 import { DateFormatConfig } from '@shared/config';
 
 import styles from './invite-requests.module.less';
@@ -24,58 +15,18 @@ import styles from './invite-requests.module.less';
 const { Text } = Typography;
 
 export function InviteRequests() {
-    const dispatch = useAppDispatch();
-    const [getJointTraining] = useLazyGetUserJointTrainingListQuery();
-    const [getTrainingPal] = useLazyGetTrainingPalsQuery();
+    const { state, functions } = useInviteRequests();
 
-    const invities = useAppSelector(selectGetInvities);
-
-    const [openInviteTrainingCard, setOpenInviteTrainingCard] = useState(false);
-    const [selectInvite, setSelectInvite] = useState('');
-    const [isCollapsed, setIsCollapsed] = useState(true);
-
-    const invitiesRender = isCollapsed ? [invities[0]] : invities;
-
-    const acceptInviteHandler = (id: string) => {
-        dispatch(sendAnswerInvitieThunk({ id, status: StatusConfig.ACCEPTED }))
-            .unwrap()
-            .then(() => {
-                getJointTraining();
-                getTrainingPal();
-            })
-            .catch((error: unknown) => {
-                showErrorForDevelop('Get training pals', error);
-            });
-    };
-
-    const rejectInviteHandler = (id: string) => {
-        dispatch(rejectInvitieThunk({ id, status: StatusConfig.REJECTED }))
-            .unwrap()
-            .then(() => getJointTraining())
-            .catch((error: unknown) => {
-                showErrorForDevelop('Get training pals', error);
-            });
-    };
-
-    const handlerOpenInviteTrainingCard = (id: string) => {
-        setSelectInvite(id);
-        setOpenInviteTrainingCard(true);
-    };
-
-    if (!invities.length) {
+    if (!state.invities.length) {
         return null;
     }
-
-    const collapseHandler = () => {
-        setIsCollapsed((prev) => !prev);
-    };
 
     return (
         <div className={styles['ivite-request']}>
             <Text className={styles['new-sends']} type='secondary'>
-                {InviteConfig.NEW_SEND_TITLE}({invities.length})
+                {InviteConfig.NEW_SEND_TITLE}({state.invities.length})
             </Text>
-            {invitiesRender.map((item) => (
+            {state.invitiesRender.map((item) => (
                 <div key={item.id} className={styles['pal-card']}>
                     <div className={styles['pal-info']}>
                         <Avatar
@@ -106,36 +57,40 @@ export function InviteRequests() {
                         <Button
                             className={styles['details-training']}
                             type='text'
-                            onClick={() => handlerOpenInviteTrainingCard(item.id)}
+                            onClick={() => functions.handlerOpenInviteTrainingCard(item.id)}
                         >
                             {InviteConfig.SHOW_DATAILS_TRAINING}
                         </Button>
-                        {openInviteTrainingCard && selectInvite === item.id && (
+                        {state.openInviteTrainingCard && state.selectInvite === item.id && (
                             <InviteTrainingCard
                                 selectedInvite={item}
-                                onClose={() => setOpenInviteTrainingCard(false)}
+                                onClose={() => functions.setOpenInviteTrainingCard(false)}
                             />
                         )}
                     </div>
                     <div className={styles.buttons}>
-                        <Button block type='primary' onClick={() => acceptInviteHandler(item.id)}>
+                        <Button
+                            block
+                            type='primary'
+                            onClick={() => functions.acceptInviteHandler(item.id)}
+                        >
                             {InviteConfig.TRAINING_JOINT}
                         </Button>
-                        <Button block onClick={() => rejectInviteHandler(item.id)}>
+                        <Button block onClick={() => functions.rejectInviteHandler(item.id)}>
                             {InviteConfig.REJECT_TRAINING}
                         </Button>
                     </div>
                 </div>
             ))}
 
-            {invities.length > 1 && (
+            {state.invities.length > 1 && (
                 <Button
                     className={styles['button-collapsed']}
                     type='text'
-                    icon={isCollapsed ? <DownOutlined /> : <UpOutlined />}
-                    onClick={collapseHandler}
+                    icon={state.isCollapsed ? <DownOutlined /> : <UpOutlined />}
+                    onClick={functions.collapseHandler}
                 >
-                    {isCollapsed
+                    {state.isCollapsed
                         ? InviteConfig.BUTTON_COLLAPSED_SHOW
                         : InviteConfig.BUTTON_COLLAPSED_GOST}
                 </Button>
