@@ -2,11 +2,14 @@
 @import '@shared/styles/mixin';
 
 .main-page {
+    .scrollbarMixin();
+
     :global(.ant-layout) {
         position: relative;
         background: none;
     }
 }
+
 :global(.ant-layout).main-page {
     min-height: 100vh;
     flex-direction: row;
@@ -26,34 +29,17 @@
     flex: 1;
 
     overflow: auto;
-    scrollbar-width: @app-width-scrollbar;
+    .scrollbarMixin();
 }
 
 .main-content-simple {
     margin-bottom: @gap-xxxl;
 
     overflow: auto;
-    scrollbar-width: @app-width-scrollbar;
+
+    .scrollbarMixin();
 
     .media-md({
         margin-bottom: @gap-3xxxl;
     });
-}
-
-.main-content::-webkit-scrollbar {
-    width: @app-width-scrollbar;
-}
-
-.main-content::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-.main-content::-webkit-scrollbar-thumb {
-    background-color: @app-scrollbar-color;
-
-    border-radius: @app-width-scrollbar;
-}
-
-.main-content::-webkit-scrollbar-thumb:hover {
-    background-color: @app-scrollbar-color;
 }
