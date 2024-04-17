@@ -1,3 +1,4 @@
+import { formatDate } from '@shared/lib';
 import type {
     BestExercise,
     BestExercisesDays,
@@ -7,7 +8,7 @@ import type {
     TrainingsMiddleDays,
 } from '../model/types';
 
-import { AchievementsDefaultConfig } from '@shared/config';
+import { AchievementsDefaultConfig, AchievementsKeyConfig, DateFormatConfig } from '@shared/config';
 
 type GetInfoAchievementsParams = {
     trainings: TrainingsAchievementsDay;
@@ -40,7 +41,7 @@ export function filtersAchievements({
             training.training.exercises.forEach((exercise) => {
                 if (
                     training.training.name === filter ||
-                    filter === AchievementsDefaultConfig.BUTTON_VALUE_ALL
+                    filter === AchievementsKeyConfig.BUTTON_VALUE_ALL
                 ) {
                     bestExercise[exercise.name] = bestExercise[exercise.name]
                         ? bestExercise[exercise.name] + 1
@@ -54,10 +55,11 @@ export function filtersAchievements({
             });
         });
 
-        bestExercisesDays[trainingDay] = bestExercisesDays[trainingDay]
-            ? Object.keys(bestExercisesDays[trainingDay]).reduce(
+        const currentDay = formatDate(trainingDay, DateFormatConfig.FORMAT_DAY_WEEK);
+        bestExercisesDays[currentDay] = bestExercisesDays[currentDay]
+            ? Object.keys(bestExercisesDays[currentDay]).reduce(
                   (result, key) => {
-                      result[key] = (result[key] || 0) + bestExercisesDays[trainingDay][key];
+                      result[key] = (result[key] || 0) + bestExercisesDays[currentDay][key];
                       return result;
                   },
                   { ...bestExercise },
@@ -107,6 +109,8 @@ export function filtersAchievements({
     const bestNameExercise = getBestName(bestExercise);
     const bestExercisesPeriod = getBestArray(bestExercise);
     const bestExercisesDaysArray = getBestExercisesDaysArray(bestExercisesDays);
+    const filterTrainingsMonth = getFilterTrainingsMonth(filterTrainings);
+    const isEmptyTraining = filterTrainings.every((item) => item.value === 0);
 
     return {
         bestNameExercise,
@@ -114,7 +118,9 @@ export function filtersAchievements({
         bestExercisesDaysArray,
         bestExercisesPeriod,
         filterTrainings,
+        filterTrainingsMonth,
         infoTrainings,
+        isEmptyTraining,
     };
 }
 
@@ -155,4 +161,22 @@ function getBestExercisesDaysArray(object: BestExercisesDays) {
         };
     });
     return result;
+}
+
+function getFilterTrainingsMonth(trainings: TrainingsMiddleDays[]) {
+    const chunkSize = AchievementsDefaultConfig.NUMBERS_DAYS_WEEK;
+
+    const chunkedArray = trainings.reduce((resultArray: TrainingsMiddleDays[][], item, index) => {
+        const chunkIndex = Math.floor(index / chunkSize);
+
+        if (!resultArray[chunkIndex]) {
+            resultArray[chunkIndex] = [];
+        }
+
+        resultArray[chunkIndex].push(item);
+
+        return resultArray;
+    }, []);
+
+    return chunkedArray;
 }

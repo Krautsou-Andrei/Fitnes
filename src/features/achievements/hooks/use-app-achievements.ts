@@ -4,26 +4,38 @@ import moment from 'moment';
 import { TrainingsAchievementsDay } from '../model/types';
 import { filtersAchievements } from '../lib';
 
-import { selectAchievementsType, selectTraining, selectTrainingName } from '@entities/training';
+import { selectTraining, selectTrainingName } from '@entities/training';
 
-import { AchievementsDefaultConfig, DateFormatConfig } from '@shared/config';
-import { useAppSelector } from '@shared/hooks';
+import { AchievementsDefaultConfig, AchievementsKeyConfig, DateFormatConfig } from '@shared/config';
+import { useAppMediaQuery, useAppSelector } from '@shared/hooks';
 
-export function useAppAchievements() {
+type UseAppAchievements = {
+    days: number;
+};
+
+export function useAppAchievements({ days }: UseAppAchievements) {
+    const { isQueryXL, isTablet } = useAppMediaQuery();
     const trainingNames = useAppSelector(selectTrainingName);
     const trainings = useAppSelector(selectTraining);
-    const achievementsNumber = useAppSelector(selectAchievementsType);
 
     const [selectFilter, setSelectFilter] = useState<string>(
-        AchievementsDefaultConfig.BUTTON_VALUE_ALL,
+        AchievementsKeyConfig.BUTTON_VALUE_ALL,
     );
 
-    const currentDay = moment();
-    const numberDays = achievementsNumber
-        ? achievementsNumber
-        : AchievementsDefaultConfig.NUMBERS_DAYS_WEEK;
+    let currentDay = moment();
 
-    const weekDays = Array.from({ length: numberDays }, (_, i) =>
+    if (days === AchievementsDefaultConfig.NUMBERS_DAYS_MONTH) {
+        const firstDay = moment().subtract(days, 'days').day();
+
+        if (firstDay !== 0) {
+            currentDay = currentDay.add(
+                AchievementsDefaultConfig.NUMBERS_DAYS_WEEK - firstDay,
+                'days',
+            );
+        }
+    }
+
+    const weekDays = Array.from({ length: days }, (_, i) =>
         currentDay.clone().subtract(i, 'days').format(DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED),
     ).reverse();
 
@@ -44,11 +56,13 @@ export function useAppAchievements() {
         bestNameTraining,
         bestExercisesPeriod,
         filterTrainings,
+        filterTrainingsMonth,
         infoTrainings,
+        isEmptyTraining,
     } = filtersAchievements({
         trainings: result,
         filter: selectFilter,
-        quantityDays: numberDays,
+        quantityDays: days,
     });
 
     const handleChangeRadio = (event: RadioChangeEvent) => {
@@ -62,7 +76,11 @@ export function useAppAchievements() {
             bestNameTraining,
             bestExercisesPeriod,
             filterTrainings,
+            filterTrainingsMonth,
             infoTrainings,
+            isEmptyTraining,
+            isQueryXL,
+            isTablet,
             selectFilter,
             trainings,
             trainingNames,

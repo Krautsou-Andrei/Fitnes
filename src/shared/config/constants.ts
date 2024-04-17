@@ -4,6 +4,7 @@ export const enum ConstantsMediaQuery {
     COLLAPSED_NO = '208',
     COLLAPSED_NO_MD = '106',
 
+    XL = 1200,
     XS = 480,
     MD = 768,
     APP_TABLET = 834,
@@ -38,7 +39,8 @@ export const STYLES = {
     BACKGROUND_BLURE: 'rgba(121, 156, 212, 0.1)',
     BACKGROUND_TOOLTIP: '#000000',
     BLURE: 'blur(5px)',
-    CIRCLE_DIAGRAM_RADIUS: 0.7,
+    CIRCLE_DIAGRAM_INNER_RADIUS: 0.35,
+    CIRCLE_DIAGRAM_RADIUS: 0.5,
     COLLAPSED: {
         marginLeft: `${ConstantsMediaQuery.COLLAPSED}px`,
         transition: 'margin-left 0.2s ease',
@@ -56,13 +58,8 @@ export const STYLES = {
         transition: 'margin-left 0.2s ease',
     },
     HEIGHT_EMPTY_TRAINIG_MODAL: 32,
-    HEIGHT_HISTOGRAM: 374,
-    PADDING_BOTTON_CIRCLE_DIAGRAM: 92,
-    PADING_LEFT_CIRCLE_DIAGRAM: 165,
-    PADDING_RIGHT_CIRLCE_DIAGRAM: 165,
     SIZE_ICON_UPLOAD_USER: '18px',
     STROKE_WIDT_UPLOAD_USER_IMAGE: 4,
-    WIDTH_HISTOGRAM: 520,
     WIDTH_TOOLTIP: '147px',
 };
 
