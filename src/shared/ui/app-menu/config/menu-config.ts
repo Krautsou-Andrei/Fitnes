@@ -2,7 +2,7 @@ import React from 'react';
 import { CalendarOutlined, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
 
 import type { MenuItem } from '../model/types';
-import { PathConfig } from '@shared/config';
+import { DataTestIdConfig, PathConfig } from '@shared/config';
 
 export const menuConfig: MenuItem[] = [
     {
@@ -21,7 +21,11 @@ export const menuConfig: MenuItem[] = [
         id: 3,
         icon: React.createElement(TrophyFilled),
         link: PathConfig.ACHIEVEMENTS,
-        title: 'Достижения',
+        title: React.createElement(
+            'span',
+            { 'data-test-id': DataTestIdConfig.SIDEBAR_ACHIEVEMENTS },
+            'Достижения',
+        ),
     },
     {
         id: 4,
