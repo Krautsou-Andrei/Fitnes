@@ -4,6 +4,7 @@
 .achievements-wrapper {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: @gap-xl;
 
     .buttons-filters {
@@ -44,29 +45,83 @@
 
         :global(.ant-radio-group) {
             display: flex;
+            flex-wrap: wrap;
             gap: @gap-s;
         }
 
         :global(.ant-typography) {
             line-height: @font-line-m;
+            white-space: nowrap;
         }
     }
 
     .graph-wrapper,
     .circle-diagram-wrapper {
         display: flex;
+        flex-wrap: wrap;
         gap: @gap-12xxl;
+
+        .media-xl({
+            gap: @gap-xl;
+        });
+    }
+
+    .graph-wrapper.graph-month {
+        flex-direction: column;
+        gap: @gap-xl;
+    }
+
+    .graph {
+        max-width: @app-width-graph;
+        width: 100%;
+        height: (@rem * 374);
+        border: (@rem * 1) solid @app-devider;
+        border-radius: (@rem * 2);
+
+        canvas {
+            width: 100% !important;
+        }
+
+        .media-xs({
+            height: (@rem * 236);
+        });
+    }
+
+    .graph-month {
+        .graph {
+            max-width: 100%;
+        }
     }
 
     .table {
         padding-top: @gap-5xl;
+
+        .media-xl({
+            padding-top: 0 ;
+        });
+    }
+
+    .table-month {
+        display: flex;
+        gap: (@rem * 100);
     }
 
     .info-achievements-cards {
         padding: @gap-xl 0;
 
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
         gap: @gap-xl;
+
+        .media-xl({
+            grid-template-columns: repeat(2, max-content);
+            gap: @gap-m;
+
+        });
+
+        .media-xs({
+            grid-template-columns: repeat(1, auto);
+        });
     }
 
     .exercises-achievements-cards {
@@ -77,11 +132,19 @@
     }
 
     .circle-diagram-wrapper {
+        .graph {
+            border: none;
+        }
+
         .table-week {
             :global(.ant-badge-count) {
                 background: @app-badge-background;
                 color: @app-badge-color-primary;
             }
         }
+    }
+
+    :global(.ant-collapse) {
+        width: fit-content;
     }
 }

@@ -3,34 +3,28 @@ import { Column } from '@ant-design/charts';
 import type { TrainingsMiddleDays } from '@features/achievements/model/types';
 import { AchievementsConfig } from '@features/achievements/config';
 
-import { AchievementsDefaultConfig, DateFormatConfig } from '@shared/config';
-import { STYLES } from '@shared/config/constants';
+import { DateFormatConfig } from '@shared/config';
 import { formatDate } from '@shared/lib';
-
-import styles from './histogram-achievements.module.less';
+import { STYLES } from '@shared/config/constants';
 
 type HistogramAchievementsProps = {
     achievements: TrainingsMiddleDays[];
-    height: number;
-    width: number;
+    isMonth: boolean;
 };
 
-export function HistogramAchievements({ achievements, height, width }: HistogramAchievementsProps) {
+export function HistogramAchievements({ achievements, isMonth }: HistogramAchievementsProps) {
+    const titleHistogram = isMonth ? AchievementsConfig.TITLE_HISTOGRAM : '';
+    const scrollbarProps = isMonth ? { x: { value: 1 } } : false;
+
     const config = {
-        width: width,
-        height: height,
-        autoFit: false,
+        data: achievements,
         title: {
-            title: AchievementsConfig.TITLE_HISTOGRAM,
-            position: 'bottom',
+            title: titleHistogram,
             style: {
-                align: STYLES.FONT_POSITION_CENTER,
                 titleFontWeight: STYLES.FONT_WEIGHT_NORMAL,
                 titleFontSize: STYLES.FONT_SIZE_2M,
             },
         },
-
-        data: achievements,
         xField: 'date',
         yField: 'value',
         scale: {
@@ -43,9 +37,12 @@ export function HistogramAchievements({ achievements, height, width }: Histogram
                 line: true,
                 lineLineDash: [4, 4],
                 lineStroke: STYLES.AXIS_X_COLOR,
+                title: AchievementsConfig.TITLE_HISTOGRAM_AXIS_X,
+                titleFontWeight: STYLES.FONT_WEIGHT_NORMAL,
+                titleFontSize: STYLES.FONT_SIZE_2M,
             },
             y: {
-                labelFormatter: (value: number) => `${value} ${AchievementsDefaultConfig.KG_TYPE}`,
+                labelFormatter: (value: number) => `${value} ${AchievementsConfig.KG_TYPE}`,
                 tick: false,
                 grid: true,
                 gridLineWidth: 2,
@@ -53,7 +50,8 @@ export function HistogramAchievements({ achievements, height, width }: Histogram
                 gridStroke: STYLES.GRID_COLOR,
             },
         },
+        scrollbar: scrollbarProps,
     };
 
-    return <Column className={styles.graph} {...config} />;
+    return <Column {...config} />;
 }

@@ -1,8 +1,20 @@
 @import '@shared/styles/constants';
 @import '@shared/styles/mixin';
 
-.content-wrapper{
+:global(.ant-layout-content).achievement-page {
+    height: 100%;
+
+    .media-xs({
+        height: unset;
+
+        padding-left: 0;
+        padding-right: 0;
+    });
+}
+
+.content-wrapper {
     overflow: auto;
     height: inherit;
 
+    .scrollbarMixin();
 }

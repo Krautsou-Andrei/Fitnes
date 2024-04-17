@@ -9,12 +9,21 @@
         align-items: center;
         gap: @gap-m;
 
+        .media-tabtet({
+            padding: @gap-s 0 @gap-3xs;
+        });
+
         :global(span.ant-typography) {
             max-width: (@rem * 188);
             width: 100%;
 
             line-height: @font-line-m;
             color: @app-text-color-secondary;
+
+            .media-tabtet
+                ({
+                max-width: @app-width-info-achievements-card;
+            });;
         }
 
         :global(h3.ant-typography) {

@@ -2,12 +2,20 @@
 @import '@shared/styles/mixin';
 
 .card {
-    max-width: @app-width-info-achievements-card;
-    width: 100%;
+    width: @app-width-info-achievements-card;
+
+    .media-xs({
+        width: 100%;
+    });
 
     :global(.ant-card-body) {
         padding: @gap-xl @gap-l;
         text-align: center;
+
+        .media-xs({
+            display: flex;            
+            justify-content: space-between
+        });
 
         :global(.ant-typography) {
             margin-bottom: @gap-xs;
@@ -21,5 +29,10 @@
         :global(span.ant-typography) {
             color: @app-text-color-secondary;
         }
+    }
+
+    :global(.ant-card-body::after),
+    :global(.ant-card-body::before) {
+        display: none;
     }
 }
