@@ -1,26 +1,33 @@
 import { Pie } from '@ant-design/charts';
 import { ExercisesWeek } from '@features/achievements';
+import { AchievementsDefaultConfig } from '@shared/config';
 
 import { STYLES } from '@shared/config/constants';
+import { useAppMediaQuery } from '@shared/hooks';
+import { wrapText } from '@shared/lib';
 
 type CircleDiagramProps = {
     exercises: ExercisesWeek[];
 };
 
 export function CircleDiagram({ exercises }: CircleDiagramProps) {
+    const { isQueryXS } = useAppMediaQuery();
+
     const config = {
-        width: STYLES.WIDTH_HISTOGRAM,
-        height: STYLES.HEIGHT_HISTOGRAM,
         data: exercises,
         angleField: 'value',
         colorField: 'type',
-        paddingRight: STYLES.PADDING_RIGHT_CIRLCE_DIAGRAM,
-        paddingLeft: STYLES.PADING_LEFT_CIRCLE_DIAGRAM,
-        paddingBottom: STYLES.PADDING_BOTTON_CIRCLE_DIAGRAM,
-        innerRadius: STYLES.CIRCLE_DIAGRAM_RADIUS,
+        innerRadius: STYLES.CIRCLE_DIAGRAM_INNER_RADIUS,
+        radius: STYLES.CIRCLE_DIAGRAM_RADIUS,
+        autoWrap: true,
         label: {
             text: 'type',
             position: 'outside',
+
+            formatter: (text: string) =>
+                isQueryXS
+                    ? wrapText(text, AchievementsDefaultConfig.WRAP_TEXT_QUANTITY_SYMBOL)
+                    : text,
             connector: false,
             transform: [{ type: 'overlapDodgeY' }],
             style: {
