@@ -3,6 +3,7 @@ import type {
     BestExercise,
     BestExercisesDays,
     BestTraining,
+    ExercisesWeek,
     InfoAchievements,
     TrainingsAchievementsDay,
     TrainingsMiddleDays,
@@ -28,6 +29,7 @@ export function filtersAchievements({
     const bestExercisesDays: BestExercisesDays = {};
 
     Object.entries(trainings).forEach(([trainingDay, trainings]) => {
+        const trainingExercises: BestExercise = {};
         let totalApproaches = 0;
         let totalCount = 0;
         let totalReplays = 0;
@@ -47,6 +49,10 @@ export function filtersAchievements({
                         ? bestExercise[exercise.name] + 1
                         : 1;
 
+                    trainingExercises[exercise.name] = trainingExercises[exercise.name]
+                        ? trainingExercises[exercise.name] + 1
+                        : 1;
+
                     totalApproaches += exercise.approaches;
                     totalReplays += exercise.replays;
                     totalValue += exercise.approaches * exercise.replays * exercise.weight;
@@ -62,9 +68,9 @@ export function filtersAchievements({
                       result[key] = (result[key] || 0) + bestExercisesDays[currentDay][key];
                       return result;
                   },
-                  { ...bestExercise },
+                  { ...trainingExercises },
               )
-            : { ...bestExercise };
+            : { ...trainingExercises };
 
         filterTrainings.push({
             date: trainingDay,
@@ -107,7 +113,7 @@ export function filtersAchievements({
     };
     const bestNameTraining = getBestName(bestTraining);
     const bestNameExercise = getBestName(bestExercise);
-    const bestExercisesPeriod = getBestArray(bestExercise);
+    const bestExercisesPeriod = getBestArray(bestExercisesDays);
     const bestExercisesDaysArray = getBestExercisesDaysArray(bestExercisesDays);
     const filterTrainingsMonth = getFilterTrainingsMonth(filterTrainings);
     const isEmptyTraining = filterTrainings.every((item) => item.value === 0);
@@ -133,22 +139,54 @@ function getBestName(Names: { [key: string]: number }) {
     return '';
 }
 
-function getBestArray(bestObject: { [key: string]: number }) {
-    if (Object.keys(bestObject).length !== 0) {
-        const bestArray = Object.entries(bestObject).map(([key, value]) => ({
-            type: key,
-            value: value,
-        }));
-        return bestArray;
+function getBestExersice(Names: { [key: string]: number }): ExercisesWeek {
+    if (Object.keys(Names).length !== 0) {
+        return Object.entries(Names).reduce(
+            (prev, curr) => {
+                if (curr[1] > prev.value) {
+                    return { type: curr[0], value: curr[1] };
+                } else {
+                    return prev;
+                }
+            },
+            { type: '', value: -Infinity },
+        );
     }
-    return [];
+    return { type: '', value: -Infinity };
+}
+
+function getBestArray(bestObject: { [key: string]: BestExercise }): ExercisesWeek[] {
+    const bestArray: ExercisesWeek[] = [];
+
+    if (Object.keys(bestObject).length !== 0) {
+        const exerciseMap: { [key: string]: ExercisesWeek } = {};
+
+        Object.values(bestObject).forEach((exercise) => {
+            const bestExercise = getBestExersice(exercise);
+
+            if (bestExercise.value !== -Infinity) {
+                const { type, value } = bestExercise;
+
+                if (exerciseMap[type]) {
+                    exerciseMap[type].value += value;
+                } else {
+                    exerciseMap[type] = { type, value };
+                }
+            }
+        });
+
+        bestArray.push(...Object.values(exerciseMap));
+        bestArray.sort((a, b) => b.value - a.value);
+    }
+
+    return bestArray;
 }
 
 function getBestExercisesDaysArray(object: BestExercisesDays) {
     const result = Object.entries(object).map(([day, innerObj]) => {
         if (Object.keys(innerObj).length) {
             const maxKey = Object.keys(innerObj).reduce((a, b) =>
-                innerObj[a] > innerObj[b] ? a : b,
+                innerObj[a] >= innerObj[b] ? a : b,
             );
             return {
                 date: day,
