@@ -8,6 +8,7 @@ import { selectGetInvities } from '@entities/invite';
 import { selectPals, trainingActions } from '@entities/training';
 
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
+
 import { AchievementsDefaultConfig } from '@shared/config';
 
 export function useAppTabs() {

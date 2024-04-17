@@ -5,4 +5,5 @@ export type ItemsTabs = {
     label: string | ReactNode;
     children?: ReactNode;
     badge?: boolean;
+    disabled?: boolean;
 };

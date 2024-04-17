@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getTraningListThunk } from '@features/traning';
 
-import { trainingActions } from '@entities/training';
-
 import { useAppDispatch } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
-import { AchievementsDefaultConfig, AchievementsKeyConfig } from '@shared/config';
+import { AchievementsKeyConfig } from '@shared/config';
 
 export function useAchievementsPage() {
     const dispatch = useAppDispatch();
+
+    const [activeKey, setActiveKey] = useState<string>(AchievementsKeyConfig.ONE_WEEK);
+
     useEffect(() => {
         dispatch(getTraningListThunk()).catch((error: unknown) => {
             showErrorForDevelop('Get training list', error);
@@ -17,19 +18,13 @@ export function useAchievementsPage() {
     }, [dispatch]);
 
     const onChangeTabs = (key: string) => {
-        if (key === AchievementsKeyConfig.ONE_WEEK) {
-            dispatch(
-                trainingActions.setAchievementsType(AchievementsDefaultConfig.NUMBERS_DAYS_WEEK),
-            );
-        }
-        if (key === AchievementsKeyConfig.ONE_MONTH) {
-            dispatch(
-                trainingActions.setAchievementsType(AchievementsDefaultConfig.NUMBERS_DAYS_MONTH),
-            );
-        }
+        setActiveKey(key);
     };
 
     return {
+        state: {
+            activeKey,
+        },
         functions: {
             onChangeTabs,
         },

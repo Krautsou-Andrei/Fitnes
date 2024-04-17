@@ -9,12 +9,14 @@ import { AppContentWrapper } from '@shared/ui';
 import styles from './achievements-page.module.less';
 
 export function AchievementsPage() {
-   const {functions}= useAchievementsPage();
+    const { state, functions } = useAchievementsPage();
     return (
-        <Content className={styles['my-traning-page']}>
+        <Content className={styles['achievement-page']}>
             <AppContentWrapper classNames={styles['content-wrapper']}>
-                <AppTabsTrainings 
-                onChangeTab={functions.onChangeTabs}/>
+                <AppTabsTrainings
+                    activeKey={state.activeKey}
+                    onChangeTab={functions.onChangeTabs}
+                />
             </AppContentWrapper>
         </Content>
     );

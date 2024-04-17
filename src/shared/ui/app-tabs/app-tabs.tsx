@@ -9,17 +9,18 @@ import styles from './app-tabs.module.less';
 
 type AppTabsProps = {
     items: ItemsTabs[];
+    activeKey?: string;
     className?: string;
     isBadge?: boolean;
     onChange?: (key: string) => void;
 };
 
-export function AppTabs({ items, className, isBadge, onChange }: AppTabsProps) {
+export function AppTabs({ items, activeKey, className, isBadge, onChange }: AppTabsProps) {
     const { countInvities, isMaxPartners, pathname, onTabClick } = useAppTabs();
 
     return (
         <Tabs
-            defaultActiveKey={pathname}
+            defaultActiveKey={activeKey ? activeKey : pathname}
             centered
             className={clsn(styles.tabs, className)}
             onTabClick={onChange ? undefined : onTabClick}
