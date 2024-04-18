@@ -97,7 +97,7 @@ export function useTraningPage() {
     const handleFullCellRender = (date: Moment) => {
         const selectDate = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
         const trainingsDay = trainings.filter((item) => item.date === selectDate);
-        const isToday = moment().isSame(date, 'day');
+        const isToday = moment().utc(true).isSame(date, 'day');
 
         return (
             <AppDesctopDay

@@ -58,7 +58,7 @@ export function useAppPeriodExercises({ styles, onSelectTraining }: UseAppPeerio
 
     const handlerChangeDate = (date: Moment | null) => {
         if (date) {
-            dispatch(trainingActions.setCreateTrainingDate(date.toISOString()));
+            dispatch(trainingActions.setCreateTrainingDate(date.utc(true).toISOString()));
             const currentDate = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
 
             const isSearchtraining = Boolean(
