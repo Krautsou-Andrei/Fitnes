@@ -127,14 +127,16 @@ export function useResultModal() {
         }
     }, [isAddTraining, isError, onClickClose, typeModal.type]);
 
-    const onOkModal = useCallback((): (() => void) => {
+    const onOkModal = useCallback(() => {
         if (isUserJointTrainingBestList) {
-            return getUserJointTrainingLIstBestAgayn;
+            getUserJointTrainingLIstBestAgayn();
+            return;
         }
         if (isUserJointTrainingList) {
-            return getUserJointTrainingLIstAgayn;
+            getUserJointTrainingLIstAgayn();
+            return;
         }
-        return getTraningListAgayn;
+        getTraningListAgayn();
     }, [
         getTraningListAgayn,
         getUserJointTrainingLIstAgayn,
