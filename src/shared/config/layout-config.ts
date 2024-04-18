@@ -1,4 +1,5 @@
 export const enum LayoutConfig {
+    ACIEVEMENTS = 'Достижения',
     BUTTON_ADD_EXERCISE = 'Добавить упражнения',
     BUTTON_ANDROID = 'Android OS',
     BUTTON_APPLE = 'Aplle iOS',

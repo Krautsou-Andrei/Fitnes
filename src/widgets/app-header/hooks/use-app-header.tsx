@@ -2,7 +2,8 @@ import { LayoutConfig } from '@shared/config';
 import { usePageIsEqual } from '@shared/hooks';
 
 export function useAppHeader() {
-    const { isCalendar, isHome, isProfile, isSettings, isTrainings } = usePageIsEqual();
+    const { isAchievements, isCalendar, isHome, isProfile, isSettings, isTrainings } =
+        usePageIsEqual();
 
     const isBreadcrumb = !isProfile && !isSettings;
 
@@ -21,5 +22,14 @@ export function useAppHeader() {
         title = <>{LayoutConfig.TITLE_SETTING}</>;
     }
 
-    return { isBreadcrumb, isCalendar, isHome, isProfile, isSettings, isTrainings, title };
+    return {
+        isAchievements,
+        isBreadcrumb,
+        isCalendar,
+        isHome,
+        isProfile,
+        isSettings,
+        isTrainings,
+        title,
+    };
 }

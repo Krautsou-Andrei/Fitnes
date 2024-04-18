@@ -17,8 +17,16 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ className, isSimple }: AppHeaderProps) {
-    const { isBreadcrumb, isCalendar, isHome, isProfile, isSettings, isTrainings, title } =
-        useAppHeader();
+    const {
+        isAchievements,
+        isBreadcrumb,
+        isCalendar,
+        isHome,
+        isProfile,
+        isSettings,
+        isTrainings,
+        title,
+    } = useAppHeader();
 
     return (
         <Header
@@ -40,7 +48,10 @@ export function AppHeader({ className, isSimple }: AppHeaderProps) {
                 </div>
             )}
             {isCalendar ||
-                (isTrainings && <AppSettingsButton className={styles['setting-traning-page']} />)}
+                isTrainings ||
+                (isAchievements && (
+                    <AppSettingsButton className={styles['setting-traning-page']} />
+                ))}
         </Header>
     );
 }
