@@ -30,6 +30,7 @@ export function filtersAchievements({
 
     Object.entries(trainings).forEach(([trainingDay, trainings]) => {
         const trainingExercises: BestExercise = {};
+        let isEmpty = true;
         let totalApproaches = 0;
         let totalCount = 0;
         let totalReplays = 0;
@@ -52,10 +53,10 @@ export function filtersAchievements({
                     trainingExercises[exercise.name] = trainingExercises[exercise.name]
                         ? trainingExercises[exercise.name] + 1
                         : 1;
-
                     totalApproaches += exercise.approaches;
                     totalReplays += exercise.replays;
                     totalValue += exercise.approaches * exercise.replays * exercise.weight;
+                    isEmpty = false;
                     totalCount++;
                 }
             });
@@ -75,6 +76,7 @@ export function filtersAchievements({
         filterTrainings.push({
             date: trainingDay,
             value: totalCount !== 0 ? Number((totalValue / totalCount).toFixed(1)) : 0,
+            isEmpty: isEmpty,
         });
 
         infoTrainingAchievements.push({
@@ -116,7 +118,7 @@ export function filtersAchievements({
     const bestExercisesPeriod = getBestArray(bestExercisesDays);
     const bestExercisesDaysArray = getBestExercisesDaysArray(bestExercisesDays);
     const filterTrainingsMonth = getFilterTrainingsMonth(filterTrainings);
-    const isEmptyTraining = filterTrainings.every((item) => item.value === 0);
+    const isEmptyTraining = filterTrainings.every((item) => item.isEmpty === true);
 
     return {
         bestNameExercise,
@@ -165,12 +167,12 @@ function getBestArray(bestObject: { [key: string]: BestExercise }): ExercisesWee
             const bestExercise = getBestExersice(exercise);
 
             if (bestExercise.value !== -Infinity) {
-                const { type, value } = bestExercise;
+                const { type } = bestExercise;
 
                 if (exerciseMap[type]) {
-                    exerciseMap[type].value += value;
+                    exerciseMap[type].value++;
                 } else {
-                    exerciseMap[type] = { type, value };
+                    exerciseMap[type] = { type, value: 1 };
                 }
             }
         });

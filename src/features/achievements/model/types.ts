@@ -5,6 +5,7 @@ export type TrainingsAchievementsDay = Record<string, Training[]>;
 export type TrainingsMiddleDays = {
     date: string;
     value: number;
+    isEmpty: boolean;
 };
 
 export type BestExerciseDaysPeriod = {

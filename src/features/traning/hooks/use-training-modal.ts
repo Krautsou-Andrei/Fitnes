@@ -59,7 +59,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const isButtonSaveDisabled = !(
         createTraining.date &&
         createTraining.name &&
-        createTraining.exercises[0].name
+        createTraining.exercises[0]?.name
     );
 
     const remainTraining = listTraining.filter((training) => {
@@ -114,9 +114,9 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
         setIsOpenDrawer(false);
     };
 
-    const onSave = async () => {       
+    const onSave = async () => {
         try {
-            if (isEditTraining) {               
+            if (isEditTraining) {
                 dispatch(editTraningThunk({ trainingId: id, body: createTraining }))
                     .unwrap()
                     .then(() => {
@@ -127,7 +127,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
                         }
                     })
                     .catch((error) => showErrorForDevelop('Add training', error));
-            } else {               
+            } else {
                 dispatch(addTraningThunk(createTraining))
                     .unwrap()
                     .then((result) => {

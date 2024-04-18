@@ -8,5 +8,5 @@ export const enum AchievementsKeyConfig {
 export const enum AchievementsDefaultConfig {
     NUMBERS_DAYS_WEEK = 7,
     NUMBERS_DAYS_MONTH = 28,
-    WRAP_TEXT_QUANTITY_SYMBOL = 10,
+    WRAP_TEXT_QUANTITY_SYMBOL = 12,
 }
