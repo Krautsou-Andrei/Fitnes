@@ -20,7 +20,8 @@ export function AppTabs({ items, activeKey, className, isBadge, onChange }: AppT
 
     return (
         <Tabs
-            defaultActiveKey={activeKey ? activeKey : pathname}
+            destroyInactiveTabPane={true}
+            accessKey={activeKey ? activeKey : pathname}
             centered
             className={clsn(styles.tabs, className)}
             onTabClick={onChange ? undefined : onTabClick}
