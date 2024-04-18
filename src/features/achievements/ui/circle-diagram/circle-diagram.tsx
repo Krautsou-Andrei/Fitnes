@@ -11,28 +11,29 @@ type CircleDiagramProps = {
 };
 
 export function CircleDiagram({ exercises }: CircleDiagramProps) {
-    const { isQueryXS } = useAppMediaQuery();
+    const { isTablet, isQuerySM } = useAppMediaQuery();
 
     const config = {
         data: exercises,
         angleField: 'value',
         colorField: 'type',
-        innerRadius: STYLES.CIRCLE_DIAGRAM_INNER_RADIUS,
-        radius: STYLES.CIRCLE_DIAGRAM_RADIUS,
-        autoWrap: true,
+        innerRadius: isQuerySM
+            ? STYLES.CIRCLE_DIAGRAM_INNER_RADIUS_MOBILE
+            : STYLES.CIRCLE_DIAGRAM_INNER_RADIUS,
+        radius: isQuerySM ? STYLES.CIRCLE_DIAGRAM_RADIUS_MOBILE : STYLES.CIRCLE_DIAGRAM_RADIUS,
         label: {
             text: 'type',
             position: 'outside',
 
             formatter: (text: string) =>
-                isQueryXS
+                isTablet
                     ? wrapText(text, AchievementsDefaultConfig.WRAP_TEXT_QUANTITY_SYMBOL)
                     : text,
             connector: false,
             transform: [{ type: 'overlapDodgeY' }],
             style: {
-                fontSize: STYLES.FONT_SIZE_2M,
-                fontWeight: STYLES.FONT_WEIGHT_BOLD,
+                fontSize: isTablet ? STYLES.FONT_SIZE_S : STYLES.FONT_SIZE_2M,
+                fontWeight: STYLES.FONT_WEIGHT_NORMAL,
             },
         },
         legend: false,

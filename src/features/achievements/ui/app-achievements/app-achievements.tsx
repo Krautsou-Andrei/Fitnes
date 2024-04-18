@@ -1,4 +1,5 @@
 import { Collapse, Radio, Typography } from 'antd';
+
 import clsn from 'classnames';
 
 import { TableAchievements } from '../table-achievements';
@@ -126,7 +127,9 @@ export function AppAchievements({ isMonth, days }: AppAchievementsProps) {
                             <InfoAchievementsCard
                                 key={card.title}
                                 title={state.infoTrainings[card.title].toLocaleString('ru-RU')}
-                                description={card.description}
+                                description={
+                                    state.isQueryXS ? card.description_mobile : card.description
+                                }
                             />
                         ))}
                     </div>
@@ -143,7 +146,7 @@ export function AppAchievements({ isMonth, days }: AppAchievementsProps) {
                         />
                     </div>
                     <div className={styles['circle-diagram-wrapper']}>
-                        <div className={styles.graph}>
+                        <div className={styles['graph-circle']}>
                             <CircleDiagram exercises={state.bestExercisesPeriod} />
                         </div>
                         <TableAchievements

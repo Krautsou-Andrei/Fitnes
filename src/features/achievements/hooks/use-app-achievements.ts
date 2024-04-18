@@ -14,7 +14,7 @@ type UseAppAchievements = {
 };
 
 export function useAppAchievements({ days }: UseAppAchievements) {
-    const { isQueryXL, isTablet } = useAppMediaQuery();
+    const { isQueryXL, isTablet, isQueryXS } = useAppMediaQuery();
     const trainingNames = useAppSelector(selectTrainingName);
     const trainings = useAppSelector(selectTraining);
 
@@ -80,6 +80,7 @@ export function useAppAchievements({ days }: UseAppAchievements) {
             infoTrainings,
             isEmptyTraining,
             isQueryXL,
+            isQueryXS,
             isTablet,
             selectFilter,
             trainings,

@@ -3,22 +3,26 @@
 
 .card {
     width: @app-width-info-achievements-card;
+    box-shadow: @app-box-shadow-card;
 
     .media-xs({
         width: 100%;
     });
 
     :global(.ant-card-body) {
-        padding: @gap-xl @gap-l;
+        padding: @gap-xl @gap-l @gap-m;
         text-align: center;
 
         .media-xs({
-            display: flex;            
+            padding: @gap-2xs @gap-m;
+            display: flex;      
+            align-items: center;      
             justify-content: space-between
         });
 
+
         :global(.ant-typography) {
-            margin-bottom: @gap-xs;
+            margin-bottom: @gap-4xs;
             line-height: @font-line-m;
         }
 

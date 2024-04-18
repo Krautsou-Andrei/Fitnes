@@ -10,11 +10,42 @@
         padding-left: 0;
         padding-right: 0;
     });
+
+    :global(.ant-tabs.ant-tabs-top) {
+        :global(.ant-tabs-nav) {
+            padding: @gap-s 0 0;
+
+            :global(.ant-tabs-nav-list) {
+                .media-tabtet({
+                    padding-right: 0;
+                });
+            }
+
+            :global(.ant-tabs-tab) {
+                .media-tabtet({
+                    margin-bottom: @gap-s;
+                });
+
+                .media-xs({
+                    margin-bottom: @gap-l;
+                    height: unset;
+                });
+            }
+        }
+    }
 }
 
 .content-wrapper {
     overflow: auto;
     height: inherit;
+
+    .media-tabtet({
+        padding-top: @gap-4xl;
+    });
+
+    .media-xs({
+        padding: @gap-xl @gap-m ;
+    });
 
     .scrollbarMixin();
 }
