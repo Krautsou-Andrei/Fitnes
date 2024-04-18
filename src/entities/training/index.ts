@@ -13,9 +13,9 @@ import {
 } from './api/training-api';
 
 import {
-    selectAchievementsType,
     selectCreateTraining,
     selectIsEdit,
+    selectIsGetRequest,
     selectPals,
     selectPal,
     selectTraining,
@@ -29,9 +29,9 @@ export type * from './model/types';
 export type * from './api/types';
 
 export {
-    selectAchievementsType,
     selectCreateTraining,
     selectIsEdit,
+    selectIsGetRequest,
     selectPals,
     selectPal,
     selectTraining,
