@@ -59,7 +59,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
     const isButtonSaveDisabled = !(
         createTraining.date &&
         createTraining.name &&
-        createTraining.exercises[0].name
+        createTraining.exercises[0]?.name
     );
 
     const remainTraining = listTraining.filter((training) => {
@@ -95,7 +95,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
         }
 
         if (moment.isMoment(date)) {
-            dispatch(trainingActions.setCreateTrainingDate(date.toISOString()));
+            dispatch(trainingActions.setCreateTrainingDate(date.utc(true).toISOString()));
         }
 
         setIsOpenDrawer(true);
@@ -108,7 +108,9 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
             dispatch(trainingActions.setSelectPal(undefined));
             setSelectTrainingName('');
         }
-        dispatch(trainingActions.setIsEdit(false));
+        if (isTrainings) {
+            dispatch(trainingActions.setIsEdit(false));
+        }
         setIsOpenDrawer(false);
     };
 
@@ -204,7 +206,7 @@ export function useTainingModal({ date, listTraining, trainingsDay }: UseTrainin
 
         dispatch(trainingActions.setIsEdit(true));
         dispatch(trainingActions.setCreateTrainingId(training.training.id));
-        dispatch(trainingActions.setCreateTrainingDate(moment(training.date).toISOString()));
+        dispatch(trainingActions.setCreateTrainingDate(moment(training.date).utc(true).toISOString()));
         dispatch(trainingActions.setCreateTrainingExercises(training.training.exercises));
         dispatch(trainingActions.setCreateTrainingName(training.training.name));
         dispatch(trainingActions.setCreateTrainingId(training.training.id));

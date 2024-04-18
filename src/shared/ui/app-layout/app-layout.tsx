@@ -25,7 +25,7 @@ export function AppLayout({
     isAuthLayout,
     isNoTitle,
 }: AppLayoutProps) {
-    const { isCalendar, isTrainings, styleCollapsed } = useAppLayout();
+    const { isAchievements, isCalendar, isTrainings, styleCollapsed } = useAppLayout();
 
     return (
         <Layout className={clsn(styles['main-page'], className)}>
@@ -37,7 +37,8 @@ export function AppLayout({
                 {headerSlot}
                 <div
                     className={clsn(styles['main-content'], {
-                        [styles['main-content-simple']]: isNoTitle && !isCalendar && !isTrainings,
+                        [styles['main-content-simple']]:
+                            isNoTitle && !isCalendar && !isTrainings && !isAchievements,
                     })}
                 >
                     <Outlet />

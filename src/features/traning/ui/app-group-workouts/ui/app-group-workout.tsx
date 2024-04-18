@@ -53,7 +53,7 @@ export function AppGroupWorkouts() {
                         />
                     ) : (
                         <>
-                            <InviteRequests />
+                            {!state.isMaxPartners && <InviteRequests />}
                             <div className={styles.description}>
                                 <Title level={3}>
                                     {splitString(WorkoutsConfig.GROUP_TITLE_ONE)}

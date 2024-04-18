@@ -6,6 +6,9 @@ import {
 import { useTainingModal } from '../../hooks/use-training-modal';
 import { AppButtonSaveExercise } from '../app-button-save-exercise';
 import { AppDrawer } from '../app-drawer';
+import { TableTrainings } from './ui';
+
+import { TrainingFormExerciseConfig } from '@features/traning/config';
 
 import { selectIsLoadingn } from '@entities/session';
 import { selectIsError } from '@entities/session/model/slice';
@@ -15,13 +18,12 @@ import { useAppSelector } from '@shared/hooks';
 import { AppNoTrainings } from '@shared/ui';
 import { formatDate } from '@shared/lib';
 
-import { TableTrainings } from './ui';
-import { TrainingFormExerciseConfig } from '@features/traning/config';
-
 export function AppMyWorkouts() {
     const trainings = useAppSelector(selectTraining);
     const listTraining = useAppSelector(selectTrainingList);
     const createTraining = useAppSelector(selectCreateTraining);
+    const isLoading = useAppSelector(selectIsLoadingn);
+    const isError = useAppSelector(selectIsError);
 
     const chankSelector = formatDate(
         createTraining.date || '',
@@ -30,9 +32,6 @@ export function AppMyWorkouts() {
     const trainingsDay = trainings
         .filter((item) => item.date === chankSelector)
         .map((item) => item.training);
-
-    const isLoading = useAppSelector(selectIsLoadingn);
-    const isError = useAppSelector(selectIsError);
 
     const {
         id,

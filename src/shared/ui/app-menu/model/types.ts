@@ -4,5 +4,5 @@ export type MenuItem = {
     id: number;
     icon: ReactElement;
     link: string;
-    title: string;
+    title: string | ReactElement;
 };

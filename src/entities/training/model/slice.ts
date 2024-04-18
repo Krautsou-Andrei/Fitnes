@@ -22,6 +22,7 @@ const defaultCreateTraining = {
 
 type TrainingSliceType = {
     isEdit: boolean;
+    isGetRequest: boolean;
     pals: Pal[];
     userJointTrainingList: Pal[];
     selectPal?: Pal;
@@ -32,6 +33,7 @@ type TrainingSliceType = {
 
 const initialState: TrainingSliceType = {
     isEdit: false,
+    isGetRequest: false,
     pals: [],
     userJointTrainingList: [],
     selectPal: undefined,
@@ -129,6 +131,7 @@ export const trainingSlice = createSlice({
         builder.addMatcher(
             trainingApi.endpoints.getTraining.matchFulfilled,
             (state: TrainingSliceType, { payload }: PayloadAction<Training[]>) => {
+                state.isGetRequest = true;
                 state.trainings = payload;
             },
         );
@@ -161,6 +164,7 @@ export const trainingSlice = createSlice({
 
 export const selectCreateTraining = (state: RootState) => state.trainings.createTraining;
 export const selectIsEdit = (state: RootState) => state.trainings.isEdit;
+export const selectIsGetRequest = (state: RootState) => state.trainings.isGetRequest;
 export const selectPals = (state: RootState) => state.trainings.pals;
 export const selectPal = (state: RootState) => state.trainings.selectPal;
 export const selectTraining = (state: RootState) => state.trainings.trainings;

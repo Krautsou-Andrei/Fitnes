@@ -6,6 +6,7 @@ import { AppMobileDay } from '../ui/app-mobile-day';
 
 import { getTraningListThunk } from '@features/traning';
 import { ModalTypeConfig } from '@features/result-modal/config';
+import { selectResultModal } from '@features/result-modal/model/slice';
 
 import {
     type TrainingType,
@@ -13,13 +14,14 @@ import {
     selectTrainingName,
     trainingActions,
 } from '@entities/training';
-import { selectResultModal } from '@features/result-modal/model/slice';
 
-import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
+import { useAppDispatch, useAppMediaQuery, useAppSelector, useReturnHome } from '@shared/hooks';
 import { calendarSelectedDay, formatDate, offSet, showErrorForDevelop } from '@shared/lib';
 import { DateFormatConfig, Width } from '@shared/config';
+import { Gap } from '@shared/config/constants';
 
 export function useTraningPage() {
+    useReturnHome();
     const { isQueryXS } = useAppMediaQuery();
 
     const trainings = useAppSelector(selectTraining);
@@ -68,7 +70,7 @@ export function useTraningPage() {
                 .map((item) => item.training);
 
             if (element) {
-                setIsOffSet(offSet(element, Width.TRAINING_MODAL));
+                setIsOffSet(offSet(element, Width.TRAINING_MODAL + Gap.GAP_M));
                 calendarSelectedDay(element);
             }
 
@@ -95,7 +97,7 @@ export function useTraningPage() {
     const handleFullCellRender = (date: Moment) => {
         const selectDate = formatDate(date, DateFormatConfig.FORMAT_YYYY_MM_DD_DASHED);
         const trainingsDay = trainings.filter((item) => item.date === selectDate);
-        const isToday = moment().isSame(date, 'day');
+        const isToday = moment().utc(true).isSame(date, 'day');
 
         return (
             <AppDesctopDay

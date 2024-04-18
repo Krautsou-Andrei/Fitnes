@@ -1,6 +1,6 @@
 import { AppGroupWorkouts, AppMarathons, AppMyWorkouts } from '@features/traning';
 
-import { ItemsTabs } from '@shared/ui';
+import type { ItemsTabs } from '@shared/ui';
 
 export const trainingsTabsConfig: ItemsTabs[] = [
     {

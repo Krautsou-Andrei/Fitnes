@@ -1,30 +1,17 @@
-import { useState } from 'react';
 import { List, Space, Typography } from 'antd';
 
+import { useInvitePartners } from '../hooks';
 import { PalCard } from '../../pal-card';
 import { PalModal } from '../../pal-modal';
 
-import { InviteConfig } from '@features/traning/config';
-
-import { selectPals } from '@entities/training';
-
-import { useAppSelector } from '@shared/hooks';
+import { InviteConfig, WorkoutsConfig } from '@features/traning/config';
 
 import styles from './invite-partner.module.less';
 
 const { Title, Text } = Typography;
 
 export function InvitePartners() {
-    const partners = useAppSelector(selectPals);
-    const [isOpenPalModal, setIsOpenPalModal] = useState<boolean>(false);
-
-    const onClosePalModal = () => {
-        setIsOpenPalModal(false);
-    };
-
-    const onOpenPalModal = () => {
-        setIsOpenPalModal(true);
-    };
+    const { state, functions } = useInvitePartners();
 
     return (
         <>
@@ -32,10 +19,10 @@ export function InvitePartners() {
                 <Title level={4} className={styles.title}>
                     {InviteConfig.MY_PARTNERS_TITLE}
                 </Title>
-                {partners.length ? (
-                    <Space className={styles['partners-list']} onClick={onOpenPalModal}>
+                {state.partners.length ? (
+                    <Space className={styles['partners-list']} onClick={functions.onOpenPalModal}>
                         <List
-                            dataSource={partners}
+                            dataSource={state.partners.slice(0, WorkoutsConfig.MAX_PARTNERS)}
                             renderItem={(pal, index) => <PalCard pal={pal} index={index} />}
                         />
                     </Space>
@@ -44,7 +31,10 @@ export function InvitePartners() {
                 )}
             </div>
 
-            <PalModal isOpenPalModal={isOpenPalModal} onClosePalModal={onClosePalModal} />
+            <PalModal
+                isOpenPalModal={state.isOpenPalModal}
+                onClosePalModal={functions.onClosePalModal}
+            />
         </>
     );
 }

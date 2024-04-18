@@ -5,6 +5,7 @@ import { useLinkMenuClick } from './use-link-menu-click';
 import { useMainWidth } from './use-main-width';
 import { useOpenNewFeedbackModal } from './use-open-new-feedback-modal';
 import { usePageIsEqual } from './use-page-is-equal';
+import { useReturnHome } from './use-return-home';
 
 export {
     useAppDispatch,
@@ -15,4 +16,5 @@ export {
     useMainWidth,
     useOpenNewFeedbackModal,
     usePageIsEqual,
+    useReturnHome,
 };

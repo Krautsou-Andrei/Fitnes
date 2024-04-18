@@ -1,15 +1,11 @@
 import { Avatar, Button, Col, Modal, Row } from 'antd';
-
 import { CheckCircleFilled, UserOutlined } from '@ant-design/icons';
 
-import { rejectInvitieThunk } from '@features/traning/model/reject-invite';
-import { InviteConfig, StatusConfig } from '@features/traning/config';
+import { usePalModal } from '../hooks';
 
-import { selectPal, trainingActions } from '@entities/training';
+import { InviteConfig } from '@features/traning/config';
 
 import { Gap, STYLES, Size } from '@shared/config/constants';
-import { useAppDispatch, useAppSelector } from '@shared/hooks';
-import { showErrorForDevelop } from '@shared/lib';
 import { DataTestIdConfig } from '@shared/config';
 
 import styles from './pal-modal.module.less';
@@ -20,20 +16,8 @@ type PalModalProps = {
 };
 
 export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
-    const dispatch = useAppDispatch();
+    const { state, functions } = usePalModal({ onCloseModal: onClosePalModal });
 
-    const pal = useAppSelector(selectPal);
-
-    const handlerRejectTraining = (id: string | undefined) => {
-        if (id) {
-            dispatch(rejectInvitieThunk({ id, status: StatusConfig.REJECTED }))
-                .unwrap()
-                .then(() => dispatch(trainingActions.removeUserJointTraining({ id: id })))
-                .catch((error: unknown) => {
-                    showErrorForDevelop('Get training pals', error);
-                });
-        }
-    };
     return (
         <Modal
             data-test-id={DataTestIdConfig.PARTNER_MODAL}
@@ -52,11 +36,11 @@ export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
                     <Col span={Gap.GAP_S} className={styles.avatar}>
                         <Avatar
                             size={Size.SIZE_8_XL}
-                            alt={pal?.name}
-                            src={pal?.imageSrc}
-                            icon={!pal?.imageSrc && <UserOutlined />}
+                            alt={state.pal?.name}
+                            src={state.pal?.imageSrc}
+                            icon={!state.pal?.imageSrc && <UserOutlined />}
                         />
-                        <span className={styles.name}>{pal?.name}</span>
+                        <span className={styles.name}>{state.pal?.name}</span>
                     </Col>
                     <Col className={styles.params}>
                         <Col className={styles['params-name']}>
@@ -64,9 +48,9 @@ export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
                             <div>{InviteConfig.MIDLE_WEIGHT}</div>
                         </Col>
                         <Col className={styles['params-info']}>
-                            <div>{pal?.trainingType}</div>
+                            <div>{state.pal?.trainingType}</div>
                             <div>
-                                {pal?.avgWeightInWeek} {InviteConfig.MIDLE_WEIGHT_TITLE}
+                                {state.pal?.avgWeightInWeek} {InviteConfig.MIDLE_WEIGHT_TITLE}
                             </div>
                         </Col>
                     </Col>
@@ -80,7 +64,7 @@ export function PalModal({ isOpenPalModal, onClosePalModal }: PalModalProps) {
                         <Button
                             block
                             className={styles.button}
-                            onClick={() => handlerRejectTraining(pal?.inviteId)}
+                            onClick={() => functions.handlerRejectTraining(state.pal?.inviteId)}
                         >
                             {InviteConfig.REJECT_TRAINING}
                         </Button>

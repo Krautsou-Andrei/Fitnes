@@ -26,6 +26,7 @@ import { sortTrainingPeriod } from './sort-training-period';
 import { splitString } from './slpit-string';
 import { wait } from './wait';
 import { wrapSelectedText } from './wrap-selected-text';
+import { wrapText } from './wrap-text';
 
 export type * from './get-period';
 
@@ -57,4 +58,5 @@ export {
     wait,
     weekDay,
     wrapSelectedText,
+    wrapText,
 };

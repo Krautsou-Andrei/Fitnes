@@ -1,3 +1,5 @@
+import { AchievementsDefaultConfig } from './achievements-config';
+import { AchievementsKeyConfig } from './achievements-config';
 import { ConstantsMediaQuery } from './constants';
 import { DataTestIdConfig } from './data-test-id-config';
 import { DateFormatConfig } from './date-format-config';
@@ -13,6 +15,8 @@ import { SessionStorageConfig } from './session-storage-config';
 import { Width } from './constants';
 
 export {
+    AchievementsDefaultConfig,
+    AchievementsKeyConfig,
     ConstantsMediaQuery,
     DataTestIdConfig,
     DateFormatConfig,

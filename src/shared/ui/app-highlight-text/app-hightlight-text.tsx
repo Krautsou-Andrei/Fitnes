@@ -1,10 +1,10 @@
-type AppHeighlightTextProps = {
+type AppHighlightTextProps = {
     classNames: string;
     text: string;
     searchParams?: string;
 };
 
-export function AppHeighlightText({ searchParams, text, classNames }: AppHeighlightTextProps) {
+export function AppHighlightText({ searchParams, text, classNames }: AppHighlightTextProps) {
     if (!searchParams) {
         return text;
     }

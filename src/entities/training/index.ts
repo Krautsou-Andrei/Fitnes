@@ -15,6 +15,7 @@ import {
 import {
     selectCreateTraining,
     selectIsEdit,
+    selectIsGetRequest,
     selectPals,
     selectPal,
     selectTraining,
@@ -30,6 +31,7 @@ export type * from './api/types';
 export {
     selectCreateTraining,
     selectIsEdit,
+    selectIsGetRequest,
     selectPals,
     selectPal,
     selectTraining,

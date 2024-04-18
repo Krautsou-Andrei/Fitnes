@@ -1,0 +1,42 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.card {
+    width: @app-width-info-achievements-card;
+    box-shadow: @app-box-shadow-card;
+
+    .media-xs({
+        width: 100%;
+    });
+
+    :global(.ant-card-body) {
+        padding: @gap-xl @gap-l @gap-m;
+        text-align: center;
+
+        .media-xs({
+            padding: @gap-2xs @gap-m;
+            display: flex;      
+            align-items: center;      
+            justify-content: space-between
+        });
+
+
+        :global(.ant-typography) {
+            margin-bottom: @gap-4xs;
+            line-height: @font-line-m;
+        }
+
+        :global(h1.ant-typography) {
+            font-weight: 700;
+        }
+
+        :global(span.ant-typography) {
+            color: @app-text-color-secondary;
+        }
+    }
+
+    :global(.ant-card-body::after),
+    :global(.ant-card-body::before) {
+        display: none;
+    }
+}

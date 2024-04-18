@@ -1,0 +1,179 @@
+@import '@shared/styles/constants';
+@import '@shared/styles/mixin';
+
+.achievements-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: @gap-xl;
+
+    .buttons-filters {
+        padding: @gap-m 0;
+
+        display: flex;
+        gap: @gap-xl;
+
+        .media-tabtet({
+            padding: @gap-4xs 0;
+        });
+
+        :global(.ant-radio-button-wrapper),
+        :global(.ant-radio-button-wrapper:first-child) {
+            padding: 0 @gap-xs;
+            height: (@rem * 18);
+
+            font-size: @font-size-s;
+            line-height: @font-line-m;
+
+            border: (@rem * 1) solid @app-devider;
+            border-radius: (@rem * 2);
+        }
+
+        :global(.ant-radio-button-wrapper:not(:first-child)::before) {
+            display: none;
+        }
+
+        :global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)),
+        :global(
+                .ant-radio-button-wrapper-checked:not(
+                        [class*=' ant-radio-button-wrapper-disabled']
+                    ).ant-radio-button-wrapper:first-child
+            ) {
+            background-color: @app-radio-button-background-checked;
+            border-color: @app-radio-button-border-color-checked;
+        }
+
+        :global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before) {
+            display: none;
+        }
+
+        :global(.ant-radio-group) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: @gap-s;
+
+            .media-tabtet({
+                gap: @gap-xs;
+            });
+        }
+
+        :global(.ant-typography) {
+            line-height: @font-line-m;
+            white-space: nowrap;
+        }
+    }
+
+    .graph-wrapper,
+    .circle-diagram-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: @gap-12xxl;
+
+        .media-xl({
+            gap: @gap-xl;
+        });
+    }
+
+    .graph-wrapper.graph-month {
+        flex-direction: column;
+        gap: @gap-xl;
+    }
+
+    .graph {
+        max-width: @app-width-graph;
+        width: 100%;
+        height: (@rem * 374);
+        border: (@rem * 1) solid @app-devider;
+        border-radius: (@rem * 2);
+
+        canvas {
+            width: 100% !important;
+        }
+
+        .media-xs({
+            height: (@rem * 236);
+        });
+    }
+
+    .graph-month {
+        .graph {
+            max-width: 100%;
+        }
+    }
+
+    .table {
+        padding-top: @gap-5xl;
+
+        .media-xl({
+            padding-top: 0 ;
+        });
+    }
+
+    .table-month {
+        display: flex;
+        gap: (@rem * 100);
+    }
+
+    .info-achievements-cards {
+        padding: @gap-xl 0;
+
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        gap: @gap-xl;
+
+        .media-xl({
+            grid-template-columns: repeat(2, max-content);
+            gap: @gap-m;
+
+        });
+
+        .media-tabtet({
+            padding: @gap-2xs 0 0;
+        });
+
+        .media-xs({
+            grid-template-columns: repeat(1, auto);
+        });
+    }
+
+    .exercises-achievements-cards {
+        padding: @gap-xl 0;
+
+        display: flex;
+        flex-direction: column;
+
+        .media-tabtet({
+            padding:  0;
+        });
+    }
+
+    .circle-diagram-wrapper {
+        .graph-circle {
+            margin-top: -(@rem * 70);
+            margin-bottom: -(@rem * 70);
+
+            max-width: @app-width-graph;
+            width: 100%;
+            .media-tabtet({
+                margin-top: -(@rem *140);
+                margin-bottom: -(@rem *140);
+            });
+        }
+
+        .table-week {
+            padding-top: @gap-xl;
+
+            .media-tabtet({
+                padding: 0;
+            });
+
+            :global(.ant-badge-count) {
+                background: @app-badge-background;
+                color: @app-badge-color-primary;
+            }
+        }
+    }
+
+    :global(.ant-collapse) {
+        width: fit-content;
+    }
+}

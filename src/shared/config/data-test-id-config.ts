@@ -68,6 +68,7 @@ export const enum DataTestIdConfig {
     SEARCH_INPUT = 'search-input',
     SEE_REVIEWS = 'see-reviews',
     SETTINGS_BACK = 'settings-back',
+    SIDEBAR_ACHIEVEMENTS = 'sidebar-achievements',
     SIDER_SWITCH = 'sider-switch',
     SIDER_SWITCH_MOBILE = 'sider-switch-mobile',
     TARIFF_COST = 'tariff-cost',

@@ -20,6 +20,7 @@ export function MyTrainingsPage() {
             >
                 <AppTabsTrainings
                     classNames={styles['tabs']}
+                    isBadge={true}
                     onChangeTab={functions.onChangeTabs}
                 />
             </AppContentWrapper>

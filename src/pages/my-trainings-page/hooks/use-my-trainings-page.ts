@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { getTraningListThunk } from '@features/traning';
 
-import { useAppDispatch } from '@shared/hooks';
+import { useAppDispatch, useReturnHome } from '@shared/hooks';
 import { showErrorForDevelop } from '@shared/lib';
 
 export function useMyTrainingsPage() {
+    useReturnHome();
     const dispatch = useAppDispatch();
     const [isMarathonTabs, setIsMarathonTabs] = useState('');
     useEffect(() => {

@@ -37,7 +37,7 @@ export function AppMenu({ isCollapsed, isQueryMD, closeMenu }: AppMenuProps) {
                 ) : (
                     item.icon
                 ),
-                label: `${item.title}`,
+                label: item.title,
                 onClick: () => onClickMenu(item.link),
                 style: isCollapsed
                     ? { paddingLeft: 'calc(50% - 16px / 2)' }
@@ -45,6 +45,7 @@ export function AppMenu({ isCollapsed, isQueryMD, closeMenu }: AppMenuProps) {
                           paddingLeft: !isQueryMD ? '16px' : '8px',
                           paddingRight: isQueryMD ? '8px' : undefined,
                       },
+                      
             }))}
             inlineCollapsed={isCollapsed}
         />

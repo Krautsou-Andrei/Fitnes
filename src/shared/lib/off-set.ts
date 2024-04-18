@@ -1,10 +1,14 @@
-export function offSet(element: HTMLElement, width: number): boolean {
+export function offSet(element: HTMLElement, width: number): boolean {   
     const blockRect = element.getBoundingClientRect();
     const blockLeft = blockRect.left;
 
-    const windowWidth = window.innerWidth;
+    const widthConteiner = document.querySelector('#root');
 
-    const distanceToRight = windowWidth - blockLeft;
+    if (widthConteiner === null) {
+        return false;
+    }
+
+    const distanceToRight = widthConteiner.getBoundingClientRect().width - blockLeft;
 
     return distanceToRight < width;
 }
