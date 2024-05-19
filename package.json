@@ -1,4 +1,5 @@
 {
+  "homepage": "https://Krautsou-Andrei.github.io/Fitnes",
   "name": "cleverfit",
   "private": true,
   "version": "1.0.0",
@@ -11,6 +12,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "deploy": "yarn build && gh-pages -d dist",
     "preview": "vite preview",
     "lint:css": "stylelint './src/**/*.{css,less}'",
     "lint:scripts": "eslint ./ ./src/ --ext .js,.jsx,.ts,.tsx",
@@ -33,7 +35,7 @@
     "crypto-js": "^4.2.0",
     "history": "^5.3.0",
     "less": "^4.2.0",
-    "lottie-react": "^2.4.0",    
+    "lottie-react": "^2.4.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -77,6 +79,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
+    "gh-pages": "^6.1.1",
     "husky": "^4.3.8",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",

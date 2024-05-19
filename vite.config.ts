@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => {
     return {
-        base: command === 'serve' ? '/' : '/Krautsou-Andrei',
+        base: command === 'serve' ? '/' : '/Fitnes',
         plugins: [
             react(),
             svg({

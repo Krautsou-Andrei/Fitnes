@@ -6,7 +6,7 @@ import { AppAlert, ResultModal } from '@features/result-modal';
 
 export function withHistory(component: () => React.ReactNode) {
     return () => (
-        <HistoryRouter history={history}>
+        <HistoryRouter history={history} basename={import.meta.env.BASE_URL}>
             {component()}
             <QueryLoader />
             <ResultModal />
