@@ -1,3 +1,5 @@
+export const BASENAME = import.meta.env.BASE_URL;
+
 export const enum PathConfig {
     ACHIEVEMENTS = '/achievements',
     AUTH = '/auth',

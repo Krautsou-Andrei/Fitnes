@@ -3,7 +3,7 @@ import clsn from 'classnames';
 import { push } from 'redux-first-history';
 
 import { useAppDispatch } from '@shared/hooks';
-import { DataTestIdConfig, HistoryStateConfig, LayoutConfig, PathConfig } from '@shared/config';
+import {BASENAME, DataTestIdConfig, HistoryStateConfig, LayoutConfig, PathConfig } from '@shared/config';
 
 import styles from './app-button-feedbacks.module.less';
 
@@ -16,7 +16,7 @@ export function AppButtonFeedbacks({ className, buttonText, ...rest }: AppButton
     const dispatch = useAppDispatch();
 
     const onclick = async () => {
-        dispatch(push(PathConfig.FEEDBACKS, { feedbacks: HistoryStateConfig.FEEDBACK_PAGE }));
+        dispatch(push(`${BASENAME}${PathConfig.FEEDBACKS}`, { feedbacks: HistoryStateConfig.FEEDBACK_PAGE }));
     };
 
     return (

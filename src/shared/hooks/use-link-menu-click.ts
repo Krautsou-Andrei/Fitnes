@@ -4,7 +4,7 @@ import { getTraningThunk } from '@features/traning';
 
 import { useAppDispatch } from './typed-react-redux-hooks';
 
-import { PathConfig } from '@shared/config';
+import {BASENAME, PathConfig } from '@shared/config';
 import { showErrorForDevelop } from '@shared/lib';
 
 export function useLinkMenuClick() {
@@ -17,14 +17,14 @@ export function useLinkMenuClick() {
             case PathConfig.ACHIEVEMENTS:
                 try {
                     await dispatch(getTraningThunk()).unwrap();
-                    dispatch(push(type));
+                    dispatch(push(`${BASENAME}${type}`));
                 } catch (error: unknown) {
                     showErrorForDevelop(`Get menu ${type}`, error);
                 }
                 break;
             case PathConfig.PROFILE:
                 try {
-                    dispatch(push(type));
+                    dispatch(push(`${BASENAME}${type}`));
                 } catch (error: unknown) {
                     showErrorForDevelop('Get prifile', error);
                 }

@@ -9,7 +9,7 @@ import { HistoryStateConfig } from './history-state-config';
 import { LayoutConfig } from './layout-config';
 import { locale } from './locale';
 import { LocalStorageConfig } from './local-storage-config';
-import { PathConfig } from './path-config';
+import { BASENAME, PathConfig } from './path-config';
 import { regExpConfig } from './reg-exp-config';
 import { SessionStorageConfig } from './session-storage-config';
 import { Width } from './constants';
@@ -17,6 +17,7 @@ import { Width } from './constants';
 export {
     AchievementsDefaultConfig,
     AchievementsKeyConfig,
+    BASENAME,
     ConstantsMediaQuery,
     DataTestIdConfig,
     DateFormatConfig,

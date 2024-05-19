@@ -2,7 +2,7 @@ import { push } from 'redux-first-history';
 import { type CallHistoryMethodAction } from 'redux-first-history/build/es6/actions';
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-import { HistoryStateConfig, PathConfig } from '@shared/config';
+import {BASENAME, HistoryStateConfig, PathConfig } from '@shared/config';
 import { StatusError } from '@shared/api';
 
 export function resultErrorFetch(error: FetchBaseQueryError): CallHistoryMethodAction {
@@ -17,13 +17,13 @@ export function resultErrorFetch(error: FetchBaseQueryError): CallHistoryMethodA
             error.status === StatusError.ERROR_404 &&
             error?.data?.message === StatusError.MESSAGE_NO_EMAIL
         ) {
-            return push(PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST, {
+            return push(`${BASENAME}${PathConfig.RESULT_ERROR_CHECK_EMAIL_NO_EXIST}`, {
                 result: HistoryStateConfig.RESULT,
             });
         }
     }
 
-    return push(PathConfig.RESULT_ERROR_CHECK_EMAIL, {
+    return push(`${BASENAME}${PathConfig.RESULT_ERROR_CHECK_EMAIL}`, {
         result: HistoryStateConfig.RESULT,
     });
 }

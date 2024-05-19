@@ -6,6 +6,7 @@ import { RequestChangePasswordBody, sessionActions, sessionApi } from '@entities
 
 import { isFetchBaseQueryError } from '@shared/api';
 import {
+    BASENAME,
     EventApiConfig,
     HistoryStateConfig,
     PathConfig,
@@ -30,7 +31,7 @@ export const changePasswordThunk = createAsyncThunk<
             removeSessionStorage(SessionStorageConfig.CONFIRM_PASSWORD);
 
             dispatch(
-                push(PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD, {
+                push(`${BASENAME}${PathConfig.RESULT_SUCCESS_CHANGE_PASSWORD}`, {
                     result: HistoryStateConfig.RESULT,
                 }),
             );

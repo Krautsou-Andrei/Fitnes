@@ -1,6 +1,8 @@
 import type { SVGProps } from 'react';
 import clsn from 'classnames';
 
+import { BASENAME } from '@shared/config';
+
 import type { IconName } from './types';
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name' | 'type'> {
@@ -18,7 +20,7 @@ export function AppIcon({ name, className, viewBox, ...props }: IconProps) {
             viewBox={viewBox}
             {...props}
         >
-            <use xlinkHref={`/sprite/${spriteName}.svg#${iconName}`} />
+            <use xlinkHref={`${BASENAME}/sprite/${spriteName}.svg#${iconName}`} />
         </svg>
     );
 }

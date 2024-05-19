@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Krautsou-Andrei.github.io/Fitnes",
+  "homepage": "https://krautsou-andrei.github.io/Fitnes/",
   "name": "cleverfit",
   "private": true,
   "version": "1.0.0",
@@ -13,6 +13,7 @@
     "start": "vite",
     "build": "vite build",
     "deploy": "yarn build && gh-pages -d dist",
+    "gh-pages": "gh-pages -d dist",
     "preview": "vite preview",
     "lint:css": "stylelint './src/**/*.{css,less}'",
     "lint:scripts": "eslint ./ ./src/ --ext .js,.jsx,.ts,.tsx",

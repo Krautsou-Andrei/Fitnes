@@ -8,7 +8,7 @@ import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
-import { EventApiConfig, LocalStorageConfig, PathConfig } from '@shared/config';
+import { EventApiConfig, LocalStorageConfig, PathConfig, BASENAME } from '@shared/config';
 import { setLocalStorage } from '@shared/lib';
 
 export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState }>(
@@ -26,7 +26,7 @@ export const loginThunk = createAsyncThunk<void, LoginParams, { state: RootState
                 setLocalStorage(LocalStorageConfig.ACCESS_TOKEN, result.accessToken);
             }
 
-            dispatch(push(PathConfig.HOME));
+            dispatch(push(`${BASENAME}${PathConfig.HOME}`));
         } catch (error: unknown | undefined) {
             if (isFetchBaseQueryError(error)) {
                 dispatch(resultErrorFetch());

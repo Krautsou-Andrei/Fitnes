@@ -16,7 +16,7 @@ import { sessionActions } from '@entities/session';
 import { selectIsError } from '@entities/session/model/slice';
 
 import { useAppDispatch, useAppMediaQuery, useAppSelector } from '@shared/hooks';
-import { DataTestIdConfig, PathConfig, SessionStorageConfig } from '@shared/config';
+import {BASENAME, DataTestIdConfig, PathConfig, SessionStorageConfig } from '@shared/config';
 import { getSessionStorage, showErrorForDevelop, splitString, wrapSelectedText } from '@shared/lib';
 import { STYLES } from '@shared/config/constants';
 
@@ -59,7 +59,7 @@ export function useResultModal() {
             typeModal.type === ModalTypeConfig.ERROR_GET_TRANING
         ) {
             dispatch(resultModalActions.setResultModal({ isOpen: false, typeModal: undefined }));
-            dispatch(push(PathConfig.HOME));
+            dispatch(push(`${BASENAME}${PathConfig.HOME}`));
             return;
         }
 

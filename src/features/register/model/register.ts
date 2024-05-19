@@ -10,6 +10,7 @@ import { cryptPassword, removeSessionStorage, setSessionStorage } from '@shared/
 import { isFetchBaseQueryError } from '@shared/api';
 import { RootState } from '@shared/types/store';
 import {
+    BASENAME,
     EventApiConfig,
     HistoryStateConfig,
     PathConfig,
@@ -28,7 +29,7 @@ export const registerThunk = createAsyncThunk<void, RegisterParams, { state: Roo
             removeSessionStorage(SessionStorageConfig.EMAIL);
             removeSessionStorage(SessionStorageConfig.PASSWORD);
 
-            dispatch(push(PathConfig.RESULT_SUCCESS, { result: HistoryStateConfig.RESULT }));
+            dispatch(push(`${BASENAME}${PathConfig.RESULT_SUCCESS}`, { result: HistoryStateConfig.RESULT }));
         } catch (error: unknown | undefined) {
             setSessionStorage(SessionStorageConfig.EMAIL, body.email);
             setSessionStorage(SessionStorageConfig.PASSWORD, cryptPassword(body.password));

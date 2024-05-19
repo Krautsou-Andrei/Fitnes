@@ -7,7 +7,7 @@ import { checkEmailThunk } from '@features/confirm-email/@ex/result';
 import { registerThunk } from '@features/register/@ex/result';
 
 import { useAppDispatch } from '@shared/hooks';
-import { HistoryStateConfig, PathConfig, SessionStorageConfig } from '@shared/config';
+import { BASENAME, HistoryStateConfig, PathConfig, SessionStorageConfig } from '@shared/config';
 import { decryptPassword, getSessionStorage, showErrorForDevelop } from '@shared/lib';
 
 export function useResultButtonClick(type: ResultPageConfig) {
@@ -19,7 +19,7 @@ export function useResultButtonClick(type: ResultPageConfig) {
                 const email = getSessionStorage(SessionStorageConfig.EMAIL);
                 const hashPassword = getSessionStorage(SessionStorageConfig.PASSWORD);
 
-                dispatch(push(PathConfig.REGISTRATION));
+                dispatch(push(`${BASENAME}${PathConfig.REGISTRATION}`));
 
                 if (email && email !== '' && hashPassword && hashPassword !== '') {
                     const password = decryptPassword(hashPassword);
@@ -37,7 +37,7 @@ export function useResultButtonClick(type: ResultPageConfig) {
             };
         case ResultPageConfig.ERROR_USER_EXIST:
             return () => {
-                dispatch(push(PathConfig.REGISTRATION));
+                dispatch(push(`${BASENAME}${PathConfig.REGISTRATION}`));
             };
         case ResultPageConfig.ERROR_CHANGE_PASSWORD:
             return async () => {
@@ -46,7 +46,7 @@ export function useResultButtonClick(type: ResultPageConfig) {
                     SessionStorageConfig.CONFIRM_PASSWORD,
                 );
                 dispatch(
-                    push(PathConfig.AUTH_CHANGE_PASSWORD, {
+                    push(`${BASENAME}${PathConfig.AUTH_CHANGE_PASSWORD}`, {
                         forgot: HistoryStateConfig.CONFIRM_PAGE_STEP_TWO,
                     }),
                 );
@@ -76,7 +76,7 @@ export function useResultButtonClick(type: ResultPageConfig) {
             return async () => {
                 const email = getSessionStorage(SessionStorageConfig.EMAIL);
 
-                dispatch(push(PathConfig.AUTH));
+                dispatch(push(`${BASENAME}${PathConfig.AUTH}`));
 
                 if (email && email !== '') {
                     try {
@@ -93,7 +93,7 @@ export function useResultButtonClick(type: ResultPageConfig) {
         case ResultPageConfig.SUCCESS:
         case ResultPageConfig.SUCCESS_CHANGE_PASSWORD:
             return () => {
-                dispatch(push(PathConfig.AUTH));
+                dispatch(push(`${BASENAME}${PathConfig.AUTH}`));
             };
     }
 }

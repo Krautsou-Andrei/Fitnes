@@ -7,6 +7,7 @@ import { sessionActions, sessionApi } from '@entities/session';
 
 import { isFetchBaseQueryError } from '@shared/api';
 import {
+    BASENAME,
     EventApiConfig,
     HistoryStateConfig,
     PathConfig,
@@ -26,7 +27,7 @@ export const checkEmailThunk = createAsyncThunk<void, CheckEmailParams, { state:
             await dispatch(sessionApi.endpoints.checkEmail.initiate(body)).unwrap();
 
             dispatch(
-                push(PathConfig.AUTH_CONFIRM_EMAIL, {
+                push(`${BASENAME}${PathConfig.AUTH_CONFIRM_EMAIL}`, {
                     forgot: HistoryStateConfig.CONFIRM_PAGE_STEP_ONE,
                 }),
             );
