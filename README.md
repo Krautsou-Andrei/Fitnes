@@ -1,3 +1,5 @@
+# Deploy: https://krautsou-andrei.github.io/Fitnes
+
 # CleverFIT
 
 ## Инструкция к спринту №7 https://docs.google.com/document/d/1yxZcrlBRO_YYSeQlgWZO6prLCmd7NU5A/edit?usp=sharing&ouid=107087056934021538327&rtpof=true&sd=true
