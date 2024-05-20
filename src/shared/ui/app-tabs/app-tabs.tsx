@@ -21,6 +21,7 @@ export function AppTabs({ items, activeKey, className, isBadge, onChange }: AppT
     return (
         <Tabs
             destroyInactiveTabPane={true}
+            defaultActiveKey={activeKey ? activeKey : pathname}
             accessKey={activeKey ? activeKey : pathname}
             centered
             className={clsn(styles.tabs, className)}

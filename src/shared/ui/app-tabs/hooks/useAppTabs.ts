@@ -6,6 +6,7 @@ import { WorkoutsConfig } from '@features/traning/config';
 import { selectGetInvities } from '@entities/invite';
 import { selectPals } from '@entities/training';
 
+import { BASENAME } from '@shared/config';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
 
 export function useAppTabs() {
@@ -19,7 +20,7 @@ export function useAppTabs() {
 
     const onTabClick = (activeKey: string) => {
         if (pathname !== activeKey) {
-            dispatch(push(activeKey));
+            dispatch(push(`${BASENAME}${activeKey}`));
         }
     };
 

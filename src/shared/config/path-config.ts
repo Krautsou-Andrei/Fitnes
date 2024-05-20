@@ -1,4 +1,4 @@
-export const BASENAME = import.meta.env.BASE_URL;
+export const BASENAME = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
 export const enum PathConfig {
     ACHIEVEMENTS = '/achievements',
